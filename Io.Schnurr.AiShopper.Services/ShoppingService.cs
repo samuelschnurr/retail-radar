@@ -1,6 +1,6 @@
 ﻿using System.Net.Http.Json;
 using System.Text;
-using Io.Schnurr.AiShopper.Models.Thread;
+using Io.Schnurr.AiShopper.Models.OpenAi;
 
 namespace Io.Schnurr.AiShopper.Services;
 
@@ -9,8 +9,9 @@ public class ShoppingService
     private readonly HttpClient httpClient;
     private const string baseUrl = "https://api.openai.com";
     private const string assistandId = "asst_jzhrL5rozZI2JV4vm7UTJmmx";
-    private Models.Thread.Thread thread;
+    private Models.OpenAi.Thread thread;
     private string currentUserMessage;
+
     public string CurrentUserMessage
     {
         get { return currentUserMessage; }
@@ -25,7 +26,7 @@ public class ShoppingService
     {
         httpClient = new HttpClient
         {
-            BaseAddress = new Uri(baseUrl),
+            BaseAddress = new Uri(baseUrl)
         };
 
         httpClient.DefaultRequestHeaders.Add("OpenAI-Beta", "assistants=v1");
@@ -54,30 +55,32 @@ public class ShoppingService
         }
 
         var messages = await GetMessages(thread.Id);
-        var lastMessage = messages.Data.Single(d => d.Id == messages.FirstId).Content.First().Text.Value;
+        var lastMessage = messages.Messages.Single(d => d.Id == messages.FirstId).Contents.First().Text.Value;
         Console.WriteLine(lastMessage);
 
         CurrentUserMessage = Console.ReadLine();
     }
 
-    public async Task<Models.Thread.Thread> CreateNewThread()
+    public async Task<Models.OpenAi.Thread> CreateNewThread()
     {
         var result = await httpClient.PostAsync("/v1/threads", new StringContent("", Encoding.UTF8, "application/json"));
-        var createdThread = await result.Content.ReadFromJsonAsync<Models.Thread.Thread>();
+        var createdThread = await result.Content.ReadFromJsonAsync<Models.OpenAi.Thread>();
         return createdThread;
     }
 
-    public async Task<MessageObject> CreateMessage(string thread, string message)
+    public async Task<Message> CreateMessage(string thread, string message)
     {
-        var messageToPost = new Message(message);
+        var messageToPost = new MessagePOST() { Role = "user", Content = message };
+
         var result = await httpClient.PostAsJsonAsync($"/v1/threads/{thread}/messages", messageToPost);
-        var createdMessage = await result.Content.ReadFromJsonAsync<MessageObject>();
+        var createdMessage = await result.Content.ReadFromJsonAsync<Message>();
         return createdMessage;
     }
 
     public async Task<Run> CreateRun(string thread)
     {
-        var runToPost = new RunToPost(assistandId, "");
+        var runToPost = new RunPOST() { AssistantId = assistandId };
+
         var result = await httpClient.PostAsJsonAsync($"/v1/threads/{thread}/runs", runToPost);
         var createdRun = await result.Content.ReadFromJsonAsync<Run>();
         return createdRun;
@@ -89,9 +92,9 @@ public class ShoppingService
         return result;
     }
 
-    public async Task<MessageObject> GetMessages(string thread)
+    public async Task<Conversation> GetMessages(string thread)
     {
-        var result = await httpClient.GetFromJsonAsync<MessageObject>($"/v1/threads/{thread}/messages");
+        var result = await httpClient.GetFromJsonAsync<Conversation>($"/v1/threads/{thread}/messages");
         return result;
     }
 }

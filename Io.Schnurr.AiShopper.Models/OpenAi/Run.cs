@@ -1,24 +1,9 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Io.Schnurr.AiShopper.Models.Thread;
-public class Run
+namespace Io.Schnurr.AiShopper.Models.OpenAi;
+
+public class Run : BaseEntity
 {
-    [JsonConstructor]
-    public Run()
-    {
-
-    }
-
-    public Run(string assistandId, string instructions)
-    {
-        AssistantId = assistandId;
-        Instructions = instructions;
-    }
-
-    public string Id { get; set; }
-    public string? Object { get; set; }
-    [JsonPropertyName("created_at")]
-    public long? CreatedAt { get; set; }
     [JsonPropertyName("assistant_id")]
     public string? AssistantId { get; set; }
     [JsonPropertyName("thread_id")]
@@ -41,9 +26,10 @@ public class Run
     public string? Model { get; set; }
     [JsonPropertyName("instructions")]
     public string? Instructions { get; set; }
+    [JsonPropertyName("additional_instructions")]
+    public string? AdditionalInstructions { get; set; }
     public List<string>? Tools { get; set; }
     [JsonPropertyName("file_ids")]
     public List<string>? FileIds { get; set; }
-    public Dictionary<string, object>? Metadata { get; set; }
-    public object? Usage { get; set; }
+    public RunUsage? Usage { get; set; }
 }

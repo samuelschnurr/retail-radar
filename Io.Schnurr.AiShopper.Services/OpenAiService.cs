@@ -5,25 +5,15 @@ using Io.Schnurr.AiShopper.Models.OpenAi;
 
 namespace Io.Schnurr.AiShopper.Services;
 
-public class ShoppingService
+public class OpenAiService
 {
+
     private readonly HttpClient httpClient;
     private const string baseUrl = "https://api.openai.com";
     private const string assistandId = "asst_jzhrL5rozZI2JV4vm7UTJmmx";
-    private Models.OpenAi.Thread thread;
     private string currentUserMessage;
 
-    public string CurrentUserMessage
-    {
-        get { return currentUserMessage; }
-        set
-        {
-            currentUserMessage = value;
-            ExecuteCommunication().Wait();
-        }
-    }
-
-    public ShoppingService()
+    public OpenAiService()
     {
         httpClient = new HttpClient
         {
@@ -34,35 +24,7 @@ public class ShoppingService
         httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer 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");
     }
 
-    public async Task InitShopping()
-    {
-        thread = await CreateNewThread();
-        Console.WriteLine("Hallo. Nach was für einem Produkt suchst du?");
-        currentUserMessage = Console.ReadLine();
-        await ExecuteCommunication();
-    }
-
-    public async Task ExecuteCommunication()
-    {
-        var message = await CreateMessage(thread.Id, currentUserMessage);
-        var run = await CreateRun(thread.Id);
-
-        var pollRun = await GetRun(thread.Id, run.Id);
-
-        while (pollRun.CompletedAt == null || pollRun.CompletedAt <= 0)
-        {
-            await Task.Delay(1000);
-            pollRun = await GetRun(thread.Id, run.Id);
-        }
-
-        var messages = await GetMessages(thread.Id);
-        var lastMessage = messages.Messages.Single(d => d.Id == messages.FirstId).Contents.First().Text.Value;
-        Console.WriteLine(lastMessage);
-
-        CurrentUserMessage = Console.ReadLine();
-    }
-
-    public async Task<Models.OpenAi.Thread> CreateNewThread()
+    public async Task<Models.OpenAi.Thread> CreateThread()
     {
         var result = await httpClient.PostAsync("/v1/threads", new StringContent("", Encoding.UTF8, "application/json"));
         var createdThread = await result.Content.ReadFromJsonAsync<Models.OpenAi.Thread>();
@@ -78,7 +40,7 @@ public class ShoppingService
 
     public async Task<Run> CreateRun(string thread)
     {
-        var runToPost = new Run() { AssistantId = assistandId };
+        var runToPost = new Run() { AssistantId = assistandId, AdditionalInstructions = "This conversation is in german" };
 
         string jsonData = JsonSerializer.Serialize(runToPost, new JsonSerializerOptions { IgnoreNullValues = true });
         var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -97,5 +59,26 @@ public class ShoppingService
     {
         var result = await httpClient.GetFromJsonAsync<Conversation>($"/v1/threads/{thread}/messages");
         return result;
+    }
+
+    internal string GetNewestMessage(Conversation conversation)
+    {
+        var firstMessage = conversation?.Messages?.Single(m => m.Id == conversation.FirstId);
+        var firstText = firstMessage?.Contents?.FirstOrDefault()?.Text?.Value;
+
+        return firstText;
+    }
+
+    internal async Task WaitForRunCompletion(string threadId, string runId)
+    {
+        var runCompleted = false;
+
+        while (!runCompleted)
+        {
+            await Task.Delay(1000);
+
+            var run = await GetRun(threadId, runId);
+            runCompleted = run.CompletedAt.HasValue && run.CompletedAt > 0;
+        }
     }
 }

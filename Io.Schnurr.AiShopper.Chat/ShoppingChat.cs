@@ -33,7 +33,7 @@ public class ShoppingChat
 
     public async Task<string> GetMessage()
     {
-        await openAiService.WaitForRunCompletion(currentThread!.Id!, currentRun.Id!);
+        await openAiService.WaitForRunCompletion(currentThread!.Id!, currentRun!.Id!);
 
         var conversation = await openAiService.GetMessages(currentThread!.Id!);
         var assistantMessage = openAiService.GetNewestMessage(conversation);

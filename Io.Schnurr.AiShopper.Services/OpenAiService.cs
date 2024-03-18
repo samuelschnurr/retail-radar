@@ -7,22 +7,8 @@ namespace Io.Schnurr.AiShopper.Services;
 
 public class OpenAiService
 {
-
-    private readonly HttpClient httpClient;
-    private const string baseUrl = "https://api.openai.com";
+    private readonly CustomHttpClient httpClient = new();
     private const string assistandId = "asst_jzhrL5rozZI2JV4vm7UTJmmx";
-    private string currentUserMessage;
-
-    public OpenAiService()
-    {
-        httpClient = new HttpClient
-        {
-            BaseAddress = new Uri(baseUrl)
-        };
-
-        httpClient.DefaultRequestHeaders.Add("OpenAI-Beta", "assistants=v1");
-        httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer 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");
-    }
 
     public async Task<Models.OpenAi.Thread> CreateThread()
     {
@@ -61,7 +47,7 @@ public class OpenAiService
         return result;
     }
 
-    internal string GetNewestMessage(Conversation conversation)
+    public string GetNewestMessage(Conversation conversation)
     {
         var firstMessage = conversation?.Messages?.Single(m => m.Id == conversation.FirstId);
         var firstText = firstMessage?.Contents?.FirstOrDefault()?.Text?.Value;
@@ -69,7 +55,7 @@ public class OpenAiService
         return firstText;
     }
 
-    internal async Task WaitForRunCompletion(string threadId, string runId)
+    public async Task WaitForRunCompletion(string threadId, string runId)
     {
         var runCompleted = false;
 

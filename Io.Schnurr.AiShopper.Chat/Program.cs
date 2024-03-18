@@ -25,6 +25,7 @@ internal class Program
 
                 Console.WriteLine();
                 Console.WriteLine(newResponse);
+                Console.WriteLine();
             }
 
             //var productService = new ProductService(configuration);

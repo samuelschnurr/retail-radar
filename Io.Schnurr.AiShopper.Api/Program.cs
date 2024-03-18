@@ -1,10 +1,13 @@
 using Io.Schnurr.AiShopper.Api;
+using Io.Schnurr.AiShopper.OpenAi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddSingleton<AssistantService>();
 
 var app = builder.Build();
 

@@ -1,4 +1,4 @@
-﻿namespace Io.Schnurr.AiShopper.Models.OpenAi;
+﻿namespace Io.Schnurr.AiShopper.OpenAi.Models;
 
 public class MessageContent
 {

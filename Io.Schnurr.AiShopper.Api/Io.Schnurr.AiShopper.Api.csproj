@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>ea1c32a8-2eca-4074-a0ff-1559813678a3</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Io.Schnurr.AiShopper.Models\Io.Schnurr.AiShopper.Models.csproj" />
-    <ProjectReference Include="..\Io.Schnurr.AiShopper.Services\Io.Schnurr.AiShopper.Services.csproj" />
+    <ProjectReference Include="..\Io.Schnurr.AiShopper.OpenAiAssistantSdk\Io.Schnurr.AiShopper.OpenAi.csproj" />
+    <ProjectReference Include="..\Io.Schnurr.AiShopper.Services\Io.Schnurr.AiShopper.Amazon.csproj" />
   </ItemGroup>
 
 </Project>

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Io.Schnurr.AiShopper.Services\Io.Schnurr.AiShopper.Services.csproj" />
+    <ProjectReference Include="..\Io.Schnurr.AiShopper.Services\Io.Schnurr.AiShopper.Amazon.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,12 +1,12 @@
-﻿using Io.Schnurr.AiShopper.Services;
+﻿using Io.Schnurr.AiShopper.OpenAi.Services;
 
 namespace Io.Schnurr.AiShopper.Api.Services;
 
 internal static class RunService
 {
-    internal static async Task<IResult> Get(string threadId, string runId)
+    internal static async Task<IResult> Get(AssistantService assistantService, string threadId, string runId)
     {
-        var run = await OpenAiService.GetRun(threadId, runId);
+        var run = await assistantService.GetRun(threadId, runId);
 
         if (run != null)
         {
@@ -20,7 +20,7 @@ internal static class RunService
 
     internal static void MapRoutes(WebApplication app)
     {
-        var run = app.MapGroup(nameof(Models.OpenAi.Run));
-        run.MapGet("/{threadId}/{runId}", RunService.Get);
+        var run = app.MapGroup(nameof(OpenAi.Models.Run));
+        run.MapGet("/{threadId}/{runId}", Get);
     }
 }

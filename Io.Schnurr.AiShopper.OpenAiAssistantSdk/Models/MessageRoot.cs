@@ -1,9 +1,9 @@
-﻿namespace Io.Schnurr.AiShopper.Models.OpenAi;
+﻿namespace Io.Schnurr.AiShopper.OpenAi.Models;
 
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-public class Conversation
+public class MessageRoot
 {
     public string? Object { get; set; }
     [JsonPropertyName("data")]

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Io.Schnurr.AiShopper.Models.OpenAi;
+namespace Io.Schnurr.AiShopper.OpenAi.Models;
 
 public class Run : BaseEntity
 {

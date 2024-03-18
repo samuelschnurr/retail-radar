@@ -10,8 +10,4 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Io.Schnurr.AiShopper.Models\Io.Schnurr.AiShopper.Models.csproj" />
-  </ItemGroup>
-
 </Project>

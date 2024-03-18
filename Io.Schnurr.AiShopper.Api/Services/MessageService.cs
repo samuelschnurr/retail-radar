@@ -1,13 +1,13 @@
 ﻿using Io.Schnurr.AiShopper.Api.Dtos;
-using Io.Schnurr.AiShopper.Services;
+using Io.Schnurr.AiShopper.OpenAi.Services;
 
 namespace Io.Schnurr.AiShopper.Api.Services;
 
 internal static class MessageService
 {
-    internal static async Task<IResult> Get(string threadId)
+    internal static async Task<IResult> Get(AssistantService assistantService, string threadId)
     {
-        var message = await OpenAiService.GetMessages(threadId);
+        var message = await assistantService.GetMessages(threadId);
 
         if (message != null)
         {
@@ -19,9 +19,9 @@ internal static class MessageService
         }
     }
 
-    internal static async Task<IResult> Create(UserMessageDto userMessage)
+    internal static async Task<IResult> Create(AssistantService assistantService, UserMessageDto userMessage)
     {
-        var message = await OpenAiService.CreateMessage(userMessage.ThreadId, userMessage.Input);
+        var message = await assistantService.CreateMessage(userMessage.ThreadId, userMessage.Input);
 
         if (message != null)
         {
@@ -35,8 +35,8 @@ internal static class MessageService
 
     internal static void MapRoutes(WebApplication app)
     {
-        var message = app.MapGroup(nameof(Models.OpenAi.Message));
-        message.MapGet("/{threadId}", MessageService.Get);
-        message.MapPost("/", MessageService.Create);
+        var message = app.MapGroup(nameof(OpenAi.Models.Message));
+        message.MapGet("/{threadId}", Get);
+        message.MapPost("/", Create);
     }
 }

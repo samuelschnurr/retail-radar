@@ -1,19 +1,28 @@
 ﻿using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
-using Io.Schnurr.AiShopper.Models.OpenAi;
+using Io.Schnurr.AiShopper.OpenAi.Models;
+using Io.Schnurr.AiShopper.OpenAi.Utils;
+using Microsoft.Extensions.Configuration;
 
-namespace Io.Schnurr.AiShopper.Services;
+namespace Io.Schnurr.AiShopper.OpenAi.Services;
 
-public class OpenAiService
+public class AssistantService
 {
-    private readonly CustomHttpClient httpClient = new();
-    private const string assistandId = "asst_jzhrL5rozZI2JV4vm7UTJmmx";
+    private readonly AssistantHttpClient httpClient;
+    private readonly string assistantId;
 
-    public async Task<Models.OpenAi.Thread> CreateThread()
+    public AssistantService(IConfiguration configuration)
+    {
+        httpClient = new(configuration["OpenAi:Authorization"]);
+        assistantId = configuration["OpenAi:AssistantId"];
+    }
+
+
+    public async Task<Models.Thread> CreateThread()
     {
         var result = await httpClient.PostAsync("/v1/threads", new StringContent("", Encoding.UTF8, "application/json"));
-        var createdThread = await result.Content.ReadFromJsonAsync<Models.OpenAi.Thread>();
+        var createdThread = await result.Content.ReadFromJsonAsync<Models.Thread>();
         return createdThread;
     }
 
@@ -26,7 +35,7 @@ public class OpenAiService
 
     public async Task<Run> CreateRun(string thread)
     {
-        var runToPost = new Run() { AssistantId = assistandId, AdditionalInstructions = "This conversation is in german" };
+        var runToPost = new Run() { AssistantId = assistantId, AdditionalInstructions = "This conversation is in german" };
 
         string jsonData = JsonSerializer.Serialize(runToPost, new JsonSerializerOptions { IgnoreNullValues = true });
         var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -41,13 +50,13 @@ public class OpenAiService
         return result;
     }
 
-    public async Task<Conversation> GetMessages(string thread)
+    public async Task<MessageRoot> GetMessages(string thread)
     {
-        var result = await httpClient.GetFromJsonAsync<Conversation>($"/v1/threads/{thread}/messages");
+        var result = await httpClient.GetFromJsonAsync<MessageRoot>($"/v1/threads/{thread}/messages");
         return result;
     }
 
-    public string GetNewestMessage(Conversation conversation)
+    private string GetNewestMessage(MessageRoot conversation)
     {
         var firstMessage = conversation?.Messages?.Single(m => m.Id == conversation.FirstId);
         var firstText = firstMessage?.Contents?.FirstOrDefault()?.Text?.Value;
@@ -55,7 +64,7 @@ public class OpenAiService
         return firstText;
     }
 
-    public async Task WaitForRunCompletion(string threadId, string runId)
+    private async Task WaitForRunCompletion(string threadId, string runId)
     {
         var runCompleted = false;
 

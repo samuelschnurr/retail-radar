@@ -1,12 +1,12 @@
-﻿using Io.Schnurr.AiShopper.Services;
+﻿using Io.Schnurr.AiShopper.OpenAi.Services;
 
 namespace Io.Schnurr.AiShopper.Api.Services;
 
 internal static class ThreadService
 {
-    internal static async Task<IResult> Create()
+    internal static async Task<IResult> Create(AssistantService assistantService)
     {
-        var thread = await OpenAiService.CreateThread();
+        var thread = await assistantService.CreateThread();
 
         if (thread != null)
         {
@@ -20,7 +20,7 @@ internal static class ThreadService
 
     internal static void MapRoutes(WebApplication app)
     {
-        var thread = app.MapGroup(nameof(Models.OpenAi.Thread));
-        thread.MapPost("/", ThreadService.Create);
+        var thread = app.MapGroup(nameof(OpenAi.Models.Thread));
+        thread.MapPost("/", Create);
     }
 }

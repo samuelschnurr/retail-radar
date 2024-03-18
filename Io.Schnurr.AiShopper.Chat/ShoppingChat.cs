@@ -1,10 +1,8 @@
-﻿using Io.Schnurr.AiShopper.Models.OpenAi;
-
-namespace Io.Schnurr.AiShopper.Services;
+﻿namespace Io.Schnurr.AiShopper.Chat;
 
 public class ShoppingChat
 {
-    private OpenAiService openAiService { get; } = new OpenAiService();
+    private AssistantService openAiService { get; } = new AssistantService();
     private Models.OpenAi.Thread? currentThread;
     private Run? currentRun;
 

@@ -1,8 +1,8 @@
 ﻿using System.Net.Http.Json;
-using Io.Schnurr.AiShopper.Models.Product;
+using Io.Schnurr.AiShopper.Amazon.Models;
 using Microsoft.Extensions.Configuration;
 
-namespace Io.Schnurr.AiShopper.Services;
+namespace Io.Schnurr.AiShopper.Amazon.Services;
 
 public class ProductService
 {

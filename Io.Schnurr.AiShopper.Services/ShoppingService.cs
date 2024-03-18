@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using Io.Schnurr.AiShopper.Models.OpenAi;
 
 namespace Io.Schnurr.AiShopper.Services;
@@ -70,19 +71,19 @@ public class ShoppingService
 
     public async Task<Message> CreateMessage(string thread, string message)
     {
-        var messageToPost = new MessagePOST() { Role = "user", Content = message };
-
-        var result = await httpClient.PostAsJsonAsync($"/v1/threads/{thread}/messages", messageToPost);
+        var result = await httpClient.PostAsJsonAsync($"/v1/threads/{thread}/messages", new { Role = "user", Content = message });
         var createdMessage = await result.Content.ReadFromJsonAsync<Message>();
         return createdMessage;
     }
 
     public async Task<Run> CreateRun(string thread)
     {
-        var runToPost = new RunPOST() { AssistantId = assistandId };
+        var runToPost = new Run() { AssistantId = assistandId };
 
-        var result = await httpClient.PostAsJsonAsync($"/v1/threads/{thread}/runs", runToPost);
-        var createdRun = await result.Content.ReadFromJsonAsync<Run>();
+        string jsonData = JsonSerializer.Serialize(runToPost, new JsonSerializerOptions { IgnoreNullValues = true });
+        var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        HttpResponseMessage response = await httpClient.PostAsync($"/v1/threads/{thread}/runs", content);
+        var createdRun = await response.Content.ReadFromJsonAsync<Run>();
         return createdRun;
     }
 

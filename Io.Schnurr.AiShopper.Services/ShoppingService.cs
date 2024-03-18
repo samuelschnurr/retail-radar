@@ -1,28 +1,97 @@
-﻿namespace Io.Schnurr.AiShopper.Services;
+﻿using System.Net.Http.Json;
+using System.Text;
+using Io.Schnurr.AiShopper.Models.Thread;
 
-internal class ShoppingService
+namespace Io.Schnurr.AiShopper.Services;
+
+public class ShoppingService
 {
-    private void CreateNewThread()
+    private readonly HttpClient httpClient;
+    private const string baseUrl = "https://api.openai.com";
+    private const string assistandId = "asst_jzhrL5rozZI2JV4vm7UTJmmx";
+    private Models.Thread.Thread thread;
+    private string currentUserMessage;
+    public string CurrentUserMessage
     {
-        throw new NotImplementedException();
+        get { return currentUserMessage; }
+        set
+        {
+            currentUserMessage = value;
+            ExecuteCommunication().Wait();
+        }
     }
 
-    private void CreateMessage()
+    public ShoppingService()
     {
-        throw new NotImplementedException();
-    }
-    private void CreateRun()
-    {
-        throw new NotImplementedException();
+        httpClient = new HttpClient
+        {
+            BaseAddress = new Uri(baseUrl),
+        };
+
+        httpClient.DefaultRequestHeaders.Add("OpenAI-Beta", "assistants=v1");
+        httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer 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");
     }
 
-    private void GetRunStatus()
+    public async Task InitShopping()
     {
-        throw new NotImplementedException();
+        thread = await CreateNewThread();
+        Console.WriteLine("Hallo. Nach was für einem Produkt suchst du?");
+        currentUserMessage = Console.ReadLine();
+        await ExecuteCommunication();
     }
 
-    private void GetMessages()
+    public async Task ExecuteCommunication()
     {
-        throw new NotImplementedException();
+        var message = await CreateMessage(thread.Id, currentUserMessage);
+        var run = await CreateRun(thread.Id);
+
+        var pollRun = await GetRun(thread.Id, run.Id);
+
+        while (pollRun.CompletedAt == null || pollRun.CompletedAt <= 0)
+        {
+            await Task.Delay(1000);
+            pollRun = await GetRun(thread.Id, run.Id);
+        }
+
+        var messages = await GetMessages(thread.Id);
+        var lastMessage = messages.Data.Single(d => d.Id == messages.FirstId).Content.First().Text.Value;
+        Console.WriteLine(lastMessage);
+
+        CurrentUserMessage = Console.ReadLine();
+    }
+
+    public async Task<Models.Thread.Thread> CreateNewThread()
+    {
+        var result = await httpClient.PostAsync("/v1/threads", new StringContent("", Encoding.UTF8, "application/json"));
+        var createdThread = await result.Content.ReadFromJsonAsync<Models.Thread.Thread>();
+        return createdThread;
+    }
+
+    public async Task<MessageObject> CreateMessage(string thread, string message)
+    {
+        var messageToPost = new Message(message);
+        var result = await httpClient.PostAsJsonAsync($"/v1/threads/{thread}/messages", messageToPost);
+        var createdMessage = await result.Content.ReadFromJsonAsync<MessageObject>();
+        return createdMessage;
+    }
+
+    public async Task<Run> CreateRun(string thread)
+    {
+        var runToPost = new RunToPost(assistandId, "");
+        var result = await httpClient.PostAsJsonAsync($"/v1/threads/{thread}/runs", runToPost);
+        var createdRun = await result.Content.ReadFromJsonAsync<Run>();
+        return createdRun;
+    }
+
+    public async Task<Run> GetRun(string thread, string run)
+    {
+        var result = await httpClient.GetFromJsonAsync<Run>($"/v1/threads/{thread}/runs/{run}");
+        return result;
+    }
+
+    public async Task<MessageObject> GetMessages(string thread)
+    {
+        var result = await httpClient.GetFromJsonAsync<MessageObject>($"/v1/threads/{thread}/messages");
+        return result;
     }
 }

@@ -10,16 +10,13 @@ internal class Program
     {
         try
         {
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("Hallo. Nach was für einem Produkt suchst du?");
+            var shoppingService = new ShoppingService();
+            shoppingService.InitShopping().Wait();
 
-            var searchTerm = Console.ReadLine();
-
-            var productService = new ProductService(configuration);
-            var amazonLink = productService.FindAmazonLinkForSearchTerm(searchTerm).Result;
-
-            Console.WriteLine("Der Amazonlink zu einem passenden Produkt ist:");
-            Console.WriteLine(amazonLink);
+            //var productService = new ProductService(configuration);
+            //var amazonLink = productService.FindAmazonLinkForSearchTerm(searchTerm).Result;
+            //Console.WriteLine("Der Amazonlink zu einem passenden Produkt ist:");
+            //Console.WriteLine(amazonLink);
         }
         catch (Exception ex)
         {

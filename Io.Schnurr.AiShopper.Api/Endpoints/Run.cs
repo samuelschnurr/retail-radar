@@ -6,19 +6,6 @@ namespace Io.Schnurr.AiShopper.Api.Services;
 
 internal static class Run
 {
-    internal static async Task<IResult> Create(AssistantService assistantService, string threadId)
-    {
-        var threadRun = await assistantService.CreateRunAsync(threadId);
-
-        if (threadRun != null)
-        {
-            RunDto runDto = threadRun.MapToRunDto();
-            return TypedResults.Created($"/{nameof(runDto)}/{runDto.Id}", runDto);
-        }
-
-        return Results.StatusCode(500);
-    }
-
     internal static async Task<IResult> Get(AssistantService assistantService, string threadId, string runId)
     {
         var threadRun = await assistantService.GetRunAsync(threadId, runId);
@@ -36,6 +23,5 @@ internal static class Run
     {
         var run = app.MapGroup(nameof(Run));
         run.MapGet("/{threadId}/{runId}", Get);
-        run.MapPost("/{threadId}", Create);
     }
 }

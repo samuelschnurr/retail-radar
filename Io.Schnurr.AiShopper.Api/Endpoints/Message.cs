@@ -9,6 +9,7 @@ internal static class Message
     internal static async Task<IResult> Get(AssistantService assistantService, string threadId)
     {
         var threadMessages = await assistantService.GetMessagesAsync(threadId);
+        var threadRuns = await assistantService.GetRunsAsync(threadId);
 
         if (threadMessages != null)
         {
@@ -16,7 +17,8 @@ internal static class Message
 
             foreach (var threadMessage in threadMessages)
             {
-                var messageDto = threadMessage.MapToMessageDto();
+                var threadRun = threadRuns?.SingleOrDefault(t => t.Id == threadMessage.RunId);
+                var messageDto = threadMessage.MapToMessageDto(threadRun);
                 messageDtos.Add(messageDto);
             }
 
@@ -29,10 +31,11 @@ internal static class Message
     internal static async Task<IResult> Create(AssistantService assistantService, MessageDto message)
     {
         var threadMessage = await assistantService.CreateMessage(message.ThreadId, message.Content);
+        var threadRun = await assistantService.CreateRunAsync(message.ThreadId);
 
-        if (threadMessage != null)
+        if (threadMessage != null && threadRun != null)
         {
-            MessageDto messageDto = threadMessage.MapToMessageDto();
+            MessageDto messageDto = threadMessage.MapToMessageDto(threadRun);
             return TypedResults.Created($"/{nameof(messageDto)}/{messageDto.Id}", messageDto);
         }
 

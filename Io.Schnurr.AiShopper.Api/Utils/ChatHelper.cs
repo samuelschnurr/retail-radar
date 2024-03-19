@@ -10,7 +10,7 @@ internal static class ChatHelper
         Random random = new();
         int randomIndex = random.Next(0, welcomeMessages.Length);
 
-        var welcomeMessage = new MessageDto("0", threadId, welcomeMessages[randomIndex], MessageRole.Assistant.ToString());
+        var welcomeMessage = new MessageDto("0", threadId, welcomeMessages[randomIndex], MessageRole.Assistant.ToString(), null);
 
         return welcomeMessage;
     }

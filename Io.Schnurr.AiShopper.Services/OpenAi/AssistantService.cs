@@ -73,6 +73,18 @@ public class AssistantService
         return run?.Value;
     }
 
+    public async Task<List<ThreadRun>?> GetRunsAsync(string threadId)
+    {
+        if (string.IsNullOrWhiteSpace(threadId))
+        {
+            throw new ArgumentNullException(threadId);
+        }
+
+        var runs = await client.GetRunsAsync(threadId);
+
+        return runs?.Value.ToList();
+    }
+
     public async Task<List<ThreadMessage>?> GetMessagesAsync(string threadId)
     {
         if (string.IsNullOrWhiteSpace(threadId))

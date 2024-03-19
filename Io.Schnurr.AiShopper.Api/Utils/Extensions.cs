@@ -11,7 +11,7 @@ internal static class Extensions
         return new RunDto(threadRun.Id, threadRun.Status.ToString());
     }
 
-    internal static MessageDto MapToMessageDto(this ThreadMessage threadMessage)
+    internal static MessageDto MapToMessageDto(this ThreadMessage threadMessage, ThreadRun? threadRun = null)
     {
         StringBuilder sb = new();
 
@@ -24,6 +24,7 @@ internal static class Extensions
             }
         }
 
-        return new MessageDto(threadMessage.Id, threadMessage.ThreadId, sb.ToString(), threadMessage.Role.ToString());
+        RunDto? runDto = threadRun?.MapToRunDto();
+        return new MessageDto(threadMessage.Id, threadMessage.ThreadId, sb.ToString(), threadMessage.Role.ToString(), runDto);
     }
 }

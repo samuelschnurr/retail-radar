@@ -27,7 +27,7 @@ public class AssistantService
         return thread.Value;
     }
 
-    public async Task<ThreadMessage> CreateMessage(string threadId, string content)
+    public async Task<ThreadMessage?> CreateMessage(string threadId, string content)
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
@@ -41,15 +41,10 @@ public class AssistantService
 
         var message = await client.CreateMessageAsync(threadId, MessageRole.User, content);
 
-        if (message == null || string.IsNullOrWhiteSpace(message.Value.Id))
-        {
-            throw new InvalidOperationException(nameof(message));
-        }
-
-        return message.Value;
+        return message?.Value;
     }
 
-    public async Task<ThreadRun> CreateRunAsync(string threadId)
+    public async Task<ThreadRun?> CreateRunAsync(string threadId)
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
@@ -58,15 +53,10 @@ public class AssistantService
 
         var run = await client.CreateRunAsync(threadId, runOptions);
 
-        if (run == null || string.IsNullOrWhiteSpace(run.Value.Id))
-        {
-            throw new InvalidOperationException(nameof(run));
-        }
-
-        return run.Value;
+        return run?.Value;
     }
 
-    public async Task<ThreadRun> GetRunAsync(string threadId, string runId)
+    public async Task<ThreadRun?> GetRunAsync(string threadId, string runId)
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
@@ -80,15 +70,10 @@ public class AssistantService
 
         var run = await client.GetRunAsync(threadId, runId);
 
-        if (run == null)
-        {
-            throw new InvalidOperationException(nameof(run));
-        }
-
-        return run;
+        return run?.Value;
     }
 
-    public async Task<List<ThreadMessage>> GetMessagesAsync(string threadId)
+    public async Task<List<ThreadMessage>?> GetMessagesAsync(string threadId)
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {

@@ -1,20 +1,22 @@
 ﻿using Io.Schnurr.AiShopper.Api.Dtos;
 using Io.Schnurr.AiShopper.Api.Utils;
+using Io.Schnurr.AiShopper.Services.Amazon;
 using Io.Schnurr.AiShopper.Services.OpenAi;
 
 namespace Io.Schnurr.AiShopper.Api.Endpoints;
 
 internal static class Message
 {
-    internal static async Task<IResult> Get(AssistantService assistantService, string threadId, string runId)
+    internal static async Task<IResult> Get(AssistantService assistantService, ProductService productService, string threadId, string runId)
     {
-        var threadMessages = await assistantService.GetMessagesAsync(threadId);
-        var threadMessage = threadMessages?.SingleOrDefault(t => t.RunId == runId);
+        var threadMessage = await assistantService.GetMessageAsync(threadId, runId);
 
         if (threadMessage != null)
         {
             var threadRun = await assistantService.GetRunAsync(threadId, runId);
             var messageDto = threadMessage.MapToMessageDto(threadRun);
+            messageDto.Content = await productService.GetStringWithProductLinks(messageDto.Content);
+
             return TypedResults.Ok(messageDto);
         }
 
@@ -29,6 +31,7 @@ internal static class Message
         if (threadMessage != null && threadRun != null)
         {
             MessageDto messageDto = threadMessage.MapToMessageDto(threadRun);
+
             return TypedResults.Created($"/{nameof(messageDto)}/{messageDto.Id}", messageDto);
         }
 

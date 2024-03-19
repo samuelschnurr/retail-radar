@@ -5,12 +5,12 @@ namespace Io.Schnurr.AiShopper.Api.Utils;
 
 internal static class ChatHelper
 {
-    internal static MessageDto GetWelcomeMessage()
+    internal static MessageDto GetWelcomeMessage(string threadId)
     {
         Random random = new();
         int randomIndex = random.Next(0, welcomeMessages.Length);
 
-        var welcomeMessage = new MessageDto("0", welcomeMessages[randomIndex], MessageRole.Assistant.ToString());
+        var welcomeMessage = new MessageDto("0", threadId, welcomeMessages[randomIndex], MessageRole.Assistant.ToString());
 
         return welcomeMessage;
     }

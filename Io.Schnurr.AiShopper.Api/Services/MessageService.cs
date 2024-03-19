@@ -19,13 +19,13 @@ internal static class MessageService
         return TypedResults.NotFound();
     }
 
-    internal static async Task<IResult> Create(AssistantService assistantService, UserMessageDto userMessage)
+    internal static async Task<IResult> Create(AssistantService assistantService, MessageDto message)
     {
-        var threadMessage = await assistantService.CreateMessage(userMessage.ThreadId, userMessage.Input);
+        var threadMessage = await assistantService.CreateMessage(message.ThreadId, message.Content);
 
         if (threadMessage != null)
         {
-            var messageDto = new MessageDto(threadMessage.Id, userMessage.Input, MessageRole.User.ToString());
+            var messageDto = new MessageDto(threadMessage.Id, threadMessage.ThreadId, message.Content, threadMessage.Role.ToString());
             return TypedResults.Created($"/{nameof(messageDto)}/{messageDto.Id}", messageDto);
         }
 
@@ -49,7 +49,7 @@ internal static class MessageService
             {
                 if (contentItem is MessageTextContent textItem)
                 {
-                    var message = new MessageDto(threadMessage.Id, textItem.Text, threadMessage.Role.ToString());
+                    var message = new MessageDto(threadMessage.Id, threadMessage.ThreadId, textItem.Text, threadMessage.Role.ToString());
                     messageDtos.Add(message);
                 }
             }

@@ -35,6 +35,6 @@ internal static class RunService
     {
         var run = app.MapGroup("Run");
         run.MapGet("/{threadId}/{runId}", Get);
-        run.MapPost("/", Create);
+        run.MapPost("/{threadId}", Create);
     }
 }

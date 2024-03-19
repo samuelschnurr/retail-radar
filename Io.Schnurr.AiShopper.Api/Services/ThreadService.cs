@@ -12,7 +12,7 @@ internal static class ThreadService
 
         if (assistantThread != null)
         {
-            var welcomeMessage = ChatHelper.GetWelcomeMessage();
+            var welcomeMessage = ChatHelper.GetWelcomeMessage(assistantThread.Id);
             ThreadDto threadDto = new(assistantThread.Id, welcomeMessage);
 
             return TypedResults.Created($"/{nameof(threadDto)}/{threadDto.Id}", threadDto);

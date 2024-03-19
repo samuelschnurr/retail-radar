@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Io.Schnurr.AiShopper.Amazon.Models;
+namespace Io.Schnurr.AiShopper.Services.Amazon.Models;
 
 public class RootObject
 {

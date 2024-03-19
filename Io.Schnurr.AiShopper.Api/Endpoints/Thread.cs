@@ -2,7 +2,7 @@
 using Io.Schnurr.AiShopper.Api.Utils;
 using Io.Schnurr.AiShopper.Services.OpenAi;
 
-namespace Io.Schnurr.AiShopper.Api.Services;
+namespace Io.Schnurr.AiShopper.Api.Endpoints;
 
 internal static class Thread
 {

@@ -1,4 +1,4 @@
-﻿using Io.Schnurr.AiShopper.Api.Services;
+﻿using Io.Schnurr.AiShopper.Api.Endpoints;
 
 namespace Io.Schnurr.AiShopper.Api;
 
@@ -6,8 +6,7 @@ internal static class Routing
 {
     internal static void MapRoutes(this WebApplication app)
     {
-        Services.Thread.MapRoutes(app);
-        Run.MapRoutes(app);
+        Endpoints.Thread.MapRoutes(app);
         Message.MapRoutes(app);
     }
 }

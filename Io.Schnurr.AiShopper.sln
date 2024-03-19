@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.AiShopper.Amazon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.AiShopper.Api", "Io.Schnurr.AiShopper.Api\Io.Schnurr.AiShopper.Api.csproj", "{EAF0F3A5-3F25-4005-8E6D-DD6B4A2EA0E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.AiShopper.Services", "Io.Schnurr.AiShopper.OpenAi\Io.Schnurr.AiShopper.Services.csproj", "{BBB1819E-D9EE-48A6-9033-962050E9FC91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.AiShopper.Services", "Io.Schnurr.AiShopper.Services\Io.Schnurr.AiShopper.Services.csproj", "{D2ACF981-E482-4034-AD02-4C982B612876}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{EAF0F3A5-3F25-4005-8E6D-DD6B4A2EA0E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAF0F3A5-3F25-4005-8E6D-DD6B4A2EA0E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAF0F3A5-3F25-4005-8E6D-DD6B4A2EA0E8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBB1819E-D9EE-48A6-9033-962050E9FC91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBB1819E-D9EE-48A6-9033-962050E9FC91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBB1819E-D9EE-48A6-9033-962050E9FC91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBB1819E-D9EE-48A6-9033-962050E9FC91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2ACF981-E482-4034-AD02-4C982B612876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2ACF981-E482-4034-AD02-4C982B612876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2ACF981-E482-4034-AD02-4C982B612876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2ACF981-E482-4034-AD02-4C982B612876}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

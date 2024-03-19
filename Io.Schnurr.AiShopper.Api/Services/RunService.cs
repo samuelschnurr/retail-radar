@@ -1,4 +1,5 @@
 ﻿using Io.Schnurr.AiShopper.Api.Dtos;
+using Io.Schnurr.AiShopper.Api.Utils;
 using Io.Schnurr.AiShopper.Services.OpenAi;
 
 namespace Io.Schnurr.AiShopper.Api.Services;
@@ -11,7 +12,7 @@ internal static class RunService
 
         if (threadRun != null)
         {
-            RunDto runDto = new(threadRun.Id, threadRun.Status.ToString());
+            RunDto runDto = threadRun.MapToRunDto();
             return TypedResults.Created($"/{nameof(runDto)}/{runDto.Id}", runDto);
         }
 
@@ -24,7 +25,7 @@ internal static class RunService
 
         if (threadRun != null)
         {
-            RunDto runDto = new(threadRun.Id, threadRun.Status.ToString());
+            RunDto runDto = threadRun.MapToRunDto();
             return TypedResults.Ok(runDto);
         }
 

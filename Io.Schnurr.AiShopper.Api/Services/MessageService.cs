@@ -1,5 +1,5 @@
-﻿using Azure.AI.OpenAI.Assistants;
-using Io.Schnurr.AiShopper.Api.Dtos;
+﻿using Io.Schnurr.AiShopper.Api.Dtos;
+using Io.Schnurr.AiShopper.Api.Utils;
 using Io.Schnurr.AiShopper.Services.OpenAi;
 
 namespace Io.Schnurr.AiShopper.Api.Services;
@@ -12,7 +12,14 @@ internal static class MessageService
 
         if (threadMessages != null)
         {
-            var messageDtos = GetMessageDtos(threadMessages);
+            List<MessageDto> messageDtos = [];
+
+            foreach (var threadMessage in threadMessages)
+            {
+                var messageDto = threadMessage.MapToMessageDto();
+                messageDtos.Add(messageDto);
+            }
+
             return TypedResults.Ok(messageDtos);
         }
 
@@ -25,7 +32,7 @@ internal static class MessageService
 
         if (threadMessage != null)
         {
-            var messageDto = new MessageDto(threadMessage.Id, threadMessage.ThreadId, message.Content, threadMessage.Role.ToString());
+            MessageDto messageDto = threadMessage.MapToMessageDto();
             return TypedResults.Created($"/{nameof(messageDto)}/{messageDto.Id}", messageDto);
         }
 
@@ -37,24 +44,5 @@ internal static class MessageService
         var message = app.MapGroup("Message");
         message.MapGet("/{threadId}", Get);
         message.MapPost("/", Create);
-    }
-
-    private static List<MessageDto> GetMessageDtos(List<ThreadMessage> threadMessages)
-    {
-        List<MessageDto> messageDtos = [];
-
-        foreach (var threadMessage in threadMessages)
-        {
-            foreach (var contentItem in threadMessage.ContentItems)
-            {
-                if (contentItem is MessageTextContent textItem)
-                {
-                    var message = new MessageDto(threadMessage.Id, threadMessage.ThreadId, textItem.Text, threadMessage.Role.ToString());
-                    messageDtos.Add(message);
-                }
-            }
-        }
-
-        return messageDtos;
     }
 }

@@ -34,7 +34,7 @@ internal static class MessageService
 
     internal static void MapRoutes(WebApplication app)
     {
-        var message = app.MapGroup(nameof(MessageDto));
+        var message = app.MapGroup("Message");
         message.MapGet("/{threadId}", Get);
         message.MapPost("/", Create);
     }

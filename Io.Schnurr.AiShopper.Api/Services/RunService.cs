@@ -33,7 +33,7 @@ internal static class RunService
 
     internal static void MapRoutes(WebApplication app)
     {
-        var run = app.MapGroup(nameof(RunDto));
+        var run = app.MapGroup("Run");
         run.MapGet("/{threadId}/{runId}", Get);
         run.MapPost("/", Create);
     }

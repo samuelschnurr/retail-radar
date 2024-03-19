@@ -23,7 +23,7 @@ internal static class ThreadService
 
     internal static void MapRoutes(WebApplication app)
     {
-        var thread = app.MapGroup(nameof(ThreadDto));
+        var thread = app.MapGroup("Thread");
         thread.MapPost("/", Create);
     }
 }

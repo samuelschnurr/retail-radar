@@ -27,23 +27,6 @@ public class AssistantService
         return thread.Value;
     }
 
-    public async Task<ThreadMessage?> CreateMessage(string threadId, string content)
-    {
-        if (string.IsNullOrWhiteSpace(threadId))
-        {
-            throw new ArgumentNullException(threadId);
-        }
-
-        if (string.IsNullOrWhiteSpace(content))
-        {
-            throw new ArgumentNullException(content);
-        }
-
-        var message = await client.CreateMessageAsync(threadId, MessageRole.User, content);
-
-        return message?.Value;
-    }
-
     public async Task<ThreadRun?> CreateRunAsync(string threadId)
     {
         if (string.IsNullOrWhiteSpace(threadId))
@@ -73,19 +56,42 @@ public class AssistantService
         return run?.Value;
     }
 
-    public async Task<List<ThreadRun>?> GetRunsAsync(string threadId)
+    public async Task<ThreadMessage?> CreateMessage(string threadId, string content)
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
             throw new ArgumentNullException(threadId);
         }
 
-        var runs = await client.GetRunsAsync(threadId);
+        if (string.IsNullOrWhiteSpace(content))
+        {
+            throw new ArgumentNullException(content);
+        }
 
-        return runs?.Value.ToList();
+        var message = await client.CreateMessageAsync(threadId, MessageRole.User, content);
+
+        return message?.Value;
     }
 
-    public async Task<List<ThreadMessage>?> GetMessagesAsync(string threadId)
+    public async Task<ThreadMessage?> GetMessageAsync(string threadId, string runId)
+    {
+        if (string.IsNullOrWhiteSpace(threadId))
+        {
+            throw new ArgumentNullException(threadId);
+        }
+
+        if (string.IsNullOrWhiteSpace(runId))
+        {
+            throw new ArgumentNullException(runId);
+        }
+
+        List<ThreadMessage> response = await GetMessagesAsync(threadId);
+        var message = response?.SingleOrDefault(t => t.RunId == runId);
+
+        return message;
+    }
+
+    private async Task<List<ThreadMessage>> GetMessagesAsync(string threadId)
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {

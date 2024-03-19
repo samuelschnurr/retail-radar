@@ -2,8 +2,8 @@
 
 namespace Io.Schnurr.AiShopper.Services.Amazon.Models;
 
-public class RootObject
+public class ProductSearch
 {
     [JsonPropertyName("search_results")]
-    public List<SearchResult> SearchResults { get; set; }
+    public List<Product>? Results { get; set; }
 }

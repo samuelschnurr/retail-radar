@@ -11,7 +11,7 @@ internal static class RunService
 
         if (threadRun != null)
         {
-            RunDto runDto = new(threadRun.Id, threadRun.Status);
+            RunDto runDto = new(threadRun.Id, threadRun.Status.ToString());
             return TypedResults.Created($"/{nameof(runDto)}/{runDto.Id}", runDto);
         }
 
@@ -24,7 +24,7 @@ internal static class RunService
 
         if (threadRun != null)
         {
-            RunDto runDto = new(threadRun.Id, threadRun.Status);
+            RunDto runDto = new(threadRun.Id, threadRun.Status.ToString());
             return TypedResults.Ok(runDto);
         }
 

@@ -25,7 +25,7 @@ internal static class MessageService
 
         if (threadMessage != null)
         {
-            var messageDto = new MessageDto(threadMessage.Id, userMessage.Input, MessageRole.User);
+            var messageDto = new MessageDto(threadMessage.Id, userMessage.Input, MessageRole.User.ToString());
             return TypedResults.Created($"/{nameof(messageDto)}/{messageDto.Id}", messageDto);
         }
 
@@ -49,7 +49,7 @@ internal static class MessageService
             {
                 if (contentItem is MessageTextContent textItem)
                 {
-                    var message = new MessageDto(threadMessage.Id, textItem.Text, threadMessage.Role);
+                    var message = new MessageDto(threadMessage.Id, textItem.Text, threadMessage.Role.ToString());
                     messageDtos.Add(message);
                 }
             }

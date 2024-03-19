@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.AiShopper.Amazon
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.AiShopper.Api", "Io.Schnurr.AiShopper.Api\Io.Schnurr.AiShopper.Api.csproj", "{EAF0F3A5-3F25-4005-8E6D-DD6B4A2EA0E8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.AiShopper.OpenAi", "Io.Schnurr.AiShopper.OpenAi\Io.Schnurr.AiShopper.OpenAi.csproj", "{BBB1819E-D9EE-48A6-9033-962050E9FC91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.Schnurr.AiShopper.Services", "Io.Schnurr.AiShopper.OpenAi\Io.Schnurr.AiShopper.Services.csproj", "{BBB1819E-D9EE-48A6-9033-962050E9FC91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

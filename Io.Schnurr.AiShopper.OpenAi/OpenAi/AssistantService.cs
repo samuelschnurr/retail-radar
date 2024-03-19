@@ -2,7 +2,7 @@
 using Azure.AI.OpenAI.Assistants;
 using Microsoft.Extensions.Configuration;
 
-namespace Io.Schnurr.AiShopper.OpenAi.Services;
+namespace Io.Schnurr.AiShopper.Services.OpenAi;
 
 public class AssistantService
 {

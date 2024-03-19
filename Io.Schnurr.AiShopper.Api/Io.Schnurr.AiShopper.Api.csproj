@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Io.Schnurr.AiShopper.Amazon\Io.Schnurr.AiShopper.Amazon.csproj" />
-    <ProjectReference Include="..\Io.Schnurr.AiShopper.OpenAi\Io.Schnurr.AiShopper.OpenAi.csproj" />
+    <ProjectReference Include="..\Io.Schnurr.AiShopper.Services\Io.Schnurr.AiShopper.Services.csproj" />
   </ItemGroup>
 
 </Project>

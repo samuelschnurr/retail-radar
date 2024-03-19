@@ -1,5 +1,5 @@
 using Io.Schnurr.AiShopper.Api;
-using Io.Schnurr.AiShopper.OpenAi.Services;
+using Io.Schnurr.AiShopper.Services.OpenAi;
 
 var builder = WebApplication.CreateBuilder(args);
 

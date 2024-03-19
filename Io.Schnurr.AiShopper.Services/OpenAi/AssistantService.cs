@@ -27,19 +27,35 @@ public class AssistantService
         return thread.Value;
     }
 
-    public async Task<ThreadRun> SendMessageAndRunAsync(string threadId, string message)
+    public async Task<ThreadMessage> CreateMessage(string threadId, string content)
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
             throw new ArgumentNullException(threadId);
         }
 
-        if (string.IsNullOrWhiteSpace(message))
+        if (string.IsNullOrWhiteSpace(content))
         {
-            throw new ArgumentNullException(message);
+            throw new ArgumentNullException(content);
         }
 
-        await client.CreateMessageAsync(threadId, MessageRole.User, message);
+        var message = await client.CreateMessageAsync(threadId, MessageRole.User, content);
+
+        if (message == null || string.IsNullOrWhiteSpace(message.Value.Id))
+        {
+            throw new InvalidOperationException(nameof(message));
+        }
+
+        return message.Value;
+    }
+
+    public async Task<ThreadRun> CreateRunAsync(string threadId)
+    {
+        if (string.IsNullOrWhiteSpace(threadId))
+        {
+            throw new ArgumentNullException(threadId);
+        }
+
         var run = await client.CreateRunAsync(threadId, runOptions);
 
         if (run == null || string.IsNullOrWhiteSpace(run.Value.Id))

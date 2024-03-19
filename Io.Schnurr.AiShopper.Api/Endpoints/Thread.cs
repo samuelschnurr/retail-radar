@@ -4,7 +4,7 @@ using Io.Schnurr.AiShopper.Services.OpenAi;
 
 namespace Io.Schnurr.AiShopper.Api.Services;
 
-internal static class ThreadService
+internal static class Thread
 {
     internal static async Task<IResult> Create(AssistantService assistantService)
     {
@@ -23,7 +23,7 @@ internal static class ThreadService
 
     internal static void MapRoutes(WebApplication app)
     {
-        var thread = app.MapGroup("Thread");
+        var thread = app.MapGroup(nameof(Thread));
         thread.MapPost("/", Create);
     }
 }

@@ -6,8 +6,8 @@ internal static class Routing
 {
     internal static void MapRoutes(this WebApplication app)
     {
-        ThreadService.MapRoutes(app);
-        RunService.MapRoutes(app);
-        MessageService.MapRoutes(app);
+        Services.Thread.MapRoutes(app);
+        Run.MapRoutes(app);
+        Message.MapRoutes(app);
     }
 }

@@ -4,7 +4,7 @@ using Io.Schnurr.AiShopper.Services.OpenAi;
 
 namespace Io.Schnurr.AiShopper.Api.Services;
 
-internal static class MessageService
+internal static class Message
 {
     internal static async Task<IResult> Get(AssistantService assistantService, string threadId)
     {
@@ -41,7 +41,7 @@ internal static class MessageService
 
     internal static void MapRoutes(WebApplication app)
     {
-        var message = app.MapGroup("Message");
+        var message = app.MapGroup(nameof(Message));
         message.MapGet("/{threadId}", Get);
         message.MapPost("/", Create);
     }

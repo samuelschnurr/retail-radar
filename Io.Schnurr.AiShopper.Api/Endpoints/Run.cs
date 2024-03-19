@@ -22,6 +22,6 @@ internal static class Run
     internal static void MapRoutes(WebApplication app)
     {
         var run = app.MapGroup(nameof(Run));
-        run.MapGet("/{threadId}/{runId}", Get);
+        run.MapGet("/", Get);
     }
 }

@@ -1,0 +1,27 @@
+{
+    "plugins": ["simple-import-sort"],
+    "extends": ["eslint:recommended", "plugin:prettier/recommended", "prettier"],
+    "rules": {
+        "prettier/prettier": "error",
+        "simple-import-sort/imports": "warn",
+        "simple-import-sort/exports": "warn",
+        "@typescript-eslint/no-unused-vars": ["warn"],
+        "no-unused-vars": "warn",
+        "max-lines-per-function": ["warn", 200],
+        "max-lines": ["warn", 300]
+    },
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": "latest"
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "overrides": [
+        {
+            "files": ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
+            "excludedFiles": ["node_modules", "build"]
+        }
+    ]
+}

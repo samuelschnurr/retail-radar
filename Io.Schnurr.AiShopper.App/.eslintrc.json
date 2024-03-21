@@ -16,12 +16,15 @@
     },
     "env": {
         "browser": true,
-        "node": true
+        "commonjs": true,
+        "node": true,
+        "es6": true
     },
     "overrides": [
         {
             "files": ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
-            "excludedFiles": ["node_modules", "build"]
+            "excludedFiles": ["node_modules", "build"],
+            "extends": ["react-app"]
         }
     ]
 }

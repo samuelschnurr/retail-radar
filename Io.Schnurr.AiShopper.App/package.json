@@ -2,6 +2,10 @@
     "name": "io.schnurr.aishopper.app",
     "version": "0.1.0",
     "private": true,
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/samuelschnurr/ai-shopper.git"
+    },
     "dependencies": {
         "@types/node": "^16.18.91",
         "@types/react": "^18.2.67",

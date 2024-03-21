@@ -3,7 +3,7 @@
     "extends": ["eslint:recommended", "plugin:prettier/recommended", "prettier"],
     "ignorePatterns": ["node_modules/", "build/", "*.css"],
     "rules": {
-        "prettier/prettier": "error",
+        "prettier/prettier": "warn",
         "simple-import-sort/imports": "warn",
         "simple-import-sort/exports": "warn",
         "@typescript-eslint/no-unused-vars": ["warn"],

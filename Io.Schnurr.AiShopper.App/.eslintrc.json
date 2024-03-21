@@ -1,14 +1,11 @@
 {
     "plugins": ["simple-import-sort"],
-    "extends": ["eslint:recommended", "plugin:prettier/recommended", "prettier"],
+    "extends": ["react-app"],
     "ignorePatterns": ["node_modules/", "build/", "*.css"],
     "parser": "@babel/eslint-parser",
     "rules": {
-        "prettier/prettier": "warn",
         "simple-import-sort/imports": "warn",
         "simple-import-sort/exports": "warn",
-        "@typescript-eslint/no-unused-vars": ["warn"],
-        "no-unused-vars": "warn",
         "max-lines-per-function": ["warn", 200],
         "max-lines": ["warn", 300]
     },

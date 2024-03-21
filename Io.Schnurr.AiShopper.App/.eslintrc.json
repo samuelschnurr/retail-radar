@@ -1,6 +1,7 @@
 {
     "plugins": ["simple-import-sort"],
     "extends": ["eslint:recommended", "plugin:prettier/recommended", "prettier"],
+    "ignorePatterns": ["node_modules/", "build/", "*.css"],
     "rules": {
         "prettier/prettier": "error",
         "simple-import-sort/imports": "warn",
@@ -19,12 +20,5 @@
         "commonjs": true,
         "node": true,
         "es6": true
-    },
-    "overrides": [
-        {
-            "files": ["./src/**/*.js", "./src/**/*.jsx", "./src/**/*.ts", "./src/**/*.tsx"],
-            "excludedFiles": ["node_modules", "build"],
-            "extends": ["react-app"]
-        }
-    ]
+    }
 }

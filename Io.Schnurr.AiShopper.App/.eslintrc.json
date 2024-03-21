@@ -2,6 +2,7 @@
     "plugins": ["simple-import-sort"],
     "extends": ["eslint:recommended", "plugin:prettier/recommended", "prettier"],
     "ignorePatterns": ["node_modules/", "build/", "*.css"],
+    "parser": "@babel/eslint-parser",
     "rules": {
         "prettier/prettier": "warn",
         "simple-import-sort/imports": "warn",

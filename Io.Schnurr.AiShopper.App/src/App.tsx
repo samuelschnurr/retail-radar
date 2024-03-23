@@ -10,12 +10,11 @@ import {
     MessageInput,
     MessageList,
     MessageSeparator,
-    TypingIndicator,
-    VideoCallButton,
-    VoiceCallButton
+    TypingIndicator
 } from "@chatscope/chat-ui-kit-react"
 
-import profileJames from "./assets/images/ProfileJames.jpg"
+import assistantImage from "./assets/images/ProfileJames.jpg"
+const assistantName = "James"
 
 function App() {
     return (
@@ -24,241 +23,33 @@ function App() {
                 height: "100vh"
             }}>
             <ConversationHeader>
-                <Avatar name="James" src={profileJames} />
-                <ConversationHeader.Content info="Active 10 mins ago" userName="James" />
+                <Avatar name={assistantName} src={assistantImage} />
+                <ConversationHeader.Content info="online" userName={assistantName} />
                 <ConversationHeader.Actions>
-                    <VoiceCallButton />
-                    <VideoCallButton />
                     <InfoButton />
                 </ConversationHeader.Actions>
             </ConversationHeader>
-            <MessageList typingIndicator={<TypingIndicator content="James is typing" />}>
-                <MessageSeparator content="Saturday, 30 November 2019" />
+            <MessageList
+                typingIndicator={<TypingIndicator content={`${assistantName} schreibt`} />}>
+                <MessageSeparator content="Heute" />
                 <Message
                     model={{
                         direction: "incoming",
-                        message: "Hello my friend",
+                        message: "Hallo mein Freund",
                         position: "single",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}>
-                    <Avatar name="James" src={profileJames} />
-                </Message>
+                        sender: assistantName,
+                        sentTime: "vor 15 Minuten"
+                    }}></Message>
                 <Message
                     model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
+                        direction: "incoming",
+                        message: "Bitte sende eine Nachricht!",
                         position: "single",
-                        sender: "Oliver",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    avatarSpacer
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "first",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    avatarSpacer
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "normal",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    avatarSpacer
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "normal",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "last",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}>
-                    <Avatar name="James" src={profileJames} />
-                </Message>
-                <Message
-                    model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
-                        position: "first",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
-                        position: "normal",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
-                        position: "normal",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
-                        position: "last",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    avatarSpacer
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "first",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "last",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}>
-                    <Avatar name="James" src={profileJames} />
-                </Message>
-                <MessageSeparator content="Saturday, 31 November 2019" />
-                <Message
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "single",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}>
-                    <Avatar name="James" src={profileJames} />
-                </Message>
-                <Message
-                    model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
-                        position: "single",
-                        sender: "Oliver",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    avatarSpacer
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "first",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    avatarSpacer
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "normal",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    avatarSpacer
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "normal",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "last",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}>
-                    <Avatar name="James" src={profileJames} />
-                </Message>
-                <Message
-                    model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
-                        position: "first",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
-                        position: "normal",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
-                        position: "normal",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "outgoing",
-                        message: "Hello my friend",
-                        position: "last",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    avatarSpacer
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "first",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}
-                />
-                <Message
-                    model={{
-                        direction: "incoming",
-                        message: "Hello my friend",
-                        position: "last",
-                        sender: "James",
-                        sentTime: "15 mins ago"
-                    }}>
-                    <Avatar name="James" src={profileJames} />
-                </Message>
+                        sender: assistantName,
+                        sentTime: "vor 15 Minuten"
+                    }}></Message>
             </MessageList>
-            <MessageInput placeholder="Type message here" />
+            <MessageInput placeholder="Nachricht hier eingeben" attachButton={false} />
         </ChatContainer>
     )
 }

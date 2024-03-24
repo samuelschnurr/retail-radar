@@ -10,15 +10,13 @@ import {
     TypingIndicator
 } from "@chatscope/chat-ui-kit-react"
 
-import assistantImage from "./assets/images/ProfileJames.jpg"
+import assistantImage from "./../assets/images/ProfileJames.jpg"
+import styles from "./Chat.module.css"
 const assistantName = "James"
 
-function Chat() {
+export function Chat() {
     return (
-        <ChatContainer
-            style={{
-                height: "100vh"
-            }}>
+        <ChatContainer className={styles.chatContainer}>
             <ConversationHeader>
                 <Avatar name={assistantName} src={assistantImage} status="available" />
                 <ConversationHeader.Content info="online" userName={assistantName} />
@@ -50,5 +48,3 @@ function Chat() {
         </ChatContainer>
     )
 }
-
-export default Chat

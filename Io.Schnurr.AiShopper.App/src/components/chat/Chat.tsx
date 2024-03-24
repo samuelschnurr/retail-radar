@@ -14,7 +14,7 @@ import assistantImage from "./../assets/images/ProfileJames.jpg"
 import styles from "./Chat.module.css"
 const assistantName = "James"
 
-export function Chat() {
+function Chat() {
     return (
         <ChatContainer className={styles.chatContainer}>
             <ConversationHeader>
@@ -48,3 +48,5 @@ export function Chat() {
         </ChatContainer>
     )
 }
+
+export default Chat

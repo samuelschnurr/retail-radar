@@ -13,12 +13,12 @@ import {
 
 import styles from "./Chat.module.css"
 
-interface ChatcontainerProps {
+interface CustomChatProps {
     avatar: AvatarProps
     messages: MessageModel[]
 }
 
-function Chatcontainer(props: ChatcontainerProps) {
+function CustomChat(props: CustomChatProps) {
     const { avatar } = props
     const { messages } = props
 
@@ -41,4 +41,4 @@ function Chatcontainer(props: ChatcontainerProps) {
     )
 }
 
-export default Chatcontainer
+export default CustomChat

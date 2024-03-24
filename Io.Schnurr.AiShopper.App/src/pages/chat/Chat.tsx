@@ -1,4 +1,4 @@
-import { Chatcontainer } from "../../components/chatcontainer"
+import { Chatcontainer } from "../../components/CustomChat"
 
 function Chat() {
     return <Chatcontainer />

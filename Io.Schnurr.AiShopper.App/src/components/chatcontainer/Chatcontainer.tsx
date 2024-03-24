@@ -1,52 +1,44 @@
 import {
     Avatar,
+    AvatarProps,
     ChatContainer,
     ConversationHeader,
     InfoButton,
     Message,
     MessageInput,
     MessageList,
-    MessageSeparator,
+    MessageModel,
     TypingIndicator
 } from "@chatscope/chat-ui-kit-react"
 
-import assistantImage from "./../assets/images/ProfileJames.jpg"
 import styles from "./Chat.module.css"
-const assistantName = "James"
 
-function Chat() {
+interface ChatcontainerProps {
+    avatar: AvatarProps
+    messages: MessageModel[]
+}
+
+function Chatcontainer(props: ChatcontainerProps) {
+    const { avatar } = props
+    const { messages } = props
+
     return (
-        <ChatContainer className={styles.chatContainer}>
+        <ChatContainer className={styles.fullHeight}>
             <ConversationHeader>
-                <Avatar name={assistantName} src={assistantImage} status="available" />
-                <ConversationHeader.Content info="online" userName={assistantName} />
+                <Avatar name={avatar.name} src={avatar.src} status={avatar.status} />
+                <ConversationHeader.Content info="online" userName={avatar.name} />
                 <ConversationHeader.Actions>
                     <InfoButton />
                 </ConversationHeader.Actions>
             </ConversationHeader>
-            <MessageList
-                typingIndicator={<TypingIndicator content={`${assistantName} schreibt`} />}>
-                <MessageSeparator content="Heute" />
-                <Message
-                    model={{
-                        direction: "incoming",
-                        message: "Hallo mein Freund",
-                        position: "single",
-                        sender: assistantName,
-                        sentTime: "vor 15 Minuten"
-                    }}></Message>
-                <Message
-                    model={{
-                        direction: "incoming",
-                        message: "Bitte sende eine Nachricht!",
-                        position: "single",
-                        sender: assistantName,
-                        sentTime: "vor 15 Minuten"
-                    }}></Message>
+            <MessageList typingIndicator={<TypingIndicator content={`${avatar.name} schreibt`} />}>
+                {messages.map((item: MessageModel, index: number) => (
+                    <Message key={index} model={item} />
+                ))}
             </MessageList>
             <MessageInput placeholder="Nachricht hier eingeben" attachButton={false} />
         </ChatContainer>
     )
 }
 
-export default Chat
+export default Chatcontainer

@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable max-lines-per-function */
-
 import {
     Avatar,
     ChatContainer,
@@ -16,14 +13,14 @@ import {
 import assistantImage from "./assets/images/ProfileJames.jpg"
 const assistantName = "James"
 
-function App() {
+function Chat() {
     return (
         <ChatContainer
             style={{
                 height: "100vh"
             }}>
             <ConversationHeader>
-                <Avatar name={assistantName} src={assistantImage} />
+                <Avatar name={assistantName} src={assistantImage} status="available" />
                 <ConversationHeader.Content info="online" userName={assistantName} />
                 <ConversationHeader.Actions>
                     <InfoButton />
@@ -54,4 +51,4 @@ function App() {
     )
 }
 
-export default App
+export default Chat

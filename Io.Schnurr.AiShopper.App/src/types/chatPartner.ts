@@ -1,5 +1,3 @@
-import { AvatarProps } from "@chatscope/chat-ui-kit-react"
+import { AvatarProps } from "@chatscope/chat-ui-kit-react/src/components/Avatar/Avatar"
 
-export interface ChatPartner extends AvatarProps {
-    isTyping: Boolean
-}
+export type ChatPartner = AvatarProps & { isTyping: boolean }

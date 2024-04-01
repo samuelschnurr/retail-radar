@@ -1,21 +1,18 @@
-import { AvatarProps } from "@chatscope/chat-ui-kit-react/src/components/Avatar/Avatar"
 import { MessageModel } from "@chatscope/chat-ui-kit-react/src/components/Message/Message"
 import { hookstate, useHookstate } from "@hookstate/core"
 import { devtools } from "@hookstate/devtools"
 
+import { ChatConversation } from "../types/chatConversation"
+import { ChatPartner } from "../types/chatPartner"
 import assistantImage from "./../assets/images/ProfileJames.jpg"
-
-export interface ChatConversation {
-    partner: AvatarProps
-    messages: MessageModel[]
-}
 
 export const defaultState = {
     partner: {
         name: "James",
         status: "available",
-        src: assistantImage
-    } as AvatarProps,
+        src: assistantImage,
+        isTyping: false
+    } as ChatPartner,
     messages: []
 } as ChatConversation
 

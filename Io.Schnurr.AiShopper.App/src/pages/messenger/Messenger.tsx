@@ -6,11 +6,10 @@ import {
     Message,
     MessageInput,
     MessageList,
-    MessageModel,
-    TypingIndicator
+    MessageModel
 } from "@chatscope/chat-ui-kit-react"
-import { ImmutableArray } from "@hookstate/core"
 
+import CustomTypingIndicator from "../../components/CustomTypingIndicator"
 import { addChatConversationMessage, useChatConversation } from "../../states/chatConversation"
 import styles from "./Messenger.module.css"
 
@@ -30,8 +29,7 @@ function Messenger() {
                     <InfoButton />
                 </ConversationHeader.Actions>
             </ConversationHeader>
-            <MessageList
-                typingIndicator={<TypingIndicator content={`${chat.partner.name} schreibt`} />}>
+            <MessageList typingIndicator={<CustomTypingIndicator chatPartner={chat.partner} />}>
                 {chat.messages.map((item: MessageModel, index: number) => (
                     <Message key={index} model={item} />
                 ))}
@@ -40,7 +38,7 @@ function Messenger() {
                 onSend={handleSend}
                 placeholder="Nachricht hier eingeben"
                 attachButton={false}
-                disabled={chat.messages.at(-1)?.direction === "outgoing"}
+                disabled={chat.partner.isTyping}
             />
         </ChatContainer>
     )

@@ -10,7 +10,7 @@ export const defaultState = {
         name: "James",
         status: "available",
         src: assistantImage,
-        isTyping: false
+        isTyping: true
     },
     messages: []
 } as ChatConversation
@@ -19,5 +19,8 @@ const state = hookstate<ChatConversation>(defaultState, devtools({ key: "chat-co
 
 export const useChatConversation = () => useHookstate(state).value
 
-export const addChatConversationMessage = (message: MessageModel) =>
+export const addChatConversationMessage = (message: MessageModel) => {
     state.messages.set(messages => [...messages, message])
+    let isLastMessageFromUser = state.messages.get().at(-1)?.direction === "outgoing"
+    state.partner.isTyping.set(isLastMessageFromUser)
+}

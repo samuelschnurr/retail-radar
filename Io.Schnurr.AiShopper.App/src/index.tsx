@@ -4,11 +4,13 @@ import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css"
 import React from "react"
 import ReactDOM from "react-dom/client"
 
-import { CustomChat } from "../components/CustomChat"
+import { CustomChat } from "./components/CustomChat"
+import UserJames from "./data/UserJames"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+
 root.render(
     <React.StrictMode>
-        <CustomChat avatar={undefined} messages={[]} />
+        <CustomChat avatar={UserJames} messages={[]} />
     </React.StrictMode>
 )

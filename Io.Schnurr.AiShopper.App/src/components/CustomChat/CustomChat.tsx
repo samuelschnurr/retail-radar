@@ -11,7 +11,7 @@ import {
     TypingIndicator
 } from "@chatscope/chat-ui-kit-react"
 
-import styles from "./Chat.module.css"
+import styles from "./CustomChat.module.css"
 
 interface CustomChatProps {
     avatar: AvatarProps

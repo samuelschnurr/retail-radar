@@ -1,6 +1,5 @@
 import {
     Avatar,
-    AvatarProps,
     ChatContainer,
     ConversationHeader,
     InfoButton,
@@ -11,28 +10,28 @@ import {
     TypingIndicator
 } from "@chatscope/chat-ui-kit-react"
 
-import styles from "./CustomChat.module.css"
+import { useChatConversation } from "../../states/chatConversation"
+import styles from "./Messenger.module.css"
 
-interface CustomChatProps {
-    avatar: AvatarProps
-    messages: MessageModel[]
-}
-
-function CustomChat(props: CustomChatProps) {
-    const { avatar } = props
-    const { messages } = props
+function Messenger() {
+    const chat = useChatConversation()
 
     return (
         <ChatContainer className={styles.fullHeight}>
             <ConversationHeader>
-                <Avatar name={avatar.name} src={avatar.src} status={avatar.status} />
-                <ConversationHeader.Content info="online" userName={avatar.name} />
+                <Avatar
+                    name={chat.partner.name}
+                    src={chat.partner.src}
+                    status={chat.partner.status}
+                />
+                <ConversationHeader.Content info="online" userName={chat.partner.name} />
                 <ConversationHeader.Actions>
                     <InfoButton />
                 </ConversationHeader.Actions>
             </ConversationHeader>
-            <MessageList typingIndicator={<TypingIndicator content={`${avatar.name} schreibt`} />}>
-                {messages.map((item: MessageModel, index: number) => (
+            <MessageList
+                typingIndicator={<TypingIndicator content={`${chat.partner.name} schreibt`} />}>
+                {chat.messages.map((item: MessageModel, index: number) => (
                     <Message key={index} model={item} />
                 ))}
             </MessageList>
@@ -41,4 +40,4 @@ function CustomChat(props: CustomChatProps) {
     )
 }
 
-export default CustomChat
+export default Messenger

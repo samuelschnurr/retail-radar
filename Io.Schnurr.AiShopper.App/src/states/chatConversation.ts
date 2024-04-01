@@ -24,4 +24,4 @@ const state = hookstate<ChatConversation>(defaultState, devtools({ key: "chat-co
 export const useChatConversation = () => useHookstate(state).value
 
 export const addChatConversationMessage = (message: MessageModel) =>
-    state.messages.set(messages => ({ ...messages, message }))
+    state.messages.set(messages => [...messages, message])

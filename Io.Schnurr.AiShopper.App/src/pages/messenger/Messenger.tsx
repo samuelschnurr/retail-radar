@@ -10,7 +10,7 @@ import {
     TypingIndicator
 } from "@chatscope/chat-ui-kit-react"
 
-import { useChatConversation } from "../../states/chatConversation"
+import { addChatConversationMessage, useChatConversation } from "../../states/chatConversation"
 import styles from "./Messenger.module.css"
 
 function Messenger() {
@@ -35,9 +35,22 @@ function Messenger() {
                     <Message key={index} model={item} />
                 ))}
             </MessageList>
-            <MessageInput placeholder="Nachricht hier eingeben" attachButton={false} />
+            <MessageInput
+                onSend={handleSend}
+                placeholder="Nachricht hier eingeben"
+                attachButton={false}
+            />
         </ChatContainer>
     )
+}
+
+function handleSend(text: string) {
+    const messageModel = {
+        message: text,
+        direction: "outgoing"
+    } as MessageModel
+
+    addChatConversationMessage(messageModel)
 }
 
 export default Messenger

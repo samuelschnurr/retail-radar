@@ -9,6 +9,7 @@ import {
     MessageModel,
     TypingIndicator
 } from "@chatscope/chat-ui-kit-react"
+import { ImmutableArray } from "@hookstate/core"
 
 import { addChatConversationMessage, useChatConversation } from "../../states/chatConversation"
 import styles from "./Messenger.module.css"
@@ -39,6 +40,7 @@ function Messenger() {
                 onSend={handleSend}
                 placeholder="Nachricht hier eingeben"
                 attachButton={false}
+                disabled={chat.messages.at(-1)?.direction === "outgoing"}
             />
         </ChatContainer>
     )

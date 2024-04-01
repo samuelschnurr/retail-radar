@@ -17,6 +17,6 @@ root.render(
                 <Route path="/" element={<Home />} />
                 <Route path="messenger" element={<Messenger />} />
             </Routes>
-        </BrowserRouter>{" "}
+        </BrowserRouter>
     </React.StrictMode>
 )

@@ -3,7 +3,6 @@ import { hookstate, useHookstate } from "@hookstate/core"
 import { devtools } from "@hookstate/devtools"
 
 import { ChatConversation } from "../types/chatConversation"
-import { ChatPartner } from "../types/chatPartner"
 import assistantImage from "./../assets/images/ProfileJames.jpg"
 
 export const defaultState = {
@@ -12,7 +11,7 @@ export const defaultState = {
         status: "available",
         src: assistantImage,
         isTyping: false
-    } as ChatPartner,
+    },
     messages: []
 } as ChatConversation
 

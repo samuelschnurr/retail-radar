@@ -10,9 +10,9 @@ import {
 } from "@chatscope/chat-ui-kit-react"
 
 import { ChatConversation } from "../../types/chatConversation"
-import CustomTypingIndicator from "../CustomTypingIndicator"
 import styles from "./CustomChatContainer.module.css"
 import { Immutable } from "@hookstate/core"
+import { CustomTypingIndicator } from "../CustomTypingIndicator"
 
 interface CustomChatContainerProps {
     chatConversation: Immutable<ChatConversation>

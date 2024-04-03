@@ -19,7 +19,7 @@ interface CustomChatContainerProps {
     handleSend: (text: string) => void
 }
 
-function CustomChatContainer(props: CustomChatContainerProps) {
+const CustomChatContainer = (props: CustomChatContainerProps) => {
     const { chatConversation: chat, handleSend } = props
 
     return (

@@ -1,10 +1,19 @@
 import { MessageModel } from "@chatscope/chat-ui-kit-react"
+import { useEffect } from "react"
 
 import { CustomChatContainer } from "../../components/custom/customChatContainer"
-import { addChatConversationMessage, useChatConversation } from "../../states/chatConversation"
+import {
+    addChatConversationMessage,
+    createNewThread,
+    useChatConversation
+} from "../../states/chatConversation"
 
-function Messenger() {
+const Messenger = () => {
     const chatConversation = useChatConversation()
+
+    useEffect(() => {
+        createNewThread()
+    }, [])
 
     return <CustomChatContainer chatConversation={chatConversation} handleSend={sendMessage} />
 }

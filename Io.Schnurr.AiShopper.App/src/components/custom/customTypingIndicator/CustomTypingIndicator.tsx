@@ -7,7 +7,7 @@ interface CustomTypingIndicatorProps {
     chatPartner: ChatPartner
 }
 
-function CustomTypingIndicator(props: CustomTypingIndicatorProps): ReactElement {
+const CustomTypingIndicator = (props: CustomTypingIndicatorProps): ReactElement => {
     const { chatPartner } = props
     return chatPartner.isTyping ? (
         <TypingIndicator content={`${chatPartner.name} schreibt`} />

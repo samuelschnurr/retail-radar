@@ -1,6 +1,6 @@
 import { MessageModel } from "@chatscope/chat-ui-kit-react"
 
-import { CustomChatContainer } from "../../components/CustomChatContainer"
+import { CustomChatContainer } from "../../components/custom/customChatContainer"
 import { addChatConversationMessage, useChatConversation } from "../../states/chatConversation"
 
 function Messenger() {

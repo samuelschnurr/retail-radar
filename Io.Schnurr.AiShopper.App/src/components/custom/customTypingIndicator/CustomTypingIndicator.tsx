@@ -1,7 +1,7 @@
 import { TypingIndicator } from "@chatscope/chat-ui-kit-react"
 import { ReactElement } from "react"
 
-import { ChatPartner } from "../../types/chatPartner"
+import { ChatPartner } from "../../../types/chatPartner"
 
 interface CustomTypingIndicatorProps {
     chatPartner: ChatPartner

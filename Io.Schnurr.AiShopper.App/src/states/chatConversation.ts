@@ -61,5 +61,5 @@ function addChatConversationMessage(content: string, direction: string) {
     } as MessageModel
 
     state.partner.isTyping.set(direction === "outgoing")
-    state.messages.merge(messages => [...messages, newMessage])
+    state.messages.set(messages => [...messages, newMessage])
 }

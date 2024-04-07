@@ -16,7 +16,7 @@ import { CustomTypingIndicator } from "../customTypingIndicator"
 
 interface CustomChatContainerProps {
     chatConversation: Immutable<ChatConversation>
-    handleSend: (text: string) => void
+    handleSend: (content: string) => void
 }
 
 const CustomChatContainer = (props: CustomChatContainerProps) => {

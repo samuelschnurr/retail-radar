@@ -48,7 +48,16 @@ public class ProductService
             throw new InvalidOperationException(nameof(bestMatchingProduct));
         }
 
-        return bestMatchingProduct!.Link!;
+        var htmlLink = RenderLinkAsHtml(searchTerm, bestMatchingProduct!.Link!);
+
+        return htmlLink;
+    }
+
+    private string RenderLinkAsHtml(string searchTerm, string link)
+    {
+        var htmlLink = $"<a href='{link}' target='_blank'>{searchTerm}</a> ";
+
+        return htmlLink;
     }
 
     private async Task<ProductSearch> GetProductSearchAsync(string searchTerm)

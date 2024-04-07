@@ -24,7 +24,7 @@ public class ProductService
         for (int i = 0; i < matches.Count; i++)
         {
             Match match = matches[i];
-            var productLink = await GetProductLinkAsync(match.Value);
+            var productLink = await GetProductLinkAsync(match.Groups[1].Value);
             result = result.Replace(match.Value, productLink);
         }
 

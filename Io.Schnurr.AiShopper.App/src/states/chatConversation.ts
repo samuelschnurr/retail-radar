@@ -23,31 +23,35 @@ const state = hookstate<ChatConversation>(defaultState, devtools({ key: "chat-co
 
 export const useChatConversation = () => useHookstate(state).value
 
-export async function createThread() {
-    const newThread = await postThread()
-    state.thread.set(newThread)
-
-    addChatConversationMessage(newThread.welcomeMessage.content, "incoming")
+export function createThread() {
+    postThread().then(res => {
+        if (res) {
+            state.thread.set(res)
+            addChatConversationMessage(res.welcomeMessage.content, "incoming")
+        }
+    })
 }
 
-export async function createUserMessage(content: string) {
+export function createUserMessage(content: string) {
     const currentThreadState = state.thread.get()
-    const createdMessage = await postMessage({
+    postMessage({
         threadId: currentThreadState?.id,
         content: content
-    } as Message)
-
-    state.thread.merge({ lastRunId: createdMessage.run.id })
-    addChatConversationMessage(createdMessage.content, "outgoing")
+    } as Message).then(res => {
+        if (res) {
+            state.thread.merge({ lastRunId: res.run.id })
+            addChatConversationMessage(res.content, "outgoing")
+        }
+    })
 }
 
-export async function getAssistantMessage() {
+export function getAssistantMessage() {
     const currentState = state.get()
-    const response = await getMessage(currentState.thread!.id, currentState.thread!.lastRunId)
-
-    if (response?.run?.status === "completed" && response?.content) {
-        addChatConversationMessage(response.content, "incoming")
-    }
+    getMessage(currentState.thread!.id, currentState.thread!.lastRunId).then(res => {
+        if (res && res.run?.status === "completed" && res.content) {
+            addChatConversationMessage(res.content, "incoming")
+        }
+    })
 }
 
 function addChatConversationMessage(content: string, direction: string) {

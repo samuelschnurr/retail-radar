@@ -1,30 +1,39 @@
-import { MessageModel } from "@chatscope/chat-ui-kit-react"
+import { useHookstate } from "@hookstate/core"
 import { useEffect } from "react"
 
 import { CustomChatContainer } from "../../components/custom/customChatContainer"
+import useInterval from "../../hooks/useInterval"
 import {
-    addChatConversationMessage,
-    createNewThread,
+    createThread,
+    createUserMessage,
+    getAssistantMessage,
     useChatConversation
 } from "../../states/chatConversation"
 
+const REQUEST_DELAY = 3000
+
 const Messenger = () => {
     const chatConversation = useChatConversation()
+    const isRequestRunning = useHookstate(false)
 
     useEffect(() => {
-        createNewThread()
+        createThread()
     }, [])
 
-    return <CustomChatContainer chatConversation={chatConversation} handleSend={sendMessage} />
-}
+    useInterval(() => {
+        if (!isRequestRunning.get() && chatConversation.partner.isTyping) {
+            isRequestRunning.set(true)
+            getAssistantMessage()
+            isRequestRunning.set(false)
+        }
+    }, REQUEST_DELAY)
 
-function sendMessage(text: string) {
-    const messageModel = {
-        message: text,
-        direction: "outgoing"
-    } as MessageModel
-
-    addChatConversationMessage(messageModel)
+    return (
+        <CustomChatContainer
+            chatConversation={chatConversation}
+            handleSend={content => createUserMessage(content)}
+        />
+    )
 }
 
 export default Messenger

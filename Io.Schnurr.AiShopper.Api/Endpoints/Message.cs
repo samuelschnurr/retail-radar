@@ -7,7 +7,7 @@ namespace Io.Schnurr.AiShopper.Api.Endpoints;
 
 internal static class Message
 {
-    internal static async Task<IResult> Get(AssistantService assistantService, ProductService productService, string threadId, string runId)
+    internal static async Task<IResult> Get(IAssistantService assistantService, IProductService productService, string threadId, string runId)
     {
         var threadMessage = await assistantService.GetMessageAsync(threadId, runId);
 
@@ -23,7 +23,7 @@ internal static class Message
         return TypedResults.NotFound();
     }
 
-    internal static async Task<IResult> Create(AssistantService assistantService, MessageDto message)
+    internal static async Task<IResult> Create(IAssistantService assistantService, MessageDto message)
     {
         var threadMessage = await assistantService.CreateMessage(message.ThreadId, message.Content);
         var threadRun = await assistantService.CreateRunAsync(message.ThreadId);

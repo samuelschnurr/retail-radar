@@ -1,15 +1,12 @@
 using Io.Schnurr.AiShopper.Api;
-using Io.Schnurr.AiShopper.Services.Amazon;
-using Io.Schnurr.AiShopper.Services.OpenAi;
+using Io.Schnurr.AiShopper.Api.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddSingleton<AssistantService>();
-builder.Services.AddSingleton<ProductService>();
+builder.Services.AddCustomServices();
 
 var app = builder.Build();
 

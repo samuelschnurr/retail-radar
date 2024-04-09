@@ -4,7 +4,7 @@ using Io.Schnurr.AiShopper.Api.Dtos;
 
 namespace Io.Schnurr.AiShopper.Api.Utils;
 
-internal static class Extensions
+internal static class Mapping
 {
     internal static RunDto MapToRunDto(this ThreadRun threadRun)
     {

@@ -63,3 +63,10 @@ function addChatConversationMessage(content: string, direction: string) {
     state.partner.isTyping.set(direction === "outgoing")
     state.messages.set(messages => [...messages, newMessage])
 }
+
+export function addErrorConversationMessage() {
+    addChatConversationMessage(
+        "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+        "incoming"
+    )
+}

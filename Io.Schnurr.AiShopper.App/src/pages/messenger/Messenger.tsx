@@ -10,23 +10,24 @@ import {
     useChatConversation
 } from "../../states/chatConversation"
 
-const REQUEST_DELAY = 3000
-
 const Messenger = () => {
     const chatConversation = useChatConversation()
     const isRequestRunning = useHookstate(false)
+    const intervalDelay = chatConversation.partner.isTyping ? 1000 : null
 
     useEffect(() => {
         createThread()
     }, [])
 
-    useInterval(() => {
-        if (!isRequestRunning.get() && chatConversation.partner.isTyping) {
-            isRequestRunning.set(true)
-            getAssistantMessage()
-            isRequestRunning.set(false)
+    useInterval(async () => {
+        if (isRequestRunning.get() || !chatConversation.partner.isTyping) {
+            return
         }
-    }, REQUEST_DELAY)
+
+        isRequestRunning.set(true)
+        await getAssistantMessage()
+        isRequestRunning.set(false)
+    }, intervalDelay)
 
     return (
         <CustomChatContainer

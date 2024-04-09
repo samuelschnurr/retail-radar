@@ -8,11 +8,11 @@ import {
     MessageList,
     MessageModel
 } from "@chatscope/chat-ui-kit-react"
+import { Immutable } from "@hookstate/core"
 
 import { ChatConversation } from "../../../types/chatConversation"
-import styles from "./CustomChatContainer.module.css"
-import { Immutable } from "@hookstate/core"
 import { CustomTypingIndicator } from "../customTypingIndicator"
+import styles from "./CustomChatContainer.module.css"
 
 interface CustomChatContainerProps {
     chatConversation: Immutable<ChatConversation>

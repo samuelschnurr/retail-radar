@@ -34,6 +34,7 @@ export function createThread() {
 
 export function createUserMessage(content: string) {
     const currentThreadState = state.thread.get()
+
     postMessage({
         threadId: currentThreadState?.id,
         content: content
@@ -45,13 +46,13 @@ export function createUserMessage(content: string) {
     })
 }
 
-export function getAssistantMessage() {
+export async function getAssistantMessage() {
     const currentState = state.get()
-    getMessage(currentState.thread!.id, currentState.thread!.lastRunId).then(res => {
-        if (res && res.run?.status === "completed" && res.content) {
-            addChatConversationMessage(res.content, "incoming")
-        }
-    })
+    const message = await getMessage(currentState.thread!.id, currentState.thread!.lastRunId)
+
+    if (message && message.run?.status === "completed" && message.content) {
+        addChatConversationMessage(message.content, "incoming")
+    }
 }
 
 function addChatConversationMessage(content: string, direction: string) {

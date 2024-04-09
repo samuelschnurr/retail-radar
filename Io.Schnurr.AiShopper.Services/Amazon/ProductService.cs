@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Io.Schnurr.AiShopper.Services.Amazon;
 
-public class ProductService
+public class ProductService : IProductService
 {
     private readonly ProductHttpClient httpClient;
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");

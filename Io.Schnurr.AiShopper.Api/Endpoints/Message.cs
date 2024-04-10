@@ -1,4 +1,5 @@
-﻿using Io.Schnurr.AiShopper.Api.Dtos;
+﻿using Azure.AI.OpenAI.Assistants;
+using Io.Schnurr.AiShopper.Api.Dtos;
 using Io.Schnurr.AiShopper.Api.Utils;
 using Io.Schnurr.AiShopper.Services.Amazon;
 using Io.Schnurr.AiShopper.Services.OpenAi;
@@ -9,11 +10,16 @@ internal static class Message
 {
     internal static async Task<IResult> Get(AssistantService assistantService, ProductService productService, string threadId, string runId)
     {
+        var threadRun = await assistantService.GetRunAsync(threadId, runId);
         var threadMessage = await assistantService.GetMessageAsync(threadId, runId);
+
+        if (threadMessage == null && threadRun?.Status == RunStatus.InProgress)
+        {
+            return TypedResults.Accepted("The message object hast not been created yet.");
+        }
 
         if (threadMessage != null)
         {
-            var threadRun = await assistantService.GetRunAsync(threadId, runId);
             var messageDto = threadMessage.MapToMessageDto(threadRun);
             messageDto.Content = await productService.GetStringWithProductLinks(messageDto.Content);
 

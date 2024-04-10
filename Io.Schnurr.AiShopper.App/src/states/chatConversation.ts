@@ -33,6 +33,7 @@ export async function createThread() {
 }
 
 export async function createUserMessage(content: string) {
+    addChatConversationMessage(content, "outgoing")
     const currentThreadState = state.thread.get()
     const response = await postMessage({
         threadId: currentThreadState?.id,
@@ -41,7 +42,6 @@ export async function createUserMessage(content: string) {
 
     if (response) {
         state.thread.merge({ lastRunId: response.run.id })
-        addChatConversationMessage(response.content, "outgoing")
     }
 }
 

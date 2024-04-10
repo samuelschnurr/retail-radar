@@ -8,18 +8,23 @@ internal static class StartupHelper
 {
     internal static void AddCustomServices(this IServiceCollection services)
     {
-        string? useThirdPartyEnvironmentVariable = Environment.GetEnvironmentVariable("USE_THIRD_PARTY");
-        _ = bool.TryParse(useThirdPartyEnvironmentVariable, out bool useThirdParty);
+        services.AddSingleton<AssistantService>();
+        services.AddSingleton<ProductService>();
+    }
 
-        if (useThirdParty)
+    internal static void AddCustomMiddleware(this WebApplication app)
+    {
+        if (IsStartedWithTestData())
         {
-            services.AddSingleton<IAssistantService, AssistantService>();
-            services.AddSingleton<IProductService, ProductService>();
+            app.UseMiddleware<ResponseDelayInterceptor>();
         }
-        else
-        {
-            services.AddSingleton<IAssistantService, AssistantTestDataService>();
-            services.AddSingleton<IProductService, ProductTestDataService>();
-        }
+    }
+
+    internal static bool IsStartedWithTestData()
+    {
+        string? useTestDataEnvironmentVariable = Environment.GetEnvironmentVariable("USE_TEST_DATA");
+        _ = bool.TryParse(useTestDataEnvironmentVariable, out bool useTestData);
+
+        return useTestData;
     }
 }

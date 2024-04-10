@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Io.Schnurr.AiShopper.Services.OpenAi;
 
-public class AssistantService : IAssistantService
+public class AssistantService
 {
     private readonly AssistantsClient client;
     private readonly CreateRunOptions runOptions;

@@ -20,6 +20,8 @@ if (app.Environment.IsDevelopment())
     .AllowAnyHeader());
 }
 
+app.AddCustomMiddleware();
+
 app.UseHttpsRedirection();
 
 app.MapRoutes();

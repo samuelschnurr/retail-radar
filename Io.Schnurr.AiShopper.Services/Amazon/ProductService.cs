@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Io.Schnurr.AiShopper.Services.Amazon;
 
-public class ProductService : IProductService
+public class ProductService
 {
     private readonly ProductHttpClient httpClient;
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
@@ -31,7 +31,7 @@ public class ProductService : IProductService
         return result;
     }
 
-    private Product? GetBestMatchingProduct(ProductSearch productSearch) => productSearch?.Results?.FirstOrDefault();
+    private static Product? GetBestMatchingProduct(ProductSearch productSearch) => productSearch?.Results?.FirstOrDefault();
 
     private async Task<string> GetProductLinkAsync(string? searchTerm)
     {
@@ -53,7 +53,7 @@ public class ProductService : IProductService
         return htmlLink;
     }
 
-    private string RenderLinkAsHtml(string searchTerm, string link)
+    private static string RenderLinkAsHtml(string searchTerm, string link)
     {
         var htmlLink = $"<a href='{link}' target='_blank'>{searchTerm}</a> ";
 

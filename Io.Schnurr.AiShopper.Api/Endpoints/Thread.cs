@@ -6,7 +6,7 @@ namespace Io.Schnurr.AiShopper.Api.Endpoints;
 
 internal static class Thread
 {
-    internal static async Task<IResult> Create(IAssistantService assistantService)
+    internal static async Task<IResult> Create(AssistantService assistantService)
     {
         var assistantThread = await assistantService.CreateThreadAsync();
 

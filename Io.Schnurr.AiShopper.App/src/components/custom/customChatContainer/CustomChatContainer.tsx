@@ -1,16 +1,19 @@
 import {
     Avatar,
+    Button,
     ChatContainer,
     ConversationHeader,
-    InfoButton,
     Message,
     MessageInput,
     MessageList,
     MessageModel
 } from "@chatscope/chat-ui-kit-react"
+import { faArrowsRotate, faMugSaucer, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Immutable } from "@hookstate/core"
 
 import { ChatConversation } from "../../../types/chatConversation"
+import BounceButton from "../../core/BounceButton"
 import { CustomTypingIndicator } from "../customTypingIndicator"
 import styles from "./CustomChatContainer.module.css"
 
@@ -32,7 +35,14 @@ const CustomChatContainer = (props: CustomChatContainerProps) => {
                 />
                 <ConversationHeader.Content info="online" userName={chat.partner.name} />
                 <ConversationHeader.Actions>
-                    <InfoButton />
+                    <BounceButton
+                        icon={faMugSaucer}
+                        startDelay={30000}
+                        intervalDelay={10000}
+                        bounceDuration={5000}
+                    />
+                    <Button icon={<FontAwesomeIcon icon={faArrowsRotate} />} />
+                    <Button icon={<FontAwesomeIcon icon={faXmark} />} />
                 </ConversationHeader.Actions>
             </ConversationHeader>
             <MessageList typingIndicator={<CustomTypingIndicator chatPartner={chat.partner} />}>

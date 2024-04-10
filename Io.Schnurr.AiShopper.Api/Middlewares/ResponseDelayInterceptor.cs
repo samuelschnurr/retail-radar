@@ -1,4 +1,4 @@
-﻿namespace Io.Schnurr.AiShopper.Api.Utils;
+﻿namespace Io.Schnurr.AiShopper.Api.Middleware;
 
 
 internal class ResponseDelayInterceptor

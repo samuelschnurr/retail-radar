@@ -9,7 +9,7 @@ internal static class ThreadTest
     internal static async Task<IResult> Create(AssistantService assistantService)
     {
         var threadId = Guid.NewGuid().ToString();
-        var welcomeMessage = ChatHelper.GetWelcomeMessage(threadId);
+        var welcomeMessage = Messages.GetWelcomeMessage(threadId);
         ThreadDto threadDto = new(threadId, welcomeMessage);
 
         return await Task.FromResult(TypedResults.Created($"/{nameof(threadDto)}/{threadDto.Id}", threadDto));

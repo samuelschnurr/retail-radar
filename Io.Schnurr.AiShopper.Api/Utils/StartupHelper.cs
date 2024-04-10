@@ -1,5 +1,6 @@
 ﻿namespace Io.Schnurr.AiShopper.Api.Utils;
 
+using Io.Schnurr.AiShopper.Api.Middleware;
 using Io.Schnurr.AiShopper.Services.Amazon;
 using Io.Schnurr.AiShopper.Services.OpenAi;
 using Microsoft.Extensions.DependencyInjection;

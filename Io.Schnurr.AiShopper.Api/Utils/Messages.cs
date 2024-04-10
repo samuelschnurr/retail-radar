@@ -3,7 +3,7 @@ using Io.Schnurr.AiShopper.Api.Dtos;
 
 namespace Io.Schnurr.AiShopper.Api.Utils;
 
-internal static class ChatHelper
+internal static class Messages
 {
     internal static MessageDto GetWelcomeMessage(string threadId)
     {

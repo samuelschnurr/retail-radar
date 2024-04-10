@@ -31,7 +31,7 @@ public class AssistantService
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
-            throw new ArgumentNullException(threadId);
+            throw new ArgumentNullException(nameof(threadId));
         }
 
         var run = await client.CreateRunAsync(threadId, runOptions);
@@ -43,12 +43,12 @@ public class AssistantService
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
-            throw new ArgumentNullException(threadId);
+            throw new ArgumentNullException(nameof(threadId));
         }
 
         if (string.IsNullOrWhiteSpace(runId))
         {
-            throw new ArgumentNullException(runId);
+            throw new ArgumentNullException(nameof(runId));
         }
 
         var run = await client.GetRunAsync(threadId, runId);
@@ -60,12 +60,12 @@ public class AssistantService
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
-            throw new ArgumentNullException(threadId);
+            throw new ArgumentNullException(nameof(threadId));
         }
 
         if (string.IsNullOrWhiteSpace(content))
         {
-            throw new ArgumentNullException(content);
+            throw new ArgumentNullException(nameof(content));
         }
 
         var message = await client.CreateMessageAsync(threadId, MessageRole.User, content);
@@ -77,12 +77,12 @@ public class AssistantService
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
-            throw new ArgumentNullException(threadId);
+            throw new ArgumentNullException(nameof(threadId));
         }
 
         if (string.IsNullOrWhiteSpace(runId))
         {
-            throw new ArgumentNullException(runId);
+            throw new ArgumentNullException(nameof(runId));
         }
 
         List<ThreadMessage> response = await GetMessagesAsync(threadId);
@@ -95,7 +95,7 @@ public class AssistantService
     {
         if (string.IsNullOrWhiteSpace(threadId))
         {
-            throw new ArgumentNullException(threadId);
+            throw new ArgumentNullException(nameof(threadId));
         }
 
         Response<PageableList<ThreadMessage>> response = await client.GetMessagesAsync(threadId);

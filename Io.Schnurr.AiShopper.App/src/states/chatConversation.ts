@@ -47,10 +47,12 @@ export async function createUserMessage(content: string) {
 
 export async function getAssistantMessage() {
     const currentState = state.get()
-    const message = await getMessage(currentState.thread!.id, currentState.thread!.lastRunId)
+    if (currentState.thread) {
+        const message = await getMessage(currentState.thread!.id, currentState.thread!.lastRunId)
 
-    if (message && message.run?.status === "completed" && message.content) {
-        addChatConversationMessage(message.content, "incoming")
+        if (message && message.run?.status === "completed" && message.content) {
+            addChatConversationMessage(message.content, "incoming")
+        }
     }
 }
 

@@ -30,10 +30,7 @@ const Messenger = () => {
     }, intervalDelay)
 
     return (
-        <CustomChatContainer
-            chatConversation={chatConversation}
-            handleSend={content => createUserMessage(content)}
-        />
+        <CustomChatContainer chatConversation={chatConversation} handleSend={createUserMessage} />
     )
 }
 

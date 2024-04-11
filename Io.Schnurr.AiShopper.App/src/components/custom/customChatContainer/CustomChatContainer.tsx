@@ -11,6 +11,7 @@ import {
 import { faArrowsRotate, faMugSaucer, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Immutable } from "@hookstate/core"
+import { useNavigate } from "react-router-dom"
 
 import { ChatConversation } from "../../../types/chatConversation"
 import BounceButton from "../../core/BounceButton"
@@ -24,6 +25,7 @@ interface CustomChatContainerProps {
 
 const CustomChatContainer = (props: CustomChatContainerProps) => {
     const { chatConversation: chat, handleSend } = props
+    const navigate = useNavigate()
 
     return (
         <ChatContainer className={styles.fullHeight}>
@@ -42,7 +44,10 @@ const CustomChatContainer = (props: CustomChatContainerProps) => {
                         bounceDuration={5000}
                     />
                     <Button icon={<FontAwesomeIcon icon={faArrowsRotate} />} />
-                    <Button icon={<FontAwesomeIcon icon={faXmark} />} />
+                    <Button
+                        icon={<FontAwesomeIcon icon={faXmark} />}
+                        onClick={() => navigate("/")}
+                    />
                 </ConversationHeader.Actions>
             </ConversationHeader>
             <MessageList typingIndicator={<CustomTypingIndicator chatPartner={chat.partner} />}>

@@ -1,7 +1,6 @@
 import { Message } from "./message"
 
 export type Thread = {
-    id: string
-    lastRunId: string
-    welcomeMessage: Message
+    id: string | null
+    welcomeMessage: Message | null
 }

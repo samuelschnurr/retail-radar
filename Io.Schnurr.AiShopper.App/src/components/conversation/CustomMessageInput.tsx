@@ -1,20 +1,20 @@
 import { MessageInput, MessageInputProps } from "@chatscope/chat-ui-kit-react"
 
+import { createUserMessage, useConversation } from "../../states/conversation"
+
 interface CustomMessageInputProps extends MessageInputProps {
     as?: string | typeof MessageInput
-    handleSend: (content: string) => void
-    isInputDisabled: boolean
 }
 
-const CustomMessageInput = (props: CustomMessageInputProps) => {
-    const { handleSend, isInputDisabled } = props
+const CustomMessageInput = (_props: CustomMessageInputProps) => {
+    const isTyping = useConversation().isTyping
 
     return (
         <MessageInput
-            onSend={handleSend}
+            onSend={createUserMessage}
             placeholder="Nachricht hier eingeben"
             attachButton={false}
-            disabled={isInputDisabled}
+            disabled={isTyping}
         />
     )
 }

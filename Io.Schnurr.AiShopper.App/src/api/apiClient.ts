@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios"
 
-import { addErrorConversationMessage } from "../states/chatConversation"
+import { addErrorConversationMessage } from "../states/conversation"
 
 const apiClient: AxiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_BASE_URL

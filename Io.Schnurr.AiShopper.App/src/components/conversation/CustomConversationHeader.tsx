@@ -6,26 +6,24 @@ import {
 } from "@chatscope/chat-ui-kit-react"
 import { faArrowsRotate, faMugSaucer, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Immutable } from "@hookstate/core"
 import { useNavigate } from "react-router-dom"
 
-import { createThread, resetChatConversation } from "../../states/chatConversation"
-import { ChatConversation } from "../../types/chatConversation"
-import BounceButton from "./BounceButton"
+import { partnerJames } from "../../data/partner"
+import { resetConversation } from "../../states/conversation"
+import { resetThread } from "../../states/thread"
+import BounceButton from "../core/BounceButton"
 
 interface CustomConversationHeaderProps extends ConversationHeaderProps {
     as?: string | typeof ConversationHeader
-    chat: Immutable<ChatConversation>
 }
 
-const CustomConversationHeader = (props: CustomConversationHeaderProps) => {
-    const { chat } = props
+const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
     const navigate = useNavigate()
 
     return (
         <ConversationHeader>
-            <Avatar name={chat.partner.name} src={chat.partner.src} status={chat.partner.status} />
-            <ConversationHeader.Content info="online" userName={chat.partner.name} />
+            <Avatar name={partnerJames.name} src={partnerJames.src} status={partnerJames.status} />
+            <ConversationHeader.Content info={partnerJames.info} userName={partnerJames.name} />
             <ConversationHeader.Actions>
                 <BounceButton
                     icon={faMugSaucer}
@@ -36,14 +34,15 @@ const CustomConversationHeader = (props: CustomConversationHeaderProps) => {
                 <Button
                     icon={<FontAwesomeIcon icon={faArrowsRotate} />}
                     onClick={() => {
-                        resetChatConversation()
-                        createThread()
+                        resetConversation()
+                        resetThread()
                     }}
                 />
                 <Button
                     icon={<FontAwesomeIcon icon={faXmark} />}
                     onClick={() => {
-                        resetChatConversation()
+                        resetConversation()
+                        resetThread()
                         navigate("/")
                     }}
                 />

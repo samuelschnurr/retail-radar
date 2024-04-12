@@ -1,36 +1,40 @@
-import { useHookstate } from "@hookstate/core"
+import {
+    ChatContainer,
+    ConversationHeader,
+    MessageInput,
+    MessageList
+} from "@chatscope/chat-ui-kit-react"
 import { useEffect } from "react"
 
-import { CustomChatContainer } from "../../components/custom/customChatContainer"
-import useInterval from "../../hooks/useInterval"
-import {
-    createThread,
-    createUserMessage,
-    getAssistantMessage,
-    useChatConversation
-} from "../../states/chatConversation"
+import CustomConversationHeader from "../../components/conversation/CustomConversationHeader"
+import CustomMessageInput from "../../components/conversation/CustomMessageInput"
+import CustomMessageList from "../../components/conversation/CustomMessageList"
+import { addChatConversationMessage } from "../../states/conversation"
+import { createThread, useThread } from "../../states/thread"
+import styles from "./Messenger.module.css"
 
 const Messenger = () => {
-    const chatConversation = useChatConversation()
-    const isRequestRunning = useHookstate(false)
-    const intervalDelay = chatConversation.partner.isTyping ? 1000 : null
+    const thread = useThread()
 
     useEffect(() => {
-        createThread()
-    }, [])
-
-    useInterval(async () => {
-        if (isRequestRunning.get() || !chatConversation.partner.isTyping) {
+        if (thread.id) {
             return
         }
 
-        isRequestRunning.set(true)
-        await getAssistantMessage()
-        isRequestRunning.set(false)
-    }, intervalDelay)
+        const initMessenger = async () => {
+            await createThread()
+            addChatConversationMessage(thread.welcomeMessage?.content!, "incoming")
+        }
+
+        initMessenger()
+    }, [thread])
 
     return (
-        <CustomChatContainer chatConversation={chatConversation} handleSend={createUserMessage} />
+        <ChatContainer className={styles.fullHeight}>
+            <CustomConversationHeader as={ConversationHeader} />
+            <CustomMessageList as={MessageList} />
+            <CustomMessageInput as={MessageInput} />
+        </ChatContainer>
     )
 }
 

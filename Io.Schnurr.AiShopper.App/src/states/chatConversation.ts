@@ -38,13 +38,13 @@ export async function createThread() {
 
     if (response) {
         state.thread.set(response)
-        addChatConversationMessage(response.welcomeMessage.content, "incoming")
+        addChatConversationMessage(response.id, response.welcomeMessage.content, "incoming")
     }
 }
 
 export async function createUserMessage(content: string) {
-    addChatConversationMessage(content, "outgoing")
     const currentThreadState = state.thread.get()
+    addChatConversationMessage(currentThreadState?.id, content, "outgoing")
     const response = await postMessage({
         threadId: currentThreadState?.id,
         content: content
@@ -61,24 +61,31 @@ export async function getAssistantMessage() {
         const message = await getMessage(currentState.thread!.id, currentState.thread!.lastRunId)
 
         if (message && message.run?.status === "completed" && message.content) {
-            addChatConversationMessage(message.content, "incoming")
+            addChatConversationMessage(message.threadId, message.content, "incoming")
         }
     }
 }
 
-function addChatConversationMessage(content: string, direction: string) {
+export function addErrorConversationMessage() {
+    addChatConversationMessage(
+        state.get().thread?.id,
+        "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+        "incoming"
+    )
+}
+
+function addChatConversationMessage(
+    threadId: string | undefined,
+    content: string,
+    direction: string
+) {
     const newMessage = {
         message: content,
         direction: direction
     } as MessageModel
 
-    state.partner.isTyping.set(direction === "outgoing")
-    state.messages.set(messages => [...messages, newMessage])
-}
-
-export function addErrorConversationMessage() {
-    addChatConversationMessage(
-        "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
-        "incoming"
-    )
+    if (threadId && threadId === state.thread.get()?.id) {
+        state.partner.isTyping.set(direction === "outgoing")
+        state.messages.set(messages => [...messages, newMessage])
+    }
 }

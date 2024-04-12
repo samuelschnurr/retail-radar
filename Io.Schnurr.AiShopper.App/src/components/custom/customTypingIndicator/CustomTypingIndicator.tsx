@@ -1,19 +1,14 @@
 import { TypingIndicator } from "@chatscope/chat-ui-kit-react"
 import { ReactElement } from "react"
 
-import { ChatPartner } from "../../../types/chatPartner"
-
 interface CustomTypingIndicatorProps {
-    chatPartner: ChatPartner
+    partnerName: string | undefined
+    partnerIsTyping: boolean
 }
 
 const CustomTypingIndicator = (props: CustomTypingIndicatorProps): ReactElement => {
-    const { chatPartner } = props
-    return chatPartner.isTyping ? (
-        <TypingIndicator content={`${chatPartner.name} schreibt`} />
-    ) : (
-        <></>
-    )
+    const { partnerName, partnerIsTyping } = props
+    return partnerIsTyping ? <TypingIndicator content={`${partnerName} schreibt`} /> : <></>
 }
 
 export default CustomTypingIndicator

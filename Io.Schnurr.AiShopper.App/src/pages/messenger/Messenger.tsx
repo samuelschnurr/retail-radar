@@ -16,17 +16,21 @@ const Messenger = () => {
     const intervalDelay = chatConversation.partner.isTyping ? 1000 : null
 
     useEffect(() => {
+        if (chatConversation.thread?.id) {
+            return
+        }
+
         createThread()
-    }, [])
+    }, [chatConversation.thread?.id])
 
     useInterval(async () => {
         if (isRequestRunning.get() || !chatConversation.partner.isTyping) {
             return
         }
 
-        isRequestRunning.set(true)
+        isRequestRunning?.set(true)
         await getAssistantMessage()
-        isRequestRunning.set(false)
+        isRequestRunning?.set(false)
     }, intervalDelay)
 
     return (

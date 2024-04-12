@@ -5,15 +5,10 @@ using Microsoft.Extensions.Configuration;
 
 namespace Io.Schnurr.AiShopper.Services.Amazon;
 
-public class ProductService
+public class ProductService(IConfiguration configuration)
 {
-    private readonly ProductHttpClient httpClient;
+    private readonly ProductHttpClient httpClient = new(configuration["Amazon:Authorization"]);
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
-
-    public ProductService(IConfiguration configuration)
-    {
-        httpClient = new ProductHttpClient(configuration["Amazon:Authorization"]);
-    }
 
     public async Task<string> GetStringWithProductLinks(string content)
     {

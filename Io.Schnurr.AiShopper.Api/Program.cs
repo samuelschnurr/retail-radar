@@ -15,7 +15,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseCors(builder => builder
-    .WithOrigins(app.Configuration["AllowSpecificOrigins"]?.Split(";") ?? throw new Exception("Allowed origins not found"))
+    .WithOrigins(app.Configuration["AllowSpecificOrigins"]?.Split(";") ?? throw new KeyNotFoundException("Allowed origins not found"))
     .AllowAnyMethod()
     .AllowAnyHeader());
 }

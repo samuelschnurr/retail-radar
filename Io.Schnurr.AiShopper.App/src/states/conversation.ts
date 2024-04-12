@@ -56,6 +56,10 @@ export function addErrorConversationMessage() {
 }
 
 export function addChatConversationMessage(content: string, direction: string) {
+    if (!content) {
+        return
+    }
+
     const newMessage = {
         message: content,
         direction: direction

@@ -84,7 +84,7 @@ function addChatConversationMessage(
         direction: direction
     } as MessageModel
 
-    if (threadId && threadId === state.thread.get()?.id) {
+    if (threadId === state.thread.get()?.id) {
         state.partner.isTyping.set(direction === "outgoing")
         state.messages.set(messages => [...messages, newMessage])
     }

@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Immutable } from "@hookstate/core"
 import { useNavigate } from "react-router-dom"
 
-import { resetChatConversation } from "../../../states/chatConversation"
+import { createThread, resetChatConversation } from "../../../states/chatConversation"
 import { ChatConversation } from "../../../types/chatConversation"
 import BounceButton from "../../core/BounceButton"
 import { CustomTypingIndicator } from "../customTypingIndicator"
@@ -48,6 +48,7 @@ const CustomChatContainer = (props: CustomChatContainerProps) => {
                         icon={<FontAwesomeIcon icon={faArrowsRotate} />}
                         onClick={() => {
                             resetChatConversation()
+                            createThread()
                         }}
                     />
                     <Button

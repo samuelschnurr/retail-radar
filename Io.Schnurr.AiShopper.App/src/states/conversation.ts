@@ -20,6 +20,7 @@ export const resetConversation = () => {
 }
 
 export async function createUserMessage(threadId: string, content: string) {
+    state.merge({ lastRunId: null })
     addChatConversationMessage(content, "outgoing")
 
     const response = await postMessage({
@@ -42,7 +43,12 @@ export async function getAssistantMessage(threadId: string | null) {
     if (threadId && currentState.lastRunId) {
         const message = await getMessage(threadId, currentState.lastRunId)
 
-        if (message && message.run?.status === "completed" && message.content) {
+        if (
+            message &&
+            message.run?.status === "completed" &&
+            message.content &&
+            currentState.lastRunId === message.run.id
+        ) {
             addChatConversationMessage(message.content, "incoming")
         }
     }

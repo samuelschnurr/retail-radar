@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom"
 
 import { partnerJames } from "../../data/partner"
 import { resetConversation } from "../../states/conversation"
-import { resetThread } from "../../states/thread"
+import { resetThread, useThread } from "../../states/thread"
 import BounceButton from "../core/BounceButton"
 
 interface CustomConversationHeaderProps extends ConversationHeaderProps {
@@ -18,6 +18,7 @@ interface CustomConversationHeaderProps extends ConversationHeaderProps {
 }
 
 const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
+    const { isLoading } = useThread()
     const navigate = useNavigate()
 
     return (
@@ -33,16 +34,15 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
                 />
                 <Button
                     icon={<FontAwesomeIcon icon={faArrowsRotate} />}
+                    disabled={isLoading}
                     onClick={() => {
-                        resetConversation()
                         resetThread()
+                        resetConversation()
                     }}
                 />
                 <Button
                     icon={<FontAwesomeIcon icon={faXmark} />}
                     onClick={() => {
-                        resetConversation()
-                        resetThread()
                         navigate("/")
                     }}
                 />

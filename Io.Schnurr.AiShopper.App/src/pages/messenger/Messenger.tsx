@@ -17,7 +17,7 @@ const Messenger = () => {
     const thread = useThread()
 
     useEffect(() => {
-        if (thread.id) {
+        if (thread.id || thread.isLoading) {
             return
         }
 

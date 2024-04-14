@@ -31,6 +31,9 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
                     startDelay={30000}
                     intervalDelay={10000}
                     bounceDuration={5000}
+                    onClick={() => {
+                        window.open("https://ko-fi.com/sampa", "_blank")
+                    }}
                 />
                 <Button
                     icon={<FontAwesomeIcon icon={faArrowsRotate} />}

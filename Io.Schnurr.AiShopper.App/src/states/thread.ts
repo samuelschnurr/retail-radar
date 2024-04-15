@@ -16,6 +16,8 @@ export async function createThread() {
 
     if (response) {
         state.set(response)
+    } else {
+        state.id.set("0")
     }
 
     state.isLoading.set(false)

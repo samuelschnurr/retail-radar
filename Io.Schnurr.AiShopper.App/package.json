@@ -20,6 +20,8 @@
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-scripts": "5.0.1",
+        "antd": "^4.24.14",
+        "react-awesome-reveal": "^3.8.1",
         "typescript": "^4.9.5"
     },
     "scripts": {

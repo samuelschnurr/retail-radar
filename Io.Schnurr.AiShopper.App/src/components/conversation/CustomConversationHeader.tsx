@@ -9,7 +9,8 @@ import { faArrowsRotate, faMugSaucer, faXmark } from "@fortawesome/free-solid-sv
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useNavigate } from "react-router-dom"
 
-import userJames from "../../content/userJames.json"
+import { AssistantIcon } from "../../common/AssistantIcon"
+import assistant from "../../content/AssistantContent.json"
 import { resetConversation } from "../../states/conversation"
 import { resetThread, useThread } from "../../states/thread"
 import BounceButton from "../core/BounceButton"
@@ -23,12 +24,13 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
     const navigate = useNavigate()
     return (
         <ConversationHeader>
-            <Avatar
-                name={userJames.info}
-                src={userJames.src}
-                status={userJames.status as UserStatus}
+            <AssistantIcon
+                info={assistant.info}
+                src={assistant.src}
+                status={assistant.status}
+                as={Avatar}
             />
-            <ConversationHeader.Content info={userJames.info} userName={userJames.name} />
+            <ConversationHeader.Content info={assistant.info} userName={assistant.name} />
             <ConversationHeader.Actions>
                 <BounceButton
                     icon={faMugSaucer}

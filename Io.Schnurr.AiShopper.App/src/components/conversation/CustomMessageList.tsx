@@ -1,7 +1,7 @@
 import { Message, MessageList, MessageListProps, MessageModel } from "@chatscope/chat-ui-kit-react"
 import { useHookstate } from "@hookstate/core"
 
-import { partnerJames } from "../../data/partner"
+import userJames from "../../content/userJames.json"
 import useInterval from "../../hooks/useInterval"
 import { getAssistantMessage, useConversation } from "../../states/conversation"
 import { useThread } from "../../states/thread"
@@ -30,10 +30,7 @@ const CustomMessageList = (_props: CustomMessageListProps) => {
     return (
         <MessageList
             typingIndicator={
-                <TypingIndicatorInfo
-                    userName={partnerJames.name}
-                    isTyping={conversation.isTyping}
-                />
+                <TypingIndicatorInfo userName={userJames.name} isTyping={conversation.isTyping} />
             }>
             {conversation.messages.map((item: MessageModel, index: number) => (
                 <Message key={index} model={item} />

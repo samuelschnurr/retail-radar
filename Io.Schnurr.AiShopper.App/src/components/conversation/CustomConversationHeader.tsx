@@ -2,13 +2,14 @@ import {
     Avatar,
     Button,
     ConversationHeader,
-    ConversationHeaderProps
+    ConversationHeaderProps,
+    UserStatus
 } from "@chatscope/chat-ui-kit-react"
 import { faArrowsRotate, faMugSaucer, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useNavigate } from "react-router-dom"
 
-import { partnerJames } from "../../data/partner"
+import userJames from "../../content/userJames.json"
 import { resetConversation } from "../../states/conversation"
 import { resetThread, useThread } from "../../states/thread"
 import BounceButton from "../core/BounceButton"
@@ -20,11 +21,14 @@ interface CustomConversationHeaderProps extends ConversationHeaderProps {
 const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
     const { isLoading } = useThread()
     const navigate = useNavigate()
-
     return (
         <ConversationHeader>
-            <Avatar name={partnerJames.name} src={partnerJames.src} status={partnerJames.status} />
-            <ConversationHeader.Content info={partnerJames.info} userName={partnerJames.name} />
+            <Avatar
+                name={userJames.info}
+                src={userJames.src}
+                status={userJames.status as UserStatus}
+            />
+            <ConversationHeader.Content info={userJames.info} userName={userJames.name} />
             <ConversationHeader.Actions>
                 <BounceButton
                     icon={faMugSaucer}

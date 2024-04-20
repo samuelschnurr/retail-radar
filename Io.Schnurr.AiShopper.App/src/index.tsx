@@ -2,7 +2,6 @@ import "./index.css"
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css"
 import "antd/dist/antd.css"
 
-import React from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 

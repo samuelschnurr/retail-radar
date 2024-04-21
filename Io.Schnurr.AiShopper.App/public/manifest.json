@@ -1,6 +1,6 @@
 {
-    "short_name": "AiShopper",
-    "name": "Your personal ai shopping assistant",
+    "short_name": "RetailRadar",
+    "name": "RetailRadar - Mit KI Beratung das richtige Produkt finden. Nie wieder selbständig vergleichen oder Testberichte lesen.",
     "start_url": ".",
     "display": "standalone",
     "theme_color": "#000000",

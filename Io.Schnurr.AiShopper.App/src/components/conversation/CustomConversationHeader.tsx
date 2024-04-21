@@ -2,8 +2,7 @@ import {
     Avatar,
     Button,
     ConversationHeader,
-    ConversationHeaderProps,
-    UserStatus
+    ConversationHeaderProps
 } from "@chatscope/chat-ui-kit-react"
 import { faArrowsRotate, faMugSaucer, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"

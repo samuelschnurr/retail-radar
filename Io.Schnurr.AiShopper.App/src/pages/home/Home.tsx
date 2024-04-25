@@ -19,7 +19,7 @@ const Home = () => {
                     direction="right"
                     title={IntroContent.title}
                     content={IntroContent.text}
-                    icon="developer.svg"
+                    icon="developer.png"
                     id="intro"
                 />
                 <MiddleBlock

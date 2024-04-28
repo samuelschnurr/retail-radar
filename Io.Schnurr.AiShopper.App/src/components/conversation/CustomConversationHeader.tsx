@@ -2,7 +2,8 @@ import {
     Avatar,
     Button,
     ConversationHeader,
-    ConversationHeaderProps
+    ConversationHeaderProps,
+    UserStatus
 } from "@chatscope/chat-ui-kit-react"
 import { faArrowsRotate, faMugSaucer, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -26,7 +27,7 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
             <AssistantIcon
                 info={assistant.info}
                 src={assistant.src}
-                status={assistant.status}
+                status={assistant.status as UserStatus}
                 as={Avatar}
             />
             <ConversationHeader.Content info={assistant.info} userName={assistant.name} />

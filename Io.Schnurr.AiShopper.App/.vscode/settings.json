@@ -4,5 +4,6 @@
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
-    }
+    },
+    "colorize.languages": ["typescript"] // Support colorize only for typescript files, because vscode colorDecorators work for other files
 }

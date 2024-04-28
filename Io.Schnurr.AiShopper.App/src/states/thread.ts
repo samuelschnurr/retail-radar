@@ -6,7 +6,7 @@ import { Thread } from "../types/thread"
 
 const defaultState = { id: null, welcomeMessage: null, isLoading: false } as Thread
 
-const state = hookstate<Thread>({ ...defaultState }, devtools({ key: "aishopper-thread" }))
+const state = hookstate<Thread>({ ...defaultState }, devtools({ key: "retailradar-thread" }))
 
 export const useThread = () => useHookstate(state).value
 

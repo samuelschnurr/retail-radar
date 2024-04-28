@@ -1,6 +1,8 @@
 import { createGlobalStyle } from "styled-components"
 
-export const Styles = createGlobalStyle`
+const styled = { createGlobalStyle }
+
+const GlobalStyles = styled.createGlobalStyle`
     body,
     html,
     a {
@@ -8,8 +10,8 @@ export const Styles = createGlobalStyle`
     }
 
     body {
-        margin:0;
-        padding:0;
+        margin: 0;
+        padding: 0;
         border: 0;
         outline: 0;
         background: #fff;
@@ -28,27 +30,29 @@ export const Styles = createGlobalStyle`
         line-height: 1.18;
 
         @media only screen and (max-width: 890px) {
-          font-size: 47px;
+            font-size: 47px;
         }
-      
+
         @media only screen and (max-width: 414px) {
-          font-size: 32px;
+            font-size: 32px;
         }
     }
 
     p {
         color: #18216d;
-        font-size: 21px;        
+        font-size: 21px;
         line-height: 1.41;
     }
 
     a {
         text-decoration: none;
         outline: none;
-        color: #2E186A;
+        color: #2e186a;
 
         :hover {
             color: #2e186a;
         }
     }
 `
+
+export default GlobalStyles

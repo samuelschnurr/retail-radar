@@ -5,7 +5,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import { Styles } from "./index.ts"
+import GlobalStyles from "./index.ts"
 import { Home } from "./pages/home"
 import { Messenger } from "./pages/messenger"
 
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
 root.render(
     <BrowserRouter>
-        <Styles />
+        <GlobalStyles />
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="messenger" element={<Messenger />} />

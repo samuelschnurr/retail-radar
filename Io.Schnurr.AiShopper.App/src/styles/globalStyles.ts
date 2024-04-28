@@ -14,7 +14,7 @@ const GlobalStyles = styled.createGlobalStyle`
         padding: 0;
         border: 0;
         outline: 0;
-        background: #fff;
+        background: ${props => props.theme.colors.background};
         overflow-x: hidden;
     }
 
@@ -25,7 +25,7 @@ const GlobalStyles = styled.createGlobalStyle`
     h5,
     h6 {
         font-family: ${props => props.theme.font.fontFamily};
-        color: #18216d;
+        color: ${props => props.theme.colors.primary};
         font-size: 56px;
         line-height: 1.18;
 
@@ -39,7 +39,7 @@ const GlobalStyles = styled.createGlobalStyle`
     }
 
     p {
-        color: #18216d;
+        color: ${props => props.theme.colors.primary};
         font-size: 21px;
         line-height: 1.41;
     }
@@ -47,10 +47,10 @@ const GlobalStyles = styled.createGlobalStyle`
     a {
         text-decoration: none;
         outline: none;
-        color: #2e186a;
+        color: ${props => props.theme.colors.primaryDark};
 
         :hover {
-            color: #2e186a;
+            color: ${props => props.theme.colors.primaryDark};
         }
     }
 `

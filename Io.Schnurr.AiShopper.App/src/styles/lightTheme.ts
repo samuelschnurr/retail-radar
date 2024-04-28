@@ -2,8 +2,10 @@ import { DefaultTheme } from "styled-components"
 
 const LightTheme: DefaultTheme = {
     colors: {
-        primary: "red",
-        secondary: "blue"
+        primary: "#18216d",
+        primaryDark: "#2e186a",
+        secondary: "",
+        background: "#fff"
     },
     font: {
         fontFamily: "Verdana, Geneva, Tahoma, sans-serif"

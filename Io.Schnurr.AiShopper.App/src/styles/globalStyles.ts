@@ -6,7 +6,7 @@ const GlobalStyles = styled.createGlobalStyle`
     body,
     html,
     a {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: ${props => props.theme.font.fontFamily};
     }
 
     body {
@@ -24,7 +24,7 @@ const GlobalStyles = styled.createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-family: ${props => props.theme.font.fontFamily};
         color: #18216d;
         font-size: 56px;
         line-height: 1.18;

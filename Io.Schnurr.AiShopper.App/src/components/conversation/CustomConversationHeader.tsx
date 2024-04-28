@@ -1,3 +1,4 @@
+import { CloseOutlined, CoffeeOutlined, SyncOutlined } from "@ant-design/icons"
 import {
     Avatar,
     Button,
@@ -5,8 +6,6 @@ import {
     ConversationHeaderProps,
     UserStatus
 } from "@chatscope/chat-ui-kit-react"
-import { faArrowsRotate, faMugSaucer, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useNavigate } from "react-router-dom"
 
 import { AssistantIcon } from "../../common/AssistantIcon"
@@ -33,7 +32,7 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
             <ConversationHeader.Content info={assistant.info} userName={assistant.name} />
             <ConversationHeader.Actions>
                 <BounceButton
-                    icon={faMugSaucer}
+                    icon={<CoffeeOutlined />}
                     startDelay={30000}
                     intervalDelay={10000}
                     bounceDuration={5000}
@@ -42,7 +41,7 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
                     }}
                 />
                 <Button
-                    icon={<FontAwesomeIcon icon={faArrowsRotate} />}
+                    icon={<SyncOutlined />}
                     disabled={isLoading}
                     onClick={() => {
                         resetThread()
@@ -50,7 +49,7 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
                     }}
                 />
                 <Button
-                    icon={<FontAwesomeIcon icon={faXmark} />}
+                    icon={<CloseOutlined />}
                     onClick={() => {
                         navigate("/")
                     }}

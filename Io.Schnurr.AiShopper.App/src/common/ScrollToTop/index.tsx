@@ -1,8 +1,6 @@
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { UpOutlined } from "@ant-design/icons"
 import { useCallback, useEffect, useState } from "react"
 
-import { SvgIcon } from "../SvgIcon"
 import { ScrollUpContainer } from "./styles"
 
 const ScrollToTop = () => {
@@ -36,12 +34,7 @@ const ScrollToTop = () => {
 
     return (
         <ScrollUpContainer onClick={scrollUp} show={showScroll}>
-            <FontAwesomeIcon
-                icon={faChevronUp}
-                flip="horizontal"
-                size="xl"
-                color="rgb(46, 24, 106)"
-            />
+            <UpOutlined color="rgb(46, 24, 106)" />
         </ScrollUpContainer>
     )
 }

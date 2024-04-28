@@ -1,13 +1,11 @@
 import { Button } from "@chatscope/chat-ui-kit-react"
-import { IconLookup, IconName, IconPrefix } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useHookstate } from "@hookstate/core"
-import { MouseEventHandler } from "react"
+import { MouseEventHandler, ReactNode } from "react"
 
 import useInterval from "../../hooks/useInterval"
-
+import styles from "./BounceButton.module.css"
 interface BounceButtonProps {
-    icon: IconName | [IconPrefix, IconName] | IconLookup
+    icon: ReactNode
     startDelay: number
     intervalDelay: number
     bounceDuration: number
@@ -15,7 +13,7 @@ interface BounceButtonProps {
 }
 
 const BounceButton = (props: BounceButtonProps) => {
-    const { icon, startDelay, intervalDelay, bounceDuration, onClick } = props
+    const { startDelay, intervalDelay, bounceDuration, onClick } = props
     const isBouncing = useHookstate(false)
     const intervalCount = useHookstate(0)
     const isFirstRun = intervalCount.get() === 0
@@ -33,13 +31,14 @@ const BounceButton = (props: BounceButtonProps) => {
     )
 
     const animationStyle: { [key: string]: string | number } = {
-        "--fa-animation-delay": `"${startDelay}ms"`
+        "animation-delay": `"${startDelay}ms"`
     }
 
     return (
         <Button
             onClick={onClick}
-            icon={<FontAwesomeIcon icon={icon} bounce={isBouncing.get()} />}
+            icon={props.icon}
+            className={isBouncing.get() ? styles.bounce : ""}
             style={animationStyle}
         />
     )

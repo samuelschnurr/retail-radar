@@ -1,4 +1,3 @@
-import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css"
 import "antd/dist/antd.css"
 
 import ReactDOM from "react-dom/client"

@@ -7,6 +7,7 @@
         "url": "https://github.com/samuelschnurr/ai-shopper.git"
     },
     "dependencies": {
+        "@ant-design/icons": "^5.3.6",
         "@chatscope/chat-ui-kit-react": "^2.0.3",
         "@chatscope/chat-ui-kit-styles": "^1.4.0",
         "@emotion/react": "^11.11.4",

@@ -34,7 +34,7 @@ const ScrollToTop = () => {
 
     return (
         <ScrollUpContainer onClick={scrollUp} show={showScroll}>
-            <UpOutlined color="rgb(46, 24, 106)" />
+            <UpOutlined color="rgb(46, 24, 106)" style={{ fontSize: "32px" }} />
         </ScrollUpContainer>
     )
 }

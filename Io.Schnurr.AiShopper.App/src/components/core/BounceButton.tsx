@@ -31,7 +31,8 @@ const BounceButton = (props: BounceButtonProps) => {
     )
 
     const animationStyle: { [key: string]: string | number } = {
-        "animation-delay": `"${startDelay}ms"`
+        "animation-delay": `"${startDelay}ms"`,
+        fontSize: "16px"
     }
 
     return (

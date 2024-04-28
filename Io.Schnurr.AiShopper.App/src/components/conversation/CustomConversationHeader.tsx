@@ -43,6 +43,7 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
                 <Button
                     icon={<SyncOutlined />}
                     disabled={isLoading}
+                    style={{ fontSize: "16px" }}
                     onClick={() => {
                         resetThread()
                         resetConversation()
@@ -50,6 +51,7 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
                 />
                 <Button
                     icon={<CloseOutlined />}
+                    style={{ fontSize: "16px" }}
                     onClick={() => {
                         navigate("/")
                     }}

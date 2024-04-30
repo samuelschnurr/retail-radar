@@ -142,7 +142,7 @@ export const Label = styled("label")`
     color: ${props => props.theme.colors.primary};
     display: block;
     margin-bottom: 2rem;
-    font-family: ${props => props.theme.font.fontFamily};
+    font-family: ${props => props.theme.font.family};
 
     @media screen and (max-width: 414px) {
         padding: 1.5rem 0;

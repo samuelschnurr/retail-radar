@@ -1,7 +1,7 @@
 import { Row } from "antd"
 
 import Container from "../../common/Container"
-import { SvgIcon } from "../../common/SvgIcon"
+import { Logo } from "../../common/Logo"
 import { Extra, FooterContainer, Large, LogoContainer, NavLink } from "./styles"
 
 const Footer = () => {
@@ -11,7 +11,7 @@ const Footer = () => {
                 <Row justify="space-between" align="middle" style={{ paddingTop: "3rem" }}>
                     <NavLink to="/">
                         <LogoContainer>
-                            <SvgIcon
+                            <Logo
                                 src="logo.png"
                                 aria-label="homepage"
                                 width="101px"

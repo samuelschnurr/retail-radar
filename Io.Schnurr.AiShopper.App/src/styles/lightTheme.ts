@@ -8,7 +8,14 @@ const LightTheme: DefaultTheme = {
         background: "#fff"
     },
     font: {
-        fontFamily: "Verdana, Geneva, Tahoma, sans-serif"
+        family: "Verdana, Geneva, Tahoma, sans-serif",
+        size: {
+            extraSmall: "16px",
+            small: "21px",
+            medium: "32px",
+            large: "47px",
+            extraLarge: "56px"
+        }
     }
 }
 

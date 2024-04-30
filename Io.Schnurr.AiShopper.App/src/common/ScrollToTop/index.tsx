@@ -1,9 +1,11 @@
 import { UpOutlined } from "@ant-design/icons"
 import { useCallback, useEffect, useState } from "react"
+import { useTheme } from "styled-components"
 
 import { ScrollUpContainer } from "./styles"
 
 const ScrollToTop = () => {
+    const theme = useTheme()
     const [showScroll, setShowScroll] = useState(false)
 
     const checkScrollTop = useCallback(() => {
@@ -34,7 +36,10 @@ const ScrollToTop = () => {
 
     return (
         <ScrollUpContainer onClick={scrollUp} show={showScroll}>
-            <UpOutlined color="rgb(46, 24, 106)" style={{ fontSize: "32px" }} />
+            <UpOutlined
+                color={theme.colors.primaryDark}
+                style={{ fontSize: theme.font.size.medium }}
+            />
         </ScrollUpContainer>
     )
 }

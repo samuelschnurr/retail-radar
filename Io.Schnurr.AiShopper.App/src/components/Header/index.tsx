@@ -2,7 +2,7 @@ import { Row } from "antd"
 
 import { Button } from "../../common/Button"
 import Container from "../../common/Container"
-import { SvgIcon } from "../../common/SvgIcon"
+import { Logo } from "../../common/Logo"
 import { HeaderSection, LogoContainer, Span } from "./styles"
 
 const Header = () => {
@@ -19,7 +19,7 @@ const Header = () => {
             <Container>
                 <Row justify="space-between">
                     <LogoContainer to="/" aria-label="homepage">
-                        <SvgIcon src="logo.png" width="101px" height="64px" />
+                        <Logo src="logo.png" width="101px" height="64px" />
                     </LogoContainer>
                     <MenuItem />
                 </Row>

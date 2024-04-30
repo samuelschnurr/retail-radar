@@ -6,7 +6,7 @@ const GlobalStyles = styled.createGlobalStyle`
     body,
     html,
     a {
-        font-family: ${props => props.theme.font.fontFamily};
+        font-family: ${props => props.theme.font.family};
     }
 
     body {
@@ -24,23 +24,23 @@ const GlobalStyles = styled.createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-family: ${props => props.theme.font.fontFamily};
+        font-family: ${props => props.theme.font.family};
         color: ${props => props.theme.colors.primary};
-        font-size: 56px;
+        font-size: ${props => props.theme.font.size.extraLarge};
         line-height: 1.18;
 
         @media only screen and (max-width: 890px) {
-            font-size: 47px;
+            font-size: ${props => props.theme.font.size.large};
         }
 
         @media only screen and (max-width: 414px) {
-            font-size: 32px;
+            font-size: ${props => props.theme.font.size.medium};
         }
     }
 
     p {
         color: ${props => props.theme.colors.primary};
-        font-size: 21px;
+        font-size: ${props => props.theme.font.size.small};
         line-height: 1.41;
     }
 

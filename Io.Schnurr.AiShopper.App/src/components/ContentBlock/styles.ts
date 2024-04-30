@@ -40,7 +40,7 @@ export const MinTitle = styled("h6")`
     padding: 0.5rem 0;
     text-transform: uppercase;
     color: #000;
-    font-family: ${props => props.theme.font.fontFamily};
+    font-family: ${props => props.theme.font.family};
 `
 
 export const MinPara = styled("p")`

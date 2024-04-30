@@ -9,7 +9,14 @@ declare module "styled-components" {
             background: string
         }
         font: {
-            fontFamily: string
+            family: string
+            size: {
+                extraSmall: string
+                small: string
+                medium: string
+                large: string
+                extraLarge: string
+            }
         }
     }
 }

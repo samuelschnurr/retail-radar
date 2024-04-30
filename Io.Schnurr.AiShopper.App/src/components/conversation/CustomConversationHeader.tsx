@@ -8,7 +8,7 @@ import {
 } from "@chatscope/chat-ui-kit-react"
 import { useNavigate } from "react-router-dom"
 
-import { AssistantIcon } from "../../common/AssistantIcon"
+import { AvatarIcon } from "../../common/AvatarIcon"
 import assistant from "../../content/AssistantContent.json"
 import { resetConversation } from "../../states/conversation"
 import { resetThread, useThread } from "../../states/thread"
@@ -23,7 +23,7 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
     const navigate = useNavigate()
     return (
         <ConversationHeader>
-            <AssistantIcon
+            <AvatarIcon
                 info={assistant.info}
                 src={assistant.src}
                 status={assistant.status as UserStatus}

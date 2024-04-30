@@ -7,6 +7,8 @@ declare module "styled-components" {
             primaryDark: string
             secondary: string
             background: string
+            backgroundDark: string
+            backgroundExtraDark: string
         }
         font: {
             family: string
@@ -16,6 +18,11 @@ declare module "styled-components" {
                 medium: string
                 large: string
                 extraLarge: string
+            }
+            weight: {
+                light: number
+                normal: number
+                bold: number
             }
         }
     }

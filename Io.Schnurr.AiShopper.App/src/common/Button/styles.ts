@@ -4,9 +4,9 @@ export const StyledButton = styled("button")<{ color?: string }>`
     background: ${p => p.color || p.theme.colors.primaryDark};
     color: ${p => (p.color ? p.theme.colors.primaryDark : p.theme.colors.background)};
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: ${p => p.theme.font.weight.bold};
     width: 180px;
-    border: 1px solid #edf3f5;
+    border: 1px solid ${p => p.theme.colors.backgroundDark};
     border-radius: 4px;
     padding: 13px 0;
     cursor: pointer;

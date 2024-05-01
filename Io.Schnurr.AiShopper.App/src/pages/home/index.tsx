@@ -3,7 +3,7 @@ import { lazy } from "react"
 import Footer from "../../components/homepage/Footer"
 import Header from "../../components/homepage/Header"
 import HeaderContent from "../../content/HeaderContent.json"
-import IntroContent from "../../content/IntroBlockContent.json"
+import IntroBlockContent from "../../content/IntroBlockContent.json"
 import MiddleBlockContent from "../../content/MiddleBlockContent.json"
 const MiddleBlock = lazy(() => import("../../components/homepage/MiddleBlock"))
 const Container = lazy(() => import("../../components/common/Container"))
@@ -17,9 +17,9 @@ const Home = () => {
             <Container>
                 <ScrollToTop />
                 <IntroBlock
-                    title={IntroContent.title}
-                    content={IntroContent.text}
-                    icon={IntroContent.src}
+                    title={IntroBlockContent.title}
+                    content={IntroBlockContent.text}
+                    icon={IntroBlockContent.src}
                 />
                 <MiddleBlock
                     title={MiddleBlockContent.title}

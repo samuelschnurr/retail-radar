@@ -9,7 +9,3 @@ export const HeaderSection = styled("header")`
         text-align: center;
     }
 `
-
-export const LogoContainer = styled(Link)`
-    display: flex;
-`

@@ -1,100 +1,20 @@
-import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export const FooterSection = styled("footer")`
-    background: ${p => p.theme.colors.backgroundDark};
-    padding: 2.5rem 0;
-`
-
-export const Title = styled("h4")`
-    font-size: 22px;
-    text-transform: capitalize;
-    color: ${props => props.theme.colors.primary};
-
-    @media screen and (max-width: ${p => p.theme.breakpoints.small}) {
-        padding: 1.5rem 0;
-    }
-`
-
-export const NavLink = styled(Link)`
-    display: block;
-    font-size: 1rem;
-    margin-bottom: 0.625rem;
-    transition: all 0.2s ease-in-out;
-
-    &:hover,
-    &:active,
-    &:focus {
-        color: #15418e;
-    }
-`
-
-export const Extra = styled("section")`
+export const FooterSection = styled("section")`
     background: ${p => p.theme.colors.backgroundDark};
     position: relative;
     width: 100%;
-    margin-right: auto;
-    margin-left: auto;
+    margin: auto;
     padding-bottom: 2rem;
+    padding-top: 2rem;
 `
 
-export const LogoContainer = styled("div")`
+export const FooterLinks = styled("div")`
+    width: 50%;
     display: flex;
-    position: relative;
-`
-
-export const Para = styled("div")`
-    color: ${props => props.theme.colors.primary};
-    font-size: 14px;
-    width: 70%;
-`
-
-export const Large = styled(Link)`
-    font-size: 16px;
-    color: #000;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    text-transform: capitalize;
-    line-height: 24px;
-    display: block;
-    margin-bottom: 0.625rem;
-    transition: all 0.3s ease-in-out;
-    max-width: max-content;
-
-    &:hover {
-        color: ${props => props.theme.colors.secondary};
-        text-underline-position: under;
-        text-decoration: ${props => props.theme.colors.secondary} wavy underline;
-    }
-`
-
-export const Chat = styled("p")`
-    color: ${props => props.theme.colors.primary};
-    max-width: fit-content;
-    border-bottom: 1px solid ${props => props.theme.colors.primary};
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: all 0.3s ease-in-out;
-
-    &:hover {
-        border-bottom: 1px solid ${props => props.theme.colors.secondary};
-        color: ${props => props.theme.colors.secondary};
-    }
-`
-
-export const Empty = styled("div")`
-    position: relative;
-    height: 53px;
-`
-
-export const FooterContainer = styled("div")`
-    max-width: 510px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    text-align: center;
-    align-items: center;
+    justify-content: end;
     transition: all 0.1s ease-in-out;
+    gap: 10%;
 
     a {
         &:hover,
@@ -106,65 +26,7 @@ export const FooterContainer = styled("div")`
         }
     }
 
-    @media screen and (max-width: ${p => p.theme.breakpoints.medium}) {
-        width: auto;
-
-        a:not(:last-child) {
-            display: none;
-        }
-    }
-
-    div {
-        cursor: pointer;
-        margin-right: 15px;
-        width: 25px;
-        height: 25px;
-
-        &:hover {
-            fill: ${props => props.theme.colors.secondary};
-        }
-    }
-`
-
-export const Language = styled("h4")`
-    font-size: 22px;
-    text-transform: capitalize;
-    color: ${props => props.theme.colors.primary};
-
     @media screen and (max-width: ${p => p.theme.breakpoints.small}) {
-        padding: 1.5rem 0;
+        flex-direction: column;
     }
-`
-
-export const Label = styled("label")`
-    font-size: 22px;
-    text-transform: capitalize;
-    color: ${props => props.theme.colors.primary};
-    display: block;
-    margin-bottom: 2rem;
-    font-family: ${props => props.theme.font.family};
-
-    @media screen and (max-width: ${p => p.theme.breakpoints.small}) {
-        padding: 1.5rem 0;
-        margin-bottom: 1rem;
-    }
-`
-
-export const LanguageSwitch = styled("div")`
-    cursor: pointer;
-    transition: all 0.1s ease-in-out;
-
-    &:hover,
-    &:active,
-    &:focus {
-        -webkit-transform: scale(1.1);
-        -ms-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-`
-
-export const LanguageSwitchContainer = styled("div")`
-    display: flex;
-    justify-content: space-between;
-    width: 85px;
 `

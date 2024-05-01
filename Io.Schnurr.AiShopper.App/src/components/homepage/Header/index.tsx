@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import Button from "../../common/Button"
 import Container from "../../common/Container"
 import Logo from "../../common/Logo"
-import { HeaderSection, LogoContainer } from "./styles"
+import { HeaderSection } from "./styles"
 import { HeaderContentProps } from "./types"
 
 const Header = (props: HeaderContentProps) => {
@@ -15,9 +15,7 @@ const Header = (props: HeaderContentProps) => {
         <HeaderSection>
             <Container>
                 <Row justify="space-between">
-                    <LogoContainer to="/" aria-label="homepage">
-                        <Logo src="logo.png" width="101px" height="64px" />
-                    </LogoContainer>
+                    <Logo src="logo.png" width="101px" height="64px" href="/" />
                     {button && <Button onClick={() => navigate("/messenger")}>{button}</Button>}
                 </Row>
             </Container>

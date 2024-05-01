@@ -9,7 +9,7 @@ const IntroBlock = (props: IntroBlockProps) => {
     const { icon, title, content } = props
 
     return (
-        <ContentSection>
+        <ContentSection id="intro">
             <Fade direction="right" triggerOnce>
                 <StyledRow justify="space-between" align="middle">
                     <Col lg={11} md={11} sm={12} xs={24}>

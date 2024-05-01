@@ -1,17 +1,14 @@
-import { Message, MessageList, MessageListProps, MessageModel } from "@chatscope/chat-ui-kit-react"
+import { Message, MessageList, MessageModel } from "@chatscope/chat-ui-kit-react"
 import { useHookstate } from "@hookstate/core"
 
-import TypingIndicatorInfo from "../../components/common/TypingIndicatorInfo"
-import avatar from "../../content/AvatarContent.json"
-import useInterval from "../../hooks/useInterval"
-import { getAssistantMessage, useConversation } from "../../states/conversation"
-import { useThread } from "../../states/thread"
+import avatar from "../../../content/AvatarContent.json"
+import useInterval from "../../../hooks/useInterval"
+import { getAssistantMessage, useConversation } from "../../../states/conversation"
+import { useThread } from "../../../states/thread"
+import TypingIndicatorInfo from "../../common/TypingIndicatorInfo"
+import { MessageListContainerProps } from "./types"
 
-interface CustomMessageListProps extends MessageListProps {
-    as?: string | typeof MessageList
-}
-
-const CustomMessageList = (_props: CustomMessageListProps) => {
+const MessageListContainer = (_props: MessageListContainerProps) => {
     const thread = useThread()
     const conversation = useConversation()
     const isRequestRunning = useHookstate(false)
@@ -39,4 +36,4 @@ const CustomMessageList = (_props: CustomMessageListProps) => {
     )
 }
 
-export default CustomMessageList
+export default MessageListContainer

@@ -1,24 +1,16 @@
 import { CloseOutlined, CoffeeOutlined, SyncOutlined } from "@ant-design/icons"
-import {
-    Avatar,
-    Button,
-    ConversationHeader,
-    ConversationHeaderProps,
-    UserStatus
-} from "@chatscope/chat-ui-kit-react"
+import { Avatar, ConversationHeader, UserStatus } from "@chatscope/chat-ui-kit-react"
 import { useNavigate } from "react-router-dom"
 
-import { resetConversation } from "../../states/conversation"
-import { resetThread, useThread } from "../../states/thread"
-import AvatarIcon from "../common/AvatarIcon"
-import BounceButton from "../common/BounceButton"
-import avatar from "./../../content/AvatarContent.json"
+import avatar from "../../../content/AvatarContent.json"
+import { resetConversation } from "../../../states/conversation"
+import { resetThread, useThread } from "../../../states/thread"
+import AvatarIcon from "../../common/AvatarIcon"
+import BounceButton from "../../common/BounceButton"
+import { StyledButton } from "./styles"
+import { ConversationHeaderContainerProps } from "./types"
 
-interface CustomConversationHeaderProps extends ConversationHeaderProps {
-    as?: string | typeof ConversationHeader
-}
-
-const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
+const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) => {
     const { isLoading } = useThread()
     const navigate = useNavigate()
     return (
@@ -40,18 +32,16 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
                         window.open("https://ko-fi.com/sampa", "_blank")
                     }}
                 />
-                <Button
+                <StyledButton
                     icon={<SyncOutlined />}
                     disabled={isLoading}
-                    style={{ fontSize: "16px" }}
                     onClick={() => {
                         resetThread()
                         resetConversation()
                     }}
                 />
-                <Button
+                <StyledButton
                     icon={<CloseOutlined />}
-                    style={{ fontSize: "16px" }}
                     onClick={() => {
                         navigate("/")
                     }}
@@ -61,4 +51,4 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
     )
 }
 
-export default CustomConversationHeader
+export default ConversationHeaderContainer

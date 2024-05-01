@@ -1,13 +1,10 @@
-import { MessageInput, MessageInputProps } from "@chatscope/chat-ui-kit-react"
+import { MessageInput } from "@chatscope/chat-ui-kit-react"
 import { useEffect, useRef } from "react"
 
-import { createUserMessage, useConversation } from "../../states/conversation"
+import { createUserMessage, useConversation } from "../../../states/conversation"
+import { MessageInputContainerProps } from "./types"
 
-interface CustomMessageInputProps extends MessageInputProps {
-    as?: string | typeof MessageInput
-}
-
-const CustomMessageInput = (_props: CustomMessageInputProps) => {
+const MessageInputContainer = (_props: MessageInputContainerProps) => {
     const messageInputRef = useRef<HTMLInputElement>(null)
     const isTyping = useConversation().isTyping
 
@@ -28,4 +25,4 @@ const CustomMessageInput = (_props: CustomMessageInputProps) => {
     )
 }
 
-export default CustomMessageInput
+export default MessageInputContainer

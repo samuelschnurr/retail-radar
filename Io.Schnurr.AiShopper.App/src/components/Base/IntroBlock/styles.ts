@@ -15,7 +15,7 @@ export const Content = styled("p")`
 `
 
 export const StyledRow = styled(Row)`
-    flex-direction: "row-reverse";
+    flex-direction: row-reverse;
 `
 
 export const ContentWrapper = styled("div")`

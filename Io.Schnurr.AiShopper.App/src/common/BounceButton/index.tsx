@@ -1,16 +1,8 @@
-import { Button } from "@chatscope/chat-ui-kit-react"
 import { useHookstate } from "@hookstate/core"
-import { MouseEventHandler, ReactNode } from "react"
 
 import useInterval from "../../hooks/useInterval"
-import styles from "./BounceButton.module.css"
-interface BounceButtonProps {
-    icon: ReactNode
-    startDelay: number
-    intervalDelay: number
-    bounceDuration: number
-    onClick: MouseEventHandler | undefined
-}
+import { StyledBounceButton } from "./styles"
+import { BounceButtonProps } from "./types"
 
 const BounceButton = (props: BounceButtonProps) => {
     const { startDelay, intervalDelay, bounceDuration, onClick } = props
@@ -30,17 +22,12 @@ const BounceButton = (props: BounceButtonProps) => {
         isFirstRun ? startDelay : isBouncing.get() ? null : intervalDelay
     )
 
-    const animationStyle: { [key: string]: string | number } = {
-        "animation-delay": `"${startDelay}ms"`,
-        fontSize: "16px"
-    }
-
     return (
-        <Button
+        <StyledBounceButton
             onClick={onClick}
             icon={props.icon}
-            className={isBouncing.get() ? styles.bounce : ""}
-            style={animationStyle}
+            isBouncing={isBouncing.get()}
+            startDelay={startDelay}
         />
     )
 }

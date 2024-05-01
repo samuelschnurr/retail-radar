@@ -9,10 +9,10 @@ import {
 import { useNavigate } from "react-router-dom"
 
 import { AvatarIcon } from "../../common/AvatarIcon"
+import BounceButton from "../../common/BounceButton"
 import assistant from "../../content/AssistantContent.json"
 import { resetConversation } from "../../states/conversation"
 import { resetThread, useThread } from "../../states/thread"
-import BounceButton from "../core/BounceButton"
 
 interface CustomConversationHeaderProps extends ConversationHeaderProps {
     as?: string | typeof ConversationHeader

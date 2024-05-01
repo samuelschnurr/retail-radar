@@ -11,7 +11,7 @@ export const Title = styled("h4")`
     text-transform: capitalize;
     color: ${props => props.theme.colors.primary};
 
-    @media screen and (max-width: 414px) {
+    @media screen and (max-width: ${p => p.theme.breakpoints.small}) {
         padding: 1.5rem 0;
     }
 `
@@ -106,7 +106,7 @@ export const FooterContainer = styled("div")`
         }
     }
 
-    @media screen and (max-width: 769px) {
+    @media screen and (max-width: ${p => p.theme.breakpoints.medium}) {
         width: auto;
 
         a:not(:last-child) {
@@ -131,7 +131,7 @@ export const Language = styled("h4")`
     text-transform: capitalize;
     color: ${props => props.theme.colors.primary};
 
-    @media screen and (max-width: 414px) {
+    @media screen and (max-width: ${p => p.theme.breakpoints.small}) {
         padding: 1.5rem 0;
     }
 `
@@ -144,7 +144,7 @@ export const Label = styled("label")`
     margin-bottom: 2rem;
     font-family: ${props => props.theme.font.family};
 
-    @media screen and (max-width: 414px) {
+    @media screen and (max-width: ${p => p.theme.breakpoints.small}) {
         padding: 1.5rem 0;
         margin-bottom: 1rem;
     }

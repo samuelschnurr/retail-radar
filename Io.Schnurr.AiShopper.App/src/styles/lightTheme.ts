@@ -23,6 +23,11 @@ const LightTheme: DefaultTheme = {
             normal: 500,
             bold: 700
         }
+    },
+    breakpoints: {
+        small: "414px",
+        medium: "768px",
+        large: "1024px"
     }
 }
 

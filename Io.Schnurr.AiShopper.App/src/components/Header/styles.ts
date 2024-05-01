@@ -63,7 +63,7 @@ export const CustomNavLinkSmall = styled(NavLink)`
     transition: color 0.2s ease-in;
     margin: 0.5rem 2rem;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: ${p => p.theme.breakpoints.medium}) {
         margin: 1.25rem 2rem;
     }
 `

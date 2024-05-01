@@ -5,7 +5,7 @@ export const ContentSection = styled("section")`
     position: relative;
     padding: 10rem 0 8rem;
 
-    @media only screen and (max-width: 1024px) {
+    @media only screen and (max-width: ${p => p.theme.breakpoints.large}) {
         padding: 4rem 0 4rem;
     }
 `
@@ -40,7 +40,7 @@ export const MinTitle = styled("h6")`
     padding: 0.5rem 0;
     text-transform: uppercase;
     color: #000;
-    font-family: ${props => props.theme.font.family};
+    font-family: ${p => p.theme.font.family};
 `
 
 export const MinPara = styled("p")`
@@ -52,7 +52,7 @@ export const ButtonWrapper = styled("div")`
     justify-content: space-between;
     max-width: 100%;
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: ${p => p.theme.breakpoints.large}) {
         max-width: 80%;
     }
 

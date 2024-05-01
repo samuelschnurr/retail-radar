@@ -25,5 +25,10 @@ declare module "styled-components" {
                 bold: number
             }
         }
+        breakpoints: {
+            small: string
+            medium: string
+            large: string
+        }
     }
 }

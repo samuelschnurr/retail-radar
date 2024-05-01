@@ -7,7 +7,7 @@ export const MiddleBlockSection = styled("section")`
     display: flex;
     justify-content: center;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: ${p => p.theme.breakpoints.large}) {
         padding: 5.5rem 0 3rem;
     }
 `
@@ -19,7 +19,7 @@ export const Content = styled("p")`
 export const ContentWrapper = styled("div")`
     max-width: 570px;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: ${p => p.theme.breakpoints.medium}) {
         max-width: 100%;
     }
 `

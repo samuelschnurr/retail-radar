@@ -33,7 +33,7 @@ const GlobalStyles = styled.createGlobalStyle`
             font-size: ${p => p.theme.font.size.large};
         }
 
-        @media only screen and (max-width: 414px) {
+        @media only screen and (max-width: ${p => p.theme.breakpoints.small}) {
             font-size: ${p => p.theme.font.size.medium};
         }
     }

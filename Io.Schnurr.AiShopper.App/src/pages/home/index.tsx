@@ -2,25 +2,24 @@ import { lazy } from "react"
 
 import Footer from "../../components/Base/Footer"
 import Header from "../../components/Base/Header"
-import IntroContent from "../../content/IntroContent.json"
+import HeaderContent from "../../content/HeaderContent.json"
+import IntroContent from "../../content/IntroBlockContent.json"
 import MiddleBlockContent from "../../content/MiddleBlockContent.json"
 const MiddleBlock = lazy(() => import("../../components/Base/MiddleBlock"))
 const Container = lazy(() => import("../../common/Container"))
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"))
-const ContentBlock = lazy(() => import("../../components/Base/ContentBlock"))
+const IntroBlock = lazy(() => import("../../components/Base/IntroBlock"))
 
 const Home = () => {
     return (
         <>
-            <Header />
+            <Header button={HeaderContent.button} />
             <Container>
                 <ScrollToTop />
-                <ContentBlock
-                    direction="right"
+                <IntroBlock
                     title={IntroContent.title}
                     content={IntroContent.text}
-                    icon="developer.png"
-                    id="intro"
+                    icon={IntroContent.src}
                 />
                 <MiddleBlock
                     title={MiddleBlockContent.title}

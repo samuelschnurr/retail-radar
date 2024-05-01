@@ -1,18 +1,15 @@
 import { Row } from "antd"
+import { useNavigate } from "react-router-dom"
 
-import { Button } from "../../../common/Button"
+import Button from "../../../common/Button"
 import Container from "../../../common/Container"
-import { Logo } from "../../../common/Logo"
-import { HeaderSection, LogoContainer, Span } from "./styles"
+import Logo from "../../../common/Logo"
+import { HeaderSection, LogoContainer } from "./styles"
+import { HeaderContentProps } from "./types"
 
-const Header = () => {
-    const MenuItem = () => {
-        return (
-            <Span>
-                <Button>Jetzt starten</Button>
-            </Span>
-        )
-    }
+const Header = (props: HeaderContentProps) => {
+    const { button } = props
+    const navigate = useNavigate()
 
     return (
         <HeaderSection>
@@ -21,7 +18,7 @@ const Header = () => {
                     <LogoContainer to="/" aria-label="homepage">
                         <Logo src="logo.png" width="101px" height="64px" />
                     </LogoContainer>
-                    <MenuItem />
+                    {button && <Button onClick={() => navigate("/messenger")}>{button}</Button>}
                 </Row>
             </Container>
         </HeaderSection>

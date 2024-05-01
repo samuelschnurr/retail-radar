@@ -1,16 +1,13 @@
 import { Col, Row } from "antd"
 import { Slide } from "react-awesome-reveal"
 
-import { Button } from "../../../common/Button"
+import Button from "../../../common/Button"
 import { Content, ContentWrapper, MiddleBlockSection } from "./styles"
+import { MiddleBlockProps } from "./types"
 
-interface MiddleBlockProps {
-    title: string
-    content: string
-    button: string
-}
+const MiddleBlock = (props: MiddleBlockProps) => {
+    const { title, content, button } = props
 
-const MiddleBlock = ({ title, content, button }: MiddleBlockProps) => {
     return (
         <MiddleBlockSection>
             <Slide direction="up" triggerOnce>

@@ -8,7 +8,7 @@ import {
 } from "@chatscope/chat-ui-kit-react"
 import { useNavigate } from "react-router-dom"
 
-import { AvatarIcon } from "../../common/AvatarIcon"
+import AvatarIcon from "../../common/AvatarIcon"
 import BounceButton from "../../common/BounceButton"
 import assistant from "../../content/AssistantContent.json"
 import { resetConversation } from "../../states/conversation"

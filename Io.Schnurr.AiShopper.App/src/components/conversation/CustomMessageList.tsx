@@ -1,11 +1,11 @@
 import { Message, MessageList, MessageListProps, MessageModel } from "@chatscope/chat-ui-kit-react"
 import { useHookstate } from "@hookstate/core"
 
+import TypingIndicatorInfo from "../../common/TypingIndicatorInfo"
 import assistant from "../../content/AssistantContent.json"
 import useInterval from "../../hooks/useInterval"
 import { getAssistantMessage, useConversation } from "../../states/conversation"
 import { useThread } from "../../states/thread"
-import TypingIndicatorInfo from "../core/TypingIndicatorInfo"
 
 interface CustomMessageListProps extends MessageListProps {
     as?: string | typeof MessageList

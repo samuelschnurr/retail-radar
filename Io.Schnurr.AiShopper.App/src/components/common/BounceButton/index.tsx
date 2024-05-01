@@ -1,6 +1,6 @@
 import { useHookstate } from "@hookstate/core"
 
-import useInterval from "../../hooks/useInterval"
+import useInterval from "../../../hooks/useInterval"
 import { StyledBounceButton } from "./styles"
 import { BounceButtonProps } from "./types"
 

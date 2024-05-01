@@ -1,7 +1,7 @@
 import { Col } from "antd"
 import { Fade } from "react-awesome-reveal"
 
-import Logo from "../../../common/Logo"
+import Logo from "../../common/Logo"
 import { Content, ContentSection, ContentWrapper, StyledRow } from "./styles"
 import { IntroBlockProps } from "./types"
 

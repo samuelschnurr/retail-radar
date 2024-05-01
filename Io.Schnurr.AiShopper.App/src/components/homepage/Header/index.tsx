@@ -1,9 +1,9 @@
 import { Row } from "antd"
 import { useNavigate } from "react-router-dom"
 
-import Button from "../../../common/Button"
-import Container from "../../../common/Container"
-import Logo from "../../../common/Logo"
+import Button from "../../common/Button"
+import Container from "../../common/Container"
+import Logo from "../../common/Logo"
 import { HeaderSection, LogoContainer } from "./styles"
 import { HeaderContentProps } from "./types"
 

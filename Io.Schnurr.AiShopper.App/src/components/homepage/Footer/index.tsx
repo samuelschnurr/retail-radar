@@ -1,7 +1,7 @@
 import { Row } from "antd"
 
-import Container from "../../../common/Container"
-import Logo from "../../../common/Logo"
+import Container from "../../common/Container"
+import Logo from "../../common/Logo"
 import { Extra, FooterContainer, Large, LogoContainer, NavLink } from "./styles"
 
 const Footer = () => {

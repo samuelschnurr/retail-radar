@@ -1,7 +1,7 @@
 import { Col, Row } from "antd"
 import { Slide } from "react-awesome-reveal"
 
-import Button from "../../../common/Button"
+import Button from "../../common/Button"
 import { Content, ContentWrapper, MiddleBlockSection } from "./styles"
 import { MiddleBlockProps } from "./types"
 

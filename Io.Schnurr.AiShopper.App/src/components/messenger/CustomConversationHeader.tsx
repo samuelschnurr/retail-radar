@@ -8,11 +8,11 @@ import {
 } from "@chatscope/chat-ui-kit-react"
 import { useNavigate } from "react-router-dom"
 
-import AvatarIcon from "../../common/AvatarIcon"
-import BounceButton from "../../common/BounceButton"
-import assistant from "../../content/AssistantContent.json"
 import { resetConversation } from "../../states/conversation"
 import { resetThread, useThread } from "../../states/thread"
+import AvatarIcon from "../common/AvatarIcon"
+import BounceButton from "../common/BounceButton"
+import avatar from "./../../content/AvatarContent.json"
 
 interface CustomConversationHeaderProps extends ConversationHeaderProps {
     as?: string | typeof ConversationHeader
@@ -24,12 +24,12 @@ const CustomConversationHeader = (_props: CustomConversationHeaderProps) => {
     return (
         <ConversationHeader>
             <AvatarIcon
-                info={assistant.info}
-                src={assistant.src}
-                status={assistant.status as UserStatus}
+                info={avatar.info}
+                src={avatar.src}
+                status={avatar.status as UserStatus}
                 as={Avatar}
             />
-            <ConversationHeader.Content info={assistant.info} userName={assistant.name} />
+            <ConversationHeader.Content info={avatar.info} userName={avatar.name} />
             <ConversationHeader.Actions>
                 <BounceButton
                     icon={<CoffeeOutlined />}

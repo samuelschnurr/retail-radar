@@ -18,8 +18,8 @@ export const StyledButton = styled("button")<{ color?: string }>`
     &:hover,
     &:active,
     &:focus {
-        color: ${props => props.theme.colors.background};
-        border: 1px solid ${props => props.theme.colors.secondary};
-        background-color: ${props => props.theme.colors.secondary};
+        color: ${p => p.theme.colors.background};
+        border: 1px solid ${p => p.theme.colors.secondary};
+        background-color: ${p => p.theme.colors.secondary};
     }
 `

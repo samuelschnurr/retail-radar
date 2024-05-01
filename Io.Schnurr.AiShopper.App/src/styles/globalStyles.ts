@@ -6,7 +6,7 @@ const GlobalStyles = styled.createGlobalStyle`
     body,
     html,
     a {
-        font-family: ${props => props.theme.font.family};
+        font-family: ${p => p.theme.font.family};
     }
 
     body {
@@ -14,7 +14,7 @@ const GlobalStyles = styled.createGlobalStyle`
         padding: 0;
         border: 0;
         outline: 0;
-        background: ${props => props.theme.colors.background};
+        background: ${p => p.theme.colors.background};
         overflow-x: hidden;
     }
 
@@ -24,33 +24,33 @@ const GlobalStyles = styled.createGlobalStyle`
     h4,
     h5,
     h6 {
-        font-family: ${props => props.theme.font.family};
-        color: ${props => props.theme.colors.primary};
-        font-size: ${props => props.theme.font.size.extraLarge};
+        font-family: ${p => p.theme.font.family};
+        color: ${p => p.theme.colors.primary};
+        font-size: ${p => p.theme.font.size.extraLarge};
         line-height: 1.18;
 
         @media only screen and (max-width: 890px) {
-            font-size: ${props => props.theme.font.size.large};
+            font-size: ${p => p.theme.font.size.large};
         }
 
         @media only screen and (max-width: 414px) {
-            font-size: ${props => props.theme.font.size.medium};
+            font-size: ${p => p.theme.font.size.medium};
         }
     }
 
     p {
-        color: ${props => props.theme.colors.primary};
-        font-size: ${props => props.theme.font.size.small};
+        color: ${p => p.theme.colors.primary};
+        font-size: ${p => p.theme.font.size.small};
         line-height: 1.41;
     }
 
     a {
         text-decoration: none;
         outline: none;
-        color: ${props => props.theme.colors.primaryDark};
+        color: ${p => p.theme.colors.primaryDark};
 
         :hover {
-            color: ${props => props.theme.colors.primaryDark};
+            color: ${p => p.theme.colors.primaryDark};
         }
     }
 `

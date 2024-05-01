@@ -1,8 +1,8 @@
 import { Col, Row } from "antd"
 import { Fade } from "react-awesome-reveal"
 
-import { Button } from "../../common/Button"
-import { Logo } from "../../common/Logo"
+import { Button } from "../../../common/Button"
+import { Logo } from "../../../common/Logo"
 import {
     ButtonWrapper,
     Content,

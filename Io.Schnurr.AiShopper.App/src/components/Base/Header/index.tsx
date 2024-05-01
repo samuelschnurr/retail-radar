@@ -1,8 +1,8 @@
 import { Row } from "antd"
 
-import { Button } from "../../common/Button"
-import Container from "../../common/Container"
-import { Logo } from "../../common/Logo"
+import { Button } from "../../../common/Button"
+import Container from "../../../common/Container"
+import { Logo } from "../../../common/Logo"
 import { HeaderSection, LogoContainer, Span } from "./styles"
 
 const Header = () => {

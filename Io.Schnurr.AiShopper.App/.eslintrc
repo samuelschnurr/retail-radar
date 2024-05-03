@@ -1,7 +1,7 @@
 {
     "plugins": ["simple-import-sort"],
     "extends": ["react-app"],
-    "ignorePatterns": ["node_modules/", "build/", "*.css", "*.jpg"],
+    "ignorePatterns": ["node_modules/", "build/", "*.css", "*.jpg", "*.json"],
     "rules": {
         "simple-import-sort/imports": "warn",
         "simple-import-sort/exports": "warn",

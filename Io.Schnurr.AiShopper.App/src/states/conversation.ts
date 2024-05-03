@@ -10,7 +10,7 @@ const defaultState = { messages: [], lastRunId: null, isTyping: true } as Conver
 
 const state = hookstate<Conversation>(
     { ...defaultState },
-    devtools({ key: "aishopper-conversation" })
+    devtools({ key: "retailradar-conversation" })
 )
 
 export const useConversation = () => useHookstate(state).value

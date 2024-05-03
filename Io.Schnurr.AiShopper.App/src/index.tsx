@@ -1,20 +1,17 @@
-import "./index.css"
-import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css"
+import "antd/dist/antd.css"
 
-import React from "react"
 import ReactDOM from "react-dom/client"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { ThemeProvider } from "styled-components"
 
-import { Home } from "./pages/home"
-import { Messenger } from "./pages/messenger"
+import Router from "./router"
+import GlobalStyles from "./styles/globalStyles"
+import LightTheme from "./styles/lightTheme"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
 root.render(
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="messenger" element={<Messenger />} />
-        </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={LightTheme}>
+        <GlobalStyles />
+        <Router />
+    </ThemeProvider>
 )

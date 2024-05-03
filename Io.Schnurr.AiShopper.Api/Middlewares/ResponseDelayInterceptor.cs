@@ -1,6 +1,5 @@
 ﻿namespace Io.Schnurr.AiShopper.Api.Middleware;
 
-
 internal class ResponseDelayInterceptor(RequestDelegate next)
 {
     private readonly RequestDelegate next = next;

@@ -1,24 +1,40 @@
 {
-    "short_name": "AiShopper",
-    "name": "Your personal ai shopping assistant",
+    "short_name": "RetailRadar",
+    "name": "RetailRadar",
+    "description": "KI gesteuerte Produktberatung. Die Innovation im Onlineshopping - Nie wieder Produkte vergleichen oder Testberichte lesen!",
     "start_url": ".",
     "display": "standalone",
     "theme_color": "#000000",
     "background_color": "#ffffff",
     "icons": [
         {
-            "src": "favicon.ico",
-            "sizes": "64x64 32x32 24x24 16x16",
+            "src": "./images/favicon/favicon64.ico",
+            "sizes": "64x64",
             "type": "image/x-icon"
         },
         {
-            "src": "logo192.jpg",
-            "type": "image/jpg",
+            "src": "./images/favicon/favicon32.ico",
+            "sizes": "32x32",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "./images/favicon/favicon16.ico",
+            "sizes": "16x16",
+            "type": "image/x-icon"
+        },
+        {
+            "src": "./images/logo/logo144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "./images/logo/logo192.png",
+            "type": "image/png",
             "sizes": "192x192"
         },
         {
-            "src": "logo512.jpg",
-            "type": "image/jpg",
+            "src": "./images/logo/logo512.png",
+            "type": "image/png",
             "sizes": "512x512"
         }
     ]

@@ -13,7 +13,8 @@ internal static class Message
         var threadRun = await assistantService.GetRunAsync(threadId, runId);
         var threadMessage = await assistantService.GetMessageAsync(threadId, runId);
 
-        if (threadMessage == null && threadRun?.Status == RunStatus.InProgress)
+        if (threadMessage == null
+            && (threadRun?.Status == RunStatus.InProgress || threadRun?.Status == RunStatus.Queued))
         {
             return TypedResults.Accepted("The message object hast not been created yet.");
         }

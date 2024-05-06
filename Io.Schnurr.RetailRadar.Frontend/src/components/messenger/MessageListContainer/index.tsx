@@ -12,7 +12,7 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
     const thread = useThread()
     const conversation = useConversation()
     const isRequestRunning = useHookstate(false)
-    const intervalDelay = conversation.isTyping ? 1000 : null
+    const intervalDelay = conversation.isTyping ? 2500 : null
 
     useInterval(async () => {
         if (isRequestRunning.get() || !conversation.isTyping) {

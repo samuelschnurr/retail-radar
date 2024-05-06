@@ -26,8 +26,8 @@ const BounceButton = (props: BounceButtonProps) => {
         <StyledBounceButton
             onClick={onClick}
             icon={props.icon}
-            isBouncing={isBouncing.get()}
-            startDelay={startDelay}
+            $isBouncing={isBouncing.get()}
+            $startDelay={startDelay}
         />
     )
 }

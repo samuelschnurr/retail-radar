@@ -25,6 +25,6 @@ internal static class Mappings
         }
 
         RunDto? runDto = threadRun?.MapToRunDto();
-        return new MessageDto(threadMessage.Id, threadMessage.ThreadId, sb.ToString(), threadMessage.Role.ToString(), runDto);
+        return new MessageDto(threadMessage.Id, threadMessage.ThreadId, sb.ToString().TrimEnd(), threadMessage.Role.ToString(), runDto);
     }
 }

@@ -32,7 +32,7 @@ internal static class Message
 
     internal static async Task<IResult> Create(AssistantService assistantService, MessageDto message)
     {
-        var threadMessage = await assistantService.CreateMessage(message.ThreadId, message.Content);
+        var threadMessage = await assistantService.CreateMessage(message.ThreadId, message.Content.TrimEnd());
         var threadRun = await assistantService.CreateRunAsync(message.ThreadId);
 
         if (threadMessage != null && threadRun != null)

@@ -20,7 +20,7 @@ const MiddleBlock = (props: MiddleBlockProps) => {
                         <ContentListing listings={listings} />
                     </Col>
                     <Col lg={10} md={8} xs={24}>
-                        <Image src={src} width="100%" height="100%" centerOnMobile={true} />
+                        <Image src={src} width="100%" height="100%" shrinkOnMobile={true} />
                     </Col>
                 </StyledRow>
             </Slide>

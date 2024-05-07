@@ -3,19 +3,22 @@ import styled, { css } from "styled-components"
 
 export const ImageContainer = styled(Link)<{
     to?: string
-    $centerOnMobile?: boolean
+    $shrinkOnMobile?: boolean
 }>`
     display: flex;
     position: relative;
     cursor: ${p => (p.to ? "hand" : "default")};
 
-    ${({ $centerOnMobile }) =>
-        $centerOnMobile &&
+    img {
+        margin: auto;
+    }
+
+    ${({ $shrinkOnMobile }) =>
+        $shrinkOnMobile &&
         css`
             @media only screen and (max-width: ${p => p.theme.breakpoints.medium}) {
                 img {
                     max-width: 75%;
-                    margin: auto;
                 }
             }
         `}

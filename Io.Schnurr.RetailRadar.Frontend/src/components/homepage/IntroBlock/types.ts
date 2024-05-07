@@ -1,5 +1,5 @@
 export interface IntroBlockProps {
     title: string
-    content: string
+    subTitle: string
     icon: string
 }

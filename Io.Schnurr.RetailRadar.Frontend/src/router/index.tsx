@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
-import Home from "../pages/home"
+import Homepage from "../pages/homepage"
 import Messenger from "../pages/messenger"
 
 const Router = () => (
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Homepage />} />
             <Route path="messenger" element={<Messenger />} />
         </Routes>
     </BrowserRouter>

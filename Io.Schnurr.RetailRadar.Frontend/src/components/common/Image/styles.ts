@@ -4,6 +4,7 @@ import styled, { css } from "styled-components"
 export const ImageContainer = styled(Link)<{
     to?: string
     $shrinkOnMobile?: boolean
+    $applyStyling?: boolean
 }>`
     display: flex;
     position: relative;
@@ -20,6 +21,15 @@ export const ImageContainer = styled(Link)<{
                 img {
                     max-width: 75%;
                 }
+            }
+        `}
+
+    ${({ $applyStyling }) =>
+        $applyStyling &&
+        css`
+            img {
+                border-radius: 4px;
+                box-shadow: 0 16px 30px rgb(23 31 114 / 20%);
             }
         `}
 `

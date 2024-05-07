@@ -1,4 +1,4 @@
-import { Col, Row } from "antd"
+import { Col } from "antd"
 import { Slide } from "react-awesome-reveal"
 
 import Content from "../../common/Content"
@@ -12,14 +12,12 @@ const MiddleBlock = (props: MiddleBlockProps) => {
 
     return (
         <MiddleBlockSection>
-            <Slide direction="up" triggerOnce>
+            <Slide direction="left" triggerOnce>
                 <h6>{title}</h6>
                 <StyledRow justify="center" align="middle">
                     <Col lg={14} md={16} xs={24}>
-                        <div>
-                            <Content content={subTitle} />
-                            <ContentListing listings={listings} />
-                        </div>
+                        <Content content={subTitle} />
+                        <ContentListing listings={listings} />
                     </Col>
                     <Col lg={10} md={8} xs={24}>
                         <Image src={src} width="100%" height="100%" centerOnMobile={true} />

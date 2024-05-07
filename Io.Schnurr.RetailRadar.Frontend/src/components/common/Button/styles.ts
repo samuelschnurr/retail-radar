@@ -6,10 +6,10 @@ export const StyledButton = styled("button")<{ color?: string }>`
     font-size: 1rem;
     font-weight: ${p => p.theme.font.weight.bold};
     width: auto;
-    max-width: 256px;
+    max-width: 384px;
     border: 1px solid ${p => p.theme.colors.backgroundDark};
     border-radius: 4px;
-    padding: 16px;
+    padding: 16px 32px 16px 32px;
     cursor: pointer;
 
     transition: all 0.3s ease-in-out;

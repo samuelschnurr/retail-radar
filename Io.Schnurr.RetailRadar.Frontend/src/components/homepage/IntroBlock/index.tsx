@@ -1,8 +1,9 @@
 import { Col, Row } from "antd"
 import { Fade } from "react-awesome-reveal"
 
+import Content from "../../common/Content"
 import Image from "../../common/Image"
-import { Content, ContentSection } from "./styles"
+import { ContentSection } from "./styles"
 import { IntroBlockProps } from "./types"
 
 const IntroBlock = (props: IntroBlockProps) => {
@@ -13,10 +14,8 @@ const IntroBlock = (props: IntroBlockProps) => {
             <Fade direction="right" triggerOnce>
                 <Row justify="space-between" align="middle">
                     <Col lg={14} md={16} xs={24}>
-                        <div>
-                            <h6>{title}</h6>
-                            <Content>{subTitle}</Content>
-                        </div>
+                        <Content content={<h6>{title}</h6>} />
+                        <Content content={subTitle} />
                     </Col>
                     <Col lg={10} md={8} xs={24}>
                         <Image

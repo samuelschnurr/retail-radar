@@ -1,7 +1,7 @@
 {
     "short_name": "RetailRadar",
     "name": "RetailRadar",
-    "description": "KI gesteuerte Produktberatung. Die Innovation im Onlineshopping - Nie wieder Produkte vergleichen oder Testberichte lesen!",
+    "description": "KI-gesteuerte Produktberatung. Die Innovation im Einzelhandel. Nie wieder Produkte vergleichen oder Testberichte lesen!",
     "start_url": ".",
     "display": "standalone",
     "theme_color": "#000000",

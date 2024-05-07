@@ -1,3 +1,3 @@
 export interface ContentProps {
-    content: string
+    content: string | React.ReactNode
 }

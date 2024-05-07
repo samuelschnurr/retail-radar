@@ -9,6 +9,7 @@ import MessageListContainer from "../../components/messenger/MessageListContaine
 import { addChatConversationMessage } from "../../states/conversation"
 import { createThread, useThread } from "../../states/thread"
 import { StyledChatContainer } from "./styles"
+
 const Messenger = () => {
     const thread = useThread()
 

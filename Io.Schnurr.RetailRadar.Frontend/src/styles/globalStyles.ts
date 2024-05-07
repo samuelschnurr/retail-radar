@@ -33,7 +33,7 @@ const GlobalStyles = styled.createGlobalStyle`
             font-size: ${p => p.theme.font.size.large};
         }
 
-        @media only screen and (max-width: ${p => p.theme.breakpoints.small}) {
+        @media only screen and (max-width: ${p => p.theme.breakpoints.medium}) {
             font-size: ${p => p.theme.font.size.medium};
         }
     }
@@ -41,6 +41,12 @@ const GlobalStyles = styled.createGlobalStyle`
     p {
         color: ${p => p.theme.colors.primary};
         font-size: ${p => p.theme.font.size.small};
+        line-height: 1.41;
+    }
+
+    ul {
+        color: ${p => p.theme.colors.primary};
+        font-size: ${p => p.theme.font.size.extraSmall};
         line-height: 1.41;
     }
 

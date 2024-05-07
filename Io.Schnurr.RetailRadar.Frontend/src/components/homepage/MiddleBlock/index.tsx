@@ -13,7 +13,7 @@ const MiddleBlock = (props: MiddleBlockProps) => {
     return (
         <MiddleBlockSection>
             <Slide direction="left" triggerOnce>
-                <Content content={<h6>{title}</h6>} />
+                <h6>{title}</h6>
                 <StyledRow justify="center" align="middle">
                     <Col lg={14} md={16} xs={24}>
                         <Content content={subTitle} />

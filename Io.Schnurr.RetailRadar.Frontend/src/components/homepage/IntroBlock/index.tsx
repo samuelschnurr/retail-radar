@@ -14,7 +14,7 @@ const IntroBlock = (props: IntroBlockProps) => {
             <Fade direction="right" triggerOnce>
                 <Row justify="space-between" align="middle">
                     <Col lg={14} md={16} xs={24}>
-                        <Content content={<h6>{title}</h6>} />
+                        <h6>{title}</h6>
                         <Content content={subTitle} />
                     </Col>
                     <Col lg={10} md={8} xs={24}>

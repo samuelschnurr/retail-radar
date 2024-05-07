@@ -6,7 +6,7 @@ const Image = (props: ImageProps) => {
 
     return (
         <ImageContainer to={href ?? ""}>
-            <img src={src} alt={src} width={width} height={height} />
+            <img src={`/images${src}`} alt={src} width={width} height={height} />
         </ImageContainer>
     )
 }

@@ -1,5 +1,9 @@
 export interface MiddleBlockProps {
     title: string
-    content: string
-    button: string
+    subTitle: string
+    listings: {
+        title: string
+        items: string[]
+    }[]
+    src: string
 }

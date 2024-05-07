@@ -1,25 +1,30 @@
 import { Col, Row } from "antd"
 import { Slide } from "react-awesome-reveal"
 
-import Button from "../../common/Button"
-import { Content, ContentWrapper, MiddleBlockSection } from "./styles"
+import Content from "../../common/Content"
+import ContentListing from "../../common/ContentListing"
+import Image from "../../common/Image"
+import { MiddleBlockSection, StyledRow } from "./styles"
 import { MiddleBlockProps } from "./types"
 
 const MiddleBlock = (props: MiddleBlockProps) => {
-    const { title, content, button } = props
+    const { title, subTitle, listings, src } = props
 
     return (
         <MiddleBlockSection>
             <Slide direction="up" triggerOnce>
-                <Row justify="center" align="middle">
-                    <ContentWrapper>
-                        <Col lg={24} md={24} sm={24} xs={24}>
-                            <h6>{title}</h6>
-                            <Content>{content}</Content>
-                            {button && <Button>{button}</Button>}
-                        </Col>
-                    </ContentWrapper>
-                </Row>
+                <h6>{title}</h6>
+                <StyledRow justify="center" align="middle">
+                    <Col lg={14} md={16} xs={24}>
+                        <div>
+                            <Content content={subTitle} />
+                            <ContentListing listings={listings} />
+                        </div>
+                    </Col>
+                    <Col lg={10} md={8} xs={24}>
+                        <Image src={src} width="100%" height="100%" />
+                    </Col>
+                </StyledRow>
             </Slide>
         </MiddleBlockSection>
     )

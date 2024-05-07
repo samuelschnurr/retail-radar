@@ -1,25 +1,20 @@
+import { Row } from "antd"
 import styled from "styled-components"
 
 export const MiddleBlockSection = styled("section")`
     position: relative;
-    padding: 7.5rem 0 3rem;
+    padding: 4rem 0 2rem;
     text-align: center;
-    display: flex;
     justify-content: center;
 
-    @media screen and (max-width: ${p => p.theme.breakpoints.large}) {
-        padding: 5.5rem 0 3rem;
+    @media only screen and (max-width: ${p => p.theme.breakpoints.large}) {
+        padding: 2rem 0 1rem;
     }
 `
-
-export const Content = styled("p")`
-    padding: 0.75rem 0 0.75rem;
-`
-
-export const ContentWrapper = styled("div")`
-    max-width: 570px;
+export const StyledRow = styled(Row)`
+    flex-direction: row;
 
     @media only screen and (max-width: ${p => p.theme.breakpoints.medium}) {
-        max-width: 100%;
+        flex-direction: row-reverse;
     }
 `

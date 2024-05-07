@@ -1,0 +1,28 @@
+{
+    "title": "Warum RetailRadar?",
+    "subTitle": "RetailRadar bietet eine Reihe von Vorteilen gegenüber eigenständigen Recherchen und traditionellen Verkaufsgesprächen.",
+    "listings": [
+        {
+            "listTitle": "Umfassende Produktkenntnisse",
+            "listItems": ["RetailRadar kennt Details und Besonderheiten aller Produkte."]
+        },
+        {
+            "listTitle": "Datenbasierte Empfehlungen",
+            "listItems": ["RetailRadar liefert fundierte Empfehlungen aus Millionen von Daten."]
+        },
+        {
+            "listTitle": "Objektive Beratung",
+            "listItems": ["RetailRadar bietet unvoreingenommene Empfehlungen."]
+        },
+        {
+            "listTitle": "Immer erreichbar",
+            "listItems": ["RetailRadar ist rund um die Uhr verfügbar."]
+        }
+    ],
+    "src": [
+        "/images/mascot/chatHistory1.png",
+        "/images/mascot/chatHistory2.png",
+        "/images/mascot/chatHistory3.png",
+        "/images/mascot/chatHistory4.png"
+    ]
+}

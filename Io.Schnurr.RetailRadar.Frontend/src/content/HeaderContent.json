@@ -1,3 +1,7 @@
 {
-    "button": "Jetzt starten"
+    "src": "/images/logo/logo.png",
+    "button": {
+        "text": "Jetzt starten",
+        "link": "/messenger"
+    }
 }

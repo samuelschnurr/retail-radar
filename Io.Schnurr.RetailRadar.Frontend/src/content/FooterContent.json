@@ -1,0 +1,13 @@
+{
+    "src": "/images/logo/logo.png",
+    "links": [
+        {
+            "text": "Datenschutz",
+            "link": "/datenschutz"
+        },
+        {
+            "text": "Impressum",
+            "link": "/impressum"
+        }
+    ]
+}

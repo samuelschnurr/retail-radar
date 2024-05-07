@@ -6,7 +6,7 @@ const Logo = (props: LogoProps) => {
 
     return (
         <LogoContainer to={href ?? ""}>
-            <img src={`/images/logo/${src}`} alt={src} width={width} height={height} />
+            <img src={src} alt={src} width={width} height={height} />
         </LogoContainer>
     )
 }

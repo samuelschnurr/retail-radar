@@ -5,13 +5,13 @@ export const StyledButton = styled("button")<{ color?: string }>`
     color: ${p => (p.color ? p.theme.colors.primaryDark : p.theme.colors.background)};
     font-size: 1rem;
     font-weight: ${p => p.theme.font.weight.bold};
-    width: 180px;
+    width: auto;
+    max-width: 256px;
     border: 1px solid ${p => p.theme.colors.backgroundDark};
     border-radius: 4px;
-    padding: 13px 0;
+    padding: 16px;
     cursor: pointer;
-    margin-top: 0.625rem;
-    max-width: 180px;
+
     transition: all 0.3s ease-in-out;
     box-shadow: 0 16px 30px rgb(23 31 114 / 20%);
 

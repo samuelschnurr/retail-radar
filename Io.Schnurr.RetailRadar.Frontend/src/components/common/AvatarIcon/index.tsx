@@ -5,7 +5,7 @@ import { AvatarIconProps } from "./types"
 const AvatarIcon = (props: AvatarIconProps) => {
     const { src, info, status } = props
 
-    return <Avatar name={info} src={src} status={status} />
+    return <Avatar name={info} src={`/images/${src}`} status={status} />
 }
 
 export default AvatarIcon

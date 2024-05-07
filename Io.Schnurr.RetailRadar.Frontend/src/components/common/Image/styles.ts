@@ -8,7 +8,7 @@ export const ImageContainer = styled(Link)<{
 }>`
     display: flex;
     position: relative;
-    cursor: ${p => (p.to ? "hand" : "default")};
+    cursor: ${p => (p.to ? "pointer" : "default")};
 
     img {
         margin: auto;

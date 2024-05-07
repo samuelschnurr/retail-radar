@@ -2,7 +2,7 @@ import { Row } from "antd"
 import { Link } from "react-router-dom"
 
 import Container from "../../common/Container"
-import Logo from "../../common/Logo"
+import Image from "../../common/Image"
 import { FooterLinks, FooterSection } from "./styles"
 
 const Footer = () => {
@@ -10,7 +10,7 @@ const Footer = () => {
         <FooterSection>
             <Container>
                 <Row justify="space-between" align="middle">
-                    <Logo src="logo.png" width="101px" height="64px" href="/" />
+                    <Image src="/logo/logo.png" width="128" height="64px" href="/" />
                     <FooterLinks>
                         <Link to="datenschutz">Datenschutz</Link>
                         <Link to="impressum">Impressum</Link>

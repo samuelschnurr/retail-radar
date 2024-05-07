@@ -9,6 +9,7 @@ export const ScrollUpContainer = styled("div")<{
     bottom: 30px;
     z-index: 10;
     cursor: pointer;
+    color: ${p => p.theme.colors.primary};
     background: ${p => p.theme.colors.backgroundDark};
     text-align: center;
     align-items: center;

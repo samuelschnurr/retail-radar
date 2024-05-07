@@ -3,4 +3,5 @@ export interface ImageProps {
     width: string
     height: string
     href?: string
+    centerOnMobile?: boolean
 }

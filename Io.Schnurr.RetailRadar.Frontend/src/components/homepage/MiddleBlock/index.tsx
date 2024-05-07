@@ -22,7 +22,7 @@ const MiddleBlock = (props: MiddleBlockProps) => {
                         </div>
                     </Col>
                     <Col lg={10} md={8} xs={24}>
-                        <Image src={src} width="100%" height="100%" />
+                        <Image src={src} width="100%" height="100%" centerOnMobile={true} />
                     </Col>
                 </StyledRow>
             </Slide>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export const LogoContainer = styled(Link)<{
+export const ImageContainer = styled(Link)<{
     to?: string
 }>`
     display: flex;

@@ -1,3 +1,4 @@
 export interface HeaderContentProps {
-    button: string
+    src: string
+    button: { text: string; link: string }
 }

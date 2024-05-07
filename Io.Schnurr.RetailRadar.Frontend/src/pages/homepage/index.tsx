@@ -21,7 +21,7 @@ const Homepage = () => {
                 <IntroBlock
                     title={IntroBlockContent.title}
                     subTitle={IntroBlockContent.subTitle}
-                    icon={IntroBlockContent.src}
+                    src={IntroBlockContent.src}
                 />
                 <MiddleBlock
                     title={MiddleBlockContent.title}
@@ -32,6 +32,7 @@ const Homepage = () => {
                 <EndBlock
                     title={EndBlockContent.title}
                     subTitle={EndBlockContent.subTitle}
+                    subTitle2={EndBlockContent.subTitle2}
                     button={EndBlockContent.button}
                     src={EndBlockContent.src}
                 />

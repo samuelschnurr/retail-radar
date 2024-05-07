@@ -6,14 +6,10 @@ export const ContentSection = styled("section")`
 
     @media only screen and (max-width: ${p => p.theme.breakpoints.large}) {
         padding: 4rem 0 2rem;
+        text-align: center;
     }
 `
 
 export const Content = styled("p")`
     margin: 1.5rem 0 2rem 0;
-`
-
-export const ContentWrapper = styled("div")`
-    position: relative;
-    max-width: 540px;
 `

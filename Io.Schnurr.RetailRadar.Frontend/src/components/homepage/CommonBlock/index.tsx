@@ -13,7 +13,7 @@ const CommonBlock = (props: CommonBlockProps) => {
                 <Row key={itemIndex} justify="space-between" align="middle">
                     <Col xs={24}>
                         <h6>{item.title}</h6>
-                        <Content content={item.subTitle} />
+                        {item.subTitle ?? <Content content={item.subTitle} />}
                         {item.texts.map((text, textIndex) => (
                             <Content key={textIndex} content={text} />
                         ))}

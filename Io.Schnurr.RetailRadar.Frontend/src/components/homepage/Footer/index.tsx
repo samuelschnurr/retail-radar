@@ -10,7 +10,7 @@ const Footer = () => {
         <FooterSection>
             <Container>
                 <Row justify="space-between" align="middle">
-                    <Image src="/logo/logo.png" width="128" height="64px" href="/" />
+                    <Image src="/logo/logo.png" width="179px" height="64px" href="/" />
                     <FooterLinks>
                         <Link to="/datenschutz">Datenschutz</Link>
                         <Link to="/impressum">Impressum</Link>

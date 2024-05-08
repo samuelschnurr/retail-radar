@@ -1,10 +1,9 @@
-import { Row } from "antd"
 import { useNavigate } from "react-router-dom"
 
 import Button from "../../common/Button"
 import Container from "../../common/Container"
 import Image from "../../common/Image"
-import { HeaderSection } from "./styles"
+import { HeaderSection, StyledRow } from "./styles"
 import { HeaderContentProps } from "./types"
 
 const Header = (props: HeaderContentProps) => {
@@ -14,10 +13,10 @@ const Header = (props: HeaderContentProps) => {
     return (
         <HeaderSection>
             <Container>
-                <Row justify="space-between">
+                <StyledRow justify="space-between">
                     <Image src={src} width="179px" height="64px" href="/" />
                     {button && <Button onClick={() => navigate(button.link)}>{button.text}</Button>}
-                </Row>
+                </StyledRow>
             </Container>
         </HeaderSection>
     )

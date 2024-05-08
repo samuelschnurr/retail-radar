@@ -28,5 +28,6 @@ export const FooterLinks = styled("div")`
 
     @media screen and (max-width: ${p => p.theme.breakpoints.small}) {
         flex-direction: column;
+        margin-top: 1rem;
     }
 `

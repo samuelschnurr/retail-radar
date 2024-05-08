@@ -12,8 +12,8 @@ const Footer = () => {
                 <Row justify="space-between" align="middle">
                     <Image src="/logo/logo.png" width="128" height="64px" href="/" />
                     <FooterLinks>
-                        <Link to="datenschutz">Datenschutz</Link>
-                        <Link to="impressum">Impressum</Link>
+                        <Link to="/datenschutz">Datenschutz</Link>
+                        <Link to="/impressum">Impressum</Link>
                     </FooterLinks>
                 </Row>
             </Container>

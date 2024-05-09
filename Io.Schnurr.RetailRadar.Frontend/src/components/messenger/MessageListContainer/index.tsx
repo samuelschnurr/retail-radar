@@ -14,15 +14,20 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
     const isRequestRunning = useHookstate(false)
     const intervalDelay = conversation.isTyping ? 2500 : null
 
-    useInterval(async () => {
-        if (isRequestRunning.get() || !conversation.isTyping) {
-            return
+    const pollMessages = async () => {
+        try {
+            if (isRequestRunning.get() || !conversation.isTyping) {
+                return
+            }
+            isRequestRunning.set(true)
+            await getAssistantMessage(thread.id)
+            isRequestRunning.set(false)
+        } catch (error) {
+            console.error(`An error occured while using useInterval within pollMessages: ${error}`)
         }
+    }
 
-        isRequestRunning.set(true)
-        await getAssistantMessage(thread.id)
-        isRequestRunning.set(false)
-    }, intervalDelay)
+    useInterval(pollMessages, intervalDelay)
 
     return (
         <MessageList

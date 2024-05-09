@@ -10,17 +10,20 @@ const BounceButton = (props: BounceButtonProps) => {
     const intervalCount = useHookstate(0)
     const isFirstRun = intervalCount.get() === 0
 
-    useInterval(
-        () => {
+    const startBouncing = async () => {
+        try {
             intervalCount.set(i => i + 1)
             isBouncing.set(true)
 
             setTimeout(() => {
                 isBouncing.set(false)
             }, bounceDuration)
-        },
-        isFirstRun ? startDelay : isBouncing.get() ? null : intervalDelay
-    )
+        } catch (error) {
+            console.error(`An error occured while using useInterval within startBouncing: ${error}`)
+        }
+    }
+
+    useInterval(startBouncing, isFirstRun ? startDelay : isBouncing.get() ? null : intervalDelay)
 
     return (
         <StyledBounceButton

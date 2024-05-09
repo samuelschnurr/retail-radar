@@ -14,7 +14,7 @@ const Header = (props: HeaderContentProps) => {
         <HeaderSection>
             <Container>
                 <StyledRow justify="space-between">
-                    <Image src={src} width="179px" height="64px" href="/" />
+                    <Image src={src} width="114px" height="40px" href="/" />
                     {button && <Button onClick={() => navigate(button.link)}>{button.text}</Button>}
                 </StyledRow>
             </Container>

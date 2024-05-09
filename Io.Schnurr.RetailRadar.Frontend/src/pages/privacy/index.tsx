@@ -4,6 +4,7 @@
 import Container from "../../components/common/Container"
 import Footer from "../../components/homepage/Footer"
 import Header from "../../components/homepage/Header"
+import FooterContent from "../../content/FooterContent.json"
 import HeaderContent from "../../content/HeaderContent.json"
 import { PrivacySection } from "./styles"
 
@@ -417,7 +418,7 @@ const Privacy = () => {
                     </p>
                 </Container>
             </PrivacySection>
-            <Footer />
+            <Footer src={FooterContent.src} />
         </>
     )
 }

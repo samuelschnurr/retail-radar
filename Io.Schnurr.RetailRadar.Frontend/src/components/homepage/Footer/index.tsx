@@ -4,13 +4,16 @@ import { Link } from "react-router-dom"
 import Container from "../../common/Container"
 import Image from "../../common/Image"
 import { FooterLinks, FooterSection } from "./styles"
+import { FooterContentProps } from "./types"
 
-const Footer = () => {
+const Footer = (props: FooterContentProps) => {
+    const { src } = props
+
     return (
         <FooterSection>
             <Container>
                 <Row justify="space-between" align="middle">
-                    <Image src="/logo/logo.png" width="179px" height="64px" href="/" />
+                    <Image src={src} width="114px" height="40px" href="/" />{" "}
                     <FooterLinks>
                         <Link to="/datenschutz">Datenschutz</Link>
                         <Link to="/impressum">Impressum</Link>

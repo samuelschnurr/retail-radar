@@ -2,6 +2,7 @@ import Container from "../../components/common/Container"
 import CommonBlock from "../../components/homepage/CommonBlock"
 import Footer from "../../components/homepage/Footer"
 import Header from "../../components/homepage/Header"
+import FooterContent from "../../content/FooterContent.json"
 import HeaderContent from "../../content/HeaderContent.json"
 import { NotFoundSection } from "./styles"
 
@@ -22,7 +23,7 @@ const NotFound = () => {
                     />
                 </Container>
             </NotFoundSection>
-            <Footer />
+            <Footer src={FooterContent.src} />
         </>
     )
 }

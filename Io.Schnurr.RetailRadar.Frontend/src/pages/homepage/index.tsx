@@ -6,6 +6,7 @@ import Header from "../../components/homepage/Header"
 import IntroBlock from "../../components/homepage/IntroBlock"
 import MiddleBlock from "../../components/homepage/MiddleBlock"
 import EndBlockContent from "../../content/EndBlockContent.json"
+import FooterContent from "../../content/FooterContent.json"
 import HeaderContent from "../../content/HeaderContent.json"
 import IntroBlockContent from "../../content/IntroBlockContent.json"
 import MiddleBlockContent from "../../content/MiddleBlockContent.json"
@@ -35,7 +36,7 @@ const Homepage = () => {
                     src={EndBlockContent.src}
                 />
             </Container>
-            <Footer />
+            <Footer src={FooterContent.src} />
         </>
     )
 }

@@ -2,6 +2,7 @@ import Container from "../../components/common/Container"
 import CommonBlock from "../../components/homepage/CommonBlock"
 import Footer from "../../components/homepage/Footer"
 import Header from "../../components/homepage/Header"
+import FooterContent from "../../content/FooterContent.json"
 import HeaderContent from "../../content/HeaderContent.json"
 import ImprintContent from "../../content/ImprintContent.json"
 import { ImprintSection } from "./styles"
@@ -15,7 +16,7 @@ const Imprint = () => {
                     <CommonBlock content={ImprintContent} />
                 </Container>
             </ImprintSection>
-            <Footer />
+            <Footer src={FooterContent.src} />
         </>
     )
 }

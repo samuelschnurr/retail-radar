@@ -11,7 +11,7 @@ public class AssistantService
 
     public AssistantService(IConfiguration configuration)
     {
-        client = new AssistantsClient(configuration["OpenAi:Authorization"]);
+        client = new AssistantsClient(new Uri(configuration["OpenAi:BaseAddress"]), new AzureKeyCredential(configuration["OpenAi:Authorization"]));
         runOptions = new CreateRunOptions(configuration["OpenAi:AssistantId"]) { AdditionalInstructions = "Talk german" };
     }
 

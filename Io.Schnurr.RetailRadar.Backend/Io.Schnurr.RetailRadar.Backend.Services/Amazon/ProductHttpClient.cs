@@ -2,7 +2,6 @@
 
 internal class ProductHttpClient : HttpClient
 {
-    private const string baseAddress = "https://api.asindataapi.com";
     private const string affiliateId = "retaildisc0d8-21";
     private readonly string authorization;
     private readonly Dictionary<string, string> defaultParameters = new()
@@ -17,7 +16,7 @@ internal class ProductHttpClient : HttpClient
         { "include_html", "false" }
     };
 
-    public ProductHttpClient(string authorization)
+    public ProductHttpClient(string authorization, string baseAddress)
     {
         BaseAddress = new Uri(baseAddress);
         this.authorization = authorization;

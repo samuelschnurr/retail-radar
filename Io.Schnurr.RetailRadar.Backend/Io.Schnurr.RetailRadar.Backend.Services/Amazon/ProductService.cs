@@ -7,7 +7,7 @@ namespace Io.Schnurr.RetailRadar.Backend.Services.Amazon;
 
 public class ProductService(IConfiguration configuration)
 {
-    private readonly ProductHttpClient httpClient = new(configuration["Amazon:Authorization"]);
+    private readonly ProductHttpClient httpClient = new(configuration["Amazon:Authorization"], configuration["Amazon:BaseAddress"]);
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
 
     public async Task<string> GetStringWithProductLinks(string content)

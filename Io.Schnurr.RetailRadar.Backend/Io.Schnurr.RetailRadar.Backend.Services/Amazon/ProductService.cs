@@ -1,13 +1,12 @@
-﻿using System.Net.Http.Json;
-using System.Text.RegularExpressions;
-using Io.Schnurr.RetailRadar.Backend.Services.Amazon.Models;
+﻿using System.Text.RegularExpressions;
+using HtmlAgilityPack;
 using Microsoft.Extensions.Configuration;
 
 namespace Io.Schnurr.RetailRadar.Backend.Services.Amazon;
 
 public class ProductService(IConfiguration configuration)
 {
-    private readonly ProductHttpClient httpClient = new(configuration["Amazon:Authorization"], configuration["Amazon:BaseAddress"]);
+    private readonly ProductHttpClient httpClient = new(configuration["Amazon:BaseAddress"]);
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
 
     public async Task<string> GetStringWithProductLinks(string content)
@@ -26,7 +25,19 @@ public class ProductService(IConfiguration configuration)
         return result;
     }
 
-    private static Product? GetBestMatchingProduct(ProductSearch productSearch) => productSearch?.Results?.FirstOrDefault();
+    private static string? GetBestMatchingAsin(string productSearchResultHtmlContent, string searchTerm)
+    {
+        string dataAsinAttribute = "data-asin";
+        var xPathFindAsinByKeyWord = $"//div[@{dataAsinAttribute} and @{dataAsinAttribute}!='' and contains(., '{searchTerm.ToLower()}')]";
+
+        HtmlDocument doc = new();
+        doc.LoadHtml(productSearchResultHtmlContent.ToLower());
+
+        var relevantNodes = doc.DocumentNode.SelectNodes(xPathFindAsinByKeyWord);
+        var bestMatchingAsin = relevantNodes.Select(r => r.Attributes[dataAsinAttribute].Value.ToUpper()).First();
+
+        return bestMatchingAsin;
+    }
 
     private async Task<string> GetProductLinkAsync(string? searchTerm)
     {
@@ -35,43 +46,56 @@ public class ProductService(IConfiguration configuration)
             throw new ArgumentNullException(nameof(searchTerm));
         }
 
-        var productSearch = await GetProductSearchAsync(searchTerm);
-        var bestMatchingProduct = GetBestMatchingProduct(productSearch);
+        var productSearchResultHtmlContent = await GetProductSearchResultHtmlContentAsync(searchTerm);
+        var bestMatchingAsin = GetBestMatchingAsin(productSearchResultHtmlContent, searchTerm);
 
-        if (bestMatchingProduct == null || string.IsNullOrWhiteSpace(bestMatchingProduct.Link))
+        if (string.IsNullOrWhiteSpace(bestMatchingAsin))
         {
-            throw new InvalidOperationException(nameof(bestMatchingProduct));
+            throw new InvalidOperationException(nameof(bestMatchingAsin));
         }
 
-        var htmlLink = RenderLinkAsHtml(searchTerm, bestMatchingProduct!.Link!);
+        var htmlLink = RenderLinkAsHtml(searchTerm, bestMatchingAsin);
 
         return htmlLink;
     }
 
-    private static string RenderLinkAsHtml(string searchTerm, string link)
+    private string RenderLinkAsHtml(string searchTerm, string asin)
     {
+        var affiliateId = "retaildisc0d8-21";
+        var amazonAsinPath = "/dp";
+
+        var parameters = new Dictionary<string, string>
+        {
+            { "associate_id", affiliateId },
+            { "tag", affiliateId },
+        };
+
+        string link = $"{httpClient.BaseAddress}/{amazonAsinPath}/{asin}?{ProductHttpClient.CreateQueryString(parameters)}";
+
         var htmlLink = $"<a href='{link}' target='_blank'>{searchTerm}</a> ";
 
         return htmlLink;
     }
 
-    private async Task<ProductSearch> GetProductSearchAsync(string searchTerm)
+    private async Task<string> GetProductSearchResultHtmlContentAsync(string searchTerm)
     {
-        string url = httpClient.GetProductSearchUrl(searchTerm);
-        HttpResponseMessage response = await httpClient.GetAsync(url);
+        string url = ProductHttpClient.GetProductSearchUrl(searchTerm);
+        var request = new HttpRequestMessage(HttpMethod.Get, url);
+        request.Headers.Add("Cookie", "i18n-prefs=EUR;");
+        var response = await httpClient.SendAsync(request);
 
         if (response.IsSuccessStatusCode)
         {
-            var productSearchResult = await response.Content.ReadFromJsonAsync<ProductSearch>();
+            var productSearchResultHtmlContent = await response.Content.ReadAsStringAsync();
 
-            if (productSearchResult == null)
+            if (productSearchResultHtmlContent == null)
             {
-                throw new InvalidOperationException(nameof(productSearchResult));
+                throw new InvalidOperationException(nameof(productSearchResultHtmlContent));
             }
 
-            return productSearchResult;
+            return productSearchResultHtmlContent;
         }
 
-        throw new HttpRequestException($"Error {response.StatusCode} while getting {nameof(ProductSearch)}.");
+        throw new HttpRequestException($"Error {response.StatusCode} while getting html content for {nameof(searchTerm)} '{searchTerm}'.");
     }
 }

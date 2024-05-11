@@ -18,7 +18,7 @@ internal class ProductHttpClient : HttpClient
             { "k", searchTerm },
         };
 
-        string url = $"{amazonSearchPath}?{CreateQueryString(parameters)}";
+        string url = $"{amazonSearchPath}?{CreateQueryString(parameters).Replace(" ", "+")}";
 
         return url;
     }

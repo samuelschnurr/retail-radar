@@ -9,7 +9,7 @@ internal class ProductHttpClient : HttpClient
 
     internal static string CreateQueryString(Dictionary<string, string> parameters) => string.Join("&", parameters.Select(p => $"{p.Key}={p.Value}"));
 
-    internal static string GetProductSearchUrl(string searchTerm)
+    internal string GetProductSearchUrl(string searchTerm)
     {
         var amazonSearchPath = "s";
 
@@ -18,7 +18,7 @@ internal class ProductHttpClient : HttpClient
             { "k", searchTerm },
         };
 
-        string url = $"{amazonSearchPath}?{CreateQueryString(parameters).Replace(" ", "+")}";
+        string url = $"{BaseAddress}{amazonSearchPath}?{CreateQueryString(parameters).Replace(" ", "+")}";
 
         return url;
     }

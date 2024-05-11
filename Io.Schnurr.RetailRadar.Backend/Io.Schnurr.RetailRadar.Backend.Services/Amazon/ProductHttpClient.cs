@@ -11,7 +11,7 @@ internal class ProductHttpClient : HttpClient
 
     internal static string GetProductSearchUrl(string searchTerm)
     {
-        var amazonSearchPath = "/s";
+        var amazonSearchPath = "s";
 
         var parameters = new Dictionary<string, string>
         {

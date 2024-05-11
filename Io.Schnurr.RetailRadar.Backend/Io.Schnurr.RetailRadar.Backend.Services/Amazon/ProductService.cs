@@ -62,7 +62,7 @@ public class ProductService(IConfiguration configuration)
     private string RenderLinkAsHtml(string searchTerm, string asin)
     {
         var affiliateId = "retaildisc0d8-21";
-        var amazonAsinPath = "/dp";
+        var amazonAsinPath = "dp/";
 
         var parameters = new Dictionary<string, string>
         {
@@ -70,7 +70,7 @@ public class ProductService(IConfiguration configuration)
             { "tag", affiliateId },
         };
 
-        string link = $"{httpClient.BaseAddress}/{amazonAsinPath}/{asin}?{ProductHttpClient.CreateQueryString(parameters)}";
+        string link = $"{httpClient.BaseAddress}{amazonAsinPath}{asin}?{ProductHttpClient.CreateQueryString(parameters)}";
 
         var htmlLink = $"<a href='{link}' target='_blank'>{searchTerm}</a> ";
 

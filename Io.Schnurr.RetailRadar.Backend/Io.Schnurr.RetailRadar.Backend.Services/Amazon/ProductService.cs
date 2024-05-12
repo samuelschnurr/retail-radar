@@ -15,10 +15,12 @@ public class ProductService(IConfiguration configuration)
 
         var result = content;
 
+        Dictionary<string, string?> searchTermAsins = [];
+
         for (int i = 0; i < matches.Count; i++)
         {
             Match match = matches[i];
-            var productLink = await GetProductLinkAsync(match.Groups[1].Value);
+            var productLink = await GetProductLinkAsync(searchTermAsins, match.Groups[1].Value);
             result = result.Replace(match.Value, productLink);
         }
 
@@ -39,17 +41,26 @@ public class ProductService(IConfiguration configuration)
         return bestMatchingAsin;
     }
 
-    private async Task<string> GetProductLinkAsync(string? searchTerm)
+    private async Task<string> GetProductLinkAsync(Dictionary<string, string?> searchTermAsins, string? searchTerm)
     {
         if (string.IsNullOrWhiteSpace(searchTerm))
         {
             throw new ArgumentNullException(nameof(searchTerm));
         }
 
-        var productSearchResultHtmlContent = await GetProductSearchResultHtmlContentAsync(searchTerm);
-        var bestMatchingAsin = GetBestMatchingAsin(productSearchResultHtmlContent, searchTerm);
+        string htmlLink;
 
-        var htmlLink = RenderLinkAsHtml(searchTerm, bestMatchingAsin);
+        if (searchTermAsins.TryGetValue(searchTerm, out string? value))
+        {
+            htmlLink = RenderLinkAsHtml(searchTerm, value);
+        }
+        else
+        {
+            var productSearchResultHtmlContent = await GetProductSearchResultHtmlContentAsync(searchTerm);
+            var bestMatchingAsin = GetBestMatchingAsin(productSearchResultHtmlContent, searchTerm);
+            searchTermAsins.Add(searchTerm, bestMatchingAsin);
+            htmlLink = RenderLinkAsHtml(searchTerm, bestMatchingAsin);
+        }
 
         return htmlLink;
     }

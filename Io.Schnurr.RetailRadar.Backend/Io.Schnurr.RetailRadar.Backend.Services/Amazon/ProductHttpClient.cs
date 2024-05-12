@@ -1,40 +1,28 @@
-﻿namespace Io.Schnurr.RetailRadar.Backend.Services.Amazon;
+﻿using System.Net;
+
+namespace Io.Schnurr.RetailRadar.Backend.Services.Amazon;
 
 internal class ProductHttpClient : HttpClient
 {
-    private const string affiliateId = "retaildisc0d8-21";
-    private readonly string authorization;
-    private readonly Dictionary<string, string> defaultParameters = new()
-    {
-        { "type", "search" },
-        { "amazon_domain", "amazon.de" },
-        { "language", "de_DE" },
-        { "exclude_sponsored", "true" },
-        { "page", "1" },
-        { "max_page", "1" },
-        { "output", "json" },
-        { "include_html", "false" }
-    };
+    static readonly HttpClientHandler httpHandler = new() { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate };
 
-    public ProductHttpClient(string authorization, string baseAddress)
+    public ProductHttpClient(string baseAddress) : base(httpHandler)
     {
         BaseAddress = new Uri(baseAddress);
-        this.authorization = authorization;
     }
+
+    internal static string CreateQueryString(Dictionary<string, string> parameters) => string.Join("&", parameters.Select(p => $"{p.Key}={p.Value}"));
 
     internal string GetProductSearchUrl(string searchTerm)
     {
+        var amazonSearchPath = "s";
+
         var parameters = new Dictionary<string, string>
         {
-            { "api_key", authorization },
-            { "associate_id", affiliateId },
-            { "tag", affiliateId },
-            { "search_term", searchTerm },
-        }
-        .Union(defaultParameters);
+            { "k", searchTerm },
+        };
 
-        string queryString = string.Join("&", parameters.Select(p => $"{p.Key}={p.Value}"));
-        string url = $"/request?{queryString}";
+        string url = $"{amazonSearchPath}?{CreateQueryString(parameters).Replace(" ", "+")}";
 
         return url;
     }

@@ -34,7 +34,7 @@ public class ProductService(IConfiguration configuration)
         doc.LoadHtml(productSearchResultHtmlContent.ToLower());
 
         var relevantNodes = doc.DocumentNode.SelectNodes(xPathFindAsinByKeyWord);
-        var bestMatchingAsin = relevantNodes.Select(r => r.Attributes[dataAsinAttribute].Value.ToUpper()).First();
+        var bestMatchingAsin = relevantNodes?.Select(r => r.Attributes[dataAsinAttribute].Value.ToUpper()).FirstOrDefault();
 
         return bestMatchingAsin;
     }
@@ -49,17 +49,12 @@ public class ProductService(IConfiguration configuration)
         var productSearchResultHtmlContent = await GetProductSearchResultHtmlContentAsync(searchTerm);
         var bestMatchingAsin = GetBestMatchingAsin(productSearchResultHtmlContent, searchTerm);
 
-        if (string.IsNullOrWhiteSpace(bestMatchingAsin))
-        {
-            throw new InvalidOperationException(nameof(bestMatchingAsin));
-        }
-
         var htmlLink = RenderLinkAsHtml(searchTerm, bestMatchingAsin);
 
         return htmlLink;
     }
 
-    private string RenderLinkAsHtml(string searchTerm, string asin)
+    private string RenderLinkAsHtml(string searchTerm, string? asin)
     {
         var affiliateId = "retaildisc0d8-21";
         var amazonAsinPath = "dp/";
@@ -70,7 +65,16 @@ public class ProductService(IConfiguration configuration)
             { "tag", affiliateId },
         };
 
-        string link = $"{httpClient.BaseAddress}{amazonAsinPath}{asin}?{ProductHttpClient.CreateQueryString(parameters)}";
+        string link;
+
+        if (string.IsNullOrWhiteSpace(asin))
+        {
+            link = $"https://www.google.de/search?q={searchTerm}";
+        }
+        else
+        {
+            link = $"{httpClient.BaseAddress}{amazonAsinPath}{asin}?{ProductHttpClient.CreateQueryString(parameters)}";
+        }
 
         var htmlLink = $"<a href='{link}' target='_blank'>{searchTerm}</a> ";
 
@@ -79,9 +83,8 @@ public class ProductService(IConfiguration configuration)
 
     private async Task<string> GetProductSearchResultHtmlContentAsync(string searchTerm)
     {
-        string url = ProductHttpClient.GetProductSearchUrl(searchTerm);
+        string url = httpClient.GetProductSearchUrl(searchTerm);
         var request = new HttpRequestMessage(HttpMethod.Get, url);
-        request.Headers.Add("Cookie", "i18n-prefs=EUR;");
         var response = await httpClient.SendAsync(request);
 
         if (response.IsSuccessStatusCode)

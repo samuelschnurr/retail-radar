@@ -56,7 +56,7 @@ export async function getAssistantMessage(threadId: string | null) {
 
 export function addErrorConversationMessage() {
     addChatConversationMessage(
-        "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+        "Entschuldigung, es ist ein Fehler bei der Verarbeitung aufgetreten. Bitte versuchen Sie es erneut.",
         "incoming"
     )
 }

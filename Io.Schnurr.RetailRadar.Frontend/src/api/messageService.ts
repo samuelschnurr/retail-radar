@@ -12,7 +12,7 @@ export async function getMessage(threadId: string, runId: string): Promise<Messa
 }
 
 export async function postMessage(message: Message): Promise<Message | null> {
-    const response = await apiClient.post("/message", message)
+    const response = await apiClient.post("message", message)
 
     if (response && response.data) {
         return response.data as Message

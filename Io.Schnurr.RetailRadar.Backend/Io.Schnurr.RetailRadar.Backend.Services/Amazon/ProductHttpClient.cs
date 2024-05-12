@@ -1,8 +1,12 @@
-﻿namespace Io.Schnurr.RetailRadar.Backend.Services.Amazon;
+﻿using System.Net;
+
+namespace Io.Schnurr.RetailRadar.Backend.Services.Amazon;
 
 internal class ProductHttpClient : HttpClient
 {
-    public ProductHttpClient(string baseAddress)
+    static readonly HttpClientHandler httpHandler = new() { AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate };
+
+    public ProductHttpClient(string baseAddress) : base(httpHandler)
     {
         BaseAddress = new Uri(baseAddress);
     }
@@ -18,7 +22,7 @@ internal class ProductHttpClient : HttpClient
             { "k", searchTerm },
         };
 
-        string url = $"{BaseAddress}{amazonSearchPath}?{CreateQueryString(parameters).Replace(" ", "+")}";
+        string url = $"{amazonSearchPath}?{CreateQueryString(parameters).Replace(" ", "+")}";
 
         return url;
     }

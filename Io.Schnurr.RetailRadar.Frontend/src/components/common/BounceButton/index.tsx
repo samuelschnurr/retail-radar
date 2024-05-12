@@ -16,7 +16,13 @@ const BounceButton = (props: BounceButtonProps) => {
             isBouncing.set(true)
 
             setTimeout(() => {
-                isBouncing.set(false)
+                try {
+                    isBouncing.set(false)
+                } catch (error) {
+                    console.error(
+                        `An error occured while using useInterval within startBouncing: ${error}`
+                    )
+                }
             }, bounceDuration)
         } catch (error) {
             console.error(`An error occured while using useInterval within startBouncing: ${error}`)

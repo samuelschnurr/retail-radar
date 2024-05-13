@@ -16,6 +16,7 @@ const GlobalStyles = styled.createGlobalStyle`
         outline: 0;
         background: ${p => p.theme.colors.background};
         overflow-x: hidden;
+        font-size: ${p => p.theme.font.size.extraSmall};
     }
 
     h1,

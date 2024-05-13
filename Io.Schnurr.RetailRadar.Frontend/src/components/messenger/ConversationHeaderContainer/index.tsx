@@ -7,14 +7,14 @@ import { resetConversation } from "../../../states/conversation"
 import { resetThread, useThread } from "../../../states/thread"
 import AvatarIcon from "../../common/AvatarIcon"
 import BounceButton from "../../common/BounceButton"
-import { StyledButton } from "./styles"
+import { StyledButton, StyledConversationHeader } from "./styles"
 import { ConversationHeaderContainerProps } from "./types"
 
 const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) => {
     const { isLoading } = useThread()
     const navigate = useNavigate()
     return (
-        <ConversationHeader>
+        <StyledConversationHeader>
             <AvatarIcon
                 info={avatar.info}
                 src={avatar.src}
@@ -47,7 +47,7 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
                     }}
                 />
             </ConversationHeader.Actions>
-        </ConversationHeader>
+        </StyledConversationHeader>
     )
 }
 

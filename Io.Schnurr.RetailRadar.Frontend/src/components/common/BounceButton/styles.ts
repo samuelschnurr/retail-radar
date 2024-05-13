@@ -6,7 +6,7 @@ export const StyledBounceButton = styled(Button)<{
     $isBouncing: boolean
 }>`
     animation-delay: ${p => `${p.$startDelay}ms`};
-    font-size: ${p => `${p.theme.font.size.extraSmall}`};
+    font-size: ${p => `${p.theme.font.size.small}`};
 
     ${({ $isBouncing }) =>
         $isBouncing &&

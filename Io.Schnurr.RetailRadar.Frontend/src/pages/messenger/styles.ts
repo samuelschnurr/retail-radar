@@ -4,6 +4,10 @@ import styled from "styled-components"
 export const StyledChatContainer = styled(ChatContainer)`
     height: 100vh;
 
+    .cs-message__content {
+        font-family: ${p => p.theme.font.family};
+    }
+
     a {
         color: #1890ff;
         text-decoration: none;

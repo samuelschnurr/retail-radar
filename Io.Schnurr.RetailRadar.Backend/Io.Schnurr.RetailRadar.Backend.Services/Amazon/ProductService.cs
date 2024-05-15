@@ -1,13 +1,16 @@
 ﻿using System.Text.RegularExpressions;
-using HtmlAgilityPack;
+using Google.Apis.CustomSearchAPI.v1.Data;
 using Microsoft.Extensions.Configuration;
 
 namespace Io.Schnurr.RetailRadar.Backend.Services.Amazon;
 
 public class ProductService(IConfiguration configuration)
 {
-    private readonly ProductHttpClient httpClient = new(configuration["Amazon:BaseAddress"]);
+    private readonly ProductSearchClient searchClient = new(configuration["Google:Authorization"], configuration["Google:EngineId"]);
+    private readonly string affiliateId = configuration["Amazon:AffiliateId"];
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
+    private const string amazonBaseAddress = "https://www.amazon.de/";
+    private const string amazonAsinSegment = "dp/";
 
     public async Task<string> GetStringWithProductLinks(string content)
     {
@@ -27,16 +30,23 @@ public class ProductService(IConfiguration configuration)
         return result;
     }
 
-    private static string? GetBestMatchingAsin(string productSearchResultHtmlContent, string searchTerm)
+    private static string? GetBestMatchingAsin(List<Result>? searchResults)
     {
-        string dataAsinAttribute = "data-asin";
-        var xPathFindAsinByKeyWord = $"//div[@{dataAsinAttribute} and @{dataAsinAttribute}!='' and contains(., '{searchTerm.ToLower()}')]";
+        if (searchResults == null)
+        {
+            return null;
+        }
 
-        HtmlDocument doc = new();
-        doc.LoadHtml(productSearchResultHtmlContent.ToLower());
+        var bestMatchingItem = searchResults.FirstOrDefault();
 
-        var relevantNodes = doc.DocumentNode.SelectNodes(xPathFindAsinByKeyWord);
-        var bestMatchingAsin = relevantNodes?.Select(r => r.Attributes[dataAsinAttribute].Value.ToUpper()).FirstOrDefault();
+        if (bestMatchingItem == null)
+        {
+            return null;
+        }
+
+        var uri = new Uri(bestMatchingItem.Link);
+        var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
+        var bestMatchingAsin = uri.Segments.ElementAtOrDefault(dpIndex + 1);
 
         return bestMatchingAsin;
     }
@@ -56,9 +66,14 @@ public class ProductService(IConfiguration configuration)
         }
         else
         {
-            var productSearchResultHtmlContent = await GetProductSearchResultHtmlContentAsync(searchTerm);
-            var bestMatchingAsin = GetBestMatchingAsin(productSearchResultHtmlContent, searchTerm);
-            searchTermAsins.Add(searchTerm, bestMatchingAsin);
+            var productSearchResults = await searchClient.GetProductSearchResults(searchTerm);
+            var bestMatchingAsin = GetBestMatchingAsin(productSearchResults);
+
+            if (!string.IsNullOrWhiteSpace(bestMatchingAsin))
+            {
+                searchTermAsins.Add(searchTerm, bestMatchingAsin);
+            }
+
             htmlLink = RenderLinkAsHtml(searchTerm, bestMatchingAsin);
         }
 
@@ -67,9 +82,6 @@ public class ProductService(IConfiguration configuration)
 
     private string RenderLinkAsHtml(string searchTerm, string? asin)
     {
-        var affiliateId = "retaildisc0d8-21";
-        var amazonAsinPath = "dp/";
-
         var parameters = new Dictionary<string, string>
         {
             { "associate_id", affiliateId },
@@ -84,32 +96,11 @@ public class ProductService(IConfiguration configuration)
         }
         else
         {
-            link = $"{httpClient.BaseAddress}{amazonAsinPath}{asin}?{ProductHttpClient.CreateQueryString(parameters)}";
+            link = $"{amazonBaseAddress}{amazonAsinSegment}{asin}?{ProductSearchClient.CreateQueryString(parameters)}";
         }
 
         var htmlLink = $"<a href='{link}' target='_blank'>{searchTerm}</a> ";
 
         return htmlLink;
-    }
-
-    private async Task<string> GetProductSearchResultHtmlContentAsync(string searchTerm)
-    {
-        string url = httpClient.GetProductSearchUrl(searchTerm);
-        var request = new HttpRequestMessage(HttpMethod.Get, url);
-        var response = await httpClient.SendAsync(request);
-
-        if (response.IsSuccessStatusCode)
-        {
-            var productSearchResultHtmlContent = await response.Content.ReadAsStringAsync();
-
-            if (productSearchResultHtmlContent == null)
-            {
-                throw new InvalidOperationException(nameof(productSearchResultHtmlContent));
-            }
-
-            return productSearchResultHtmlContent;
-        }
-
-        throw new HttpRequestException($"Error {response.StatusCode} while getting html content for {nameof(searchTerm)} '{searchTerm}'.");
     }
 }

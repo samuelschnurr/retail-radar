@@ -16,7 +16,7 @@ internal class ProductSearchClient(string authorization, string engineId) : Cust
         try
         {
             var searchResponse = await searchRequest.ExecuteAsync();
-            return [.. searchResponse.Items];
+            return searchResponse?.Items?.ToList();
         }
         catch (Exception ex)
         {

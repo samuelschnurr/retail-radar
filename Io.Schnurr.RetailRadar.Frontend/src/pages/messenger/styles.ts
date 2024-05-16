@@ -2,7 +2,7 @@ import { ChatContainer } from "@chatscope/chat-ui-kit-react"
 import styled from "styled-components"
 
 export const StyledChatContainer = styled(ChatContainer)`
-    height: 100vh;
+    height: 100svh;
 
     .cs-message__content {
         font-family: ${p => p.theme.font.family};

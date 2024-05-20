@@ -1,7 +1,7 @@
 # Domain
 
 ## Domain Provider
-- Hosted at [Ionos](www.ionos.de)
+- Hosted at [Ionos](https://www.ionos.de)
 - Domain: retailradar.io
 
 ## Domains and Subdomains

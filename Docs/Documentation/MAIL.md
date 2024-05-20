@@ -1,5 +1,5 @@
 # Mail
-- Hosted at [Ionos]([www.ionos.de](https://email.ionos.de/))
+- Hosted at [Ionos](https://email.ionos.de/)
 - User: Private user
 
 ## Mailaccount and usage

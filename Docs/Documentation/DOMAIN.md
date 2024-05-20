@@ -3,7 +3,6 @@
 ## Domain Provider
 - Hosted at [Ionos](www.ionos.de)
 - Domain: retailradar.io
-- IPv4: 20.8.24.149
 
 ## Domains and Subdomains
 

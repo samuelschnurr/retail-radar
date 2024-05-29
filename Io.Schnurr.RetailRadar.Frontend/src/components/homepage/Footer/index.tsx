@@ -13,7 +13,7 @@ const Footer = (props: FooterContentProps) => {
         <FooterSection>
             <Container>
                 <Row justify="space-between" align="middle">
-                    <Image src={src} width="114px" height="40px" href="/" />{" "}
+                    <Image src={src} width="122px" height="89px" href="/" />
                     <FooterLinks>
                         <Link to="/datenschutz">Datenschutz</Link>
                         <Link to="/impressum">Impressum</Link>

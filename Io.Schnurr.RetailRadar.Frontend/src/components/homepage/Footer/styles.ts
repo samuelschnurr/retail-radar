@@ -5,12 +5,12 @@ export const FooterSection = styled("section")`
     position: relative;
     width: 100%;
     margin: auto;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 `
 
 export const FooterLinks = styled("div")`
-    width: 50%;
+    width: 40%;
     display: flex;
     justify-content: end;
     transition: all 0.1s ease-in-out;

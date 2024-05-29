@@ -4,5 +4,4 @@ export interface ImageProps {
     height: string
     href?: string
     shrinkOnMobile?: boolean
-    applyStyling?: boolean
 }

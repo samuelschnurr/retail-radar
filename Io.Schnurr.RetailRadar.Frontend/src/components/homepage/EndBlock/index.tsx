@@ -34,13 +34,7 @@ const EndBlock = (props: EndBlockProps) => {
                     <Col lg={10} md={8} xs={24}>
                         <Content
                             content={
-                                <Image
-                                    src={src}
-                                    width="100%"
-                                    height="100%"
-                                    shrinkOnMobile={true}
-                                    applyStyling={true}
-                                />
+                                <Image src={src} width="100%" height="100%" shrinkOnMobile={true} />
                             }
                         />
                     </Col>

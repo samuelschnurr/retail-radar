@@ -13,7 +13,7 @@ export const StyledButton = styled("button")<{ color?: string }>`
     cursor: pointer;
 
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 16px 30px rgb(23 31 114 / 20%);
+    box-shadow: 0 8px 16px rgb(23 31 114 / 20%);
 
     &:hover,
     &:active,

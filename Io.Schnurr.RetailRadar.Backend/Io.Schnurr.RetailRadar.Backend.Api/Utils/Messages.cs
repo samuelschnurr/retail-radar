@@ -21,7 +21,7 @@ internal static class Messages
         "Ein freundliches Hallo! Ich bin hier, um Ihnen als Ihr persönlicher Berater bei Ihrer Suche nach Produkten zu helfen. Welche Artikel suchen Sie heute?",
         "Ein herzliches Willkommen! Als Ihr Berater stehe ich Ihnen gerne zur Verfügung, um Ihre Einkaufswünsche zu erfüllen. Wonach suchen Sie?",
         "Ein herzliches Willkommen! Ich bin hier, um Ihnen als Ihr persönlicher Berater bei der Produktauswahl zu helfen. Was möchten Sie entdecken?",
-        "Ein herzliches Willkommen! Ich bin Ihr persönlicher Berater und stehe Ihnen mit Rat und Tat zur Seite. Wie kann ich Ihnen heute bei der Produktsucht behilflich sein?",
+        "Ein herzliches Willkommen! Ich bin Ihr persönlicher Berater und stehe Ihnen mit Rat und Tat zur Seite. Wie kann ich Ihnen heute bei der Produktsuche behilflich sein?",
         "Ein herzliches Willkommen! Mit mir als Ihrem persönlichen Berater wird Ihr Einkauf zum Kinderspiel. Welches Produkt interessieret Sie heute?",
         "Ein herzliches Willkommen! Mit mir als Ihrem persönlichen Berater wird Ihre Suche nach dem perfekten Produkt ein Erfolg. Welche Ware benötigen Sie?",
         "Guten Tag und herzlich willkommen! Als Ihr Berater bin ich hier, um Ihnen bei der Auswahl behilflich zu sein. Welcher Artikel interessierert Sie besonders?",

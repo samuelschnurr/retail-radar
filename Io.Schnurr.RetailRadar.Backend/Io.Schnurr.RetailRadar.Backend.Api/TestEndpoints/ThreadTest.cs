@@ -1,6 +1,6 @@
 ﻿using Io.Schnurr.RetailRadar.Backend.Api.Dtos;
 using Io.Schnurr.RetailRadar.Backend.Api.Utils;
-using Io.Schnurr.RetailRadar.Backend.Services.OpenAi;
+using Io.Schnurr.RetailRadar.Backend.Services.Assistant;
 
 namespace Io.Schnurr.RetailRadar.Backend.Api.TestEndpoints;
 

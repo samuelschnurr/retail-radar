@@ -2,7 +2,7 @@
 using Azure.AI.OpenAI.Assistants;
 using Microsoft.Extensions.Configuration;
 
-namespace Io.Schnurr.RetailRadar.Backend.Services.OpenAi;
+namespace Io.Schnurr.RetailRadar.Backend.Services.Assistant;
 
 public class AssistantService
 {

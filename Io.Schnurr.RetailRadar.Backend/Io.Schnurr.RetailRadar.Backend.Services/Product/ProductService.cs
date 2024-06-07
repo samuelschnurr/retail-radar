@@ -2,7 +2,7 @@
 using Google.Apis.CustomSearchAPI.v1.Data;
 using Microsoft.Extensions.Configuration;
 
-namespace Io.Schnurr.RetailRadar.Backend.Services.Amazon;
+namespace Io.Schnurr.RetailRadar.Backend.Services.Product;
 
 public class ProductService(IConfiguration configuration)
 {

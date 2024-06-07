@@ -3,7 +3,7 @@ using Google.Apis.CustomSearchAPI.v1;
 using Google.Apis.CustomSearchAPI.v1.Data;
 using static Google.Apis.CustomSearchAPI.v1.CseResource;
 
-namespace Io.Schnurr.RetailRadar.Backend.Services.Amazon;
+namespace Io.Schnurr.RetailRadar.Backend.Services.Product;
 
 internal class ProductSearchClient(string authorization, string engineId) : CustomSearchAPIService(new() { ApiKey = authorization })
 {

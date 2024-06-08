@@ -33,7 +33,7 @@ internal class ProductSearchClient(string authorization, string engineId) : Cust
         listRequest.QuotaUser = Guid.NewGuid().ToString();
 
         listRequest.Cx = engineId;
-        listRequest.Q = searchTerm;
+        listRequest.Q = $"allintext:{searchTerm}";
 
         return listRequest;
     }

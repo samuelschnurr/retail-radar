@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using System.Web;
 using Google.Apis.CustomSearchAPI.v1.Data;
 using Microsoft.Extensions.Configuration;
 
@@ -92,7 +93,8 @@ public class ProductService(IConfiguration configuration)
 
         if (string.IsNullOrWhiteSpace(asin))
         {
-            link = $"https://www.google.de/search?q={searchTerm}";
+            string encodedSearchTerm = HttpUtility.UrlEncode(searchTerm);
+            link = $"https://www.google.de/search?q={encodedSearchTerm}";
         }
         else
         {

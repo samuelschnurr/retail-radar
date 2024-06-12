@@ -12,7 +12,7 @@ public class AssistantService
     public AssistantService(IConfiguration configuration)
     {
         client = new AssistantsClient(new Uri(configuration["OpenAi:BaseAddress"]), new AzureKeyCredential(configuration["OpenAi:Authorization"]));
-        runOptions = new CreateRunOptions(configuration["OpenAi:AssistantId"]) { AdditionalInstructions = "Talk german" };
+        runOptions = new CreateRunOptions(configuration["OpenAi:AssistantId"]) { AdditionalInstructions = "Speak German. You are not allowed to speak any other language." };
     }
 
     public async Task<AssistantThread> CreateThreadAsync()

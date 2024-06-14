@@ -4,7 +4,7 @@ import { Divider } from "antd"
 import { useNavigate } from "react-router-dom"
 
 import avatar from "../../../content/AvatarContent.json"
-import { resetConversation, useConversation } from "../../../states/conversation"
+import { resetConversation } from "../../../states/conversation"
 import { resetThread, useThread } from "../../../states/thread"
 import AvatarIcon from "../../common/AvatarIcon"
 import BounceButton from "../../common/BounceButton"
@@ -13,8 +13,7 @@ import { StyledButton, StyledConversationHeader } from "./styles"
 import { ConversationHeaderContainerProps } from "./types"
 
 const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) => {
-    const { isLoading } = useThread()
-    const { messages } = useConversation()
+    const { isLoading, id } = useThread()
     const navigate = useNavigate()
 
     const openDonationSite = () => {
@@ -24,8 +23,7 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
     const sendBugReport = () => {
         const mailReceiver = ToolbarContent.bugButton.mailReceiver
         const subject = encodeURIComponent(ToolbarContent.bugButton.mailTitle)
-        const serializedJson = JSON.stringify(messages, null, 2)
-        const body = encodeURIComponent(ToolbarContent.bugButton.mailBody + serializedJson)
+        const body = encodeURIComponent(ToolbarContent.bugButton.mailBody + id)
         const mailtoLink = `mailto:${mailReceiver}?subject=${subject}&body=${body}`
         window.location.href = mailtoLink
     }

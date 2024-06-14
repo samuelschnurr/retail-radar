@@ -6,7 +6,7 @@
         "title": "Fehler melden",
         "mailReceiver": "info@retailradar.io",
         "mailTitle": "Fehlermeldung",
-        "mailBody": "Es ist beim Chatten mit Chappie ein Fehler aufgetreten. \r\n\r\nAnbei mein Chatverlauf: \r\n "
+        "mailBody": "Es ist beim Chatten mit Chappie ein Fehler aufgetreten.\r\n\r\nMein letzter Chat wurde geführt unter der Id: "
     },
     "refreshButton": {
         "title": "Chat neu starten"

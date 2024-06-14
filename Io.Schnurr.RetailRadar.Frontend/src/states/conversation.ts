@@ -19,7 +19,7 @@ export const resetConversation = () => {
     state.set({ ...defaultState })
 }
 
-export async function createUserMessage(threadId: string, content: string) {
+export async function createUserMessage(threadId: string | null, content: string) {
     state.merge({ lastRunId: null })
     addChatConversationMessage(content, "outgoing")
 

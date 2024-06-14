@@ -3,7 +3,10 @@
         "title": "Mit einem Kaffee unterstützen"
     },
     "bugButton": {
-        "title": "Fehler melden"
+        "title": "Fehler melden",
+        "mailReceiver": "info@retailradar.io",
+        "mailTitle": "Fehlermeldung",
+        "mailBody": "Es ist beim Chatten mit Chappie ein Fehler aufgetreten. \r\n\r\nAnbei mein Chatverlauf: \r\n "
     },
     "refreshButton": {
         "title": "Chat neu starten"

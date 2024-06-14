@@ -1,3 +1,5 @@
+import { Fade } from "react-awesome-reveal"
+
 import { StyledCard, StyledCardList } from "./styles"
 import { CardListProps } from "./types"
 
@@ -6,11 +8,13 @@ const CardList = (props: CardListProps) => {
 
     return (
         <StyledCardList>
-            {cardContents.map((c, index) => (
-                <StyledCard key={index} onClick={() => onClick(c)}>
-                    {c}
-                </StyledCard>
-            ))}
+            <Fade cascade damping={0.75}>
+                {cardContents.map((c, index) => (
+                    <StyledCard key={index} onClick={() => onClick(c)}>
+                        {c}
+                    </StyledCard>
+                ))}
+            </Fade>
         </StyledCardList>
     )
 }

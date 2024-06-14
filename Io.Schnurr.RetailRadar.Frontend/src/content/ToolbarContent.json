@@ -1,0 +1,14 @@
+{
+    "supportButton": {
+        "title": "Mit einem Kaffee unterstützen"
+    },
+    "bugButton": {
+        "title": "Fehler melden"
+    },
+    "refreshButton": {
+        "title": "Chat neu starten"
+    },
+    "closeButton": {
+        "title": "Chat schließen"
+    }
+}

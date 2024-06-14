@@ -17,6 +17,7 @@ declare module "styled-components" {
             radius: string
         }
         padding: {
+            small: string
             medium: string
             large: string
         }

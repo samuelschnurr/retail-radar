@@ -16,6 +16,7 @@ const LightTheme: DefaultTheme = {
         radius: "4px"
     },
     padding: {
+        small: "8px",
         medium: "16px",
         large: "32px"
     },

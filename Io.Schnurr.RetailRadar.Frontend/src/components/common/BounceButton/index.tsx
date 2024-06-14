@@ -5,7 +5,7 @@ import { StyledBounceButton } from "./styles"
 import { BounceButtonProps } from "./types"
 
 const BounceButton = (props: BounceButtonProps) => {
-    const { startDelay, intervalDelay, bounceDuration, onClick } = props
+    const { startDelay, intervalDelay, bounceDuration, title, onClick } = props
     const isBouncing = useHookstate(false)
     const intervalCount = useHookstate(0)
     const isFirstRun = intervalCount.get() === 0
@@ -35,6 +35,7 @@ const BounceButton = (props: BounceButtonProps) => {
         <StyledBounceButton
             onClick={onClick}
             icon={props.icon}
+            title={title}
             $isBouncing={isBouncing.get()}
             $startDelay={startDelay}
         />

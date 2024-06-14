@@ -19,7 +19,7 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
     const conversation = useConversation()
     const isRequestRunning = useHookstate(false)
     const intervalDelay = conversation.isTyping ? 2500 : null
-    const showExampleMessages = conversation.messages.length <= 1
+    const showExampleMessages = conversation.messages.length === 1
 
     const pollMessages = async () => {
         try {

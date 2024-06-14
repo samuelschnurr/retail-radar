@@ -45,13 +45,14 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
                 {conversation.messages.map((item: MessageModel, index: number) => (
                     <Message key={index} model={item} />
                 ))}
+                {showExampleMessages && (
+                    <CardList
+                        as={Message}
+                        cardContents={ExampleMessages}
+                        onClick={message => createUserMessage(thread.id, message)}
+                    />
+                )}
             </MessageList>
-            {showExampleMessages && (
-                <CardList
-                    cardContents={ExampleMessages}
-                    onClick={message => createUserMessage(thread.id, message)}
-                />
-            )}
         </>
     )
 }

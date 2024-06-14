@@ -4,18 +4,13 @@ import styled from "styled-components"
 import { noSelect } from "../../../styles/sharedStyles"
 
 export const StyledCardList = styled("div")`
-    position: absolute;
     display: flex;
     flex-direction: column;
     text-align: center;
-    height: fit-content;
-    width: fit-content;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    gap: ${p => p.theme.font.size.medium};
+    align-items: center;
+    margin-top: ${p => p.theme.margin.medium};
+    margin-bottom: ${p => p.theme.margin.medium};
+    gap: ${p => p.theme.gap.medium};
 `
 
 export const StyledCard = styled(Card)`

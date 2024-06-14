@@ -16,6 +16,12 @@ declare module "styled-components" {
         border: {
             radius: string
         }
+        gap: {
+            medium: string
+        }
+        margin: {
+            medium: string
+        }
         padding: {
             small: string
             medium: string

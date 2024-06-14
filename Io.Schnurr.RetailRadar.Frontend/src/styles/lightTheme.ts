@@ -15,6 +15,12 @@ const LightTheme: DefaultTheme = {
     border: {
         radius: "4px"
     },
+    gap: {
+        medium: "32px"
+    },
+    margin: {
+        medium: "32px"
+    },
     padding: {
         small: "8px",
         medium: "16px",

@@ -10,6 +10,16 @@ declare module "styled-components" {
             backgroundDark: string
             backgroundExtraDark: string
         }
+        box: {
+            shadow: string
+        }
+        border: {
+            radius: string
+        }
+        padding: {
+            medium: string
+            large: string
+        }
         font: {
             family: string
             size: {

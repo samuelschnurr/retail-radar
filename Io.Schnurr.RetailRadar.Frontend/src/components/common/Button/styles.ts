@@ -8,12 +8,13 @@ export const StyledButton = styled("button")<{ color?: string }>`
     width: auto;
     max-width: 384px;
     border: 1px solid ${p => p.theme.colors.backgroundDark};
-    border-radius: 4px;
-    padding: 16px 32px 16px 32px;
+    border-radius: ${p => p.theme.border.radius};
+    padding: ${p => p.theme.padding.medium} ${p => p.theme.padding.large}
+        ${p => p.theme.padding.medium} ${p => p.theme.padding.large};
     cursor: pointer;
 
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 8px 16px rgb(23 31 114 / 20%);
+    box-shadow: ${p => p.theme.box.shadow};
 
     &:hover,
     &:active,

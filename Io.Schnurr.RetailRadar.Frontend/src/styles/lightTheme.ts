@@ -9,6 +9,16 @@ const LightTheme: DefaultTheme = {
         backgroundDark: "#f1f2f3",
         backgroundExtraDark: "#e0e0e0"
     },
+    box: {
+        shadow: "0 8px 16px rgb(23 31 114 / 20%)"
+    },
+    border: {
+        radius: "4px"
+    },
+    padding: {
+        medium: "16px",
+        large: "32px"
+    },
     font: {
         family: "Verdana, Geneva, Tahoma, sans-serif",
         size: {

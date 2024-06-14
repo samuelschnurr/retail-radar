@@ -1,5 +1,7 @@
 import styled from "styled-components"
 
+import { noSelect } from "../../../styles/sharedStyles"
+
 export const StyledButton = styled("button")<{ color?: string }>`
     background: ${p => p.color || p.theme.colors.primaryDark};
     color: ${p => (p.color ? p.theme.colors.primaryDark : p.theme.colors.background)};
@@ -23,4 +25,6 @@ export const StyledButton = styled("button")<{ color?: string }>`
         border: 1px solid ${p => p.theme.colors.secondary};
         background-color: ${p => p.theme.colors.secondary};
     }
+
+    ${noSelect}
 `

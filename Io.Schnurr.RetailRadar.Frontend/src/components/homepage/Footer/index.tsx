@@ -1,3 +1,4 @@
+import { InstagramOutlined, TikTokOutlined } from "@ant-design/icons"
 import { Row } from "antd"
 import { Link } from "react-router-dom"
 
@@ -15,6 +16,18 @@ const Footer = (props: FooterContentProps) => {
                 <Row justify="space-between" align="middle">
                     <Image src={src} width="122px" height="89px" href="/" />
                     <FooterLinks>
+                        <Link
+                            to="https://www.instagram.com/retailradar.io/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <InstagramOutlined />
+                        </Link>
+                        <Link
+                            to="https://www.tiktok.com/@chappie.retailradar/"
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            <TikTokOutlined />
+                        </Link>
                         <Link to="/datenschutz">Datenschutz</Link>
                         <Link to="/impressum">Impressum</Link>
                     </FooterLinks>

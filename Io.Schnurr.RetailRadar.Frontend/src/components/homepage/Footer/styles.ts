@@ -26,7 +26,7 @@ export const FooterLinks = styled("div")`
         }
     }
 
-    @media screen and (max-width: ${p => p.theme.breakpoints.small}) {
+    @media screen and (max-width: ${p => p.theme.breakpoints.medium}) {
         flex-direction: column;
     }
 `

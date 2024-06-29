@@ -23,7 +23,7 @@ const Footer = (props: FooterContentProps) => {
                             <InstagramOutlined />
                         </Link>
                         <Link
-                            to="https://www.tiktok.com/@chappie.retailradar/"
+                            to="https://www.tiktok.com/@retailradar.io/"
                             target="_blank"
                             rel="noopener noreferrer">
                             <TikTokOutlined />

@@ -2,11 +2,13 @@
 using System.Web;
 using Google.Apis.CustomSearchAPI.v1.Data;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Io.Schnurr.RetailRadar.Backend.Services.Product;
 
-public class ProductService(IConfiguration configuration)
+public class ProductService(IConfiguration configuration, ILogger<ProductService> logger)
 {
+    private readonly ILogger<ProductService> logger = logger;
     private readonly ProductSearchClient searchClient = new(configuration["Google:Authorization"], configuration["Google:EngineId"]);
     private readonly string affiliateId = configuration["Amazon:AffiliateId"];
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
@@ -26,6 +28,8 @@ public class ProductService(IConfiguration configuration)
             Match match = matches[i];
             var productLink = await GetProductLinkAsync(searchTermAsins, match.Groups[1].Value);
             result = result.Replace(match.Value, productLink);
+
+            logger.LogInformation("Replaced product name {MatchResult} with {ProductLink}", match.Value, productLink);
         }
 
         return result;

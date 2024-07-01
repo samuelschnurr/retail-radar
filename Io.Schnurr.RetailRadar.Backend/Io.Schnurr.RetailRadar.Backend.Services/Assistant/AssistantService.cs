@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Azure.AI.OpenAI.Assistants;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace Io.Schnurr.RetailRadar.Backend.Services.Assistant;
 
@@ -8,11 +9,13 @@ public class AssistantService
 {
     private readonly AssistantsClient client;
     private readonly CreateRunOptions runOptions;
+    private readonly ILogger<AssistantService> logger;
 
-    public AssistantService(IConfiguration configuration)
+    public AssistantService(IConfiguration configuration, ILogger<AssistantService> logger)
     {
         client = new AssistantsClient(new Uri(configuration["OpenAi:BaseAddress"]), new AzureKeyCredential(configuration["OpenAi:Authorization"]));
         runOptions = new CreateRunOptions(configuration["OpenAi:AssistantId"]) { AdditionalInstructions = "Speak German. You are not allowed to speak any other language." };
+        this.logger = logger;
     }
 
     public async Task<AssistantThread> CreateThreadAsync()
@@ -23,6 +26,8 @@ public class AssistantService
         {
             throw new InvalidOperationException(nameof(thread));
         }
+
+        logger.LogInformation("New Thread has been created: {ThreadId}", thread.Value.Id);
 
         return thread.Value;
     }

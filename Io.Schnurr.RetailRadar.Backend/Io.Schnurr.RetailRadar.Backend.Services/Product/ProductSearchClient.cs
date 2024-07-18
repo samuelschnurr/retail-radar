@@ -1,11 +1,11 @@
-﻿using System.Diagnostics;
-using Google.Apis.CustomSearchAPI.v1;
+﻿using Google.Apis.CustomSearchAPI.v1;
 using Google.Apis.CustomSearchAPI.v1.Data;
+using Microsoft.Extensions.Logging;
 using static Google.Apis.CustomSearchAPI.v1.CseResource;
 
 namespace Io.Schnurr.RetailRadar.Backend.Services.Product;
 
-internal class ProductSearchClient(string authorization, string engineId) : CustomSearchAPIService(new() { ApiKey = authorization })
+internal class ProductSearchClient(ILogger logger, string authorization, string engineId) : CustomSearchAPIService(new() { ApiKey = authorization })
 {
     internal static string CreateQueryString(Dictionary<string, string> parameters) => string.Join("&", parameters.Select(p => $"{p.Key}={p.Value}"));
 
@@ -20,7 +20,7 @@ internal class ProductSearchClient(string authorization, string engineId) : Cust
         }
         catch (Exception ex)
         {
-            Debug.WriteLine($"Error while executing searchRequest for {nameof(searchTerm)} '{searchTerm}'. With message: {ex.ToString()}");
+            logger.LogError(ex, "Error while executing searchRequest for {NamofSearchTerm} '{SearchTerm}'.", nameof(searchTerm), searchTerm);
             return null;
         }
     }

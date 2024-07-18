@@ -9,7 +9,7 @@ namespace Io.Schnurr.RetailRadar.Backend.Services.Product;
 public class ProductService(IConfiguration configuration, ILogger<ProductService> logger)
 {
     private readonly ILogger<ProductService> logger = logger;
-    private readonly ProductSearchClient searchClient = new(configuration["Google:Authorization"], configuration["Google:EngineId"]);
+    private readonly ProductSearchClient searchClient = new(logger, configuration["Google:Authorization"], configuration["Google:EngineId"]);
     private readonly string affiliateId = configuration["Amazon:AffiliateId"];
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
     private const string amazonBaseAddress = "https://www.amazon.de/";

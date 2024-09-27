@@ -1,9 +1,9 @@
 import { InstagramOutlined, TikTokOutlined } from "@ant-design/icons"
+import Container from "@components/Shared/Container"
+import Image from "@components/Shared/Image"
 import { Row } from "antd"
 import { Link } from "react-router-dom"
 
-import Container from "./../../../../components/Shared/Container"
-import Image from "./../../../../components/Shared/Image"
 import { FooterLinks, FooterSection } from "./styles"
 import { FooterContentProps } from "./types"
 

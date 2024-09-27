@@ -1,9 +1,9 @@
+import Button from "@components/Shared/Button"
+import Content from "@components/Shared/Content"
+import Image from "@components/Shared/Image"
 import { Col, Row } from "antd"
 import { Slide } from "react-awesome-reveal"
 
-import Button from "./../../../../components/Shared/Button"
-import Content from "./../../../../components/Shared/Content"
-import Image from "./../../../../components/Shared/Image"
 import { EndBlockSection, StyledImageContainer } from "./styles"
 import { EndBlockProps } from "./types"
 

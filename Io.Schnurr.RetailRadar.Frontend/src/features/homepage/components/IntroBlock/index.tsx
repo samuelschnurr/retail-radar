@@ -1,8 +1,8 @@
+import Content from "@components/Shared/Content"
+import Image from "@components/Shared/Image"
 import { Col, Row } from "antd"
 import { Fade } from "react-awesome-reveal"
 
-import Content from "./../../../../components/Shared/Content"
-import Image from "./../../../../components/Shared/Image"
 import { ContentSection } from "./styles"
 import { IntroBlockProps } from "./types"
 

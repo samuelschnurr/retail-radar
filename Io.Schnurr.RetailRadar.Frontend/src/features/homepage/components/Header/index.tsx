@@ -1,8 +1,8 @@
+import Button from "@components/Shared/Button"
+import Container from "@components/Shared/Container"
+import Image from "@components/Shared/Image"
 import { useNavigate } from "react-router-dom"
 
-import Button from "./../../../../components/Shared/Button"
-import Container from "./../../../../components/Shared/Container"
-import Image from "./../../../../components/Shared/Image"
 import { HeaderSection, StyledRow } from "./styles"
 import { HeaderContentProps } from "./types"
 

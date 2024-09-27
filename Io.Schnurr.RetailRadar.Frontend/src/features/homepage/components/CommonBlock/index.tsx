@@ -1,6 +1,6 @@
+import Content from "@components/Shared/Content"
 import { Col, Row } from "antd"
 
-import Content from "./../../../../components/Shared/Content"
 import { CommonSection } from "./styles"
 import { CommonBlockProps } from "./types"
 

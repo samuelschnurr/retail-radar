@@ -1,9 +1,9 @@
+import Content from "@components/Shared/Content"
+import ContentListing from "@components/Shared/ContentListing"
+import Image from "@components/Shared/Image"
 import { Col } from "antd"
 import { Slide } from "react-awesome-reveal"
 
-import Content from "./../../../../components/Shared/Content"
-import ContentListing from "./../../../../components/Shared/ContentListing"
-import Image from "./../../../../components/Shared/Image"
 import { MiddleBlockSection, StyledRow } from "./styles"
 import { MiddleBlockProps } from "./types"
 

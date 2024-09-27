@@ -1,11 +1,12 @@
 /* eslint-disable max-lines */
 /* eslint-disable max-lines-per-function */
 
-import Container from "../../components/common/Container"
-import Footer from "../../components/homepage/Footer"
-import Header from "../../components/homepage/Header"
-import FooterContent from "../../content/FooterContent.json"
-import HeaderContent from "../../content/HeaderContent.json"
+import Container from "@components/Shared/Container"
+import Footer from "@features/homepage/components/Footer"
+import Header from "@features/homepage/components/Header"
+import FooterContent from "@features/homepage/locales/FooterContent.json"
+import HeaderContent from "@features/homepage/locales/HeaderContent.json"
+
 import { PrivacySection } from "./styles"
 
 const Privacy = () => {

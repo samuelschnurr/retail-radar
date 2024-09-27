@@ -1,10 +1,10 @@
-import Container from "../../components/common/Container"
-import CommonBlock from "../../components/homepage/CommonBlock"
-import Footer from "../../components/homepage/Footer"
-import Header from "../../components/homepage/Header"
-import FooterContent from "../../content/FooterContent.json"
-import HeaderContent from "../../content/HeaderContent.json"
-import ImprintContent from "../../content/ImprintContent.json"
+import Container from "../../components/Shared/Container"
+import CommonBlock from "./../../features/homepage/components/CommonBlock"
+import Footer from "./../../features/homepage/components/Footer"
+import Header from "./../../features/homepage/components/Header"
+import FooterContent from "./../../features/homepage/locales/FooterContent.json"
+import HeaderContent from "./../../features/homepage/locales/HeaderContent.json"
+import ImprintContent from "./../../features/homepage/locales/ImprintContent.json"
 import { ImprintSection } from "./styles"
 
 const Imprint = () => {

@@ -3,11 +3,11 @@ import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css"
 import { ConversationHeader, MessageInput, MessageList } from "@chatscope/chat-ui-kit-react"
 import { useEffect } from "react"
 
-import ConversationHeaderContainer from "../../components/messenger/ConversationHeaderContainer"
-import MessageInputContainer from "../../components/messenger/MessageInputContainer"
-import MessageListContainer from "../../components/messenger/MessageListContainer"
-import { addChatConversationMessage } from "../../states/conversation"
-import { createThread, useThread } from "../../states/thread"
+import { addChatConversationMessage } from "../../features/messenger/states/conversation"
+import { createThread, useThread } from "../../features/messenger/states/thread"
+import ConversationHeaderContainer from "./../../features/messenger/components/ConversationHeaderContainer"
+import MessageInputContainer from "./../../features/messenger/components/MessageInputContainer"
+import MessageListContainer from "./../../features/messenger/components/MessageListContainer"
 import { StyledChatContainer } from "./styles"
 
 const Messenger = () => {

@@ -1,6 +1,6 @@
-import Button from "@features/homepage/components/Button"
-import Content from "@features/homepage/components/Content"
-import Image from "@features/homepage/components/Image"
+import Button from "@features/homepage/components/Common/Button"
+import Content from "@features/homepage/components/Common/Content"
+import Image from "@features/homepage/components/Common/Image"
 import { Col, Row } from "antd"
 import { Slide } from "react-awesome-reveal"
 

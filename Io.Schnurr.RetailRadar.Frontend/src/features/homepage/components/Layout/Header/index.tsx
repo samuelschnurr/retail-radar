@@ -1,6 +1,6 @@
-import Button from "@features/homepage/components/Button"
-import Container from "@features/homepage/components/Container"
-import Image from "@features/homepage/components/Image"
+import Button from "@features/homepage/components/Common/Button"
+import Image from "@features/homepage/components/Common/Image"
+import Container from "@features/homepage/components/Layout/Container"
 import { useNavigate } from "react-router-dom"
 
 import { HeaderSection, StyledRow } from "./styles"

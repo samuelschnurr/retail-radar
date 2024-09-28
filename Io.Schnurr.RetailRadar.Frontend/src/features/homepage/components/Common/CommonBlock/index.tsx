@@ -1,4 +1,4 @@
-import Content from "@features/homepage/components/Content"
+import Content from "@features/homepage/components/Common/Content"
 import { Col, Row } from "antd"
 
 import { CommonSection } from "./styles"

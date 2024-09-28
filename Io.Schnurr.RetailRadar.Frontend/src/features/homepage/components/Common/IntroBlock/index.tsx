@@ -1,5 +1,5 @@
-import Content from "@features/homepage/components/Content"
-import Image from "@features/homepage/components/Image"
+import Content from "@features/homepage/components/Common/Content"
+import Image from "@features/homepage/components/Common/Image"
 import { Col, Row } from "antd"
 import { Fade } from "react-awesome-reveal"
 

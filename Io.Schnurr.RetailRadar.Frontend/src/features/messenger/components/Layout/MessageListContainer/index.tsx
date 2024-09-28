@@ -1,13 +1,17 @@
 import { Message, MessageList, MessageModel } from "@chatscope/chat-ui-kit-react"
-import CardList from "@features/messenger/components/CardList"
-import TypingIndicatorInfo from "@features/messenger/components/TypingIndicatorInfo"
+import CardList from "@features/messenger/components/Common/CardList"
+import TypingIndicatorInfo from "@features/messenger/components/Common/TypingIndicatorInfo"
 import { useHookstate } from "@hookstate/core"
 import useInterval from "@lib/hooks/useInterval"
 
-import { createUserMessage, getAssistantMessage, useConversation } from "../../states/conversation"
-import { useThread } from "../../states/thread"
-import avatar from "./../../locales/AvatarContent.json"
-import ExampleMessages from "./../../locales/ExampleMessagesContent.json"
+import avatar from "../../../locales/AvatarContent.json"
+import ExampleMessages from "../../../locales/ExampleMessagesContent.json"
+import {
+    createUserMessage,
+    getAssistantMessage,
+    useConversation
+} from "../../../states/conversation"
+import { useThread } from "../../../states/thread"
 import { MessageListContainerProps } from "./types"
 
 const MessageListContainer = (_props: MessageListContainerProps) => {

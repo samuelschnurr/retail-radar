@@ -1,8 +1,8 @@
 import { MessageInput } from "@chatscope/chat-ui-kit-react"
 import { useCallback, useEffect, useRef } from "react"
 
-import { createUserMessage, useConversation } from "../../states/conversation"
-import { useThread } from "../../states/thread"
+import { createUserMessage, useConversation } from "../../../states/conversation"
+import { useThread } from "../../../states/thread"
 import { MessageInputContainerProps } from "./types"
 
 const MessageInputContainer = (_props: MessageInputContainerProps) => {

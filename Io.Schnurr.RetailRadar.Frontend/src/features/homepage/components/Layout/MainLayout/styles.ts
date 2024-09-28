@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-export const NotFoundSection = styled("section")`
+export const Section = styled.section`
     position: relative;
     padding: 0rem 0 32rem;
 
@@ -8,4 +8,4 @@ export const NotFoundSection = styled("section")`
         padding: 4rem 0 16rem;
         text-align: center;
     }
-`
+`;

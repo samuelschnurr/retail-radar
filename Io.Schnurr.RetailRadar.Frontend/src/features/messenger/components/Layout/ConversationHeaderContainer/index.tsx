@@ -1,16 +1,16 @@
 import { BugOutlined, CloseOutlined, CoffeeOutlined, SyncOutlined } from "@ant-design/icons"
 import { Avatar, ConversationHeader, UserStatus } from "@chatscope/chat-ui-kit-react"
-import AvatarIcon from "@features/messenger/components/AvatarIcon"
-import BounceButton from "@features/messenger/components/BounceButton"
+import AvatarIcon from "@features/messenger/components/Common/AvatarIcon"
+import BounceButton from "@features/messenger/components/Common/BounceButton"
 import { Divider } from "antd"
 import { useNavigate } from "react-router-dom"
 
-import avatar from "../locales/AvatarContent.json"
-import ToolbarContent from "../locales/ToolbarContent.json"
-import { resetConversation } from "../states/conversation"
-import { resetThread, useThread } from "../states/thread"
-import { StyledButton, StyledConversationHeader } from "./ConversationHeaderContainer/styles"
-import { ConversationHeaderContainerProps } from "./ConversationHeaderContainer/types"
+import avatar from "../../../locales/AvatarContent.json"
+import ToolbarContent from "../../../locales/ToolbarContent.json"
+import { resetConversation } from "../../../states/conversation"
+import { resetThread, useThread } from "../../../states/thread"
+import { StyledButton, StyledConversationHeader } from "./styles"
+import { ConversationHeaderContainerProps } from "./types"
 
 const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) => {
     const { isLoading, id } = useThread()

@@ -1,9 +1,9 @@
 import { InstagramOutlined, TikTokOutlined } from "@ant-design/icons"
-import Container from "@features/homepage/components/Layout/Container"
 import Image from "@features/homepage/components/Common/Image"
 import { Row } from "antd"
 import { Link } from "react-router-dom"
 
+import CenteredContainer from "../CenteredContainer"
 import { FooterLinks, FooterSection } from "./styles"
 import { FooterContentProps } from "./types"
 
@@ -12,7 +12,7 @@ const Footer = (props: FooterContentProps) => {
 
     return (
         <FooterSection>
-            <Container>
+            <CenteredContainer>
                 <Row justify="space-between" align="middle">
                     <Image src={src} width="122px" height="89px" href="/" />
                     <FooterLinks>
@@ -32,7 +32,7 @@ const Footer = (props: FooterContentProps) => {
                         <Link to="/impressum">Impressum</Link>
                     </FooterLinks>
                 </Row>
-            </Container>
+            </CenteredContainer>
         </FooterSection>
     )
 }

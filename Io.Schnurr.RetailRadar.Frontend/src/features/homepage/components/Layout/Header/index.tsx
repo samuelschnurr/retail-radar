@@ -1,6 +1,6 @@
 import Button from "@features/homepage/components/Common/Button"
 import Image from "@features/homepage/components/Common/Image"
-import Container from "@features/homepage/components/Layout/Container"
+import CenteredContainer from "@features/homepage/components/Layout/CenteredContainer"
 import { useNavigate } from "react-router-dom"
 
 import { HeaderSection, StyledRow } from "./styles"
@@ -12,12 +12,12 @@ const Header = (props: HeaderContentProps) => {
 
     return (
         <HeaderSection>
-            <Container>
+            <CenteredContainer>
                 <StyledRow justify="space-between">
                     <Image src={src} width="160px" height="128px" href="/" />
                     {button && <Button onClick={() => navigate(button.link)}>{button.text}</Button>}
                 </StyledRow>
-            </Container>
+            </CenteredContainer>
         </HeaderSection>
     )
 }

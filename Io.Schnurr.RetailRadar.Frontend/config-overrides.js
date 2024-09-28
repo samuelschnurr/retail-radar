@@ -5,7 +5,6 @@ const path = require('path');
 module.exports = function override(config) {
     config.resolve.alias = {
         ...config.resolve.alias,
-        '@components': path.resolve(__dirname, 'src/components'),
         '@features': path.resolve(__dirname, 'src/features'),
         '@lib': path.resolve(__dirname, 'src/lib')
     };

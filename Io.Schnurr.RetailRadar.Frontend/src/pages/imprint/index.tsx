@@ -1,5 +1,5 @@
-import Container from "@components/Shared/Container"
 import CommonBlock from "@features/homepage/components/CommonBlock"
+import Container from "@features/homepage/components/Container"
 import Footer from "@features/homepage/components/Footer"
 import Header from "@features/homepage/components/Header"
 import FooterContent from "@features/homepage/locales/FooterContent.json"

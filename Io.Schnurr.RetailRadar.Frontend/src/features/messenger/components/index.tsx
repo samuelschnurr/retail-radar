@@ -1,16 +1,16 @@
 import { BugOutlined, CloseOutlined, CoffeeOutlined, SyncOutlined } from "@ant-design/icons"
 import { Avatar, ConversationHeader, UserStatus } from "@chatscope/chat-ui-kit-react"
-import AvatarIcon from "@components/Shared/AvatarIcon"
-import BounceButton from "@components/Shared/BounceButton"
+import AvatarIcon from "@features/messenger/components/AvatarIcon"
+import BounceButton from "@features/messenger/components/BounceButton"
 import { Divider } from "antd"
 import { useNavigate } from "react-router-dom"
 
-import { resetConversation } from "../../states/conversation"
-import { resetThread, useThread } from "../../states/thread"
-import avatar from "./../../locales/AvatarContent.json"
-import ToolbarContent from "./../../locales/ToolbarContent.json"
-import { StyledButton, StyledConversationHeader } from "./styles"
-import { ConversationHeaderContainerProps } from "./types"
+import avatar from "../locales/AvatarContent.json"
+import ToolbarContent from "../locales/ToolbarContent.json"
+import { resetConversation } from "../states/conversation"
+import { resetThread, useThread } from "../states/thread"
+import { StyledButton, StyledConversationHeader } from "./ConversationHeaderContainer/styles"
+import { ConversationHeaderContainerProps } from "./ConversationHeaderContainer/types"
 
 const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) => {
     const { isLoading, id } = useThread()

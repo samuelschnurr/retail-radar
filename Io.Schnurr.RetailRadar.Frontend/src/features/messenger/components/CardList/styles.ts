@@ -1,7 +1,7 @@
 import { Card } from "antd"
 import styled from "styled-components"
 
-import { noSelect } from "../../../styles/sharedStyles"
+import { noSelect } from "../../../../styles/sharedStyles"
 
 export const StyledCardList = styled("div")`
     display: flex;

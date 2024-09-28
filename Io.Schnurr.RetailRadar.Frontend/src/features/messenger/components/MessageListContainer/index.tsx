@@ -1,6 +1,6 @@
 import { Message, MessageList, MessageModel } from "@chatscope/chat-ui-kit-react"
-import CardList from "@components/Shared/CardList"
-import TypingIndicatorInfo from "@components/Shared/TypingIndicatorInfo"
+import CardList from "@features/messenger/components/CardList"
+import TypingIndicatorInfo from "@features/messenger/components/TypingIndicatorInfo"
 import { useHookstate } from "@hookstate/core"
 import useInterval from "@lib/hooks/useInterval"
 

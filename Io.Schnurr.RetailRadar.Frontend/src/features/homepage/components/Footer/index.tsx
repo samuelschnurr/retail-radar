@@ -1,6 +1,6 @@
 import { InstagramOutlined, TikTokOutlined } from "@ant-design/icons"
-import Container from "@components/Shared/Container"
-import Image from "@components/Shared/Image"
+import Container from "@features/homepage/components/Container"
+import Image from "@features/homepage/components/Image"
 import { Row } from "antd"
 import { Link } from "react-router-dom"
 

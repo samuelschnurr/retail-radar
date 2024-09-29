@@ -5,11 +5,11 @@ import { CommonSection } from "./styles"
 import { CommonBlockProps } from "./types"
 
 const CommonBlock = (props: CommonBlockProps) => {
-    const { content } = props
+    const { content, htmlContent } = props
 
     return (
         <CommonSection>
-            {content.map((item, itemIndex) => (
+            {content?.map((item, itemIndex) => (
                 <Row key={itemIndex} justify="space-between" align="middle">
                     <Col xs={24}>
                         <h6>{item.title}</h6>
@@ -20,6 +20,8 @@ const CommonBlock = (props: CommonBlockProps) => {
                     </Col>
                 </Row>
             ))}
+            {htmlContent && <div dangerouslySetInnerHTML={{ __html: htmlContent.content }} />}
+            {/* TODO: Sanitize? */}
         </CommonSection>
     )
 }

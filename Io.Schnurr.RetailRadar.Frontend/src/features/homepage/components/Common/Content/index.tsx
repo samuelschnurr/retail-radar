@@ -3,6 +3,7 @@ import { ContentProps } from "./types"
 
 const Content = (props: ContentProps) => {
     const { content } = props
+
     return <StyledContent>{content}</StyledContent>
 }
 

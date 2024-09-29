@@ -2,16 +2,14 @@ import Footer from "@features/homepage/components/Layout/Footer"
 import Header from "@features/homepage/components/Layout/Header"
 import FooterContent from "@features/homepage/locales/FooterContent.json"
 import HeaderContent from "@features/homepage/locales/HeaderContent.json"
-import React from "react"
 
 import CenteredContainer from "../CenteredContainer"
 import { Section } from "./styles"
+import { PageLayoutProps } from "./types"
 
-interface PageLayoutProps {
-    children: React.ReactNode
-}
+const PageLayout = (props: PageLayoutProps) => {
+    const { children } = props
 
-const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
     return (
         <>
             <Header src={HeaderContent.src} button={HeaderContent.button} />

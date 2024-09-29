@@ -1,10 +1,9 @@
 import { StyledChatContainer } from "./styles"
+import { MessengerLayoutProps } from "./types"
 
-interface MessengerLayoutProps {
-    children: React.ReactNode
-}
+const MessengerLayout = (props: MessengerLayoutProps) => {
+    const { children } = props
 
-const MessengerLayout: React.FC<MessengerLayoutProps> = ({ children }) => {
     return <StyledChatContainer>{children}</StyledChatContainer>
 }
 

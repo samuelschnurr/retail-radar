@@ -3,6 +3,7 @@ import { ContentListingProps } from "./types"
 
 const ContentListing = (props: ContentListingProps) => {
     const { listings } = props
+
     return (
         <>
             {listings.map((listing, listingIndex) => {

@@ -2,14 +2,14 @@ import EndBlock from "@features/homepage/components/Common/EndBlock"
 import IntroBlock from "@features/homepage/components/Common/IntroBlock"
 import MiddleBlock from "@features/homepage/components/Common/MiddleBlock"
 import ScrollToTop from "@features/homepage/components/Common/ScrollToTop"
-import MainLayout from "@features/homepage/components/Layout/MainLayout"
+import PageLayout from "@features/homepage/components/Layout/PageLayout"
 import EndBlockContent from "@features/homepage/locales/EndBlockContent.json"
 import IntroBlockContent from "@features/homepage/locales/IntroBlockContent.json"
 import MiddleBlockContent from "@features/homepage/locales/MiddleBlockContent.json"
 
 const Homepage = () => {
     return (
-        <MainLayout>
+        <PageLayout>
             <ScrollToTop />
             <IntroBlock
                 title={IntroBlockContent.title}
@@ -29,7 +29,7 @@ const Homepage = () => {
                 button={EndBlockContent.button}
                 src={EndBlockContent.src}
             />
-        </MainLayout>
+        </PageLayout>
     )
 }
 

@@ -1,9 +1,9 @@
 import CommonBlock from "@features/homepage/components/Common/CommonBlock"
-import MainLayout from "@features/homepage/components/Layout/MainLayout"
+import PageLayout from "@features/homepage/components/Layout/PageLayout"
 
 const NotFound = () => {
     return (
-        <MainLayout>
+        <PageLayout>
             <CommonBlock
                 content={[
                     {
@@ -13,7 +13,7 @@ const NotFound = () => {
                     }
                 ]}
             />
-        </MainLayout>
+        </PageLayout>
     )
 }
 

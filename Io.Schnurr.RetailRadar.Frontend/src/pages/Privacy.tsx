@@ -1,11 +1,11 @@
 /* eslint-disable max-lines */
 /* eslint-disable max-lines-per-function */
 
-import MainLayout from "@features/homepage/components/Layout/MainLayout"
+import PageLayout from "@features/homepage/components/Layout/PageLayout"
 
 const Privacy = () => {
     return (
-        <MainLayout>
+        <PageLayout>
             <h1>Datenschutz&shy;erkl&auml;rung</h1>
             <h2>1. Datenschutz auf einen Blick</h2>
             <h3>Allgemeine Hinweise</h3>{" "}
@@ -377,7 +377,7 @@ const Privacy = () => {
             <p>
                 Quelle: <a href="https://www.e-recht24.de">https://www.e-recht24.de</a>
             </p>
-        </MainLayout>
+        </PageLayout>
     )
 }
 

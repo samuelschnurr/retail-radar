@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const Section = styled.section`
     position: relative;
@@ -8,4 +8,4 @@ export const Section = styled.section`
         padding: 4rem 0 16rem;
         text-align: center;
     }
-`;
+`

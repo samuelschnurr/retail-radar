@@ -1,12 +1,12 @@
 import CommonBlock from "@features/homepage/components/Common/CommonBlock"
-import MainLayout from "@features/homepage/components/Layout/MainLayout"
+import PageLayout from "@features/homepage/components/Layout/PageLayout"
 import ImprintContent from "@features/homepage/locales/ImprintContent.json"
 
 const Imprint = () => {
     return (
-        <MainLayout>
+        <PageLayout>
             <CommonBlock content={ImprintContent} />
-        </MainLayout>
+        </PageLayout>
     )
 }
 

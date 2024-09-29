@@ -7,11 +7,11 @@ import React from "react"
 import CenteredContainer from "../CenteredContainer"
 import { Section } from "./styles"
 
-interface MainLayoutProps {
+interface PageLayoutProps {
     children: React.ReactNode
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+const PageLayout: React.FC<PageLayoutProps> = ({ children }) => {
     return (
         <>
             <Header src={HeaderContent.src} button={HeaderContent.button} />
@@ -23,4 +23,4 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     )
 }
 
-export default MainLayout
+export default PageLayout

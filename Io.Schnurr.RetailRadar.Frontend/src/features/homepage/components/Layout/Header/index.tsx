@@ -11,7 +11,7 @@ const Header = (props: HeaderContentProps) => {
     const navigate = useNavigate()
 
     return (
-        <HeaderSection>
+        <HeaderSection id="header">
             <CenteredContainer>
                 <StyledRow justify="space-between">
                     <Image src={src} width="160px" height="128px" href="/" />

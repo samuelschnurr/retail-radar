@@ -3,8 +3,11 @@ import { useCallback, useEffect, useState } from "react"
 import { useTheme } from "styled-components"
 
 import { ScrollUpContainer } from "./styles"
+import { ScrollToTopProps } from "./types"
 
-const ScrollToTop = () => {
+const ScrollToTop = (props: ScrollToTopProps) => {
+    const { scrollToId } = props
+
     const theme = useTheme()
     const [showScroll, setShowScroll] = useState(false)
 
@@ -26,7 +29,7 @@ const ScrollToTop = () => {
     }, [checkScrollTop])
 
     const scrollUp = () => {
-        const element = document.getElementById("intro") as HTMLDivElement
+        const element = document.getElementById(scrollToId) as HTMLDivElement
         element.scrollIntoView({
             behavior: "smooth",
             block: "end",

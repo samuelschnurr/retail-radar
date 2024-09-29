@@ -10,7 +10,7 @@ import MiddleBlockContent from "@features/homepage/locales/MiddleBlockContent.js
 const Homepage = () => {
     return (
         <PageLayout>
-            <ScrollToTop />
+            <ScrollToTop scrollToId="intro" />
             <IntroBlock
                 title={IntroBlockContent.title}
                 subTitle={IntroBlockContent.subTitle}

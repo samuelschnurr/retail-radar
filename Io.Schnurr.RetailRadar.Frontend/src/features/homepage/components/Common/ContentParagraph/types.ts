@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export interface ContentParagraphProps {
-    content: string | React.ReactNode
+    content: string | ReactNode
 }

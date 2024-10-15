@@ -12,14 +12,8 @@ const ScrollToTop = (props: ScrollToTopProps) => {
     const [showScroll, setShowScroll] = useState(false)
 
     const checkScrollTop = useCallback(() => {
-        const offsetFromTop = window.scrollY
-
-        if (!showScroll && offsetFromTop > 350) {
-            setShowScroll(true)
-        } else if (offsetFromTop <= 350) {
-            setShowScroll(false)
-        }
-    }, [showScroll])
+        setShowScroll(window.scrollY > 350)
+    }, [])
 
     useEffect(() => {
         window.addEventListener("scroll", checkScrollTop)
@@ -29,12 +23,14 @@ const ScrollToTop = (props: ScrollToTopProps) => {
     }, [checkScrollTop])
 
     const scrollUp = () => {
-        const element = document.getElementById(scrollToId) as HTMLDivElement
-        element.scrollIntoView({
-            behavior: "smooth",
-            block: "end",
-            inline: "nearest"
-        })
+        const element = document.getElementById(scrollToId)
+        if (element) {
+            element.scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+                inline: "nearest"
+            })
+        }
     }
 
     return (

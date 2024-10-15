@@ -1,6 +1,6 @@
-import CommonBlock from "@features/homepage/components/Common/CommonSection"
-import PageLayout from "@features/homepage/components/Layout/PageLayout"
-import ImprintContent from "@features/homepage/locales/de/ImprintContent.json"
+import CommonBlock from "@features/landingpage/components/Common/CommonSection"
+import PageLayout from "@features/landingpage/components/Layout/PageLayout"
+import ImprintContent from "@features/landingpage/locales/de/ImprintContent.json"
 
 const Imprint = () => {
     return (

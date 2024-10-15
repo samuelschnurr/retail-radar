@@ -1,11 +1,11 @@
-import ScrollToTop from "@features/homepage/components/Common/ScrollToTop"
-import DonationBlock from "@features/homepage/components/DonationBlock"
-import FeatureBlock from "@features/homepage/components/FeatureBlock"
-import PageLayout from "@features/homepage/components/Layout/PageLayout"
-import WelcomeBlock from "@features/homepage/components/WelcomeBlock"
-import DonationBlockContent from "@features/homepage/locales/de/DonationBlockContent.json"
-import FeatureBlockContent from "@features/homepage/locales/de/FeatureBlockContent.json"
-import WelcomeBlockContent from "@features/homepage/locales/de/WelcomeBlockContent.json"
+import ScrollToTop from "@features/landingpage/components/Common/ScrollToTop"
+import DonationBlock from "@features/landingpage/components/Home/DonationBlock"
+import FeatureBlock from "@features/landingpage/components/Home/FeatureBlock"
+import WelcomeBlock from "@features/landingpage/components/Home/WelcomeBlock"
+import PageLayout from "@features/landingpage/components/Layout/PageLayout"
+import DonationBlockContent from "@features/landingpage/locales/de/DonationBlockContent.json"
+import FeatureBlockContent from "@features/landingpage/locales/de/FeatureBlockContent.json"
+import WelcomeBlockContent from "@features/landingpage/locales/de/WelcomeBlockContent.json"
 
 const Home = () => {
     return (

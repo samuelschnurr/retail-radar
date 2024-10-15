@@ -1,7 +1,7 @@
-import CommonBlock from "@features/homepage/components/Common/CommonSection"
-import ScrollToTop from "@features/homepage/components/Common/ScrollToTop"
-import PageLayout from "@features/homepage/components/Layout/PageLayout"
-import PrivacyContent from "@features/homepage/locales/de/PrivacyContent.json"
+import CommonBlock from "@features/landingpage/components/Common/CommonSection"
+import ScrollToTop from "@features/landingpage/components/Common/ScrollToTop"
+import PageLayout from "@features/landingpage/components/Layout/PageLayout"
+import PrivacyContent from "@features/landingpage/locales/de/PrivacyContent.json"
 
 const Privacy = () => {
     return (

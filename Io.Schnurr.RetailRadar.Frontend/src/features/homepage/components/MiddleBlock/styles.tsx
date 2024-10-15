@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import TwoColumnRow from "../Layout/TwoColumnRow"
+import TwoColumnRow from "../Layout/TwoColumnContainer"
 
 export const StyledTwoColumnRow = styled(TwoColumnRow)`
     flex-direction: row-reverse;

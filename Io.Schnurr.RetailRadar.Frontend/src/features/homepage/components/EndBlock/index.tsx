@@ -1,10 +1,10 @@
 import Button from "@features/homepage/components/Common/Button"
-import Content from "@features/homepage/components/Common/Content"
+import Content from "@features/homepage/components/Common/ContentParagraph"
 import Image from "@features/homepage/components/Common/Image"
 import { Slide } from "react-awesome-reveal"
 
 import CenteredSection from "../Common/CenteredSection"
-import TwoColumnRow from "../Layout/TwoColumnRow"
+import TwoColumnRow from "../Layout/TwoColumnContainer"
 import { StyledImageContainer } from "./styles"
 import { EndBlockProps } from "./types"
 

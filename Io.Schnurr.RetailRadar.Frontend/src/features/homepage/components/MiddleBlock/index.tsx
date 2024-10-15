@@ -1,5 +1,5 @@
-import Content from "@features/homepage/components/Common/Content"
 import ContentListing from "@features/homepage/components/Common/ContentListing"
+import Content from "@features/homepage/components/Common/ContentParagraph"
 import Image from "@features/homepage/components/Common/Image"
 import { Slide } from "react-awesome-reveal"
 

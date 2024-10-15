@@ -1,8 +1,8 @@
 import { Col, Row } from "antd"
 
-import { TwoColumnRowProps } from "./types"
+import { TwoColumnContainerProps } from "./types"
 
-const TwoColumnRow = (props: TwoColumnRowProps) => {
+const TwoColumnContainer = (props: TwoColumnContainerProps) => {
     const { firstColContent, secondColContent } = props
 
     return (
@@ -17,4 +17,4 @@ const TwoColumnRow = (props: TwoColumnRowProps) => {
     )
 }
 
-export default TwoColumnRow
+export default TwoColumnContainer

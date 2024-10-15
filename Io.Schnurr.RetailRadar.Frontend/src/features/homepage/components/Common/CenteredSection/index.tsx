@@ -1,5 +1,3 @@
-import React from "react"
-
 import { StyledSection } from "./styles"
 import { CenteredSectionProps } from "./types"
 

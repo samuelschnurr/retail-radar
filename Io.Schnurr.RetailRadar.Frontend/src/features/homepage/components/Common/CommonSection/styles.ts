@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const CommonSection = styled("section")`
+export const StyledSection = styled("section")`
     position: relative;
     padding: 10rem 0 8rem;
     height: 100%;

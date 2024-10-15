@@ -1,14 +1,14 @@
-import Content from "@features/homepage/components/Common/Content"
+import Content from "@features/homepage/components/Common/ContentParagraph"
 import { Col, Row } from "antd"
 
-import { CommonSection } from "./styles"
-import { CommonBlockProps } from "./types"
+import { StyledSection } from "./styles"
+import { CommonSectionProps } from "./types"
 
-const CommonBlock = (props: CommonBlockProps) => {
+const CommonSection = (props: CommonSectionProps) => {
     const { content, htmlContent } = props
 
     return (
-        <CommonSection>
+        <StyledSection>
             {content?.map((item, itemIndex) => (
                 <Row key={itemIndex} justify="space-between" align="middle">
                     <Col xs={24}>
@@ -22,8 +22,8 @@ const CommonBlock = (props: CommonBlockProps) => {
             ))}
             {htmlContent && <div dangerouslySetInnerHTML={{ __html: htmlContent.content }} />}
             {/* TODO: Sanitize? */}
-        </CommonSection>
+        </StyledSection>
     )
 }
 
-export default CommonBlock
+export default CommonSection

@@ -1,5 +1,7 @@
+export type ButtonColor = "primary" | "secondary" | "danger" | "warning"
+
 export interface ButtonProps {
-    color?: string
+    color?: ButtonColor
     children: React.ReactNode
     onClick?: () => void
 }

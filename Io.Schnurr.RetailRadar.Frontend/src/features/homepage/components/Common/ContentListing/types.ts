@@ -1,3 +1,3 @@
 export interface ContentListingProps {
-    listings: { title: string; items: string[] }[]
+    listings: Array<{ title: string; items: string[] }>
 }

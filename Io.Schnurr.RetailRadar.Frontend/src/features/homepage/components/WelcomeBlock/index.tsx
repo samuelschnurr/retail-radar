@@ -3,16 +3,16 @@ import Image from "@features/homepage/components/Common/Image"
 import { Fade } from "react-awesome-reveal"
 
 import CenteredSection from "../Common/CenteredSection"
-import TwoColumnRow from "../Layout/TwoColumnContainer"
-import { IntroBlockProps } from "./types"
+import TwoColumnContainer from "../Layout/TwoColumnContainer"
+import { WelcomeBlockProps } from "./types"
 
-const IntroBlock = (props: IntroBlockProps) => {
+const WelcomeBlock = (props: WelcomeBlockProps) => {
     const { src, title, subTitle } = props
 
     return (
-        <CenteredSection id="intro">
+        <CenteredSection id="welcome">
             <Fade direction="right" triggerOnce>
-                <TwoColumnRow
+                <TwoColumnContainer
                     firstColContent={
                         <>
                             <h6>{title}</h6>
@@ -28,4 +28,4 @@ const IntroBlock = (props: IntroBlockProps) => {
     )
 }
 
-export default IntroBlock
+export default WelcomeBlock

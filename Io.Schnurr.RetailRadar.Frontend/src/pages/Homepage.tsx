@@ -1,33 +1,33 @@
 import ScrollToTop from "@features/homepage/components/Common/ScrollToTop"
-import EndBlock from "@features/homepage/components/EndBlock"
-import IntroBlock from "@features/homepage/components/IntroBlock"
+import DonationBlock from "@features/homepage/components/DonationBlock"
+import FeatureBlock from "@features/homepage/components/FeatureBlock"
 import PageLayout from "@features/homepage/components/Layout/PageLayout"
-import MiddleBlock from "@features/homepage/components/MiddleBlock"
-import EndBlockContent from "@features/homepage/locales/EndBlockContent.json"
-import IntroBlockContent from "@features/homepage/locales/IntroBlockContent.json"
-import MiddleBlockContent from "@features/homepage/locales/MiddleBlockContent.json"
+import WelcomeBlock from "@features/homepage/components/WelcomeBlock"
+import DonationBlockContent from "@features/homepage/locales/DonationBlockContent.json"
+import FeatureBlockContent from "@features/homepage/locales/FeatureBlockContent.json"
+import WelcomeBlockContent from "@features/homepage/locales/WelcomeBlockContent.json"
 
 const Homepage = () => {
     return (
         <PageLayout>
-            <ScrollToTop scrollToId="intro" />
-            <IntroBlock
-                title={IntroBlockContent.title}
-                subTitle={IntroBlockContent.subTitle}
-                src={IntroBlockContent.src}
+            <ScrollToTop scrollToId="welcome" />
+            <WelcomeBlock
+                title={WelcomeBlockContent.title}
+                subTitle={WelcomeBlockContent.subTitle}
+                src={WelcomeBlockContent.src}
             />
-            <MiddleBlock
-                title={MiddleBlockContent.title}
-                subTitle={MiddleBlockContent.subTitle}
-                listings={MiddleBlockContent.listings}
-                src={MiddleBlockContent.src}
+            <FeatureBlock
+                title={FeatureBlockContent.title}
+                subTitle={FeatureBlockContent.subTitle}
+                listings={FeatureBlockContent.listings}
+                src={FeatureBlockContent.src}
             />
-            <EndBlock
-                title={EndBlockContent.title}
-                subTitle={EndBlockContent.subTitle}
-                subTitle2={EndBlockContent.subTitle2}
-                button={EndBlockContent.button}
-                src={EndBlockContent.src}
+            <DonationBlock
+                title={DonationBlockContent.title}
+                subTitle={DonationBlockContent.subTitle}
+                subTitle2={DonationBlockContent.subTitle2}
+                button={DonationBlockContent.button}
+                src={DonationBlockContent.src}
             />
         </PageLayout>
     )

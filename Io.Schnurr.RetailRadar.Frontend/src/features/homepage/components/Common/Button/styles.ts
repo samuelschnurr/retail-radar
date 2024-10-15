@@ -1,7 +1,5 @@
 import styled from "styled-components"
 
-import { noSelect } from "../../../../../styles/sharedStyles"
-
 export const StyledButton = styled("button")<{ color?: string }>`
     background: ${p => p.color || p.theme.colors.primaryDark};
     color: ${p => (p.color ? p.theme.colors.primaryDark : p.theme.colors.background)};
@@ -14,9 +12,12 @@ export const StyledButton = styled("button")<{ color?: string }>`
     padding: ${p => p.theme.padding.medium} ${p => p.theme.padding.large}
         ${p => p.theme.padding.medium} ${p => p.theme.padding.large};
     cursor: pointer;
-
     transition: all 0.3s ease-in-out;
     box-shadow: ${p => p.theme.box.shadow};
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
     &:hover,
     &:active,
@@ -25,6 +26,4 @@ export const StyledButton = styled("button")<{ color?: string }>`
         border: 1px solid ${p => p.theme.colors.secondary};
         background-color: ${p => p.theme.colors.secondary};
     }
-
-    ${noSelect}
 `

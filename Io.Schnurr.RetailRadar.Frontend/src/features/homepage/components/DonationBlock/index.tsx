@@ -6,9 +6,9 @@ import { Slide } from "react-awesome-reveal"
 import CenteredSection from "../Common/CenteredSection"
 import TwoColumnRow from "../Layout/TwoColumnContainer"
 import { StyledImageContainer } from "./styles"
-import { EndBlockProps } from "./types"
+import { DonationBlockProps } from "./types"
 
-const EndBlock = (props: EndBlockProps) => {
+const DonationBlock = (props: DonationBlockProps) => {
     const { title, subTitle, subTitle2, src } = props
     return (
         <CenteredSection centerContent={true}>
@@ -51,4 +51,4 @@ const EndBlock = (props: EndBlockProps) => {
     )
 }
 
-export default EndBlock
+export default DonationBlock

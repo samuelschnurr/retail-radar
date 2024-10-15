@@ -1,4 +1,4 @@
-export interface MiddleBlockProps {
+export interface FeatureBlockProps {
     title: string
     subTitle: string
     listings: {

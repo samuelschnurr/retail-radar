@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-import TwoColumnRow from "../Layout/TwoColumnContainer"
+import TwoColumnContainer from "../Layout/TwoColumnContainer"
 
-export const StyledTwoColumnRow = styled(TwoColumnRow)`
+export const StyledTwoColumnContainer = styled(TwoColumnContainer)`
     flex-direction: row-reverse;
 
     @media only screen and (max-width: ${p => p.theme.breakpoints.medium}) {

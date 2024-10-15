@@ -1,8 +1,6 @@
 import { Card } from "antd"
 import styled from "styled-components"
 
-import { noSelect } from "../../../../../styles/sharedStyles"
-
 export const StyledCardList = styled("div")`
     display: flex;
     flex-direction: column;
@@ -19,5 +17,8 @@ export const StyledCard = styled(Card)`
     border-radius: ${p => p.theme.border.radius};
     box-shadow: ${p => p.theme.box.shadow};
     padding: ${p => p.theme.padding.small};
-    ${noSelect}
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 `

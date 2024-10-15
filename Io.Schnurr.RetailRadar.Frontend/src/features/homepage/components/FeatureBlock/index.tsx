@@ -4,17 +4,17 @@ import Image from "@features/homepage/components/Common/Image"
 import { Slide } from "react-awesome-reveal"
 
 import CenteredSection from "../Common/CenteredSection"
-import { StyledTwoColumnRow } from "./styles"
-import { MiddleBlockProps } from "./types"
+import { StyledTwoColumnContainer } from "./styles"
+import { FeatureBlockProps } from "./types"
 
-const MiddleBlock = (props: MiddleBlockProps) => {
+const FeatureBlock = (props: FeatureBlockProps) => {
     const { title, subTitle, listings, src } = props
 
     return (
         <CenteredSection centerContent={true}>
             <Slide direction="left" triggerOnce>
                 <h6>{title}</h6>
-                <StyledTwoColumnRow
+                <StyledTwoColumnContainer
                     firstColContent={
                         <>
                             <Content content={subTitle} />
@@ -30,4 +30,4 @@ const MiddleBlock = (props: MiddleBlockProps) => {
     )
 }
 
-export default MiddleBlock
+export default FeatureBlock

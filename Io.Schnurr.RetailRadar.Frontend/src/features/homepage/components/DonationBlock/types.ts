@@ -1,4 +1,4 @@
-export interface EndBlockProps {
+export interface DonationBlockProps {
     title: string
     subTitle: string
     subTitle2: string

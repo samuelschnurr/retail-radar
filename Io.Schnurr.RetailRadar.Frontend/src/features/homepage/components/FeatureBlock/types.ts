@@ -1,9 +1,11 @@
 export interface FeatureBlockProps {
     title: string
     subTitle: string
-    listings: {
-        title: string
-        items: string[]
-    }[]
+    listings: Listing[]
     src: string
+}
+
+interface Listing {
+    title: string
+    items: string[]
 }

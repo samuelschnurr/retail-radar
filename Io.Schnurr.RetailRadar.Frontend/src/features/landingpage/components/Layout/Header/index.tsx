@@ -1,6 +1,6 @@
-import Button from "@features/homepage/components/Common/Button"
-import Image from "@features/homepage/components/Common/Image"
-import CenteredContainer from "@features/homepage/components/Layout/CenteredContainer"
+import Button from "@features/landingpage/components/Common/Button"
+import Image from "@features/landingpage/components/Common/Image"
+import CenteredContainer from "@features/landingpage/components/Layout/CenteredContainer"
 import { useNavigate } from "react-router-dom"
 
 import { HeaderSection, StyledRow } from "./styles"

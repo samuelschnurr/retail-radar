@@ -1,9 +1,9 @@
-import Content from "@features/homepage/components/Common/ContentParagraph"
-import Image from "@features/homepage/components/Common/Image"
+import CenteredSection from "@features/landingpage/components/Common/CenteredSection"
+import Content from "@features/landingpage/components/Common/ContentParagraph"
+import Image from "@features/landingpage/components/Common/Image"
+import TwoColumnContainer from "@features/landingpage/components/Layout/TwoColumnContainer"
 import { Fade } from "react-awesome-reveal"
 
-import CenteredSection from "../Common/CenteredSection"
-import TwoColumnContainer from "../Layout/TwoColumnContainer"
 import { WelcomeBlockProps } from "./types"
 
 const WelcomeBlock = (props: WelcomeBlockProps) => {

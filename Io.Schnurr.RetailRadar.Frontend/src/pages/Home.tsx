@@ -7,7 +7,7 @@ import DonationBlockContent from "@features/homepage/locales/de/DonationBlockCon
 import FeatureBlockContent from "@features/homepage/locales/de/FeatureBlockContent.json"
 import WelcomeBlockContent from "@features/homepage/locales/de/WelcomeBlockContent.json"
 
-const Homepage = () => {
+const Home = () => {
     return (
         <PageLayout>
             <ScrollToTop scrollToId="welcome" />
@@ -33,4 +33,4 @@ const Homepage = () => {
     )
 }
 
-export default Homepage
+export default Home

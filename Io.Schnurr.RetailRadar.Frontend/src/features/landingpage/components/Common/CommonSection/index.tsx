@@ -1,4 +1,4 @@
-import Content from "@features/homepage/components/Common/ContentParagraph"
+import Content from "@features/landingpage/components/Common/ContentParagraph"
 import { Col, Row } from "antd"
 
 import { StyledSection } from "./styles"

@@ -1,9 +1,9 @@
-import ContentListing from "@features/homepage/components/Common/ContentListing"
-import Content from "@features/homepage/components/Common/ContentParagraph"
-import Image from "@features/homepage/components/Common/Image"
+import CenteredSection from "@features/landingpage/components/Common/CenteredSection"
+import ContentListing from "@features/landingpage/components/Common/ContentListing"
+import Content from "@features/landingpage/components/Common/ContentParagraph"
+import Image from "@features/landingpage/components/Common/Image"
 import { Slide } from "react-awesome-reveal"
 
-import CenteredSection from "../Common/CenteredSection"
 import { StyledTwoColumnContainer } from "./styles"
 import { FeatureBlockProps } from "./types"
 

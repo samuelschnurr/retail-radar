@@ -1,10 +1,10 @@
-import Button from "@features/homepage/components/Common/Button"
-import Content from "@features/homepage/components/Common/ContentParagraph"
-import Image from "@features/homepage/components/Common/Image"
+import Button from "@features/landingpage/components/Common/Button"
+import CenteredSection from "@features/landingpage/components/Common/CenteredSection"
+import Content from "@features/landingpage/components/Common/ContentParagraph"
+import Image from "@features/landingpage/components/Common/Image"
+import TwoColumnContainer from "@features/landingpage/components/Layout/TwoColumnContainer"
 import { Slide } from "react-awesome-reveal"
 
-import CenteredSection from "../Common/CenteredSection"
-import TwoColumnRow from "../Layout/TwoColumnContainer"
 import { StyledImageContainer } from "./styles"
 import { DonationBlockProps } from "./types"
 
@@ -14,7 +14,7 @@ const DonationBlock = (props: DonationBlockProps) => {
         <CenteredSection centerContent={true}>
             <Slide direction="right" triggerOnce>
                 <h6>{title}</h6>
-                <TwoColumnRow
+                <TwoColumnContainer
                     firstColContent={
                         <>
                             <Content content={subTitle} />

@@ -1,7 +1,7 @@
-import Footer from "@features/homepage/components/Layout/Footer"
-import Header from "@features/homepage/components/Layout/Header"
-import FooterContent from "@features/homepage/locales/de/FooterContent.json"
-import HeaderContent from "@features/homepage/locales/de/HeaderContent.json"
+import Footer from "@features/landingpage/components/Layout/Footer"
+import Header from "@features/landingpage/components/Layout/Header"
+import FooterContent from "@features/landingpage/locales/de/FooterContent.json"
+import HeaderContent from "@features/landingpage/locales/de/HeaderContent.json"
 
 import CenteredContainer from "../CenteredContainer"
 import { Section } from "./styles"

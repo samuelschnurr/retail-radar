@@ -3,9 +3,9 @@ import DonationBlock from "@features/homepage/components/DonationBlock"
 import FeatureBlock from "@features/homepage/components/FeatureBlock"
 import PageLayout from "@features/homepage/components/Layout/PageLayout"
 import WelcomeBlock from "@features/homepage/components/WelcomeBlock"
-import DonationBlockContent from "@features/homepage/locales/DonationBlockContent.json"
-import FeatureBlockContent from "@features/homepage/locales/FeatureBlockContent.json"
-import WelcomeBlockContent from "@features/homepage/locales/WelcomeBlockContent.json"
+import DonationBlockContent from "@features/homepage/locales/de/DonationBlockContent.json"
+import FeatureBlockContent from "@features/homepage/locales/de/FeatureBlockContent.json"
+import WelcomeBlockContent from "@features/homepage/locales/de/WelcomeBlockContent.json"
 
 const Homepage = () => {
     return (

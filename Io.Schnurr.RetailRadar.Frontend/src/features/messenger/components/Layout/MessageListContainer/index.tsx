@@ -4,8 +4,8 @@ import TypingIndicatorInfo from "@features/messenger/components/Common/TypingInd
 import { useHookstate } from "@hookstate/core"
 import useInterval from "@lib/hooks/useInterval"
 
-import avatar from "../../../locales/AvatarContent.json"
-import ExampleMessages from "../../../locales/ExampleMessagesContent.json"
+import avatar from "../../../locales/de/AvatarContent.json"
+import ExampleMessages from "../../../locales/de/ExampleMessagesContent.json"
 import {
     createUserMessage,
     getAssistantMessage,

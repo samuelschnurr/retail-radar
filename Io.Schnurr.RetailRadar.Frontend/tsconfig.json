@@ -17,7 +17,6 @@
         "noEmit": true,
         "jsx": "react-jsx",
         "paths": {
-            "@components/*": ["components/*"],
             "@features/*": ["features/*"],
             "@lib/*": ["lib/*"]
         }

@@ -15,6 +15,7 @@ const FeatureBlock = (props: FeatureBlockProps) => {
             <Slide direction="left" triggerOnce>
                 <h6>{title}</h6>
                 <StyledTwoColumnContainer
+                    flexDirection="row-reverse"
                     firstColContent={
                         <>
                             <Content content={subTitle} />

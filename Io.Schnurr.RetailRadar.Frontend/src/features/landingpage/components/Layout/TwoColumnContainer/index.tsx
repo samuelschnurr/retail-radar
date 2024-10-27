@@ -1,19 +1,19 @@
-import { Col, Row } from "antd"
+import { Col } from "antd"
 
-import { TwoColumnContainerProps } from "./types"
+import { StyledRow, TwoColumnContainerProps } from "./types"
 
 const TwoColumnContainer = (props: TwoColumnContainerProps) => {
-    const { firstColContent, secondColContent } = props
+    const { firstColContent, secondColContent, flexDirection = "row" } = props
 
     return (
-        <Row justify="center" align="middle">
+        <StyledRow justify="center" align="middle" flexDirection={flexDirection}>
             <Col lg={14} md={16} xs={24}>
                 {firstColContent}
             </Col>
             <Col lg={10} md={8} xs={24}>
                 {secondColContent}
             </Col>
-        </Row>
+        </StyledRow>
     )
 }
 

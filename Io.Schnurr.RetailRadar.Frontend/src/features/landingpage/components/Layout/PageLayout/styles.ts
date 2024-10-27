@@ -5,7 +5,6 @@ export const Section = styled("section")`
     min-height: calc(100vh - 250px);
 
     @media only screen and (max-width: ${p => p.theme.breakpoints.large}) {
-        padding: 4rem 0 16rem;
         text-align: center;
     }
 `

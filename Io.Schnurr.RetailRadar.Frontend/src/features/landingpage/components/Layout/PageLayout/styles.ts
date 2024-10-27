@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export const Section = styled("section")`
     position: relative;
-    padding: 0 0 32rem;
+    min-height: calc(100vh - 250px);
 
     @media only screen and (max-width: ${p => p.theme.breakpoints.large}) {
         padding: 4rem 0 16rem;

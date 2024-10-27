@@ -10,7 +10,7 @@ const WelcomeBlock = (props: WelcomeBlockProps) => {
     const { src, title, subTitle } = props
 
     return (
-        <CenteredSection id="welcome">
+        <CenteredSection id="welcome" centerContentOnMobile={true}>
             <Fade direction="right" triggerOnce>
                 <TwoColumnContainer
                     firstColContent={

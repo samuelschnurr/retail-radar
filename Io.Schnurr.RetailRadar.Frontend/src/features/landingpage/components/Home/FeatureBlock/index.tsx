@@ -11,7 +11,7 @@ const FeatureBlock = (props: FeatureBlockProps) => {
     const { title, subTitle, listings, src } = props
 
     return (
-        <CenteredSection centerContent={true}>
+        <CenteredSection centerContentOnDesktop={true} centerContentOnMobile={true}>
             <Slide direction="left" triggerOnce>
                 <h6>{title}</h6>
                 <StyledTwoColumnContainer

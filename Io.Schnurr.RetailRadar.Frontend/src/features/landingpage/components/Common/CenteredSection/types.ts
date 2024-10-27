@@ -1,5 +1,6 @@
 export interface CenteredSectionProps {
     id?: string
     children: React.ReactNode
-    centerContent?: boolean
+    centerContentOnDesktop?: boolean
+    centerContentOnMobile?: boolean
 }

@@ -11,7 +11,7 @@ import { DonationBlockProps } from "./types"
 const DonationBlock = (props: DonationBlockProps) => {
     const { title, subTitle, subTitle2, src } = props
     return (
-        <CenteredSection centerContent={true}>
+        <CenteredSection centerContentOnDesktop={true} centerContentOnMobile={true}>
             <Slide direction="right" triggerOnce>
                 <h6>{title}</h6>
                 <TwoColumnContainer

@@ -21,11 +21,20 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
     }
 
     const sendBugReport = () => {
-        const mailReceiver = ToolbarContent.bugButton.mailReceiver
-        const subject = encodeURIComponent(ToolbarContent.bugButton.mailTitle)
-        const body = encodeURIComponent(ToolbarContent.bugButton.mailBody + id)
+        const { mailReceiver, mailTitle, mailBody } = ToolbarContent.bugButton
+        const subject = encodeURIComponent(mailTitle)
+        const body = encodeURIComponent(`${mailBody}${id}`)
         const mailtoLink = `mailto:${mailReceiver}?subject=${subject}&body=${body}`
         window.location.href = mailtoLink
+    }
+
+    const handleRefresh = () => {
+        resetThread()
+        resetConversation()
+    }
+
+    const handleClose = () => {
+        navigate("/")
     }
 
     return (
@@ -56,17 +65,12 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
                     icon={<SyncOutlined />}
                     disabled={isLoading}
                     title={ToolbarContent.refreshButton.title}
-                    onClick={() => {
-                        resetThread()
-                        resetConversation()
-                    }}
+                    onClick={handleRefresh}
                 />
                 <StyledButton
                     icon={<CloseOutlined />}
                     title={ToolbarContent.closeButton.title}
-                    onClick={() => {
-                        navigate("/")
-                    }}
+                    onClick={handleClose}
                 />
             </ConversationHeader.Actions>
         </StyledConversationHeader>

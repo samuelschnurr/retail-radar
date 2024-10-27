@@ -7,8 +7,8 @@ import { MessageInputContainerProps } from "./types"
 
 const MessageInputContainer = (_props: MessageInputContainerProps) => {
     const messageInputRef = useRef<HTMLInputElement>(null)
-    const isTyping = useConversation().isTyping
-    const threadId = useThread().id
+    const { isTyping } = useConversation()
+    const { id: threadId } = useThread()
 
     const pasteAsPlainText = useCallback((e: React.ClipboardEvent<HTMLDivElement>) => {
         e.preventDefault()

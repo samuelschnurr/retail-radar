@@ -6,5 +6,5 @@ export interface BounceButtonProps {
     intervalDelay: number
     bounceDuration: number
     title: string
-    onClick: MouseEventHandler | undefined
+    onClick?: MouseEventHandler<HTMLButtonElement>
 }

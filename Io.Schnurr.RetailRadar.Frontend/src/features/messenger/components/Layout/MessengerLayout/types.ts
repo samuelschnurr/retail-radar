@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export interface MessengerLayoutProps {
-    children: React.ReactNode
+    children: ReactNode
 }

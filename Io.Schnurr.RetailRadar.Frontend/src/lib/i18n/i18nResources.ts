@@ -1,10 +1,10 @@
-import DEtranslation from "./DEtranslation.json"
-import ENtranslation from "./ENtranslation.json"
+import ImprintContentDE from "@features/landingpage/locales/de/ImprintContent.json"
+import ImprintContentEN from "@features/landingpage/locales/en/ImprintContent.json"
 
 export const i18nResourceEN = {
-    ImprintContent: ENtranslation
+    ImprintContent: ImprintContentEN
 }
 
 export const i18nResourceDE = {
-    ImprintContent: DEtranslation
+    ImprintContent: ImprintContentDE
 }

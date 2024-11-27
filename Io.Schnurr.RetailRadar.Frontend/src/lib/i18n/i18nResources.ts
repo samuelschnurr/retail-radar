@@ -1,12 +1,11 @@
+import DEtranslation from "./DEtranslation.json"
+import ENtranslation from "./ENtranslation.json"
+
 export const resources = {
     en: {
-        translation: {
-            Hello: "Hello World"
-        }
+        translation: ENtranslation
     },
     de: {
-        translation: {
-            Hello: "Hallo Welt"
-        }
+        translation: DEtranslation
     }
 }

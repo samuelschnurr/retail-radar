@@ -9,17 +9,17 @@ const CommonSection = (props: CommonSectionProps) => {
 
     return (
         <StyledSection>
-            {content?.map((item, itemIndex) => (
-                <Row key={itemIndex} justify="space-between" align="middle">
-                    <Col xs={24} key={itemIndex}>
-                        <h6>{item.title}</h6>
-                        {item.subTitle ?? <Content content={item.subTitle} />}
-                        {item.texts.map((text, textIndex) => (
+            {content && (
+                <Row justify="space-between" align="middle">
+                    <Col xs={24}>
+                        <h6>{content.title}</h6>
+                        {content.subTitle ?? <Content content={content.subTitle} />}
+                        {content.texts.map((text, textIndex) => (
                             <Content key={textIndex} content={text} />
                         ))}
                     </Col>
                 </Row>
-            ))}
+            )}
             {htmlContent && <div dangerouslySetInnerHTML={{ __html: htmlContent.content }} />}
             {/* TODO: Sanitize? */}
         </StyledSection>

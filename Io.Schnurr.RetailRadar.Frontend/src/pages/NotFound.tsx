@@ -1,11 +1,11 @@
 import CommonBlock from "@features/landingpage/components/Common/CommonSection"
 import PageLayout from "@features/landingpage/components/Layout/PageLayout"
-import NotFoundContent from "@features/landingpage/locales/de/NotFoundContent.json"
+import { getLocalizedResourceFile } from "@lib/i18n/i18nUtils"
 
 const NotFound = () => {
     return (
         <PageLayout>
-            <CommonBlock content={NotFoundContent} />
+            <CommonBlock content={getLocalizedResourceFile("notfound")} />
         </PageLayout>
     )
 }

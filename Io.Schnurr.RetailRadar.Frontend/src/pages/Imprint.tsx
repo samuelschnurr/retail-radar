@@ -5,7 +5,7 @@ import { getLocalizedResourceFile } from "@lib/i18n/i18nUtils"
 const Imprint = () => {
     return (
         <PageLayout>
-            <CommonBlock content={getLocalizedResourceFile("Imprint")} />
+            <CommonBlock content={getLocalizedResourceFile("imprint")} />
         </PageLayout>
     )
 }

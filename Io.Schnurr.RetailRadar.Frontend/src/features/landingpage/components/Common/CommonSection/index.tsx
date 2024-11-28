@@ -14,7 +14,7 @@ const CommonSection = (props: CommonSectionProps) => {
                     <Col xs={24}>
                         <h6>{content.title}</h6>
                         {content.subTitle ?? <Content content={content.subTitle} />}
-                        {content.texts.map((text, textIndex) => (
+                        {content.paragraphs.map((text, textIndex) => (
                             <Content key={textIndex} content={text} />
                         ))}
                     </Col>

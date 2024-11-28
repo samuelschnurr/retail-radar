@@ -3,31 +3,32 @@ import DonationBlock from "@features/landingpage/components/Home/DonationBlock"
 import FeatureBlock from "@features/landingpage/components/Home/FeatureBlock"
 import WelcomeBlock from "@features/landingpage/components/Home/WelcomeBlock"
 import PageLayout from "@features/landingpage/components/Layout/PageLayout"
-import DonationBlockContent from "@features/landingpage/locales/de/DonationBlockContent.json"
-import FeatureBlockContent from "@features/landingpage/locales/de/FeatureBlockContent.json"
-import WelcomeBlockContent from "@features/landingpage/locales/de/WelcomeBlockContent.json"
+import { useTranslation } from "react-i18next"
 
 const Home = () => {
+    const { t } = useTranslation(["welcome, feature, donation"])
+
     return (
         <PageLayout>
             <ScrollToTop scrollToId="welcome" />
             <WelcomeBlock
-                title={WelcomeBlockContent.title}
-                subTitle={WelcomeBlockContent.subTitle}
-                src={WelcomeBlockContent.src}
+                title={t("welcome:title")}
+                subTitle={t("welcome:subTitle")}
+                imageSource={t("welcome:imageSource")}
             />
             <FeatureBlock
-                title={FeatureBlockContent.title}
-                subTitle={FeatureBlockContent.subTitle}
-                listings={FeatureBlockContent.listings}
-                src={FeatureBlockContent.src}
+                title={t("feature:title")}
+                subTitle={t("feature:subTitle")}
+                listings={t("feature:listings")}
+                imageSource={t("feature:imageSource")}
             />
             <DonationBlock
-                title={DonationBlockContent.title}
-                subTitle={DonationBlockContent.subTitle}
-                subTitle2={DonationBlockContent.subTitle2}
-                button={DonationBlockContent.button}
-                src={DonationBlockContent.src}
+                title={t("donation:title")}
+                subTitle={t("donation:subTitle")}
+                subTitle2={t("donation:subTitle2")}
+                buttonText={t("donation:buttonText")}
+                buttonLink={t("donation:buttonLink")}
+                imageSource={t("donation:imageSource")}
             />
         </PageLayout>
     )

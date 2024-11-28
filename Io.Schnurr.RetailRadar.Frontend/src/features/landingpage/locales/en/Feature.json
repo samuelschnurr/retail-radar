@@ -1,0 +1,23 @@
+{
+    "title": "Why RetailRadar?",
+    "subTitle": "RetailRadar offers a number of advantages over independent research and traditional sales conversations.",
+    "imageSource": "/mascot/benefits.png",
+    "listings": [
+        {
+            "title": "Comprehensive product knowledge",
+            "items": ["RetailRadar knows the details and characteristics of every product."]
+        },
+        {
+            "title": "Data-based recommendations",
+            "items": ["RetailRadar provides well-founded recommendations from millions of data."]
+        },
+        {
+            "title": "Objective advice",
+            "items": ["RetailRadar provides unbiased advice."]
+        },
+        {
+            "title": "Always available",
+            "items": ["RetailRadar is available around the clock."]
+        }
+    ]
+}

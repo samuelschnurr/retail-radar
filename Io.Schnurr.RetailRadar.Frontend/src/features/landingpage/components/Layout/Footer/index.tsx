@@ -8,13 +8,13 @@ import { FooterLinks, FooterSection } from "./styles"
 import { FooterContentProps } from "./types"
 
 const Footer = (props: FooterContentProps) => {
-    const { src } = props
+    const { imageSource } = props
 
     return (
         <FooterSection>
             <CenteredContainer>
                 <Row justify="space-between" align="middle">
-                    <Image src={src} width="122px" height="89px" href="/" />
+                    <Image src={imageSource} width="122px" height="89px" href="/" />
                     <FooterLinks>
                         <Link
                             to="https://www.instagram.com/retailradar.io/"

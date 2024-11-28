@@ -9,7 +9,7 @@ import { StyledImageContainer } from "./styles"
 import { DonationBlockProps } from "./types"
 
 const DonationBlock = (props: DonationBlockProps) => {
-    const { title, subTitle, subTitle2, src } = props
+    const { title, subTitle, subTitle2, buttonLink, buttonText, imageSource } = props
     return (
         <CenteredSection centerContentOnDesktop={true} centerContentOnMobile={true}>
             <Slide direction="right" triggerOnce>
@@ -23,7 +23,7 @@ const DonationBlock = (props: DonationBlockProps) => {
                                 content={
                                     <Button
                                         onClick={() => {
-                                            window.open("https://ko-fi.com/sampa", "_blank")
+                                            window.open(buttonLink, "_blank")
                                         }}>
                                         <StyledImageContainer>
                                             <Image
@@ -31,7 +31,7 @@ const DonationBlock = (props: DonationBlockProps) => {
                                                 width="60px"
                                                 src="/button/kofi.png"
                                             />
-                                            Mit einem Kaffee unterstützen
+                                            {buttonText}
                                         </StyledImageContainer>
                                     </Button>
                                 }
@@ -41,7 +41,12 @@ const DonationBlock = (props: DonationBlockProps) => {
                     secondColContent={
                         <Content
                             content={
-                                <Image src={src} width="100%" height="100%" shrinkOnMobile={true} />
+                                <Image
+                                    src={imageSource}
+                                    width="100%"
+                                    height="100%"
+                                    shrinkOnMobile={true}
+                                />
                             }
                         />
                     }

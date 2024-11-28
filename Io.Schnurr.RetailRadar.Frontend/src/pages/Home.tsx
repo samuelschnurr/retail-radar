@@ -3,13 +3,14 @@ import DonationBlock from "@features/landingpage/components/Home/DonationBlock"
 import FeatureBlock from "@features/landingpage/components/Home/FeatureBlock"
 import WelcomeBlock from "@features/landingpage/components/Home/WelcomeBlock"
 import PageLayout from "@features/landingpage/components/Layout/PageLayout"
+import { getLocalizedResourceFile } from "@lib/i18n/i18nUtils"
 import { useTranslation } from "react-i18next"
 
 const Home = () => {
     const { t } = useTranslation(["welcome, feature, donation"])
 
     return (
-        <PageLayout>
+        <PageLayout headerContent={getLocalizedResourceFile("header")}>
             <ScrollToTop scrollToId="welcome" />
             <WelcomeBlock
                 title={t("welcome:title")}

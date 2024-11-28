@@ -21,7 +21,7 @@ const PageLayout = (props: PageLayoutProps) => {
             <Section>
                 <CenteredContainer>{children}</CenteredContainer>
             </Section>
-            <Footer src={FooterContent.src} />
+            <Footer imageSource={FooterContent.imageSource} />
         </>
     )
 }

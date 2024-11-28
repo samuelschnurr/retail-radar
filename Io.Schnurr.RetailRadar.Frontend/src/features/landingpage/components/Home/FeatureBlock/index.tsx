@@ -8,7 +8,7 @@ import { StyledTwoColumnContainer } from "./styles"
 import { FeatureBlockProps } from "./types"
 
 const FeatureBlock = (props: FeatureBlockProps) => {
-    const { title, subTitle, listings, src } = props
+    const { title, subTitle, listings, imageSource } = props
 
     return (
         <CenteredSection centerContentOnDesktop={true} centerContentOnMobile={true}>
@@ -23,7 +23,7 @@ const FeatureBlock = (props: FeatureBlockProps) => {
                         </>
                     }
                     secondColContent={
-                        <Image src={src} width="100%" height="100%" shrinkOnMobile={true} />
+                        <Image src={imageSource} width="100%" height="100%" shrinkOnMobile={true} />
                     }
                 />
             </Slide>

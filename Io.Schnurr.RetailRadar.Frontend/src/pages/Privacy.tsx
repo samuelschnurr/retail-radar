@@ -5,7 +5,7 @@ import { getLocalizedResourceFile } from "@lib/i18n/i18nUtils"
 
 const Privacy = () => {
     return (
-        <PageLayout>
+        <PageLayout headerContent={getLocalizedResourceFile("header")}>
             <ScrollToTop scrollToId="header" />
             <CommonBlock htmlContent={getLocalizedResourceFile("privacy")} />
         </PageLayout>

@@ -4,7 +4,7 @@ import { getLocalizedResourceFile } from "@lib/i18n/i18nUtils"
 
 const NotFound = () => {
     return (
-        <PageLayout>
+        <PageLayout headerContent={getLocalizedResourceFile("header")}>
             <CommonBlock content={getLocalizedResourceFile("notfound")} />
         </PageLayout>
     )

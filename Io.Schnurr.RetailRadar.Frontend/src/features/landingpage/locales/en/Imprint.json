@@ -1,5 +1,10 @@
 {
     "title": "Imprint",
     "subTitle": "",
-    "texts": ["Samuel Schnurr", "Luise-Riegger-Straße 46", "76137 Karlsruhe", "info@retailradar.io"]
+    "paragraphs": [
+        "Samuel Schnurr",
+        "Luise-Riegger-Straße 46",
+        "76137 Karlsruhe",
+        "info@retailradar.io"
+    ]
 }

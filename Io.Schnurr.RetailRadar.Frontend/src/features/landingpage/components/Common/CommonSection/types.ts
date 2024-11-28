@@ -1,4 +1,4 @@
 export interface CommonSectionProps {
-    content?: { title: string; subTitle: string; texts: string[] }
+    content?: { title: string; subTitle: string; paragraphs: string[] }
     htmlContent?: { content: string }
 }

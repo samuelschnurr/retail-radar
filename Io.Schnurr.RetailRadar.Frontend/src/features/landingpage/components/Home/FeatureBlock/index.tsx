@@ -8,7 +8,7 @@ import { StyledTwoColumnContainer } from "./styles"
 import { FeatureBlockProps } from "./types"
 
 const FeatureBlock = (props: FeatureBlockProps) => {
-    const { title, subTitle, listings, imageSource } = props
+    const { title, subtitle, listings, imageSource } = props
 
     return (
         <CenteredSection centerContentOnDesktop={true} centerContentOnMobile={true}>
@@ -18,7 +18,7 @@ const FeatureBlock = (props: FeatureBlockProps) => {
                     flexDirection="row-reverse"
                     firstColContent={
                         <>
-                            <Content content={subTitle} />
+                            <Content content={subtitle} />
                             <ContentListing listings={listings} />
                         </>
                     }

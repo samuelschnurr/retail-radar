@@ -1,5 +1,5 @@
 export interface HeaderProps {
-    logoSource: string
-    buttonLink: string
-    buttonText: string
+    imageSource: string
+    buttonUrl: string
+    buttonLabel: string
 }

@@ -1,5 +1,5 @@
 export interface WelcomeBlockProps {
     title: string
-    subTitle: string
+    subtitle: string
     imageSource: string
 }

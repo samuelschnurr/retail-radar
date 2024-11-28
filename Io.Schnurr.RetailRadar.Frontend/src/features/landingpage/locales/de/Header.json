@@ -1,5 +1,5 @@
 {
-    "logoSource": "/logo/logo.svg",
-    "buttonText": "Jetzt starten",
-    "buttonLink": "/messenger"
+    "imageSource": "/logo/logo.svg",
+    "buttonLabel": "Jetzt starten",
+    "buttonUrl": "/messenger"
 }

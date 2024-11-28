@@ -1,6 +1,6 @@
 export interface FeatureBlockProps {
     title: string
-    subTitle: string
+    subtitle: string
     listings: Listing[]
     imageSource: string
 }

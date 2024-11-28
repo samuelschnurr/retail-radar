@@ -21,8 +21,8 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
     }
 
     const sendBugReport = () => {
-        const { mailReceiver, mailTitle, mailBody } = ToolbarContent.bugButton
-        const subject = encodeURIComponent(mailTitle)
+        const { mailReceiver, mailSubject, mailBody } = ToolbarContent.bugButton
+        const subject = encodeURIComponent(mailSubject)
         const body = encodeURIComponent(`${mailBody}${id}`)
         const mailtoLink = `mailto:${mailReceiver}?subject=${subject}&body=${body}`
         window.location.href = mailtoLink
@@ -52,24 +52,24 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
                     startDelay={30000}
                     intervalDelay={10000}
                     bounceDuration={5000}
-                    title={ToolbarContent.donationButton.title}
+                    title={ToolbarContent.donationButton.label}
                     onClick={openDonationSite}
                 />
                 <StyledButton
                     icon={<BugOutlined />}
-                    title={ToolbarContent.bugButton.title}
+                    title={ToolbarContent.bugButton.label}
                     onClick={sendBugReport}
                 />
                 <Divider type="vertical" />
                 <StyledButton
                     icon={<SyncOutlined />}
                     disabled={isLoading}
-                    title={ToolbarContent.refreshButton.title}
+                    title={ToolbarContent.refreshButton.label}
                     onClick={handleRefresh}
                 />
                 <StyledButton
                     icon={<CloseOutlined />}
-                    title={ToolbarContent.closeButton.title}
+                    title={ToolbarContent.closeButton.label}
                     onClick={handleClose}
                 />
             </ConversationHeader.Actions>

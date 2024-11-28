@@ -7,7 +7,7 @@ import { Fade } from "react-awesome-reveal"
 import { WelcomeBlockProps } from "./types"
 
 const WelcomeBlock = (props: WelcomeBlockProps) => {
-    const { imageSource, title, subTitle } = props
+    const { imageSource, title, subtitle } = props
 
     return (
         <CenteredSection id="welcome" centerContentOnMobile={true}>
@@ -16,7 +16,7 @@ const WelcomeBlock = (props: WelcomeBlockProps) => {
                     firstColContent={
                         <>
                             <h6>{title}</h6>
-                            <Content content={subTitle} />
+                            <Content content={subtitle} />
                         </>
                     }
                     secondColContent={

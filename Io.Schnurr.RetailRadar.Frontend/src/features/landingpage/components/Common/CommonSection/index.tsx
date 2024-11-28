@@ -13,7 +13,7 @@ const CommonSection = (props: CommonSectionProps) => {
                 <Row justify="space-between" align="middle">
                     <Col xs={24}>
                         <h6>{content.title}</h6>
-                        {content.subTitle ?? <Content content={content.subTitle} />}
+                        {content.subtitle ?? <Content content={content.subtitle} />}
                         {content.paragraphs.map((text, textIndex) => (
                             <Content key={textIndex} content={text} />
                         ))}

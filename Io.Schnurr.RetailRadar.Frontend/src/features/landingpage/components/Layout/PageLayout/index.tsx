@@ -11,15 +11,15 @@ const PageLayout = (props: PageLayoutProps) => {
     return (
         <>
             <Header
-                logoSource={props.headerContent.logoSource}
-                buttonText={props.headerContent.buttonText}
-                buttonLink={props.headerContent.buttonLink}
+                imageSource={props.headerContent.imageSource}
+                buttonLabel={props.headerContent.buttonLabel}
+                buttonUrl={props.headerContent.buttonUrl}
             />
             <Section>
                 <CenteredContainer>{children}</CenteredContainer>
             </Section>
             <Footer
-                imageSource={props.footerContent.logoSource}
+                imageSource={props.footerContent.imageSource}
                 links={props.footerContent.links}
             />
         </>

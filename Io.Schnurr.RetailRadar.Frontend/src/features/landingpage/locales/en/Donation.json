@@ -1,8 +1,8 @@
 {
     "title": "Your support is necessary",
-    "subTitle": "RetailRadar is a privately developed, ad-free and free application. However, its operation and further development require considerable resources.",
-    "subTitle2": "You can support the project using the button below and thus keep it alive.",
-    "buttonText": "Support with a coffee",
-    "buttonLink": "https://ko-fi.com/sampa",
+    "subtitle": "RetailRadar is a privately developed, ad-free and free application. However, its operation and further development require considerable resources.",
+    "subtitle2": "You can support the project using the button below and thus keep it alive.",
+    "buttonLabel": "Support with a coffee",
+    "buttonUrl": "https://ko-fi.com/sampa",
     "imageSource": "/mascot/thanks.png"
 }

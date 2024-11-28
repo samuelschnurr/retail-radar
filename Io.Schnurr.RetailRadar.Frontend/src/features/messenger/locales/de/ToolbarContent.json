@@ -1,17 +1,17 @@
 {
     "donationButton": {
-        "title": "Mit einem Kaffee unterstützen"
+        "label": "Mit einem Kaffee unterstützen"
     },
     "bugButton": {
-        "title": "Fehler melden",
+        "label": "Fehler melden",
         "mailReceiver": "info@retailradar.io",
-        "mailTitle": "Fehlermeldung",
+        "mailSubject": "Fehlermeldung",
         "mailBody": "Es ist beim Chatten mit Chappie ein Fehler aufgetreten.\r\n\r\nMein letzter Chat wurde geführt unter der Id: "
     },
     "refreshButton": {
-        "title": "Chat neu starten"
+        "label": "Chat neu starten"
     },
     "closeButton": {
-        "title": "Chat schließen"
+        "label": "Chat schließen"
     }
 }

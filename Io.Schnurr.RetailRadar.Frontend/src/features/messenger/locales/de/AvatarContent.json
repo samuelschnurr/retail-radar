@@ -2,5 +2,5 @@
     "name": "Chappie",
     "info": "online",
     "status": "available",
-    "src": "/mascot/profile.png"
+    "imageSource": "/mascot/profile.png"
 }

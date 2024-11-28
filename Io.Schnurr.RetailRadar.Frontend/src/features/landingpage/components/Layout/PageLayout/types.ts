@@ -1,5 +1,5 @@
 export interface PageLayoutProps {
     children: React.ReactNode
-    headerContent: { logoSource: string; buttonText: string; buttonLink: string }
-    footerContent: { logoSource: string; links: [{ label: string; url: string }] }
+    headerContent: { imageSource: string; buttonLabel: string; buttonUrl: string }
+    footerContent: { imageSource: string; links: [{ label: string; url: string }] }
 }

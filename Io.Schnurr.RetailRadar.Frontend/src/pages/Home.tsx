@@ -16,21 +16,21 @@ const Home = () => {
             <ScrollToTop scrollToId="welcome" />
             <WelcomeBlock
                 title={t("welcome:title")}
-                subTitle={t("welcome:subTitle")}
+                subtitle={t("welcome:subtitle")}
                 imageSource={t("welcome:imageSource")}
             />
             <FeatureBlock
                 title={t("feature:title")}
-                subTitle={t("feature:subTitle")}
+                subtitle={t("feature:subtitle")}
                 listings={t("feature:listings", { returnObjects: true })}
                 imageSource={t("feature:imageSource")}
             />
             <DonationBlock
                 title={t("donation:title")}
-                subTitle={t("donation:subTitle")}
-                subTitle2={t("donation:subTitle2")}
-                buttonText={t("donation:buttonText")}
-                buttonLink={t("donation:buttonLink")}
+                subtitle={t("donation:subtitle")}
+                subtitle2={t("donation:subtitle2")}
+                buttonLabel={t("donation:buttonLabel")}
+                buttonUrl={t("donation:buttonUrl")}
                 imageSource={t("donation:imageSource")}
             />
         </PageLayout>

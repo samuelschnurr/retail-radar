@@ -9,7 +9,7 @@ import { StyledImageContainer } from "./styles"
 import { DonationBlockProps } from "./types"
 
 const DonationBlock = (props: DonationBlockProps) => {
-    const { title, subTitle, subTitle2, buttonLink, buttonText, imageSource } = props
+    const { title, subtitle, subtitle2, buttonUrl, buttonLabel, imageSource } = props
     return (
         <CenteredSection centerContentOnDesktop={true} centerContentOnMobile={true}>
             <Slide direction="right" triggerOnce>
@@ -17,13 +17,13 @@ const DonationBlock = (props: DonationBlockProps) => {
                 <TwoColumnContainer
                     firstColContent={
                         <>
-                            <Content content={subTitle} />
-                            <Content content={subTitle2} />
+                            <Content content={subtitle} />
+                            <Content content={subtitle2} />
                             <Content
                                 content={
                                     <Button
                                         onClick={() => {
-                                            window.open(buttonLink, "_blank")
+                                            window.open(buttonUrl, "_blank")
                                         }}>
                                         <StyledImageContainer>
                                             <Image
@@ -31,7 +31,7 @@ const DonationBlock = (props: DonationBlockProps) => {
                                                 width="60px"
                                                 src="/button/kofi.png"
                                             />
-                                            {buttonText}
+                                            {buttonLabel}
                                         </StyledImageContainer>
                                     </Button>
                                 }

@@ -7,15 +7,15 @@ import { HeaderSection, StyledRow } from "./styles"
 import { HeaderProps } from "./types"
 
 const Header = (props: HeaderProps) => {
-    const { logoSource, buttonLink, buttonText } = props
+    const { imageSource, buttonUrl, buttonLabel } = props
     const navigate = useNavigate()
 
     return (
         <HeaderSection id="header">
             <CenteredContainer>
                 <StyledRow justify="space-between">
-                    <Image src={logoSource} width="160px" height="128px" href="/" />
-                    <Button onClick={() => navigate(buttonLink)}>{buttonText}</Button>
+                    <Image src={imageSource} width="160px" height="128px" href="/" />
+                    <Button onClick={() => navigate(buttonUrl)}>{buttonLabel}</Button>
                 </StyledRow>
             </CenteredContainer>
         </HeaderSection>

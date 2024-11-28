@@ -1,8 +1,8 @@
 export interface DonationBlockProps {
     title: string
-    subTitle: string
-    subTitle2: string
-    buttonText: string
-    buttonLink: string
+    subtitle: string
+    subtitle2: string
+    buttonLabel: string
+    buttonUrl: string
     imageSource: string
 }

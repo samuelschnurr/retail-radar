@@ -41,7 +41,7 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
         <StyledConversationHeader>
             <AvatarIcon
                 info={avatar.info}
-                src={avatar.src}
+                src={avatar.imageSource}
                 status={avatar.status as UserStatus}
                 as={Avatar}
             />
@@ -52,7 +52,7 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
                     startDelay={30000}
                     intervalDelay={10000}
                     bounceDuration={5000}
-                    title={ToolbarContent.donationButton.label}
+                    label={ToolbarContent.donationButton.label}
                     onClick={openDonationSite}
                 />
                 <StyledButton

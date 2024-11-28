@@ -19,7 +19,7 @@ const Home = () => {
             <FeatureBlock
                 title={t("feature:title")}
                 subTitle={t("feature:subTitle")}
-                listings={t("feature:listings")}
+                listings={t("feature:listings", { returnObjects: true })}
                 imageSource={t("feature:imageSource")}
             />
             <DonationBlock

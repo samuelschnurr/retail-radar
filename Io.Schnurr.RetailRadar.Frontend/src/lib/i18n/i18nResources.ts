@@ -6,13 +6,15 @@ import ImprintEN from "@features/landingpage/locales/en/Imprint.json"
 import PrivacyEN from "@features/landingpage/locales/en/Privacy.json"
 
 export const i18nResourceEN = {
-    Imprint: ImprintEN,
-    Privacy: PrivacyEN,
-    Header: HeaderEN
+    //Feature Landingpage
+    imprint: ImprintEN,
+    privacy: PrivacyEN,
+    header: HeaderEN
 }
 
 export const i18nResourceDE = {
-    Imprint: ImprintDE,
-    Privacy: PrivacyDE,
-    Header: HeaderDE
+    //Feature Landingpage
+    imprint: ImprintDE,
+    privacy: PrivacyDE,
+    header: HeaderDE
 }

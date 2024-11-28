@@ -1,4 +1,5 @@
-export interface HeaderContentProps {
-    src: string
-    button: { text: string; link: string }
+export interface HeaderProps {
+    logoSource: string
+    buttonLink: string
+    buttonText: string
 }

@@ -4,18 +4,18 @@ import CenteredContainer from "@features/landingpage/components/Layout/CenteredC
 import { useNavigate } from "react-router-dom"
 
 import { HeaderSection, StyledRow } from "./styles"
-import { HeaderContentProps } from "./types"
+import { HeaderProps } from "./types"
 
-const Header = (props: HeaderContentProps) => {
-    const { src, button } = props
+const Header = (props: HeaderProps) => {
+    const { logoSource, buttonLink, buttonText } = props
     const navigate = useNavigate()
 
     return (
         <HeaderSection id="header">
             <CenteredContainer>
                 <StyledRow justify="space-between">
-                    <Image src={src} width="160px" height="128px" href="/" />
-                    {button && <Button onClick={() => navigate(button.link)}>{button.text}</Button>}
+                    <Image src={logoSource} width="160px" height="128px" href="/" />
+                    <Button onClick={() => navigate(buttonLink)}>{buttonText}</Button>
                 </StyledRow>
             </CenteredContainer>
         </HeaderSection>

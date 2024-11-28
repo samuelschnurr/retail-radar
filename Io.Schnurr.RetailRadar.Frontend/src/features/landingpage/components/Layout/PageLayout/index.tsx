@@ -9,7 +9,7 @@ import { PageLayoutProps } from "./types"
 
 const PageLayout = (props: PageLayoutProps) => {
     const { children } = props
-    const { t } = useTranslation("Header")
+    const { t } = useTranslation("header")
 
     return (
         <>

@@ -7,7 +7,7 @@ const Privacy = () => {
     return (
         <PageLayout>
             <ScrollToTop scrollToId="header" />
-            <CommonBlock htmlContent={getLocalizedResourceFile("Privacy")} />
+            <CommonBlock htmlContent={getLocalizedResourceFile("privacy")} />
         </PageLayout>
     )
 }

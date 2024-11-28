@@ -1,0 +1,13 @@
+{
+    "logoSource": "/logo/logo.svg",
+    "links": [
+        {
+            "label": "Privacy",
+            "url": "/privacy"
+        },
+        {
+            "label": "Imprint",
+            "url": "/imprint"
+        }
+    ]
+}

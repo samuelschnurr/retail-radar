@@ -28,8 +28,11 @@ const Footer = (props: FooterContentProps) => {
                             rel="noopener noreferrer">
                             <TikTokOutlined />
                         </Link>
-                        <Link to="/datenschutz">Datenschutz</Link>
-                        <Link to="/impressum">Impressum</Link>
+                        {props.links?.map((link, index) => (
+                            <Link key={index} to={link.url}>
+                                {link.label}
+                            </Link>
+                        ))}
                     </FooterLinks>
                 </Row>
             </CenteredContainer>

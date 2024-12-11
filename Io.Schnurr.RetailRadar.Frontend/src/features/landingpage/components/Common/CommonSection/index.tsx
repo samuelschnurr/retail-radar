@@ -1,5 +1,6 @@
 import Content from "@features/landingpage/components/Common/ContentParagraph"
 import { Col, Row } from "antd"
+import DOMPurify from "isomorphic-dompurify"
 
 import { StyledSection } from "./styles"
 import { CommonSectionProps } from "./types"
@@ -20,8 +21,11 @@ const CommonSection = (props: CommonSectionProps) => {
                     </Col>
                 </Row>
             )}
-            {htmlContent && <div dangerouslySetInnerHTML={{ __html: htmlContent.content }} />}
-            {/* TODO: Sanitize? */}
+            {htmlContent && (
+                <div
+                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(htmlContent.content) }}
+                />
+            )}
         </StyledSection>
     )
 }

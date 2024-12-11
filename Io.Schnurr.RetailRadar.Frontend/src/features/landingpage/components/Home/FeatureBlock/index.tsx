@@ -8,22 +8,27 @@ import { StyledTwoColumnContainer } from "./styles"
 import { FeatureBlockProps } from "./types"
 
 const FeatureBlock = (props: FeatureBlockProps) => {
-    const { title, subtitle, listings, imageSource } = props
+    const { content } = props
 
     return (
         <CenteredSection centerContentOnDesktop={true} centerContentOnMobile={true}>
             <Slide direction="left" triggerOnce>
-                <h6>{title}</h6>
+                <h6>{content.title}</h6>
                 <StyledTwoColumnContainer
                     flexDirection="row-reverse"
                     firstColContent={
                         <>
-                            <Content content={subtitle} />
-                            <ContentListing listings={listings} />
+                            <Content content={content.subtitle} />
+                            <ContentListing listings={content.listings} />
                         </>
                     }
                     secondColContent={
-                        <Image src={imageSource} width="100%" height="100%" shrinkOnMobile={true} />
+                        <Image
+                            src={content.imageSource}
+                            width="100%"
+                            height="100%"
+                            shrinkOnMobile={true}
+                        />
                     }
                 />
             </Slide>

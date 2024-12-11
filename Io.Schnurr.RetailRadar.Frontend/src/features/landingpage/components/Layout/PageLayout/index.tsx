@@ -20,6 +20,8 @@ const PageLayout = (props: PageLayoutProps) => {
             </Section>
             <Footer
                 imageSource={props.footerContent.imageSource}
+                instagramLink={props.footerContent.instagramLink}
+                tiktokLink={props.footerContent.tiktokLink}
                 links={props.footerContent.links}
             />
         </>

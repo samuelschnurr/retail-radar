@@ -14,6 +14,12 @@ import ImprintEN from "@features/landingpage/locales/en/Imprint.json"
 import NotFoundEN from "@features/landingpage/locales/en/NotFound.json"
 import PrivacyEN from "@features/landingpage/locales/en/Privacy.json"
 import WelcomeEN from "@features/landingpage/locales/en/Welcome.json"
+import AvatarDE from "@features/messenger/locales/de/Avatar.json"
+import ToolbarDE from "@features/messenger/locales/de/Toolbar.json"
+import WelcomeMessagesDE from "@features/messenger/locales/de/WelcomeMessages.json"
+import AvatarEN from "@features/messenger/locales/en/Avatar.json"
+import ToolbarEN from "@features/messenger/locales/en/Toolbar.json"
+import WelcomeMessagesEN from "@features/messenger/locales/en/WelcomeMessages.json"
 
 export const landingpageResources = {
     en: {
@@ -35,5 +41,18 @@ export const landingpageResources = {
         feature: FeatureDE,
         donation: DonationDE,
         footer: FooterDE
+    }
+}
+
+export const messengerResources = {
+    en: {
+        avatar: AvatarEN,
+        welcomeMessages: WelcomeMessagesEN,
+        toolbar: ToolbarEN
+    },
+    de: {
+        avatar: AvatarDE,
+        welcomeMessages: WelcomeMessagesDE,
+        toolbar: ToolbarDE
     }
 }

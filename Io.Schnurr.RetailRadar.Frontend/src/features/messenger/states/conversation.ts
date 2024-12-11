@@ -55,11 +55,8 @@ export async function getAssistantMessage(threadId: string | null) {
     }
 }
 
-export function addErrorConversationMessage() {
-    addChatConversationMessage(
-        "Entschuldigung, es ist ein Fehler bei der Verarbeitung aufgetreten. Bitte versuchen Sie es erneut.",
-        "incoming"
-    )
+export function addErrorConversationMessage(errorMessage: string) {
+    addChatConversationMessage(errorMessage, "incoming")
 }
 
 export function addChatConversationMessage(content: string, direction: MessageDirection) {

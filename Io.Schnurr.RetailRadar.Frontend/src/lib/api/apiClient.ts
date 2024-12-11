@@ -1,5 +1,6 @@
 import { addErrorConversationMessage } from "@features/messenger/states/conversation"
 import axios, { AxiosInstance } from "axios"
+import i18n from "i18next"
 
 const apiClient: AxiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_BASE_URL
@@ -7,7 +8,7 @@ const apiClient: AxiosInstance = axios.create({
 
 apiClient.interceptors.response.use(
     response => response,
-    () => addErrorConversationMessage()
+    () => addErrorConversationMessage(i18n.t("messages:errorMessage"))
 )
 
 export default apiClient

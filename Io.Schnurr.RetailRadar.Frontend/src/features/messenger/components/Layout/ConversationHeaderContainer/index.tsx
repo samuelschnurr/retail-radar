@@ -3,28 +3,29 @@ import { Avatar, ConversationHeader, UserStatus } from "@chatscope/chat-ui-kit-r
 import AvatarIcon from "@features/messenger/components/Common/AvatarIcon"
 import BounceButton from "@features/messenger/components/Common/BounceButton"
 import { Divider } from "antd"
+import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 
-import avatar from "../../../locales/de/AvatarContent.json"
-import ToolbarContent from "../../../locales/de/ToolbarContent.json"
 import { resetConversation } from "../../../states/conversation"
 import { resetThread, useThread } from "../../../states/thread"
 import { StyledButton, StyledConversationHeader } from "./styles"
 import { ConversationHeaderContainerProps } from "./types"
 
 const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) => {
+    const { t } = useTranslation(["toolbar", "avatar"])
     const { isLoading, id } = useThread()
     const navigate = useNavigate()
 
     const openDonationSite = () => {
-        window.open("https://ko-fi.com/sampa", "_blank")
+        window.open(t("toolbar:donationButton:url"), "_blank")
     }
 
     const sendBugReport = () => {
-        const { mailReceiver, mailSubject, mailBody } = ToolbarContent.bugButton
-        const subject = encodeURIComponent(mailSubject)
-        const body = encodeURIComponent(`${mailBody}${id}`)
-        const mailtoLink = `mailto:${mailReceiver}?subject=${subject}&body=${body}`
+        const subject = encodeURIComponent(t("toolbar:bugButton:mailSubject"))
+        const body = encodeURIComponent(`${t("toolbar:bugButton:mailBody")}${id}`)
+        const mailtoLink = `mailto:${t(
+            "toolbar:bugButton:mailReceiver"
+        )}?subject=${subject}&body=${body}`
         window.location.href = mailtoLink
     }
 
@@ -40,36 +41,36 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
     return (
         <StyledConversationHeader>
             <AvatarIcon
-                info={avatar.info}
-                src={avatar.imageSource}
-                status={avatar.status as UserStatus}
+                info={t("avatar:info")}
+                src={t("avatar:imageSource")}
+                status={t("avatar:status") as UserStatus}
                 as={Avatar}
             />
-            <ConversationHeader.Content info={avatar.info} userName={avatar.name} />
+            <ConversationHeader.Content info={t("avatar:info")} userName={t("avatar:name")} />
             <ConversationHeader.Actions>
                 <BounceButton
                     icon={<CoffeeOutlined />}
                     startDelay={30000}
                     intervalDelay={10000}
                     bounceDuration={5000}
-                    label={ToolbarContent.donationButton.label}
+                    label={t("toolbar:donationButton:label")}
                     onClick={openDonationSite}
                 />
                 <StyledButton
                     icon={<BugOutlined />}
-                    title={ToolbarContent.bugButton.label}
+                    title={t("toolbar:bugButton:label")}
                     onClick={sendBugReport}
                 />
                 <Divider type="vertical" />
                 <StyledButton
                     icon={<SyncOutlined />}
                     disabled={isLoading}
-                    title={ToolbarContent.refreshButton.label}
+                    title={t("toolbar:refreshButton:label")}
                     onClick={handleRefresh}
                 />
                 <StyledButton
                     icon={<CloseOutlined />}
-                    title={ToolbarContent.closeButton.label}
+                    title={t("toolbar:closeButton:label")}
                     onClick={handleClose}
                 />
             </ConversationHeader.Actions>

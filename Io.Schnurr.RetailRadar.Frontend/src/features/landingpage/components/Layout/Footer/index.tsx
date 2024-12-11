@@ -8,7 +8,7 @@ import { FooterLinks, FooterSection } from "./styles"
 import { FooterContentProps } from "./types"
 
 const Footer = (props: FooterContentProps) => {
-    const { imageSource } = props
+    const { imageSource, links, instagramLink, tiktokLink } = props
 
     return (
         <FooterSection>
@@ -16,19 +16,13 @@ const Footer = (props: FooterContentProps) => {
                 <Row justify="space-between" align="middle">
                     <Image src={imageSource} width="122px" height="89px" href="/" />
                     <FooterLinks>
-                        <Link
-                            to="https://www.instagram.com/retailradar.io/"
-                            target="_blank"
-                            rel="noopener noreferrer">
+                        <Link to={instagramLink} target="_blank" rel="noopener noreferrer">
                             <InstagramOutlined />
                         </Link>
-                        <Link
-                            to="https://www.tiktok.com/@retailradar.io/"
-                            target="_blank"
-                            rel="noopener noreferrer">
+                        <Link to={tiktokLink} target="_blank" rel="noopener noreferrer">
                             <TikTokOutlined />
                         </Link>
-                        {props.links?.map((link, index) => (
+                        {links?.map((link, index) => (
                             <Link key={index} to={link.url}>
                                 {link.label}
                             </Link>

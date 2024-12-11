@@ -2,5 +2,6 @@
     "name": "Chappie",
     "info": "online",
     "status": "available",
-    "imageSource": "/mascot/profile.png"
+    "imageSource": "/mascot/profile.png",
+    "isTypingText": "Chappie schreibt"
 }

@@ -1,5 +1,3 @@
 export interface WelcomeBlockProps {
-    title: string
-    subtitle: string
-    imageSource: string
+    content: { title: string; subtitle: string; imageSource: string }
 }

@@ -7,7 +7,7 @@ import { Fade } from "react-awesome-reveal"
 import { WelcomeBlockProps } from "./types"
 
 const WelcomeBlock = (props: WelcomeBlockProps) => {
-    const { imageSource, title, subtitle } = props
+    const { content } = props
 
     return (
         <CenteredSection id="welcome" centerContentOnMobile={true}>
@@ -15,12 +15,17 @@ const WelcomeBlock = (props: WelcomeBlockProps) => {
                 <TwoColumnContainer
                     firstColContent={
                         <>
-                            <h6>{title}</h6>
-                            <Content content={subtitle} />
+                            <h6>{content.title}</h6>
+                            <Content content={content.subtitle} />
                         </>
                     }
                     secondColContent={
-                        <Image src={imageSource} width="100%" height="100%" shrinkOnMobile={true} />
+                        <Image
+                            src={content.imageSource}
+                            width="100%"
+                            height="100%"
+                            shrinkOnMobile={true}
+                        />
                     }
                 />
             </Fade>

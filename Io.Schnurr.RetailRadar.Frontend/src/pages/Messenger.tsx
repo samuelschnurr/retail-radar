@@ -11,7 +11,6 @@ import { useEffect } from "react"
 
 const Messenger = () => {
     const thread = useThread()
-
     useEffect(() => {
         if (thread.id || thread.isLoading) {
             return

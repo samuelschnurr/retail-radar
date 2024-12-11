@@ -5,6 +5,7 @@ import { devtools } from "@hookstate/devtools"
 import { getMessage, postMessage } from "../services/messageService"
 import { Conversation } from "../types/conversation"
 import { Message } from "../types/message"
+import { MessageDirection } from "../types/messageDirection"
 
 const defaultState = { messages: [], lastRunId: null, isTyping: true } as Conversation
 
@@ -61,7 +62,7 @@ export function addErrorConversationMessage() {
     )
 }
 
-export function addChatConversationMessage(content: string, direction: string) {
+export function addChatConversationMessage(content: string, direction: MessageDirection) {
     if (!content) {
         return
     }

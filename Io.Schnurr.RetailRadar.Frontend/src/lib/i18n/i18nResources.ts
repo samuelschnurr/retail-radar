@@ -15,11 +15,11 @@ import NotFoundEN from "@features/landingpage/locales/en/NotFound.json"
 import PrivacyEN from "@features/landingpage/locales/en/Privacy.json"
 import WelcomeEN from "@features/landingpage/locales/en/Welcome.json"
 import AvatarDE from "@features/messenger/locales/de/Avatar.json"
+import messagesDE from "@features/messenger/locales/de/Messages.json"
 import ToolbarDE from "@features/messenger/locales/de/Toolbar.json"
-import WelcomeMessagesDE from "@features/messenger/locales/de/WelcomeMessages.json"
 import AvatarEN from "@features/messenger/locales/en/Avatar.json"
+import messagesEN from "@features/messenger/locales/en/Messages.json"
 import ToolbarEN from "@features/messenger/locales/en/Toolbar.json"
-import WelcomeMessagesEN from "@features/messenger/locales/en/WelcomeMessages.json"
 
 export const landingpageResources = {
     en: {
@@ -47,12 +47,12 @@ export const landingpageResources = {
 export const messengerResources = {
     en: {
         avatar: AvatarEN,
-        welcomeMessages: WelcomeMessagesEN,
+        messages: messagesEN,
         toolbar: ToolbarEN
     },
     de: {
         avatar: AvatarDE,
-        welcomeMessages: WelcomeMessagesDE,
+        messages: messagesDE,
         toolbar: ToolbarDE
     }
 }

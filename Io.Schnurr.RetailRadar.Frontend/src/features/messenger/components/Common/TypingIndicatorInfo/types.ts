@@ -1,4 +1,4 @@
 export interface TypingIndicatorInfoProps {
-    userName: string | undefined
     isTyping: boolean
+    isTypingText: string | undefined
 }

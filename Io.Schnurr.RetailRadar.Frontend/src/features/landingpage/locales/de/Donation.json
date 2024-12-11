@@ -4,5 +4,6 @@
     "subtitle2": "Über den nachstehenden Button kannst du das Projekt unterstützen und somit am Leben halten.",
     "buttonLabel": "Mit einem Kaffee unterstützen",
     "buttonUrl": "https://ko-fi.com/sampa",
+    "buttonImageSource": "/button/kofi.png",
     "imageSource": "/mascot/thanks.png"
 }

@@ -1,0 +1,9 @@
+{
+    "welcomeMessages": [
+        "Ich möchte neue Computerlautsprecher kaufen.",
+        "Bitte hilf mir, ein Geschenk für meinen Vater zu finden.",
+        "Welches Smartphone kannst du mir empfehlen?"
+    ],
+    "errorMessage": "Entschuldigung, es ist ein Fehler bei der Verarbeitung aufgetreten. Bitte versuchen Sie es erneut.",
+    "inputTextMessage": "Nachricht hier eingeben"
+}

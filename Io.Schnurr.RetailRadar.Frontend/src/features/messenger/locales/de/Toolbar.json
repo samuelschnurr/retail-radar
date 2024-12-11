@@ -1,6 +1,7 @@
 {
     "donationButton": {
-        "label": "Mit einem Kaffee unterstützen"
+        "label": "Mit einem Kaffee unterstützen",
+        "url": "https://ko-fi.com/sampa"
     },
     "bugButton": {
         "label": "Fehler melden",

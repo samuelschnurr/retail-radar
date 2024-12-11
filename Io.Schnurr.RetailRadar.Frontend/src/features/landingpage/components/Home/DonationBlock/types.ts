@@ -4,5 +4,6 @@ export interface DonationBlockProps {
     subtitle2: string
     buttonLabel: string
     buttonUrl: string
+    buttonImageSource: string
     imageSource: string
 }

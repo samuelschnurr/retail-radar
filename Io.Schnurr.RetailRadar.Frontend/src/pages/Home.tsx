@@ -31,6 +31,7 @@ const Home = () => {
                 subtitle2={t("donation:subtitle2")}
                 buttonLabel={t("donation:buttonLabel")}
                 buttonUrl={t("donation:buttonUrl")}
+                buttonImageSource={t("donation:buttonImageSource")}
                 imageSource={t("donation:imageSource")}
             />
         </PageLayout>

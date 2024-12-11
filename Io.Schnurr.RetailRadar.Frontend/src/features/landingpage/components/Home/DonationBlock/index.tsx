@@ -32,7 +32,7 @@ const DonationBlock = (props: DonationBlockProps) => {
                                                 width="60px"
                                                 src={buttonImageSource}
                                             />
-                                            {buttonLabel}
+                                            <div>{buttonLabel}</div>
                                         </StyledImageContainer>
                                     </Button>
                                 }

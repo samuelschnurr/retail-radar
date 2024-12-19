@@ -1,6 +1,7 @@
 import { Col } from "antd"
 
-import { StyledRow, TwoColumnContainerProps } from "./types"
+import { StyledRow } from "./styles"
+import { TwoColumnContainerProps } from "./types"
 
 const TwoColumnContainer = (props: TwoColumnContainerProps) => {
     const { firstColContent, secondColContent, flexDirection = "row" } = props

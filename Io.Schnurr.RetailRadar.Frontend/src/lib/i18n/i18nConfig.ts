@@ -1,7 +1,7 @@
 import i18n from "i18next"
 import LanguageDetector from "i18next-browser-languagedetector"
 
-import { landingpageResources, messengerResources, routeResources } from "./i18nResources"
+import { landingpageResources, messengerResources } from "./i18nResources"
 
 const trimmedNavigatorLanguageDetector = {
     name: "trimmedNavigator",
@@ -18,8 +18,8 @@ const i18nConfig = i18n.use(languageDetector).init({
     load: "languageOnly",
     fallbackLng: "en",
     resources: {
-        en: { ...routeResources.en, ...landingpageResources.en, ...messengerResources.en },
-        de: { ...routeResources.de, ...landingpageResources.de, ...messengerResources.de }
+        en: { ...landingpageResources.en, ...messengerResources.en },
+        de: { ...landingpageResources.de, ...messengerResources.de }
     },
     defaultNS: undefined,
     interpolation: {

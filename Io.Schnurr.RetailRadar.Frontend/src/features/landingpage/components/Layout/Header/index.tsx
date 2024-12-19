@@ -19,6 +19,8 @@ const Header = ({ imageSource, buttonUrl, buttonLabel }: HeaderProps) => {
     }
 
     const isLanguageActive = (language: string) => {
+        const i18nLanguage = i18n.language.split("-")[0]
+
         return i18nLanguage.get() === language
     }
 

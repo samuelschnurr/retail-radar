@@ -3,7 +3,18 @@ import LanguageDetector from "i18next-browser-languagedetector"
 
 import { landingpageResources, messengerResources, routeResources } from "./i18nResources"
 
-const i18nConfig = i18n.use(LanguageDetector).init({
+const trimmedNavigatorLanguageDetector = {
+    name: "trimmedNavigator",
+    lookup() {
+        const detectedLanguage = navigator.language
+        return detectedLanguage.split("-")[0]
+    }
+}
+
+const languageDetector = new LanguageDetector()
+languageDetector.addDetector(trimmedNavigatorLanguageDetector)
+
+const i18nConfig = i18n.use(languageDetector).init({
     load: "languageOnly",
     fallbackLng: "en",
     resources: {
@@ -15,7 +26,7 @@ const i18nConfig = i18n.use(LanguageDetector).init({
         escapeValue: false
     },
     detection: {
-        order: ["localStorage", "navigator"],
+        order: ["localStorage", "trimmedNavigator"],
         caches: ["localStorage"]
     }
 })

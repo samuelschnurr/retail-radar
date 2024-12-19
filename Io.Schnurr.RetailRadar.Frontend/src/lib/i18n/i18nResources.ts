@@ -56,12 +56,3 @@ export const messengerResources = {
         toolbar: ToolbarDE
     }
 }
-
-export const routeResources = {
-    en: {
-        routes: { messenger: "messenger", imprint: "imprint", privacy: "privacy" }
-    },
-    de: {
-        routes: { messenger: "messenger", imprint: "impressum", privacy: "datenschutz" }
-    }
-}

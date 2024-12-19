@@ -27,4 +27,6 @@ const renderRoot = () => {
 
 i18next.on("languageChanged", renderRoot)
 
+window.addEventListener("beforeunload", () => i18next.off("languageChanged", renderRoot))
+
 renderRoot()

@@ -2,9 +2,13 @@ import { StyledTextButton } from "./styles"
 import { TextButtonProps } from "./types"
 
 const TextButton = (props: TextButtonProps) => {
-    const { onClick, children } = props
+    const { onClick, children, isActive } = props
 
-    return <StyledTextButton onClick={onClick}>{children}</StyledTextButton>
+    return (
+        <StyledTextButton active={isActive} onClick={onClick}>
+            {children}
+        </StyledTextButton>
+    )
 }
 
 export default TextButton

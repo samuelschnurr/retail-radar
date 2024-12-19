@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const StyledTextButton = styled("button")<{ color?: string }>`
+export const StyledTextButton = styled("button")<{ active: boolean }>`
     border: none;
     background: none;
     color: ${p => p.theme.colors.primaryDark};
@@ -14,4 +14,11 @@ export const StyledTextButton = styled("button")<{ color?: string }>`
         color: ${p => p.theme.colors.background};
         background-color: ${p => p.theme.colors.secondary};
     }
+
+    ${p =>
+        p.active &&
+        `
+        color: ${p.theme.colors.background};
+        background-color: ${p.theme.colors.secondary};
+    `}
 `

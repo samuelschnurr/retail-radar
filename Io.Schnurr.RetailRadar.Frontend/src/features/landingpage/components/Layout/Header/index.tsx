@@ -16,15 +16,27 @@ const Header = (props: HeaderProps) => {
         i18n.changeLanguage(language)
     }
 
+    const isLanguageActive = (language: string) => {
+        return i18n.language === language
+    }
+
     return (
         <HeaderSection id="header">
             <CenteredContainer>
                 <StyledRow justify="space-between">
                     <Image src={imageSource} width="160px" height="128px" href="/" />
                     <StyledTextButtonContainer>
-                        <TextButton onClick={() => changeLanguage("de")}>DE</TextButton>
+                        <TextButton
+                            isActive={isLanguageActive("de")}
+                            onClick={() => changeLanguage("de")}>
+                            DE
+                        </TextButton>
                         <div>|</div>
-                        <TextButton onClick={() => changeLanguage("en")}>EN</TextButton>
+                        <TextButton
+                            isActive={isLanguageActive("en")}
+                            onClick={() => changeLanguage("en")}>
+                            EN
+                        </TextButton>
                     </StyledTextButtonContainer>
                     <Button onClick={() => navigate(buttonUrl)}>{buttonLabel}</Button>
                 </StyledRow>

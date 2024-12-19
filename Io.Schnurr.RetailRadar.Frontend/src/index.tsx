@@ -11,17 +11,6 @@ import GlobalStyles from "./styles/globalStyles"
 import LightTheme from "./styles/lightTheme"
 
 const App = () => {
-    const renderRoot = () => {
-        root.render(
-            <ThemeProvider theme={LightTheme}>
-                <GlobalStyles />
-                <Router />
-            </ThemeProvider>
-        )
-    }
-
-    i18next.on("languageChanged", renderRoot)
-
     return (
         <ThemeProvider theme={LightTheme}>
             <GlobalStyles />
@@ -32,4 +21,10 @@ const App = () => {
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
-root.render(<App />)
+const renderRoot = () => {
+    root.render(<App />)
+}
+
+i18next.on("languageChanged", renderRoot)
+
+renderRoot()

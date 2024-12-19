@@ -5,6 +5,7 @@ export const StyledTextButton = styled("button")<{ color?: string }>`
     background: none;
     color: ${p => p.theme.colors.primaryDark};
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 
     &:hover,
     &:active,

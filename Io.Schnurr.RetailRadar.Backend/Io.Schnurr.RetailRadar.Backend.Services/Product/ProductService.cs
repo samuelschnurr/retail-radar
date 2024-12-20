@@ -10,9 +10,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 {
     private readonly ILogger<ProductService> logger = logger;
     private readonly ProductSearchClient searchClient = new(logger, configuration["Google:Authorization"], configuration["Google:EngineId"]);
-    private readonly string affiliateId = configuration["Amazon:AffiliateId"];
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
-    private const string amazonBaseAddress = "https://www.amazon.com/";
     private const string amazonAsinSegment = "dp/";
 
     public async Task<string> GetStringWithProductLinks(string content)
@@ -21,12 +19,12 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         var result = content;
 
-        Dictionary<string, string?> searchTermAsins = [];
+        List<ProductSearchResult> productSearchResults = [];
 
         for (int i = 0; i < matches.Count; i++)
         {
             Match match = matches[i];
-            var productLink = await GetProductLinkAsync(searchTermAsins, match.Groups[1].Value);
+            var productLink = await GetProductLinkAsync(productSearchResults, match.Groups[1].Value);
             result = result.Replace(match.Value, productLink);
 
             logger.LogInformation("Replaced product name {MatchResult} with {ProductLink}", match.Value, productLink);
@@ -35,28 +33,35 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         return result;
     }
 
-    private static string? GetBestMatchingAsin(List<Result>? searchResults)
+    private static ProductSearchResult GetBestMatchingProductSearchResult(List<Result>? searchResults, string searchTerm)
     {
-        if (searchResults == null)
+        ProductSearchResult productSearchResult = new()
         {
-            return null;
-        }
+            SearchTerm = searchTerm
+        };
 
-        var bestMatchingItem = searchResults.FirstOrDefault();
+        var bestMatchingItem = searchResults?.FirstOrDefault();
 
         if (bestMatchingItem == null)
         {
-            return null;
+            return productSearchResult;
         }
 
         var uri = new Uri(bestMatchingItem.Link);
-        var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
-        var bestMatchingAsin = uri.Segments.ElementAtOrDefault(dpIndex + 1);
 
-        return bestMatchingAsin;
+        productSearchResult.BaseAddress = uri.Authority;
+
+        var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
+        productSearchResult.Asin = uri.Segments.ElementAtOrDefault(dpIndex + 1);
+
+        var topLevelDomain = productSearchResult.BaseAddress.Split('.').Last();
+        productSearchResult.AffiliateId = GetAffiliateId(topLevelDomain);
+
+        return productSearchResult;
     }
 
-    private async Task<string> GetProductLinkAsync(Dictionary<string, string?> searchTermAsins, string? searchTerm)
+
+    private async Task<string> GetProductLinkAsync(List<ProductSearchResult> productSearchResults, string searchTerm)
     {
         if (string.IsNullOrWhiteSpace(searchTerm))
         {
@@ -65,48 +70,64 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         string htmlLink;
 
-        if (searchTermAsins.TryGetValue(searchTerm, out string? value))
+        var existingResult = productSearchResults.Find(p => string.Equals(p.SearchTerm, searchTerm));
+
+        if (existingResult != null)
         {
-            htmlLink = RenderLinkAsHtml(searchTerm, value);
+            htmlLink = RenderProductSearchResultAsHtml(existingResult);
         }
         else
         {
-            var productSearchResults = await searchClient.GetProductSearchResults(searchTerm);
-            var bestMatchingAsin = GetBestMatchingAsin(productSearchResults);
+            var newProductSearchResults = await searchClient.GetProductSearchResults(searchTerm);
+            var bestMatchingProductSearchResult = GetBestMatchingProductSearchResult(newProductSearchResults, searchTerm);
 
-            if (!string.IsNullOrWhiteSpace(bestMatchingAsin))
+            if (bestMatchingProductSearchResult.IsValid())
             {
-                searchTermAsins.Add(searchTerm, bestMatchingAsin);
+                productSearchResults.Add(bestMatchingProductSearchResult);
             }
 
-            htmlLink = RenderLinkAsHtml(searchTerm, bestMatchingAsin);
+            htmlLink = RenderProductSearchResultAsHtml(bestMatchingProductSearchResult);
         }
 
         return htmlLink;
     }
 
-    private string RenderLinkAsHtml(string searchTerm, string? asin)
+    private static string RenderProductSearchResultAsHtml(ProductSearchResult productSearchResult)
     {
-        var parameters = new Dictionary<string, string>
-        {
-            { "associate_id", affiliateId },
-            { "tag", affiliateId },
-        };
-
         string link;
 
-        if (string.IsNullOrWhiteSpace(asin))
+        if (productSearchResult.IsValid())
         {
-            string encodedSearchTerm = HttpUtility.UrlEncode(searchTerm);
-            link = $"https://www.google.com/search?q={encodedSearchTerm}";
+            var parameters = new Dictionary<string, string>
+            {
+                { "associate_id", productSearchResult.AffiliateId! },
+                { "tag", productSearchResult.AffiliateId! },
+            };
+
+            link = $"{productSearchResult.BaseAddress}{amazonAsinSegment}{productSearchResult.Asin}?{ProductSearchClient.CreateQueryString(parameters)}";
         }
         else
         {
-            link = $"{amazonBaseAddress}{amazonAsinSegment}{asin}?{ProductSearchClient.CreateQueryString(parameters)}";
+            string encodedSearchTerm = HttpUtility.UrlEncode(productSearchResult.SearchTerm!);
+            link = $"https://www.google.com/search?q={encodedSearchTerm}";
         }
 
-        var htmlLink = $"<a href='{link}' target='_blank'>{searchTerm}</a> ";
+        var htmlLink = $"<a href='{link}' target='_blank'>{productSearchResult.SearchTerm}</a> ";
 
         return htmlLink;
+    }
+
+    private static string GetAffiliateId(string topLevelDomain)
+    {
+        return topLevelDomain switch
+        {
+            "au" => "retailradar.io-au-22",
+            "de" => "retailradar.io-de-21",
+            "es" => "retailradar.io-es-21",
+            "fr" => "retailradar.io-fr-21",
+            "it" => "retailradar.io-it-21",
+            "uk" => "retailradar.io-uk-21",
+            _ => "retailradar.io-us-20",
+        };
     }
 }

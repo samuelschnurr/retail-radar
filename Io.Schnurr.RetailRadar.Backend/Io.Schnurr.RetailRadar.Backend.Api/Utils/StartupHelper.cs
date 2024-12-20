@@ -15,6 +15,8 @@ internal static class StartupHelper
 
     internal static void AddCustomMiddleware(this WebApplication app)
     {
+        app.UseMiddleware<LanguageInterceptor>();
+
         if (IsStartedWithTestData())
         {
             app.UseMiddleware<ResponseDelayInterceptor>();

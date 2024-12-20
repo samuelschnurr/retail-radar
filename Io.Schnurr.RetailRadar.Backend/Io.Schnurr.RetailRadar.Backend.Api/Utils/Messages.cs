@@ -7,6 +7,13 @@ internal static class Messages
 {
     internal static MessageDto GetWelcomeMessage(string threadId)
     {
+        var welcomeMessages = Thread.CurrentThread.CurrentCulture.Name switch
+        {
+            "de" => welcomeMessagesDE,
+            "en" => welcomeMessagesEN,
+            _ => welcomeMessagesEN
+        };
+
         Random random = new();
         int randomIndex = random.Next(0, welcomeMessages.Length);
 
@@ -15,7 +22,7 @@ internal static class Messages
         return welcomeMessage;
     }
 
-    private static readonly string[] welcomeMessages =
+    private static readonly string[] welcomeMessagesDE =
     [
         "Ein freundliches Hallo! Bei der Produktsuche und -beratung stehe ich dir gerne zur Seite. Welche Produkte interessieren dich besonders?",
         "Ein freundliches Hallo! Ich bin hier, um dir als dein persönlicher Berater bei deiner Suche nach Produkten zu helfen. Welche Artikel suchst du heute?",
@@ -69,5 +76,61 @@ internal static class Messages
         "Willkommen bei deinem persönlichen Berater! Lass mich dir dabei helfen, das Richtige für dich zu finden. Welches Produkt möchtest du entdecken?",
         "Willkommen bei deinem persönlichen Berater! Mit meiner Erfahrung und Expertise unterstütze ich dich gerne bei deiner Suche. Was für ein Produkt darf ich für dich finden?",
         "Willkommen bei deinem persönlichen Berater! Mit meiner Hilfe finden wir garantiert das, wonach du suchst. Welchen Artikel möchtest du entdecken?"
+    ];
+
+    private static readonly string[] welcomeMessagesEN =
+    [
+        "A friendly hello! I'm here to assist you with product searches and advice. Which products are you particularly interested in?",
+        "A friendly hello! I’m here as your personal advisor to help you find the right products. What are you looking for today?",
+        "A warm welcome! As your advisor, I’m happy to help fulfill your shopping needs. What are you searching for?",
+        "A warm welcome! I’m here as your personal advisor to assist you with product selection. What would you like to explore?",
+        "A warm welcome! I’m your personal advisor, ready to assist you with anything you need. How can I help you with your product search today?",
+        "A warm welcome! With me as your personal advisor, shopping will be a breeze. What product interests you today?",
+        "A warm welcome! With me as your personal advisor, your search for the perfect product will be a success. What item do you need?",
+        "Good day and a warm welcome! As your advisor, I’m here to assist you with product selection. Which item interests you the most?",
+        "Good day and a warm welcome! As your advisor, I’m here to ensure you get the best deals. How can I help you?",
+        "Good day and a warm welcome! As your advisor, I’m here to help you make the right purchasing decisions. How can I assist you?",
+        "Good day and a warm welcome! As your advisor, I look forward to helping you with your shopping. How may I serve you?",
+        "Good day and a warm welcome! As your advisor, I look forward to presenting you with the best products. How can I assist you?",
+        "Good day and a warm welcome! As your advisor, I want to ensure you find the best product. Which item interests you?",
+        "Good day and a warm welcome! I’m here as your personal advisor to discover products for you. What can I find for you?",
+        "Good day and a warm welcome! I’m your personal advisor, here to support you in your product search. What can I find for you?",
+        "Good day and a warm welcome! I want to improve your shopping experience as your advisor. How can I help you?",
+        "Good day and a warm welcome! My goal as your advisor is to support you with your shopping today. How can I assist you?",
+        "Good day! As your personal advisor, I’m here to help you with product selection. Which products interest you the most today?",
+        "Good day! As your advisor, I specialize in understanding your needs and finding the best products for you. How can I assist you?",
+        "Good day! As your advisor, I want to help you find the perfect product. How can I assist you today?",
+        "Good day! As your advisor, I’m here for you. Which products can I find for you?",
+        "Good day! I’m here as your personal advisor to support your search. Which product are you looking for today?",
+        "Good day! My goal is to assist you as your personal advisor with your online shopping. How can I help you?",
+        "Good day! My goal as your personal advisor is to make shopping easier for you. How can I assist you today?",
+        "Hello and welcome! As your advisor, I look forward to guiding you through the world of online shopping. Which item interests you?",
+        "Hello and welcome! I’m here as your personal advisor to assist you with your shopping process. How can I help you?",
+        "Hello and welcome! I’m here as your personal advisor. What are you looking for?",
+        "Hello and welcome! My goal as your advisor is to enhance your shopping experience. How can I assist you?",
+        "Hello and welcome! With me as your personal advisor, you’re guaranteed to find the perfect item. How can I help you?",
+        "Hello and welcome! I’m here as your advisor with my expertise. How can I assist you?",
+        "Hello and welcome! I’m your advisor, ready to help you select the best products. What can I discover for you?",
+        "Hello and welcome! With me as your personal advisor, you’ll find the best product for your needs. What are you looking for today?",
+        "Hello and welcome! With me as your advisor, we’ll surely find what you’re looking for. How can I assist you today?",
+        "A warm welcome! As your advisor, I specialize in helping you find the ideal product. What can I find for you?",
+        "A warm welcome! As your advisor, I’m here to provide you with the best support. What item do you need?",
+        "A warm welcome! As your advisor, I’m here to ensure your shopping experience runs smoothly. What are you looking for?",
+        "A warm welcome! As your advisor, I’m here to ensure your shopping experience is seamless. How can I assist you?",
+        "A warm welcome! As your advisor, I’m here to ensure you get the best deals. How can I help you?",
+        "A warm welcome! As your advisor, I’m here to help you make the right purchasing decisions. How can I support you?",
+        "A warm welcome! As your advisor, I’m here to provide you with professional advice. How can I assist you with your shopping?",
+        "A warm welcome! With me as your personal advisor, we’ll find the best products for you together. Which item interests you?",
+        "Glad you’re here! As your advisor, I’m ready to help with your shopping. How can I assist you today?",
+        "Glad you’re here! I’m your advisor, looking forward to helping you find the perfect product. What would you like to find?",
+        "Glad you chose my support! As your advisor, I’m here to help with your shopping. How may I serve you?",
+        "Glad you chose my support! As your advisor, I’m here to ensure you find the perfect product. How may I serve you?",
+        "Glad you chose my support! I’m your personal advisor and available for all your shopping inquiries. How can I assist you today?",
+        "Welcome to your personal advisor! Together, we’ll find the best product for your needs. How can I help you today?",
+        "Welcome to your personal advisor! I’m here to ensure your shopping experience is seamless. How can I assist you?",
+        "Welcome to your personal advisor! I look forward to assisting you with your search. What can I find for you?",
+        "Welcome to your personal advisor! Let me help you find the right product. What would you like to discover?",
+        "Welcome to your personal advisor! With my experience and expertise, I’m happy to assist you with your search. What product can I find for you?",
+        "Welcome to your personal advisor! With my help, we’ll surely find what you’re looking for. Which item would you like to explore?",
     ];
 }

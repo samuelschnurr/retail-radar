@@ -55,7 +55,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
         productSearchResult.Asin = uri.Segments.ElementAtOrDefault(dpIndex + 1);
 
-        var topLevelDomain = productSearchResult.BaseAddress.Split('.').Last();
+        var topLevelDomain = uri.Authority.Split('.').Last();
         productSearchResult.AffiliateId = GetAffiliateId(topLevelDomain);
 
         return productSearchResult;

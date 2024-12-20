@@ -12,7 +12,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
     private readonly ProductSearchClient searchClient = new(logger, configuration["Google:Authorization"], configuration["Google:EngineId"]);
     private readonly string affiliateId = configuration["Amazon:AffiliateId"];
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
-    private const string amazonBaseAddress = "https://www.amazon.de/";
+    private const string amazonBaseAddress = "https://www.amazon.com/";
     private const string amazonAsinSegment = "dp/";
 
     public async Task<string> GetStringWithProductLinks(string content)
@@ -98,7 +98,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         if (string.IsNullOrWhiteSpace(asin))
         {
             string encodedSearchTerm = HttpUtility.UrlEncode(searchTerm);
-            link = $"https://www.google.de/search?q={encodedSearchTerm}";
+            link = $"https://www.google.com/search?q={encodedSearchTerm}";
         }
         else
         {

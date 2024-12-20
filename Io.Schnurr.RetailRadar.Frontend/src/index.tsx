@@ -2,6 +2,8 @@ import "antd/dist/antd.css"
 // Import this way to not be treeshaked
 import "@lib/i18n/i18nConfig"
 
+import { resetConversation } from "@features/messenger/states/conversation"
+import { resetThread } from "@features/messenger/states/thread"
 import i18next from "i18next"
 import ReactDOM from "react-dom/client"
 import { ThemeProvider } from "styled-components"
@@ -25,6 +27,12 @@ const renderRoot = () => {
     root.render(<App />)
 }
 
-i18next.on("languageChanged", renderRoot)
+const handleLanguageChanged = () => {
+    resetThread()
+    resetConversation()
+    renderRoot()
+}
+
+i18next.on("languageChanged", handleLanguageChanged)
 
 renderRoot()

@@ -12,6 +12,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
     private readonly ProductSearchClient searchClient = new(logger, configuration["Google:Authorization"], configuration["Google:EngineId"]);
     private readonly string productNameRegexPattern = new(@"\[#(.*?)#\]");
     private const string amazonAsinSegment = "dp/";
+    private const string uriScheme = "https://";
 
     public async Task<string> GetStringWithProductLinks(string content)
     {
@@ -49,7 +50,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         var uri = new Uri(bestMatchingItem.Link);
 
-        productSearchResult.BaseAddress = uri.Authority;
+        productSearchResult.BaseAddress = uriScheme + uri.Authority + "/";
 
         var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
         productSearchResult.Asin = uri.Segments.ElementAtOrDefault(dpIndex + 1);

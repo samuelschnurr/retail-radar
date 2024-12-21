@@ -7,7 +7,15 @@ import i18n from "i18next"
  * @returns The by the current language localized resource file for the specified namespace.
  */
 export function getLocalizedResourceFile(namespace: string): any {
-    const supportedLanguage = i18n.language === "de" ? "de" : "en"
+    const supportedLanguage = getCurrentLanguageCountryPart() === "de" ? "de" : "en"
     const file = i18n.getResourceBundle(supportedLanguage, namespace)
     return file
+}
+
+export function getCurrentLanguageCountryPart() {
+    return i18n.language.split("-")[0].toLocaleLowerCase()
+}
+
+export function getCurrentLanguageRegionPart() {
+    return i18n.language.split("-")[1]?.toLocaleLowerCase() ?? getCurrentLanguageCountryPart()
 }

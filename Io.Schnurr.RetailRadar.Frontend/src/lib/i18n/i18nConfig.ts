@@ -4,34 +4,21 @@ import { initReactI18next } from "react-i18next"
 
 import { landingpageResources, messengerResources } from "./i18nResources"
 
-const trimmedNavigatorLanguageDetector = {
-    name: "trimmedNavigator",
-    lookup() {
-        const detectedLanguage = navigator.language
-        return detectedLanguage.split("-")[0]
-    }
-}
-
-const languageDetector = new LanguageDetector()
-languageDetector.addDetector(trimmedNavigatorLanguageDetector)
-
 const i18nConfig = i18n
-    .use(languageDetector)
+    .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        load: "languageOnly",
         debug: true,
         fallbackLng: "en",
         resources: {
             en: { ...landingpageResources.en, ...messengerResources.en },
             de: { ...landingpageResources.de, ...messengerResources.de }
         },
-        defaultNS: undefined,
         interpolation: {
             escapeValue: false
         },
         detection: {
-            order: ["localStorage", "trimmedNavigator"],
+            order: ["localStorage", "navigator"],
             caches: ["localStorage"]
         }
     })

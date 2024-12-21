@@ -10,7 +10,7 @@ const state = hookstate<Thread>({ ...defaultState }, devtools({ key: "retailrada
 
 export const useThread = () => useHookstate(state).value
 
-export async function createThread() {
+export async function createThread(): Promise<boolean> {
     state.isLoading.set(true)
     const response = await postThread()
 
@@ -21,6 +21,8 @@ export async function createThread() {
     }
 
     state.isLoading.set(false)
+
+    return !!response
 }
 
 export const resetThread = () => {

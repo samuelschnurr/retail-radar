@@ -24,6 +24,7 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
     const navigate = useNavigate()
 
     const items: MenuItemType[] = t("marketplace:regions", { returnObjects: true }) as []
+    const defaultMarketplaceRegion = t("marketplace:defaultRegion")
 
     const openDonationSite = () => {
         window.open(t("toolbar:donationButton:url"), "_blank")
@@ -61,7 +62,7 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
                     menu={{
                         items,
                         selectable: true,
-                        defaultSelectedKeys: [".com"]
+                        defaultSelectedKeys: [defaultMarketplaceRegion]
                     }}>
                     <div>
                         <StyledButton

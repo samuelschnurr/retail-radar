@@ -4,6 +4,7 @@
         "Bitte hilf mir, ein Geschenk für meinen Vater zu finden.",
         "Welches Smartphone kannst du mir empfehlen?"
     ],
+    "marketplaceMessage": "Ich werde dir Produkte für die Region \"{region}\" empfehlen. Zum Ändern, klicke auf das Marktplatz-Icon.",
     "errorMessage": "Entschuldigung, es ist ein Fehler bei der Verarbeitung aufgetreten. Bitte versuchen Sie es erneut.",
     "inputTextMessage": "Nachricht in beliebiger Sprache eingeben"
 }

@@ -2,6 +2,7 @@ import Button from "@features/landingpage/components/Common/Button"
 import Image from "@features/landingpage/components/Common/Image"
 import CenteredContainer from "@features/landingpage/components/Layout/CenteredContainer"
 import { useHookstate } from "@hookstate/core"
+import { getCurrentLanguageCountryPart } from "@lib/i18n/i18nUtils"
 import i18n from "i18next"
 import { useNavigate } from "react-router-dom"
 
@@ -19,7 +20,7 @@ const Header = ({ imageSource, buttonUrl, buttonLabel }: HeaderProps) => {
     }
 
     const isLanguageActive = (language: string) => {
-        return i18nLanguage.get() === language
+        return getCurrentLanguageCountryPart() === language
     }
 
     return (

@@ -8,21 +8,28 @@ import MessengerLayout from "@features/messenger/components/Layout/MessengerLayo
 import { addChatConversationMessage } from "@features/messenger/states/conversation"
 import { createThread, useThread } from "@features/messenger/states/thread"
 import { useEffect } from "react"
+import { useTranslation } from "react-i18next"
 
 const Messenger = () => {
     const thread = useThread()
+    const { t } = useTranslation("messages")
+
     useEffect(() => {
         if (thread.id || thread.isLoading) {
             return
         }
 
         const initMessenger = async () => {
-            await createThread()
-            addChatConversationMessage(thread.welcomeMessage?.content!, "incoming")
+            const isThreadCreated = await createThread()
+
+            if (isThreadCreated) {
+                addChatConversationMessage(thread.welcomeMessage?.content!, "incoming")
+                addChatConversationMessage(t("marketplaceMessage"), "incoming")
+            }
         }
 
         initMessenger()
-    }, [thread])
+    }, [thread, t])
 
     return (
         <MessengerLayout>

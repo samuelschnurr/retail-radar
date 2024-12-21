@@ -51,7 +51,7 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
                 {showExampleMessages && (
                     <CardList
                         as={Message}
-                        cardContents={t("messages:welcomeMessages", { returnObjects: true })}
+                        cardContents={t("messages:welcomeMessages", { returnObjects: true }) as []}
                         onClick={message => createUserMessage(thread.id, message)}
                     />
                 )}

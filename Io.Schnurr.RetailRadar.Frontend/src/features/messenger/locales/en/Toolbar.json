@@ -14,5 +14,8 @@
     },
     "closeButton": {
         "label": "Close chat"
+    },
+    "marketplaceButton": {
+        "label": "Region selection for product recommendations"
     }
 }

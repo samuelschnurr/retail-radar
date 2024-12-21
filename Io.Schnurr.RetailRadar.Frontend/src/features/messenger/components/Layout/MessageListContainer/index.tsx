@@ -20,7 +20,8 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
     const isRequestRunning = useHookstate(false)
     const intervalDelay = conversation.isTyping ? 2500 : null
     // First message: Welcome, Second Message: Marketplace
-    const showExampleMessages = conversation.messages.length === 2
+    const showExampleMessages =
+        thread.id !== null && thread.id !== "0" && conversation.messages.length === 2
 
     const pollMessages = async () => {
         try {

@@ -8,6 +8,8 @@ import {
 import { Avatar, ConversationHeader, UserStatus } from "@chatscope/chat-ui-kit-react"
 import AvatarIcon from "@features/messenger/components/Common/AvatarIcon"
 import BounceButton from "@features/messenger/components/Common/BounceButton"
+import { setRegion, useMarketplace } from "@features/messenger/states/marketplace"
+import { MarketplaceRegion } from "@features/messenger/types/marketplaceRegion"
 import { Divider, Dropdown } from "antd"
 import { MenuItemType } from "antd/lib/menu/hooks/useItems"
 import { useTranslation } from "react-i18next"
@@ -21,10 +23,10 @@ import { ConversationHeaderContainerProps } from "./types"
 const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) => {
     const { t } = useTranslation(["toolbar", "avatar", "marketplace"])
     const { isLoading, id } = useThread()
+    const { region } = useMarketplace()
     const navigate = useNavigate()
 
     const items: MenuItemType[] = t("marketplace:regions", { returnObjects: true }) as []
-    const defaultMarketplaceRegion = t("marketplace:defaultRegion")
 
     const openDonationSite = () => {
         window.open(t("toolbar:donationButton:url"), "_blank")
@@ -48,6 +50,12 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
         navigate("/")
     }
 
+    const handleChangeMarketplace = (key: MarketplaceRegion) => {
+        if (key !== region) {
+            setRegion(key)
+        }
+    }
+
     return (
         <StyledConversationHeader>
             <AvatarIcon
@@ -62,7 +70,10 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
                     menu={{
                         items,
                         selectable: true,
-                        defaultSelectedKeys: [defaultMarketplaceRegion]
+                        defaultSelectedKeys: [region],
+                        onSelect: ({ key }) => {
+                            handleChangeMarketplace(key as MarketplaceRegion)
+                        }
                     }}>
                     <div>
                         <StyledButton

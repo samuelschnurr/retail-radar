@@ -35,7 +35,7 @@ const Header = ({ imageSource, buttonUrl, buttonLabel }: HeaderProps) => {
                         </TextButton>
                         <div>|</div>
                         <TextButton
-                            isActive={isLanguageActive("en")}
+                            isActive={!isLanguageActive("de")}
                             onClick={() => changeLanguage("en")}>
                             EN
                         </TextButton>

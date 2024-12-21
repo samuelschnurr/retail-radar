@@ -1,8 +1,15 @@
-import { BugOutlined, CloseOutlined, CoffeeOutlined, SyncOutlined } from "@ant-design/icons"
+import {
+    BugOutlined,
+    CloseOutlined,
+    CoffeeOutlined,
+    ShopOutlined,
+    SyncOutlined
+} from "@ant-design/icons"
 import { Avatar, ConversationHeader, UserStatus } from "@chatscope/chat-ui-kit-react"
 import AvatarIcon from "@features/messenger/components/Common/AvatarIcon"
 import BounceButton from "@features/messenger/components/Common/BounceButton"
-import { Divider } from "antd"
+import { Divider, Dropdown } from "antd"
+import { MenuItemType } from "antd/lib/menu/hooks/useItems"
 import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 
@@ -12,9 +19,11 @@ import { StyledButton, StyledConversationHeader } from "./styles"
 import { ConversationHeaderContainerProps } from "./types"
 
 const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) => {
-    const { t } = useTranslation(["toolbar", "avatar"])
+    const { t } = useTranslation(["toolbar", "avatar", "marketplace"])
     const { isLoading, id } = useThread()
     const navigate = useNavigate()
+
+    const items: MenuItemType[] = t("marketplace:regions", { returnObjects: true }) as []
 
     const openDonationSite = () => {
         window.open(t("toolbar:donationButton:url"), "_blank")
@@ -48,6 +57,18 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
             />
             <ConversationHeader.Content info={t("avatar:info")} userName={t("avatar:name")} />
             <ConversationHeader.Actions>
+                <Dropdown
+                    menu={{
+                        items,
+                        selectable: true,
+                        defaultSelectedKeys: [".com"]
+                    }}>
+                    <StyledButton
+                        icon={<ShopOutlined />}
+                        title={t("toolbar:marketplaceButton:label")}
+                    />
+                </Dropdown>
+                <Divider type="vertical" />
                 <BounceButton
                     icon={<CoffeeOutlined />}
                     startDelay={30000}

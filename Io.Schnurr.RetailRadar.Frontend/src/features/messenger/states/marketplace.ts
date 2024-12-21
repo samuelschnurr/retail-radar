@@ -10,15 +10,20 @@ const LOCAL_STORAGE_KEY = "retailradar-marketplace"
 const defaultState = { region: i18n.language === "de" ? ".de" : ".com" } as Marketplace
 
 const state = hookstate<Marketplace>({ ...defaultState }, devtools({ key: LOCAL_STORAGE_KEY }))
+
+const localStoredState = hookstate<Marketplace>(
+    { ...defaultState },
+    localstored({ key: LOCAL_STORAGE_KEY })
+)
+
 export const useMarketplace = () => useHookstate(state).value
 
-export const useMarketplace2 = () =>
-    useHookstate({ ...defaultState }, localstored({ key: LOCAL_STORAGE_KEY }))
+export const useMarketplace2 = () => useHookstate(localStoredState).value
 
 export const resetMarketplace = () => {
-    state.set({ ...defaultState })
+    localStoredState.set({ ...defaultState })
 }
 
 export const setRegion = (region: MarketplaceRegion) => {
-    state.region.set(region)
+    localStoredState.region.set(region)
 }

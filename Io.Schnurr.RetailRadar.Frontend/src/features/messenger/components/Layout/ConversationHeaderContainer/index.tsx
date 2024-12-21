@@ -63,10 +63,12 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
                         selectable: true,
                         defaultSelectedKeys: [".com"]
                     }}>
-                    <StyledButton
-                        icon={<ShopOutlined />}
-                        title={t("toolbar:marketplaceButton:label")}
-                    />
+                    <div>
+                        <StyledButton
+                            icon={<ShopOutlined />}
+                            title={t("toolbar:marketplaceButton:label")}
+                        />
+                    </div>
                 </Dropdown>
                 <Divider type="vertical" />
                 <BounceButton

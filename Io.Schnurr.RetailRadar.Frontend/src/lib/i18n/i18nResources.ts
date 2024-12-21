@@ -15,10 +15,12 @@ import NotFoundEN from "@features/landingpage/locales/en/NotFound.json"
 import PrivacyEN from "@features/landingpage/locales/en/Privacy.json"
 import WelcomeEN from "@features/landingpage/locales/en/Welcome.json"
 import AvatarDE from "@features/messenger/locales/de/Avatar.json"
+import MarketplaceDE from "@features/messenger/locales/de/Marketplace.json"
 import messagesDE from "@features/messenger/locales/de/Messages.json"
 import ToolbarDE from "@features/messenger/locales/de/Toolbar.json"
 import AvatarEN from "@features/messenger/locales/en/Avatar.json"
-import messagesEN from "@features/messenger/locales/en/Messages.json"
+import MarketplaceEN from "@features/messenger/locales/en/Marketplace.json"
+import MessagesEN from "@features/messenger/locales/en/Messages.json"
 import ToolbarEN from "@features/messenger/locales/en/Toolbar.json"
 
 export const landingpageResources = {
@@ -30,7 +32,8 @@ export const landingpageResources = {
         welcome: WelcomeEN,
         feature: FeatureEN,
         donation: DonationEN,
-        footer: FooterEN
+        footer: FooterEN,
+        marketplace: MarketplaceEN
     },
     de: {
         imprint: ImprintDE,
@@ -40,14 +43,15 @@ export const landingpageResources = {
         welcome: WelcomeDE,
         feature: FeatureDE,
         donation: DonationDE,
-        footer: FooterDE
+        footer: FooterDE,
+        marketplace: MarketplaceDE
     }
 }
 
 export const messengerResources = {
     en: {
         avatar: AvatarEN,
-        messages: messagesEN,
+        messages: MessagesEN,
         toolbar: ToolbarEN
     },
     de: {

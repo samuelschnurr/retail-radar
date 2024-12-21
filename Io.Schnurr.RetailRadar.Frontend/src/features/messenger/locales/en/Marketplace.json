@@ -1,0 +1,11 @@
+{
+    "regions": [
+        { "key": ".com.au", "label": "Australia" },
+        { "key": ".de", "label": "Germany" },
+        { "key": ".fr", "label": "France" },
+        { "key": ".it", "label": "Italy" },
+        { "key": ".es", "label": "Spain" },
+        { "key": ".com", "label": "United States" },
+        { "key": ".co.uk", "label": "United Kingdom" }
+    ]
+}

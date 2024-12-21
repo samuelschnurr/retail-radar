@@ -7,5 +7,6 @@
         { "key": ".es", "label": "Spanien" },
         { "key": ".com", "label": "Vereinigte Staaten" },
         { "key": ".co.uk", "label": "Vereinigtes Königreich" }
-    ]
+    ],
+    "defaultRegion": ".de"
 }

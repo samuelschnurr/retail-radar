@@ -19,3 +19,9 @@ export const resetMarketplace = () => {
 export const setRegion = (region: MarketplaceRegion) => {
     state.region.set(region)
 }
+
+;(function initializeState() {
+    if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
+        state.set({ ...defaultState })
+    }
+})()

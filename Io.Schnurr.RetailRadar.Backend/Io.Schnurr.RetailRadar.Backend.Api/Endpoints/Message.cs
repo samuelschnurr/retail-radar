@@ -8,7 +8,7 @@ namespace Io.Schnurr.RetailRadar.Backend.Api.Endpoints;
 
 internal static class Message
 {
-    internal static async Task<IResult> Get(AssistantService assistantService, ProductService productService, string threadId, string runId)
+    internal static async Task<IResult> Get(AssistantService assistantService, ProductService productService, string threadId, string runId, string marketplaceRegion)
     {
         var threadRun = await assistantService.GetRunAsync(threadId, runId);
         var threadMessage = await assistantService.GetMessageAsync(threadId, runId);
@@ -22,6 +22,7 @@ internal static class Message
         if (threadMessage != null)
         {
             var messageDto = threadMessage.MapToMessageDto(threadRun);
+            messageDto.MarketplaceRegion = marketplaceRegion;
             messageDto.Content = await productService.GetStringWithProductLinks(messageDto.Content, messageDto.MarketplaceRegion);
 
             return TypedResults.Ok(messageDto);

@@ -34,7 +34,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         return result;
     }
 
-    private ProductSearchResult GetBestMatchingProductSearchResult(List<Result>? searchResults, string searchTerm)
+    private ProductSearchResult GetBestMatchingProductSearchResult(List<Result>? searchResults, string searchTerm, string region)
     {
         ProductSearchResult productSearchResult = new()
         {
@@ -66,7 +66,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
         productSearchResult.Asin = uri.Segments.ElementAtOrDefault(dpIndex + 1);
 
-        productSearchResult.AffiliateId = GetAffiliateId(uri.Authority);
+        productSearchResult.AffiliateId = GetAffiliateId(region);
 
         return productSearchResult;
     }
@@ -90,7 +90,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         else
         {
             var newProductSearchResults = await searchClient.GetProductSearchResults(searchTerm, region);
-            var bestMatchingProductSearchResult = GetBestMatchingProductSearchResult(newProductSearchResults, searchTerm);
+            var bestMatchingProductSearchResult = GetBestMatchingProductSearchResult(newProductSearchResults, searchTerm, region);
 
             if (bestMatchingProductSearchResult.IsValid())
             {

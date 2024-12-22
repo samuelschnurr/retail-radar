@@ -3,6 +3,7 @@ import { DefaultTheme } from "styled-components"
 const LightTheme: DefaultTheme = {
     colors: {
         primary: "#18216d",
+        primaryLight: "#1890ff",
         primaryDark: "#2e186a",
         secondary: "#ff825c",
         background: "#ffffff",
@@ -16,6 +17,7 @@ const LightTheme: DefaultTheme = {
         radius: "4px"
     },
     gap: {
+        small: "16px",
         medium: "32px"
     },
     margin: {

@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using Google.Apis.CustomSearchAPI.v1.Data;
 using Microsoft.Extensions.Configuration;
@@ -18,23 +19,31 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
     {
         MatchCollection matches = Regex.Matches(content, productNameRegexPattern);
 
-        var result = content;
-
         List<ProductSearchResult> productSearchResults = [];
+        var replacedProducts = new HashSet<string>();
+        var result = new StringBuilder(content);
 
-        for (int i = 0; i < matches.Count; i++)
+        foreach (Match match in matches)
         {
-            Match match = matches[i];
-            var productLink = await GetProductLinkAsync(productSearchResults, match.Groups[1].Value, region);
-            result = result.Replace(match.Value, productLink);
+            var productName = match.Groups[1].Value;
+            bool isFirstOccurance = !replacedProducts.Contains(productName);
+            var productLink = await GetProductLinkAsync(productSearchResults, match.Groups[1].Value, region, isFirstOccurance);
 
-            logger.LogInformation("Replaced product name {MatchResult} with {ProductLink}", match.Value, productLink);
+            int index = result.ToString().IndexOf(match.Value);
+            if (index >= 0)
+            {
+                result.Remove(index, match.Value.Length);
+                result.Insert(index, productLink);
+                replacedProducts.Add(productName);
+
+                logger.LogInformation("Replaced product name {MatchResult} with {ProductLink}", match.Value, productLink);
+            }
         }
 
-        return result;
+        return result.ToString();
     }
 
-    private static ProductSearchResult GetBestMatchingProductSearchResult(List<Result>? searchResults, string searchTerm)
+    private ProductSearchResult GetBestMatchingProductSearchResult(List<Result>? searchResults, string searchTerm, string region)
     {
         ProductSearchResult productSearchResult = new()
         {
@@ -52,16 +61,26 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         productSearchResult.BaseAddress = uriScheme + uri.Authority + "/";
 
+        try
+        {
+            Newtonsoft.Json.Linq.JToken? imageSource = ((Newtonsoft.Json.Linq.JArray)bestMatchingItem.Pagemap["cse_thumbnail"]).FirstOrDefault();
+            productSearchResult.ImageSource = imageSource?.Value<string>("src") ?? productSearchResult.ImageSource;
+        }
+        catch (Exception ex)
+        {
+            logger.LogError(ex, "Error occurred while extracting image source from search result.");
+        }
+
         var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
         productSearchResult.Asin = uri.Segments.ElementAtOrDefault(dpIndex + 1);
 
-        productSearchResult.AffiliateId = GetAffiliateId(uri.Authority);
+        productSearchResult.AffiliateId = GetAffiliateId(region);
 
         return productSearchResult;
     }
 
 
-    private async Task<string> GetProductLinkAsync(List<ProductSearchResult> productSearchResults, string searchTerm, string region)
+    private async Task<string> GetProductLinkAsync(List<ProductSearchResult> productSearchResults, string searchTerm, string region, bool isFirstOccurance)
     {
         if (string.IsNullOrWhiteSpace(searchTerm))
         {
@@ -74,27 +93,28 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         if (existingResult != null)
         {
-            htmlLink = RenderProductSearchResultAsHtml(existingResult, region);
+            htmlLink = RenderProductSearchResultAsHtml(existingResult, region, isFirstOccurance);
         }
         else
         {
             var newProductSearchResults = await searchClient.GetProductSearchResults(searchTerm, region);
-            var bestMatchingProductSearchResult = GetBestMatchingProductSearchResult(newProductSearchResults, searchTerm);
+            var bestMatchingProductSearchResult = GetBestMatchingProductSearchResult(newProductSearchResults, searchTerm, region);
 
             if (bestMatchingProductSearchResult.IsValid())
             {
                 productSearchResults.Add(bestMatchingProductSearchResult);
             }
 
-            htmlLink = RenderProductSearchResultAsHtml(bestMatchingProductSearchResult, region);
+            htmlLink = RenderProductSearchResultAsHtml(bestMatchingProductSearchResult, region, isFirstOccurance);
         }
 
         return htmlLink;
     }
 
-    private static string RenderProductSearchResultAsHtml(ProductSearchResult productSearchResult, string region)
+    private static string RenderProductSearchResultAsHtml(ProductSearchResult productSearchResult, string region, bool isFirstOccurance)
     {
         string link;
+        string htmlLink;
 
         var parameters = new Dictionary<string, string>
         {
@@ -112,7 +132,23 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
             link = $"{uriScheme}www.amazon{region}/s?k={encodedSearchTerm}&{ProductSearchClient.CreateQueryString(parameters)}";
         }
 
-        var htmlLink = $"<a href='{link}' target='_blank'>{productSearchResult.SearchTerm}</a> ";
+        if (isFirstOccurance)
+        {
+            // Show with image
+            htmlLink = @$"<a href='{link}' target='_blank' class='amazonImageLink'>
+                <img
+                    src='{productSearchResult.ImageSource}'
+                    alt='Product' />
+                <div>            
+                    {productSearchResult.SearchTerm}
+                </div>
+            </a>";
+        }
+        else
+        {
+            // Show as text
+            htmlLink = $"<a href='{link}' target='_blank'>{productSearchResult.SearchTerm}</a> ";
+        }
 
         return htmlLink;
     }

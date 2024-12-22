@@ -6,6 +6,8 @@ internal class ProductSearchResult
     internal string? Asin { get; set; }
     internal string? BaseAddress { get; set; }
     internal string? AffiliateId { get; set; }
+    internal string? ImageSource { get; set; } = "{amazonLogo}";
+
 
     internal bool IsValid()
     {

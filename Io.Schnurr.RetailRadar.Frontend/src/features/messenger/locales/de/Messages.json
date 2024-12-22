@@ -4,7 +4,7 @@
         "Bitte hilf mir, ein Geschenk für meinen Vater zu finden.",
         "Welches Smartphone kannst du mir empfehlen?"
     ],
-    "marketplaceMessage": "Übrigens: Ich werde dir Produkte für die Region \"{region}\" empfehlen. Du kannst dies jederzeit ändern, indem du auf das Marktplatz-Icon klickst.",
+    "marketplaceMessage": "Übrigens: Ich werde dir Produkte für die Region \"{region}\" empfehlen. Du kannst dies jederzeit ändern, indem du oben auf {icon} klickst.",
     "errorMessage": "Entschuldigung, es ist ein Fehler bei der Verarbeitung aufgetreten. Bitte versuchen Sie es erneut.",
     "inputTextMessage": "Nachricht in beliebiger Sprache eingeben"
 }

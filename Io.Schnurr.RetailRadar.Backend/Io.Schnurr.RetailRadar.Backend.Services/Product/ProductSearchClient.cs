@@ -9,9 +9,9 @@ internal class ProductSearchClient(ILogger logger, string authorization, string 
 {
     internal static string CreateQueryString(Dictionary<string, string> parameters) => string.Join("&", parameters.Select(p => $"{p.Key}={p.Value}"));
 
-    internal async Task<List<Result>?> GetProductSearchResults(string searchTerm)
+    internal async Task<List<Result>?> GetProductSearchResults(string searchTerm, string region)
     {
-        var searchRequest = GetProductSearchRequest(searchTerm);
+        var searchRequest = GetProductSearchRequest(searchTerm, region);
 
         try
         {
@@ -25,7 +25,7 @@ internal class ProductSearchClient(ILogger logger, string authorization, string 
         }
     }
 
-    private ListRequest GetProductSearchRequest(string searchTerm)
+    private ListRequest GetProductSearchRequest(string searchTerm, string region)
     {
         ListRequest listRequest = Cse.List();
 
@@ -33,7 +33,7 @@ internal class ProductSearchClient(ILogger logger, string authorization, string 
         listRequest.QuotaUser = Guid.NewGuid().ToString();
 
         listRequest.Cx = engineId;
-        listRequest.Q = $"intext:{searchTerm}";
+        listRequest.Q = $"site:\"*.amazon{region}/*dp/*\" intext:\"{searchTerm}\"";
 
         return listRequest;
     }

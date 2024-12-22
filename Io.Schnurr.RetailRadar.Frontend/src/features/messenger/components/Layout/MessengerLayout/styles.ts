@@ -34,7 +34,7 @@ export const StyledChatContainer = styled(ChatContainer)`
             border-radius: ${p => p.theme.border.radius};
             box-shadow: ${p => p.theme.box.shadow};
             padding: ${p => p.theme.padding.small};
-            height: 96px;
+            max-height: 96px;
             white-space: nowrap;
             gap: ${p => p.theme.gap.small};
             width: 400px;
@@ -47,6 +47,10 @@ export const StyledChatContainer = styled(ChatContainer)`
                 text-decoration: none !important;
             }
 
+            img {
+                max-width: 96px;
+                object-fit: contain;
+            }
             div {
                 align-content: center;
                 overflow: hidden;

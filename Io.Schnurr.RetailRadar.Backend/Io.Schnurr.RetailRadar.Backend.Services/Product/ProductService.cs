@@ -55,8 +55,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
         productSearchResult.Asin = uri.Segments.ElementAtOrDefault(dpIndex + 1);
 
-        var topLevelDomain = uri.Authority.Split('.').Last();
-        productSearchResult.AffiliateId = GetAffiliateId(topLevelDomain);
+        productSearchResult.AffiliateId = GetAffiliateId(uri.Authority);
 
         return productSearchResult;
     }
@@ -97,20 +96,20 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
     {
         string link;
 
+        var parameters = new Dictionary<string, string>
+        {
+            { "associate_id", productSearchResult.AffiliateId ?? GetAffiliateId(region)  },
+            { "tag", productSearchResult.AffiliateId ?? GetAffiliateId(region)},
+        };
+
         if (productSearchResult.IsValid())
         {
-            var parameters = new Dictionary<string, string>
-            {
-                { "associate_id", productSearchResult.AffiliateId! },
-                { "tag", productSearchResult.AffiliateId! },
-            };
-
             link = $"{productSearchResult.BaseAddress}{amazonAsinSegment}{productSearchResult.Asin}?{ProductSearchClient.CreateQueryString(parameters)}";
         }
         else
         {
             string encodedSearchTerm = HttpUtility.UrlEncode(productSearchResult.SearchTerm!);
-            link = $"https://www.google{region}/search?q={encodedSearchTerm}";
+            link = $"{uriScheme}www.amazon{region}/s?k={encodedSearchTerm}&{ProductSearchClient.CreateQueryString(parameters)}";
         }
 
         var htmlLink = $"<a href='{link}' target='_blank'>{productSearchResult.SearchTerm}</a> ";
@@ -118,16 +117,16 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         return htmlLink;
     }
 
-    private static string GetAffiliateId(string topLevelDomain)
+    private static string GetAffiliateId(string authority)
     {
-        return topLevelDomain switch
+        return authority switch
         {
-            "au" => "retailradar.io-au-22",
-            "de" => "retailradar.io-de-21",
-            "es" => "retailradar.io-es-21",
-            "fr" => "retailradar.io-fr-21",
-            "it" => "retailradar.io-it-21",
-            "uk" => "retailradar.io-uk-21",
+            ".com.au" => "retailradar.io-au-22",
+            ".co.uk" => "retailradar.io-uk-21",
+            ".de" => "retailradar.io-de-21",
+            ".es" => "retailradar.io-es-21",
+            ".fr" => "retailradar.io-fr-21",
+            ".it" => "retailradar.io-it-21",
             _ => "retailradar.io-us-20",
         };
     }

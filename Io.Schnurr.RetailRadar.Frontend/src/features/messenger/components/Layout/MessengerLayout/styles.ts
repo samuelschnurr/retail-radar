@@ -35,7 +35,6 @@ export const StyledChatContainer = styled(ChatContainer)`
             box-shadow: ${p => p.theme.box.shadow};
             padding: ${p => p.theme.padding.small};
             height: 96px;
-            align-content: center;
             white-space: nowrap;
             gap: ${p => p.theme.gap.small};
             width: 400px;
@@ -45,11 +44,7 @@ export const StyledChatContainer = styled(ChatContainer)`
             user-select: none;
 
             :hover {
-                color: ${p => p.theme.colors.primaryDark};
-
-                ::after {
-                    content: url("/images/icon/linkHover.svg");
-                }
+                text-decoration: none !important;
             }
 
             div {

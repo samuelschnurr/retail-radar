@@ -4,7 +4,7 @@ internal class ResponseDelayInterceptor(RequestDelegate next)
 {
     private readonly RequestDelegate next = next;
 
-    public async Task Invoke(HttpContext context)
+    public async Task InvokeAsync(HttpContext context)
     {
         await next(context);
         await ResponseDelay();

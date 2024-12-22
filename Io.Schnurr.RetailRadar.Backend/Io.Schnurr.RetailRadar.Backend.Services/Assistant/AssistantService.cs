@@ -14,7 +14,7 @@ public class AssistantService
     public AssistantService(IConfiguration configuration, ILogger<AssistantService> logger)
     {
         client = new AssistantsClient(new Uri(configuration["OpenAi:BaseAddress"]), new AzureKeyCredential(configuration["OpenAi:Authorization"]));
-        runOptions = new CreateRunOptions(configuration["OpenAi:AssistantId"]) { AdditionalInstructions = "Speak German. You are not allowed to speak any other language." };
+        runOptions = new CreateRunOptions(configuration["OpenAi:AssistantId"]);
         this.logger = logger;
     }
 

@@ -1,0 +1,10 @@
+{
+    "welcomeMessages": [
+        "I want to buy new computer speakers.",
+        "Please help me to find a gift for my father.",
+        "Which smartphone can you recommend?"
+    ],
+    "marketplaceMessage": "By the way: I will recommend products for the region \"{region}\". You can change this at any time by clicking on the marketplace icon.",
+    "errorMessage": "Sorry, an error occurred during processing. Please try again.",
+    "inputTextMessage": "Enter message in any language"
+}

@@ -1,11 +1,13 @@
 import { MessageInput } from "@chatscope/chat-ui-kit-react"
 import { useCallback, useEffect, useRef } from "react"
+import { useTranslation } from "react-i18next"
 
 import { createUserMessage, useConversation } from "../../../states/conversation"
 import { useThread } from "../../../states/thread"
 import { MessageInputContainerProps } from "./types"
 
 const MessageInputContainer = (_props: MessageInputContainerProps) => {
+    const { t } = useTranslation("messages")
     const messageInputRef = useRef<HTMLInputElement>(null)
     const { isTyping } = useConversation()
     const { id: threadId } = useThread()
@@ -56,7 +58,7 @@ const MessageInputContainer = (_props: MessageInputContainerProps) => {
             ref={messageInputRef}
             onSend={textContent => createUserMessage(threadId!, textContent)}
             onPaste={pasteAsPlainText}
-            placeholder="Nachricht hier eingeben"
+            placeholder={t("messages:inputTextMessage")}
             attachButton={false}
             disabled={isTyping}
         />

@@ -1,7 +1,5 @@
 import Footer from "@features/landingpage/components/Layout/Footer"
 import Header from "@features/landingpage/components/Layout/Header"
-import FooterContent from "@features/landingpage/locales/de/FooterContent.json"
-import HeaderContent from "@features/landingpage/locales/de/HeaderContent.json"
 
 import CenteredContainer from "../CenteredContainer"
 import { Section } from "./styles"
@@ -12,11 +10,20 @@ const PageLayout = (props: PageLayoutProps) => {
 
     return (
         <>
-            <Header src={HeaderContent.src} button={HeaderContent.button} />
+            <Header
+                imageSource={props.headerContent.imageSource}
+                buttonLabel={props.headerContent.buttonLabel}
+                buttonUrl={props.headerContent.buttonUrl}
+            />
             <Section>
                 <CenteredContainer>{children}</CenteredContainer>
             </Section>
-            <Footer src={FooterContent.src} />
+            <Footer
+                imageSource={props.footerContent.imageSource}
+                instagramLink={props.footerContent.instagramLink}
+                tiktokLink={props.footerContent.tiktokLink}
+                links={props.footerContent.links}
+            />
         </>
     )
 }

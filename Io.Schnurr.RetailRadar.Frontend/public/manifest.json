@@ -1,7 +1,7 @@
 {
     "short_name": "RetailRadar",
     "name": "RetailRadar",
-    "description": "Kostenlose KI-Produktberatung | Keine Zeit mehr mit Testberichten verschwenden | Chatbot Chappie findet das passende Produkt auf Amazon und Co.",
+    "description": "Free AI product advice | No more wasting time with test reports | Chatbot Chappie finds the right product on Amazon and co.",
     "start_url": ".",
     "display": "standalone",
     "theme_color": "#000000",

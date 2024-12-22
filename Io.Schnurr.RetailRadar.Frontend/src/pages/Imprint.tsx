@@ -1,11 +1,13 @@
-import CommonBlock from "@features/landingpage/components/Common/CommonSection"
+import CommonSection from "@features/landingpage/components/Common/CommonSection"
 import PageLayout from "@features/landingpage/components/Layout/PageLayout"
-import ImprintContent from "@features/landingpage/locales/de/ImprintContent.json"
+import { getLocalizedResourceFile } from "@lib/i18n/i18nUtils"
 
 const Imprint = () => {
     return (
-        <PageLayout>
-            <CommonBlock content={ImprintContent} />
+        <PageLayout
+            headerContent={getLocalizedResourceFile("header")}
+            footerContent={getLocalizedResourceFile("footer")}>
+            <CommonSection content={getLocalizedResourceFile("imprint")} />
         </PageLayout>
     )
 }

@@ -1,11 +1,11 @@
 import { Message, MessageList, MessageModel } from "@chatscope/chat-ui-kit-react"
 import CardList from "@features/messenger/components/Common/CardList"
 import TypingIndicatorInfo from "@features/messenger/components/Common/TypingIndicatorInfo"
+import { useMarketplace } from "@features/messenger/states/marketplace"
 import { useHookstate } from "@hookstate/core"
 import useInterval from "@lib/hooks/useInterval"
+import { useTranslation } from "react-i18next"
 
-import avatar from "../../../locales/de/AvatarContent.json"
-import ExampleMessages from "../../../locales/de/ExampleMessagesContent.json"
 import {
     createUserMessage,
     getAssistantMessage,
@@ -15,11 +15,15 @@ import { useThread } from "../../../states/thread"
 import { MessageListContainerProps } from "./types"
 
 const MessageListContainer = (_props: MessageListContainerProps) => {
+    const { t } = useTranslation(["avatar", "messages"])
     const thread = useThread()
     const conversation = useConversation()
+    const { region } = useMarketplace()
     const isRequestRunning = useHookstate(false)
     const intervalDelay = conversation.isTyping ? 2500 : null
-    const showExampleMessages = conversation.messages.length === 1
+    // First message: Welcome, Second Message: Marketplace
+    const showExampleMessages =
+        thread.id !== null && thread.id !== "0" && conversation.messages.length === 2
 
     const pollMessages = async () => {
         try {
@@ -27,7 +31,7 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
                 return
             }
             isRequestRunning.set(true)
-            await getAssistantMessage(thread.id)
+            await getAssistantMessage(thread.id, region)
             isRequestRunning.set(false)
         } catch (error) {
             console.error(`An error occured while using useInterval within pollMessages: ${error}`)
@@ -40,7 +44,10 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
         <>
             <MessageList
                 typingIndicator={
-                    <TypingIndicatorInfo userName={avatar.name} isTyping={conversation.isTyping} />
+                    <TypingIndicatorInfo
+                        isTypingText={t("avatar:isTypingText")}
+                        isTyping={conversation.isTyping}
+                    />
                 }>
                 {conversation.messages.map((item: MessageModel, index: number) => (
                     <Message key={index} model={item} />
@@ -48,7 +55,7 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
                 {showExampleMessages && (
                     <CardList
                         as={Message}
-                        cardContents={ExampleMessages}
+                        cardContents={t("messages:welcomeMessages", { returnObjects: true }) as []}
                         onClick={message => createUserMessage(thread.id, message)}
                     />
                 )}

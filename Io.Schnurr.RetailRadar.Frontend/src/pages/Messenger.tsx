@@ -6,11 +6,19 @@ import MessageInputContainer from "@features/messenger/components/Layout/Message
 import MessageListContainer from "@features/messenger/components/Layout/MessageListContainer"
 import MessengerLayout from "@features/messenger/components/Layout/MessengerLayout"
 import { addChatConversationMessage } from "@features/messenger/states/conversation"
+import { useMarketplace } from "@features/messenger/states/marketplace"
 import { createThread, useThread } from "@features/messenger/states/thread"
 import { useEffect } from "react"
+import { useTranslation } from "react-i18next"
 
 const Messenger = () => {
     const thread = useThread()
+    const { region } = useMarketplace()
+    const { t } = useTranslation(["messages", "marketplace"])
+    const regions = t("marketplace:regions", { returnObjects: true }) as {
+        key: string
+        label: string
+    }[]
 
     useEffect(() => {
         if (thread.id || thread.isLoading) {
@@ -18,12 +26,22 @@ const Messenger = () => {
         }
 
         const initMessenger = async () => {
-            await createThread()
-            addChatConversationMessage(thread.welcomeMessage?.content!, "incoming")
+            const isThreadCreated = await createThread()
+
+            if (isThreadCreated) {
+                addChatConversationMessage(thread.welcomeMessage?.content!, "incoming")
+                addChatConversationMessage(
+                    t("messages:marketplaceMessage").replace(
+                        "{region}",
+                        regions.find(r => r.key === region)!.label
+                    ),
+                    "incoming"
+                )
+            }
         }
 
         initMessenger()
-    }, [thread])
+    }, [thread, t, regions, region])
 
     return (
         <MessengerLayout>

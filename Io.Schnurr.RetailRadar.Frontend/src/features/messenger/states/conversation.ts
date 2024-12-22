@@ -4,7 +4,9 @@ import { devtools } from "@hookstate/devtools"
 
 import { getMessage, postMessage } from "../services/messageService"
 import { Conversation } from "../types/conversation"
+import { MarketplaceRegion } from "../types/marketplaceRegion"
 import { Message } from "../types/message"
+import { MessageDirection } from "../types/messageDirection"
 
 const defaultState = { messages: [], lastRunId: null, isTyping: true } as Conversation
 
@@ -33,7 +35,7 @@ export async function createUserMessage(threadId: string | null, content: string
     }
 }
 
-export async function getAssistantMessage(threadId: string | null) {
+export async function getAssistantMessage(threadId: string | null, region: MarketplaceRegion) {
     if (!threadId) {
         return
     }
@@ -41,7 +43,7 @@ export async function getAssistantMessage(threadId: string | null) {
     const currentState = state.get()
 
     if (threadId && currentState.lastRunId) {
-        const message = await getMessage(threadId, currentState.lastRunId)
+        const message = await getMessage(threadId, currentState.lastRunId, region)
 
         if (
             message &&
@@ -54,14 +56,11 @@ export async function getAssistantMessage(threadId: string | null) {
     }
 }
 
-export function addErrorConversationMessage() {
-    addChatConversationMessage(
-        "Entschuldigung, es ist ein Fehler bei der Verarbeitung aufgetreten. Bitte versuchen Sie es erneut.",
-        "incoming"
-    )
+export function addErrorConversationMessage(errorMessage: string) {
+    addChatConversationMessage(errorMessage, "incoming")
 }
 
-export function addChatConversationMessage(content: string, direction: string) {
+export function addChatConversationMessage(content: string, direction: MessageDirection) {
     if (!content) {
         return
     }

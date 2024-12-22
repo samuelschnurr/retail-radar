@@ -6,16 +6,22 @@ import Messenger from "../pages/Messenger"
 import NotFound from "../pages/NotFound"
 import Privacy from "../pages/Privacy"
 
-const Router = () => (
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/messenger" element={<Messenger />} />
-            <Route path="/impressum" element={<Imprint />} />
-            <Route path="/datenschutz" element={<Privacy />} />
-            <Route path="*" element={<NotFound />} />
-        </Routes>
-    </BrowserRouter>
-)
+const Router = () => {
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/messenger" element={<Messenger />} />
 
+                <Route path="/imprint" element={<Imprint />} />
+                <Route path="/impressum" element={<Imprint />} />
+
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/datenschutz" element={<Privacy />} />
+
+                <Route path="*" element={<NotFound />} />
+            </Routes>
+        </BrowserRouter>
+    )
+}
 export default Router

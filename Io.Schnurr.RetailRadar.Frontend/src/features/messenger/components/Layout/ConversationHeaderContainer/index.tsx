@@ -1,30 +1,43 @@
-import { BugOutlined, CloseOutlined, CoffeeOutlined, SyncOutlined } from "@ant-design/icons"
+import {
+    BugOutlined,
+    CloseOutlined,
+    CoffeeOutlined,
+    ShopOutlined,
+    SyncOutlined
+} from "@ant-design/icons"
 import { Avatar, ConversationHeader, UserStatus } from "@chatscope/chat-ui-kit-react"
 import AvatarIcon from "@features/messenger/components/Common/AvatarIcon"
 import BounceButton from "@features/messenger/components/Common/BounceButton"
-import { Divider } from "antd"
+import { setRegion, useMarketplace } from "@features/messenger/states/marketplace"
+import { MarketplaceRegion } from "@features/messenger/types/marketplaceRegion"
+import { Divider, Dropdown } from "antd"
+import { MenuItemType } from "antd/lib/menu/hooks/useItems"
+import { useTranslation } from "react-i18next"
 import { useNavigate } from "react-router-dom"
 
-import avatar from "../../../locales/de/AvatarContent.json"
-import ToolbarContent from "../../../locales/de/ToolbarContent.json"
 import { resetConversation } from "../../../states/conversation"
 import { resetThread, useThread } from "../../../states/thread"
 import { StyledButton, StyledConversationHeader } from "./styles"
 import { ConversationHeaderContainerProps } from "./types"
 
 const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) => {
+    const { t } = useTranslation(["toolbar", "avatar", "marketplace"])
     const { isLoading, id } = useThread()
+    const { region } = useMarketplace()
     const navigate = useNavigate()
 
+    const items: MenuItemType[] = t("marketplace:regions", { returnObjects: true }) as []
+
     const openDonationSite = () => {
-        window.open("https://ko-fi.com/sampa", "_blank")
+        window.open(t("toolbar:donationButton:url"), "_blank")
     }
 
     const sendBugReport = () => {
-        const { mailReceiver, mailTitle, mailBody } = ToolbarContent.bugButton
-        const subject = encodeURIComponent(mailTitle)
-        const body = encodeURIComponent(`${mailBody}${id}`)
-        const mailtoLink = `mailto:${mailReceiver}?subject=${subject}&body=${body}`
+        const subject = encodeURIComponent(t("toolbar:bugButton:mailSubject"))
+        const body = encodeURIComponent(`${t("toolbar:bugButton:mailBody")}${id}`)
+        const mailtoLink = `mailto:${t(
+            "toolbar:bugButton:mailReceiver"
+        )}?subject=${subject}&body=${body}`
         window.location.href = mailtoLink
     }
 
@@ -37,39 +50,62 @@ const ConversationHeaderContainer = (_props: ConversationHeaderContainerProps) =
         navigate("/")
     }
 
+    const handleChangeMarketplace = (key: MarketplaceRegion) => {
+        if (key !== region) {
+            setRegion(key)
+        }
+    }
+
     return (
         <StyledConversationHeader>
             <AvatarIcon
-                info={avatar.info}
-                src={avatar.src}
-                status={avatar.status as UserStatus}
+                info={t("avatar:info")}
+                src={t("avatar:imageSource")}
+                status={t("avatar:status") as UserStatus}
                 as={Avatar}
             />
-            <ConversationHeader.Content info={avatar.info} userName={avatar.name} />
+            <ConversationHeader.Content info={t("avatar:info")} userName={t("avatar:name")} />
             <ConversationHeader.Actions>
+                <Dropdown
+                    menu={{
+                        items,
+                        selectable: true,
+                        defaultSelectedKeys: [region],
+                        onSelect: ({ key }) => {
+                            handleChangeMarketplace(key as MarketplaceRegion)
+                        }
+                    }}>
+                    <div>
+                        <StyledButton
+                            icon={<ShopOutlined />}
+                            title={t("toolbar:marketplaceButton:label")}
+                        />
+                    </div>
+                </Dropdown>
+                <Divider type="vertical" />
                 <BounceButton
                     icon={<CoffeeOutlined />}
                     startDelay={30000}
                     intervalDelay={10000}
                     bounceDuration={5000}
-                    title={ToolbarContent.donationButton.title}
+                    label={t("toolbar:donationButton:label")}
                     onClick={openDonationSite}
                 />
                 <StyledButton
                     icon={<BugOutlined />}
-                    title={ToolbarContent.bugButton.title}
+                    title={t("toolbar:bugButton:label")}
                     onClick={sendBugReport}
                 />
                 <Divider type="vertical" />
                 <StyledButton
                     icon={<SyncOutlined />}
                     disabled={isLoading}
-                    title={ToolbarContent.refreshButton.title}
+                    title={t("toolbar:refreshButton:label")}
                     onClick={handleRefresh}
                 />
                 <StyledButton
                     icon={<CloseOutlined />}
-                    title={ToolbarContent.closeButton.title}
+                    title={t("toolbar:closeButton:label")}
                     onClick={handleClose}
                 />
             </ConversationHeader.Actions>

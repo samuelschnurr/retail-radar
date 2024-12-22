@@ -52,6 +52,9 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         productSearchResult.BaseAddress = uriScheme + uri.Authority + "/";
 
+        Newtonsoft.Json.Linq.JToken? imageSource = ((Newtonsoft.Json.Linq.JArray)bestMatchingItem.Pagemap["cse_thumbnail"]).FirstOrDefault();
+        productSearchResult.ImageSource = imageSource?.Value<string>("src") ?? string.Empty;
+
         var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
         productSearchResult.Asin = uri.Segments.ElementAtOrDefault(dpIndex + 1);
 

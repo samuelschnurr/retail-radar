@@ -14,7 +14,11 @@ import { useTranslation } from "react-i18next"
 const Messenger = () => {
     const thread = useThread()
     const { region } = useMarketplace()
-    const { t } = useTranslation("messages")
+    const { t } = useTranslation(["messages", "marketplace"])
+    const regions = t("marketplace:regions", { returnObjects: true }) as {
+        key: string
+        label: string
+    }[]
 
     useEffect(() => {
         if (thread.id || thread.isLoading) {
@@ -27,14 +31,17 @@ const Messenger = () => {
             if (isThreadCreated) {
                 addChatConversationMessage(thread.welcomeMessage?.content!, "incoming")
                 addChatConversationMessage(
-                    t("marketplaceMessage").replace("{region}", region),
+                    t("messages:marketplaceMessage").replace(
+                        "{region}",
+                        regions.find(r => r.key === region)!.label
+                    ),
                     "incoming"
                 )
             }
         }
 
         initMessenger()
-    }, [thread, t, region])
+    }, [thread, t, regions, region])
 
     return (
         <MessengerLayout>

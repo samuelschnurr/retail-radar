@@ -33,7 +33,7 @@ internal class ProductSearchClient(ILogger logger, string authorization, string 
         listRequest.QuotaUser = Guid.NewGuid().ToString();
 
         listRequest.Cx = engineId;
-        listRequest.Q = $"site:\"*.amazon{region}/*dp/*\" intext:\"{searchTerm}\"";
+        listRequest.Q = $"site:'*.amazon{region}/*dp/*' intext:'{searchTerm}'";
 
         return listRequest;
     }

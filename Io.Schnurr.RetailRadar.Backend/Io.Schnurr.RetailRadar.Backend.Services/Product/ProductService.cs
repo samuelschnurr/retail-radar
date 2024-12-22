@@ -34,7 +34,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         return result;
     }
 
-    private static ProductSearchResult GetBestMatchingProductSearchResult(List<Result>? searchResults, string searchTerm)
+    private ProductSearchResult GetBestMatchingProductSearchResult(List<Result>? searchResults, string searchTerm)
     {
         ProductSearchResult productSearchResult = new()
         {
@@ -54,8 +54,8 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         try
         {
-        Newtonsoft.Json.Linq.JToken? imageSource = ((Newtonsoft.Json.Linq.JArray)bestMatchingItem.Pagemap["cse_thumbnail"]).FirstOrDefault();
-        productSearchResult.ImageSource = imageSource?.Value<string>("src") ?? string.Empty;
+            Newtonsoft.Json.Linq.JToken? imageSource = ((Newtonsoft.Json.Linq.JArray)bestMatchingItem.Pagemap["cse_thumbnail"]).FirstOrDefault();
+            productSearchResult.ImageSource = imageSource?.Value<string>("src") ?? string.Empty;
         }
         catch (Exception ex)
         {
@@ -85,7 +85,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         if (existingResult != null)
         {
-            htmlLink = RenderProductSearchResultAsHtml(existingResult, region);
+            htmlLink = RenderProductSearchResultAsHtml(existingResult, region, false);
         }
         else
         {
@@ -97,15 +97,16 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
                 productSearchResults.Add(bestMatchingProductSearchResult);
             }
 
-            htmlLink = RenderProductSearchResultAsHtml(bestMatchingProductSearchResult, region);
+            htmlLink = RenderProductSearchResultAsHtml(bestMatchingProductSearchResult, region, true);
         }
 
         return htmlLink;
     }
 
-    private static string RenderProductSearchResultAsHtml(ProductSearchResult productSearchResult, string region)
+    private static string RenderProductSearchResultAsHtml(ProductSearchResult productSearchResult, string region, bool isFirstOccurance)
     {
         string link;
+        string htmlLink;
 
         var parameters = new Dictionary<string, string>
         {
@@ -123,7 +124,23 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
             link = $"{uriScheme}www.amazon{region}/s?k={encodedSearchTerm}&{ProductSearchClient.CreateQueryString(parameters)}";
         }
 
-        var htmlLink = $"<a href='{link}' target='_blank'>{productSearchResult.SearchTerm}</a> ";
+        if (isFirstOccurance)
+        {
+            // Show with image
+            htmlLink = @$"<a href='{link}' target='_blank' class='amazonImageLink'>
+                <img
+                    src='{productSearchResult.ImageSource ?? "{amazonLogo}"}'
+                    alt='Product' />
+                <div>            
+                    {productSearchResult.SearchTerm}
+                </div>
+            </a>";
+        }
+        else
+        {
+            // Show as text
+            htmlLink = $"<a href='{link}' target='_blank'>{productSearchResult.SearchTerm}</a> ";
+        }
 
         return htmlLink;
     }

@@ -48,7 +48,8 @@ export const StyledChatContainer = styled(ChatContainer)`
             }
 
             img {
-                width: 96px;
+                min-width: 96px;
+                max-width: 96px;
                 object-fit: contain;
             }
             div {

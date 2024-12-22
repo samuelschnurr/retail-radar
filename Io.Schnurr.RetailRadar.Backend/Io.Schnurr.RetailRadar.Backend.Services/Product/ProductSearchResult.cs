@@ -6,6 +6,8 @@ internal class ProductSearchResult
     internal string? Asin { get; set; }
     internal string? BaseAddress { get; set; }
     internal string? AffiliateId { get; set; }
+    internal string? ImageSource { get; set; }
+
 
     internal bool IsValid()
     {
@@ -13,6 +15,7 @@ internal class ProductSearchResult
             !string.IsNullOrWhiteSpace(SearchTerm)
             && !string.IsNullOrWhiteSpace(Asin)
             && !string.IsNullOrWhiteSpace(BaseAddress)
-            && !string.IsNullOrWhiteSpace(AffiliateId);
+            && !string.IsNullOrWhiteSpace(AffiliateId)
+            && !string.IsNullOrWhiteSpace(ImageSource);
     }
 }

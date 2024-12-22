@@ -34,7 +34,7 @@ export const StyledChatContainer = styled(ChatContainer)`
             border-radius: ${p => p.theme.border.radius};
             box-shadow: ${p => p.theme.box.shadow};
             padding: ${p => p.theme.padding.small};
-            max-height: 96px;
+            height: 96px;
             white-space: nowrap;
             gap: ${p => p.theme.gap.small};
             width: 400px;

@@ -4,6 +4,7 @@ declare module "styled-components" {
     export interface DefaultTheme {
         colors: {
             primary: string
+            primaryLight: string
             primaryDark: string
             secondary: string
             background: string
@@ -17,6 +18,7 @@ declare module "styled-components" {
             radius: string
         }
         gap: {
+            small: string
             medium: string
         }
         margin: {

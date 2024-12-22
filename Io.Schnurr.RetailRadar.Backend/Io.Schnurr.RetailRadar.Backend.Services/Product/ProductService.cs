@@ -64,12 +64,11 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         try
         {
             Newtonsoft.Json.Linq.JToken? imageSource = ((Newtonsoft.Json.Linq.JArray)bestMatchingItem.Pagemap["cse_thumbnail"]).FirstOrDefault();
-            productSearchResult.ImageSource = imageSource?.Value<string>("src") ?? string.Empty;
+            productSearchResult.ImageSource = imageSource?.Value<string>("src") ?? productSearchResult.ImageSource;
         }
         catch (Exception ex)
         {
             logger.LogError(ex, "Error occurred while extracting image source from search result.");
-            productSearchResult.ImageSource = string.Empty;
         }
 
         var dpIndex = Array.IndexOf(uri.Segments, amazonAsinSegment);
@@ -138,7 +137,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
             // Show with image
             htmlLink = @$"<a href='{link}' target='_blank' class='amazonImageLink'>
                 <img
-                    src='{productSearchResult.ImageSource ?? "{amazonLogo}"}'
+                    src='{productSearchResult.ImageSource}'
                     alt='Product' />
                 <div>            
                     {productSearchResult.SearchTerm}

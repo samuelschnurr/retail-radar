@@ -6,12 +6,14 @@ import MessageInputContainer from "@features/messenger/components/Layout/Message
 import MessageListContainer from "@features/messenger/components/Layout/MessageListContainer"
 import MessengerLayout from "@features/messenger/components/Layout/MessengerLayout"
 import { addChatConversationMessage } from "@features/messenger/states/conversation"
+import { useMarketplace } from "@features/messenger/states/marketplace"
 import { createThread, useThread } from "@features/messenger/states/thread"
 import { useEffect } from "react"
 import { useTranslation } from "react-i18next"
 
 const Messenger = () => {
     const thread = useThread()
+    const { region } = useMarketplace()
     const { t } = useTranslation("messages")
 
     useEffect(() => {
@@ -24,12 +26,15 @@ const Messenger = () => {
 
             if (isThreadCreated) {
                 addChatConversationMessage(thread.welcomeMessage?.content!, "incoming")
-                addChatConversationMessage(t("marketplaceMessage"), "incoming")
+                addChatConversationMessage(
+                    t("marketplaceMessage").replace("{region}", region),
+                    "incoming"
+                )
             }
         }
 
         initMessenger()
-    }, [thread, t])
+    }, [thread, t, region])
 
     return (
         <MessengerLayout>

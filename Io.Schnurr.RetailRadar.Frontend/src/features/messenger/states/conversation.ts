@@ -21,18 +21,13 @@ export const resetConversation = () => {
     state.set({ ...defaultState })
 }
 
-export async function createUserMessage(
-    threadId: string | null,
-    content: string,
-    marketplaceRegion: MarketplaceRegion
-) {
+export async function createUserMessage(threadId: string | null, content: string) {
     state.merge({ lastRunId: null })
     addChatConversationMessage(content, "outgoing")
 
     const response = await postMessage({
         threadId: threadId,
-        content: content,
-        marketplaceRegion: marketplaceRegion
+        content: content
     } as Message)
 
     if (response) {
@@ -40,7 +35,7 @@ export async function createUserMessage(
     }
 }
 
-export async function getAssistantMessage(threadId: string | null) {
+export async function getAssistantMessage(threadId: string | null, region: MarketplaceRegion) {
     if (!threadId) {
         return
     }
@@ -48,7 +43,7 @@ export async function getAssistantMessage(threadId: string | null) {
     const currentState = state.get()
 
     if (threadId && currentState.lastRunId) {
-        const message = await getMessage(threadId, currentState.lastRunId)
+        const message = await getMessage(threadId, currentState.lastRunId, region)
 
         if (
             message &&

@@ -31,7 +31,7 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
                 return
             }
             isRequestRunning.set(true)
-            await getAssistantMessage(thread.id)
+            await getAssistantMessage(thread.id, region)
             isRequestRunning.set(false)
         } catch (error) {
             console.error(`An error occured while using useInterval within pollMessages: ${error}`)
@@ -56,7 +56,7 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
                     <CardList
                         as={Message}
                         cardContents={t("messages:welcomeMessages", { returnObjects: true }) as []}
-                        onClick={message => createUserMessage(thread.id, message, region)}
+                        onClick={message => createUserMessage(thread.id, message)}
                     />
                 )}
             </MessageList>

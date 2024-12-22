@@ -1,6 +1,7 @@
 import { Message, MessageList, MessageModel } from "@chatscope/chat-ui-kit-react"
 import CardList from "@features/messenger/components/Common/CardList"
 import TypingIndicatorInfo from "@features/messenger/components/Common/TypingIndicatorInfo"
+import { useMarketplace } from "@features/messenger/states/marketplace"
 import { useHookstate } from "@hookstate/core"
 import useInterval from "@lib/hooks/useInterval"
 import { useTranslation } from "react-i18next"
@@ -17,6 +18,7 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
     const { t } = useTranslation(["avatar", "messages"])
     const thread = useThread()
     const conversation = useConversation()
+    const { region } = useMarketplace()
     const isRequestRunning = useHookstate(false)
     const intervalDelay = conversation.isTyping ? 2500 : null
     // First message: Welcome, Second Message: Marketplace
@@ -54,7 +56,7 @@ const MessageListContainer = (_props: MessageListContainerProps) => {
                     <CardList
                         as={Message}
                         cardContents={t("messages:welcomeMessages", { returnObjects: true }) as []}
-                        onClick={message => createUserMessage(thread.id, message)}
+                        onClick={message => createUserMessage(thread.id, message, region)}
                     />
                 )}
             </MessageList>

@@ -22,7 +22,7 @@ internal static class Message
         if (threadMessage != null)
         {
             var messageDto = threadMessage.MapToMessageDto(threadRun);
-            messageDto.Content = await productService.GetStringWithProductLinks(messageDto.Content);
+            messageDto.Content = await productService.GetStringWithProductLinks(messageDto.Content, messageDto.MarketplaceRegion);
 
             return TypedResults.Ok(messageDto);
         }

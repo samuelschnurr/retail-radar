@@ -14,7 +14,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
     private const string amazonAsinSegment = "dp/";
     private const string uriScheme = "https://";
 
-    public async Task<string> GetStringWithProductLinks(string content)
+    public async Task<string> GetStringWithProductLinks(string content, string region)
     {
         MatchCollection matches = Regex.Matches(content, productNameRegexPattern);
 
@@ -25,7 +25,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         for (int i = 0; i < matches.Count; i++)
         {
             Match match = matches[i];
-            var productLink = await GetProductLinkAsync(productSearchResults, match.Groups[1].Value);
+            var productLink = await GetProductLinkAsync(productSearchResults, match.Groups[1].Value, region);
             result = result.Replace(match.Value, productLink);
 
             logger.LogInformation("Replaced product name {MatchResult} with {ProductLink}", match.Value, productLink);
@@ -62,7 +62,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
     }
 
 
-    private async Task<string> GetProductLinkAsync(List<ProductSearchResult> productSearchResults, string searchTerm)
+    private async Task<string> GetProductLinkAsync(List<ProductSearchResult> productSearchResults, string searchTerm, string region)
     {
         if (string.IsNullOrWhiteSpace(searchTerm))
         {
@@ -79,7 +79,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         }
         else
         {
-            var newProductSearchResults = await searchClient.GetProductSearchResults(searchTerm);
+            var newProductSearchResults = await searchClient.GetProductSearchResults(searchTerm, region);
             var bestMatchingProductSearchResult = GetBestMatchingProductSearchResult(newProductSearchResults, searchTerm);
 
             if (bestMatchingProductSearchResult.IsValid())

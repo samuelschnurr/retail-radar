@@ -51,6 +51,12 @@ export async function getAssistantMessage(threadId: string | null, region: Marke
             message.content &&
             currentState.lastRunId === message.run.id
         ) {
+            // If in the backend the product image is missing there will be a placeholder which can be replaced with the amazon logo
+            message.content = message.content.replace(
+                "{amazonLogo}",
+                region === ".de" ? "/images/amazon/amazonLogoDE" : "images/amazon/amazonLogoEN"
+            )
+
             addChatConversationMessage(message.content, "incoming")
         }
     }

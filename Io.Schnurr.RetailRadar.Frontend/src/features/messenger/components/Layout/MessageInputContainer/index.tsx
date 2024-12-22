@@ -1,5 +1,4 @@
 import { MessageInput } from "@chatscope/chat-ui-kit-react"
-import { useMarketplace } from "@features/messenger/states/marketplace"
 import { useCallback, useEffect, useRef } from "react"
 import { useTranslation } from "react-i18next"
 
@@ -11,7 +10,6 @@ const MessageInputContainer = (_props: MessageInputContainerProps) => {
     const { t } = useTranslation("messages")
     const messageInputRef = useRef<HTMLInputElement>(null)
     const { isTyping } = useConversation()
-    const { region } = useMarketplace()
     const { id: threadId } = useThread()
 
     const pasteAsPlainText = useCallback((e: React.ClipboardEvent<HTMLDivElement>) => {
@@ -58,7 +56,7 @@ const MessageInputContainer = (_props: MessageInputContainerProps) => {
     return (
         <MessageInput
             ref={messageInputRef}
-            onSend={textContent => createUserMessage(threadId!, textContent, region)}
+            onSend={textContent => createUserMessage(threadId!, textContent)}
             onPaste={pasteAsPlainText}
             placeholder={t("messages:inputTextMessage")}
             attachButton={false}

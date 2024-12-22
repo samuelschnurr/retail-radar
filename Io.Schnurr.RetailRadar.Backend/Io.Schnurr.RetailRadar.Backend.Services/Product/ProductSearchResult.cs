@@ -15,7 +15,6 @@ internal class ProductSearchResult
             !string.IsNullOrWhiteSpace(SearchTerm)
             && !string.IsNullOrWhiteSpace(Asin)
             && !string.IsNullOrWhiteSpace(BaseAddress)
-            && !string.IsNullOrWhiteSpace(AffiliateId)
-            && !string.IsNullOrWhiteSpace(ImageSource);
+            && !string.IsNullOrWhiteSpace(AffiliateId);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using Google.Apis.CustomSearchAPI.v1.Data;
 using Microsoft.Extensions.Configuration;
@@ -18,20 +19,28 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
     {
         MatchCollection matches = Regex.Matches(content, productNameRegexPattern);
 
-        var result = content;
-
         List<ProductSearchResult> productSearchResults = [];
+        var replacedProducts = new HashSet<string>();
+        var result = new StringBuilder(content);
 
-        for (int i = 0; i < matches.Count; i++)
+        foreach (Match match in matches)
         {
-            Match match = matches[i];
-            var productLink = await GetProductLinkAsync(productSearchResults, match.Groups[1].Value, region);
-            result = result.Replace(match.Value, productLink);
+            var productName = match.Groups[1].Value;
+            bool isFirstOccurance = !replacedProducts.Contains(productName);
+            var productLink = await GetProductLinkAsync(productSearchResults, match.Groups[1].Value, region, isFirstOccurance);
 
-            logger.LogInformation("Replaced product name {MatchResult} with {ProductLink}", match.Value, productLink);
+            int index = result.ToString().IndexOf(match.Value);
+            if (index >= 0)
+            {
+                result.Remove(index, match.Value.Length);
+                result.Insert(index, productLink);
+                replacedProducts.Add(productName);
+
+                logger.LogInformation("Replaced product name {MatchResult} with {ProductLink}", match.Value, productLink);
+            }
         }
 
-        return result;
+        return result.ToString();
     }
 
     private ProductSearchResult GetBestMatchingProductSearchResult(List<Result>? searchResults, string searchTerm, string region)
@@ -72,7 +81,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
     }
 
 
-    private async Task<string> GetProductLinkAsync(List<ProductSearchResult> productSearchResults, string searchTerm, string region)
+    private async Task<string> GetProductLinkAsync(List<ProductSearchResult> productSearchResults, string searchTerm, string region, bool isFirstOccurance)
     {
         if (string.IsNullOrWhiteSpace(searchTerm))
         {
@@ -85,7 +94,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         if (existingResult != null)
         {
-            htmlLink = RenderProductSearchResultAsHtml(existingResult, region, false);
+            htmlLink = RenderProductSearchResultAsHtml(existingResult, region, isFirstOccurance);
         }
         else
         {
@@ -97,7 +106,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
                 productSearchResults.Add(bestMatchingProductSearchResult);
             }
 
-            htmlLink = RenderProductSearchResultAsHtml(bestMatchingProductSearchResult, region, true);
+            htmlLink = RenderProductSearchResultAsHtml(bestMatchingProductSearchResult, region, isFirstOccurance);
         }
 
         return htmlLink;

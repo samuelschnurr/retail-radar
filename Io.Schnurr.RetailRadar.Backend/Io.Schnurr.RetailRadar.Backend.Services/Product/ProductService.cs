@@ -75,7 +75,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
 
         if (existingResult != null)
         {
-            htmlLink = RenderProductSearchResultAsHtml(existingResult);
+            htmlLink = RenderProductSearchResultAsHtml(existingResult, region);
         }
         else
         {
@@ -87,13 +87,13 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
                 productSearchResults.Add(bestMatchingProductSearchResult);
             }
 
-            htmlLink = RenderProductSearchResultAsHtml(bestMatchingProductSearchResult);
+            htmlLink = RenderProductSearchResultAsHtml(bestMatchingProductSearchResult, region);
         }
 
         return htmlLink;
     }
 
-    private static string RenderProductSearchResultAsHtml(ProductSearchResult productSearchResult)
+    private static string RenderProductSearchResultAsHtml(ProductSearchResult productSearchResult, string region)
     {
         string link;
 
@@ -110,7 +110,7 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
         else
         {
             string encodedSearchTerm = HttpUtility.UrlEncode(productSearchResult.SearchTerm!);
-            link = $"https://www.google.com/search?q={encodedSearchTerm}";
+            link = $"https://www.google{region}/search?q={encodedSearchTerm}";
         }
 
         var htmlLink = $"<a href='{link}' target='_blank'>{productSearchResult.SearchTerm}</a> ";

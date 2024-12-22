@@ -1,5 +1,6 @@
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css"
 
+import { ShopOutlined } from "@ant-design/icons"
 import { ConversationHeader, MessageInput, MessageList } from "@chatscope/chat-ui-kit-react"
 import ConversationHeaderContainer from "@features/messenger/components/Layout/ConversationHeaderContainer"
 import MessageInputContainer from "@features/messenger/components/Layout/MessageInputContainer"
@@ -9,6 +10,8 @@ import { addChatConversationMessage } from "@features/messenger/states/conversat
 import { useMarketplace } from "@features/messenger/states/marketplace"
 import { createThread, useThread } from "@features/messenger/states/thread"
 import { useEffect } from "react"
+import React from "react"
+import ReactDOMServer from "react-dom/server"
 import { useTranslation } from "react-i18next"
 
 const Messenger = () => {
@@ -31,10 +34,12 @@ const Messenger = () => {
             if (isThreadCreated) {
                 addChatConversationMessage(thread.welcomeMessage?.content!, "incoming")
                 addChatConversationMessage(
-                    t("messages:marketplaceMessage").replace(
-                        "{region}",
-                        regions.find(r => r.key === region)!.label
-                    ),
+                    t("messages:marketplaceMessage")
+                        .replace("{region}", regions.find(r => r.key === region)!.label)
+                        .replace(
+                            "{icon}",
+                            ReactDOMServer.renderToString(React.createElement(ShopOutlined))
+                        ),
                     "incoming"
                 )
             }

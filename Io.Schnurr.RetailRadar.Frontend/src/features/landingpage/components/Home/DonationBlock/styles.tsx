@@ -6,5 +6,13 @@ export const StyledImageContainer = styled("span")`
 
     a {
         cursor: pointer;
+        padding-left: ${p => p.theme.padding.small};
+        padding-right: ${p => p.theme.padding.small};
+    }
+
+    div {
+        align-content: center;
+        padding-left: ${p => p.theme.padding.small};
+        padding-right: ${p => p.theme.padding.small};
     }
 `

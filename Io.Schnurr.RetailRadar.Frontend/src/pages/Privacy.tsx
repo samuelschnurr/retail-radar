@@ -1,13 +1,15 @@
-import CommonBlock from "@features/landingpage/components/Common/CommonSection"
+import CommonSection from "@features/landingpage/components/Common/CommonSection"
 import ScrollToTop from "@features/landingpage/components/Common/ScrollToTop"
 import PageLayout from "@features/landingpage/components/Layout/PageLayout"
-import PrivacyContent from "@features/landingpage/locales/de/PrivacyContent.json"
+import { getLocalizedResourceFile } from "@lib/i18n/i18nUtils"
 
 const Privacy = () => {
     return (
-        <PageLayout>
+        <PageLayout
+            headerContent={getLocalizedResourceFile("header")}
+            footerContent={getLocalizedResourceFile("footer")}>
             <ScrollToTop scrollToId="header" />
-            <CommonBlock htmlContent={PrivacyContent} />
+            <CommonSection htmlContent={getLocalizedResourceFile("privacy")} />
         </PageLayout>
     )
 }

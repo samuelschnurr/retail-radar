@@ -1,3 +1,4 @@
+import { MarketplaceRegion } from "./marketplaceRegion"
 import { MessageRole } from "./messageRole"
 import { Run } from "./run"
 
@@ -7,4 +8,5 @@ export type Message = {
     content: string
     role: MessageRole
     run: Run
+    marketplaceRegion: MarketplaceRegion
 }

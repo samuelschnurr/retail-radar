@@ -1,0 +1,21 @@
+{
+    "donationButton": {
+        "label": "Mit einem Kaffee unterstützen",
+        "url": "https://ko-fi.com/sampa"
+    },
+    "bugButton": {
+        "label": "Fehler melden",
+        "mailReceiver": "info@retailradar.io",
+        "mailSubject": "Fehlermeldung",
+        "mailBody": "Es ist beim Chatten mit Chappie ein Fehler aufgetreten.\r\n\r\nMein letzter Chat wurde geführt unter der Id: "
+    },
+    "refreshButton": {
+        "label": "Chat neu starten"
+    },
+    "closeButton": {
+        "label": "Chat schließen"
+    },
+    "marketplaceButton": {
+        "label": "Marktplatz für Produktempfehlungen auswählen"
+    }
+}

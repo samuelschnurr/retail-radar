@@ -1,3 +1,6 @@
 export interface FooterContentProps {
-    src: string
+    imageSource: string
+    instagramLink: string
+    tiktokLink: string
+    links: [{ label: string; url: string }]
 }

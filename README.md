@@ -24,7 +24,7 @@ To convert the product suggestions provided by the Assistant into actual Amazon 
 
 You’ll need to set up a [Programmable Search Engine (Paid Element)](https://console.cloud.google.com/apis/library/programmablesearchelement.googleapis.com) which is described [here](https://developers.google.com/custom-search/docs/paid_element). 
 
- You will need to store the following values in appsettings.Development.json:
+ You will need to store the following values in `appsettings.Development.json`:
 
 - Google API Secret
 - EngineId

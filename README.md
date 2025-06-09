@@ -6,9 +6,9 @@ Although the application is no longer officially maintained, it can still be set
 
 ## Build and Run
 
-Both the frontend and backend of this application can be built and started without any additional configuration. The connection between the frontend and backend is already fully established out of the box. However, for the backend to function correctly as an AI-powered chatbot, two resources and configurations are required. These must be provided either in the appsettings.Development.json file or via [.NET User Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-9.0&tabs=windows).
+Both the frontend and backend of this application can be built and started without any additional configuration. The connection between the frontend and backend is already fully established out of the box. However, for the backend to function correctly as an AI-powered chatbot, two resources and configurations are required. These must be provided either in the `appsettings.Development.json` file or via [.NET User Secrets](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-9.0&tabs=windows).
 
-**Chatbot**
+**OpenAI Assistant**
 
 An `Azure OpenAI` Assistant (Microsoft.CognitiveServices) must be set up using the [linked prompt](https://github.com/samuelschnurr/retail-radar/blob/main/Docs/Prompt.txt). The assistant uses the ongoing chat history and its configured prompt to provide product suggestions in a predefined format. You will need to store the following values in appsettings.Development.json:
 
@@ -18,7 +18,7 @@ An `Azure OpenAI` Assistant (Microsoft.CognitiveServices) must be set up using t
 
 These credentials enable the backend to communicate with the assistant and receive structured product suggestions based on user input.
 
-**Productlinking**
+**Google Search API**
 
 To convert the product suggestions provided by the Assistant into actual Amazon links, the `Google Programmable Search Engine API` is used. The assistant returns structured product names, which are then searched via the API. The best-matching Amazon result is extracted and linked in place of the original product name.
 

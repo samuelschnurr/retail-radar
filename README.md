@@ -4,7 +4,15 @@ This repository provides full access to the "RetailRadar" application - a full-s
 
 Although the application is no longer officially maintained, it can still be set up and hosted independently using the code provided in this repository.
 
-## Before you start
+## Build and Run
+
+**Frontend**
+
+The frontend can be started without further adjustments with `npm run start`. It will use the environments variables to automatically connect to the correct backend address.
+
+**Backend**
+
+
 
 ## Demonstration
 

@@ -10,9 +10,9 @@ Both the frontend and backend of this application can be built and started witho
 
 **OpenAI Assistant**
 
-An `Azure OpenAI Assistant` (Microsoft.CognitiveServices) must be set up using the [linked prompt](https://github.com/samuelschnurr/retail-radar/blob/main/Docs/Prompt.txt). The assistant uses the ongoing chat history and its configured prompt to provide product suggestions in a predefined format. You will need to store the following values in appsettings.Development.json:
+An `Azure OpenAI Assistant` (Microsoft.CognitiveServices) must be set up using the [linked prompt](https://github.com/samuelschnurr/retail-radar/blob/main/Docs/Prompt.txt). The assistant uses the ongoing chat history and its configured prompt to provide product suggestions in a predefined format. You will need to store the following values in `appsettings.Development.json`:
 
-- OpenAiSecret
+- OpenAi API Secret
 - AssistantId
 - BaseAddress
 
@@ -26,7 +26,7 @@ You’ll need to set up a [Programmable Search Engine (Paid Element)](https://co
 
  You will need to store the following values in appsettings.Development.json:
 
-- Authorization
+- Google API Secret
 - EngineId
 
 ## Demonstration

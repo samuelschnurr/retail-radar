@@ -5,5 +5,10 @@
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
     },
-    "colorize.languages": ["typescript"] // Support colorize only for typescript files, because vscode colorDecorators work for other files
+    "colorize.languages": ["typescript"],
+    "i18n-ally.localesPaths": [
+        "src/lib/i18n",
+        "src/features/landingpage/locales",
+        "src/features/messenger/locales"
+    ] // Support colorize only for typescript files, because vscode colorDecorators work for other files
 }

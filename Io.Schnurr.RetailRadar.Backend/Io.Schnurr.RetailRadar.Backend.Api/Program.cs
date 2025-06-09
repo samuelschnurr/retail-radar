@@ -8,11 +8,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCustomServices();
 
-builder.Logging.AddApplicationInsights(configureTelemetryConfiguration: (config) =>
-    config.ConnectionString = builder.Configuration["ApplicationInsights:ConnectionString"],
-    configureApplicationInsightsLoggerOptions: (options) => { }
-);
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

@@ -157,13 +157,13 @@ public class ProductService(IConfiguration configuration, ILogger<ProductService
     {
         return authority switch
         {
-            ".com.au" => "retailradar.io-au-22",
-            ".co.uk" => "retailradar.io-uk-21",
-            ".de" => "retailradar.io-de-21",
-            ".es" => "retailradar.io-es-21",
-            ".fr" => "retailradar.io-fr-21",
-            ".it" => "retailradar.io-it-21",
-            _ => "retailradar.io-us-20",
+            ".com.au" => "<amazon-affiliate-id>",
+            ".co.uk" => "<amazon-affiliate-id>",
+            ".de" => "<amazon-affiliate-id>",
+            ".es" => "<amazon-affiliate-id>",
+            ".fr" => "<amazon-affiliate-id>",
+            ".it" => "<amazon-affiliate-id>",
+            _ => "<amazon-affiliate-id>",
         };
     }
 }

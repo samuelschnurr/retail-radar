@@ -2,15 +2,9 @@
     "name": "io.schnurr.retailradar.frontend",
     "version": "0.1.0",
     "private": true,
-    "funding": [
-        {
-            "type": "kofi",
-            "url": "https://ko-fi.com/sampa"
-        }
-    ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/samuelschnurr/ai-shopper.git"
+        "url": "https://github.com/samuelschnurr/retail-radar.git"
     },
     "dependencies": {
         "@ant-design/icons": "^5.3.6",
